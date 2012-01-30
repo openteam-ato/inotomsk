@@ -2,10 +2,11 @@ source :rubygems
 
 gem 'compass',              '~> 0.12.alpha.0'
 gem 'configliere'
+gem 'curb'
 gem 'el_vfs_client'
+gem 'hashie'
 gem 'jquery-rails'
-gem 'rails',                '~> 3.1.0'
-gem 'restfulie',            :git => 'git://github.com/caelum/restfulie'
+gem 'rails'
 
 group :assets do
   gem 'sass-rails'

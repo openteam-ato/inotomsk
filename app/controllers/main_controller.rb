@@ -26,7 +26,15 @@ class MainController < ApplicationController
     end
 
     def page
-      @page ||= Restfulie.at(remote_url).accepts("application/json").get.resource.page
+      @page ||= Hashie::Mash.new(json).page
+    end
+
+    def json
+      body = Curl::Easy.perform(remote_url) do |curl|
+        curl.headers['Accept'] = 'application/json'
+      end.body_str
+
+      ActiveSupport::JSON.decode(body)
     end
 
     def page_regions
