@@ -13,7 +13,7 @@ class MainController < ApplicationController
 
   private
     def cms_address
-      "#{Settings['cms.protocol']}://#{Settings['cms.host']}:#{Settings['cms.port']}/nodes/#{Settings['cms.site_slug']}"
+      "#{Settings['cms.url']}/nodes/#{Settings['cms.site_slug']}"
     end
 
     def remote_url

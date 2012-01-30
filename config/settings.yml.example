@@ -1,5 +1,5 @@
 cms:
-  protocol:  http
+  url:       http://esp-cms.openteam.ru
   host:      esp-cms.openteam.ru
   port:      80
   site_slug: inotomsk.openteam.ru
