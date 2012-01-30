@@ -4,7 +4,8 @@ gem 'compass',              '~> 0.12.alpha.0'
 gem 'configliere'
 gem 'el_vfs_client'
 gem 'jquery-rails'
-gem 'rails'
+gem 'rails',                '~> 3.1.0'
+gem 'restfulie',            :git => 'git://github.com/caelum/restfulie'
 
 group :assets do
   gem 'sass-rails'

@@ -1,0 +1,13 @@
+cms:
+  protocol:  http
+  host:      esp-cms.openteam.ru
+  port:      80
+  site_slug: inotomsk.openteam.ru
+
+vfs:
+  url:       http://pool.openteam.ru
+
+production:
+  hoptoad:
+    api_key: key
+    host:    host
