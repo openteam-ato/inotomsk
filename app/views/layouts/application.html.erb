@@ -4,8 +4,11 @@
     <meta http-equiv='Content-Type' content='text/html;charset=UTF-8' />
     <title><%= raw @page_title %> | <%= strip_tags(@site_name.content.body) %></title>
     <%= stylesheet_link_tag 'application' %>
-    <!--[if lte IE 8]>
-    <%= stylesheet_link_tag 'ie8_and_lower' %>
+    <!--[if lt IE 8]>
+    <%= stylesheet_link_tag 'ie_lower_8' %>
+    <![endif]-->
+    <!--[if IE 8]>
+    <%= stylesheet_link_tag 'ie_8' %>
     <![endif]-->
     <%= javascript_include_tag 'application' %>
     <%= csrf_meta_tags %>
