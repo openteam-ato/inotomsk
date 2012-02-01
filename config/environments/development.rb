@@ -28,4 +28,7 @@ Inotomsk::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  # Add font asset path
+  config.assets.paths << "#{Rails.root}/app/assets/fonts"
 end

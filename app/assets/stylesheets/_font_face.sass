@@ -1,0 +1,10 @@
+=font_face($name, $font-files, $eot: false)
+  $iefont: '#{$eot}?#iefix'
+  @font-face
+    font-family: quote($name)
+    font-style: normal
+    font-weight: normal
+    @if $eot
+      src: font-url($eot)
+      $font-files: font-url($iefont) unquote("format('eot')"), $font-files
+    src: $font-files
