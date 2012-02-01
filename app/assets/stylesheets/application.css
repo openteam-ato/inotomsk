@@ -10,4 +10,6 @@
  *
  *= require_self
  *= require base
+ *= require layout
+ *= require top_menu
  */

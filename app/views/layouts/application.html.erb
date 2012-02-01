@@ -11,6 +11,28 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
+    <div class='top_menu_wrapper'>
+      <div class='top_menu'>
+        <ul>
+          <li><a href='#'>О проекте</a></li>
+          <li class='separator'>&nbsp;</li>
+          <li><a href='#'>Точки зрения</a></li>
+          <li class='separator'>&nbsp;</li>
+          <li><a href='#'>Аналитические материалы</a></li>
+          <li class='separator'>&nbsp;</li>
+          <li><a href='#'>Инновации для населения</a></li>
+          <li class='break'>&nbsp;</li>
+        </ul>
+        <ul>
+          <li><a href='#'>Институты инновационной инфраструктуры</a></li>
+          <li class='separator'>&nbsp;</li>
+          <li><a href='#'>Инфраструктура Томска</a></li>
+          <li class='separator'>&nbsp;</li>
+          <li><a href='#'>Пресс-центр</a></li>
+          <li class='break'>&nbsp;</li>
+        </ul>
+      </div>
+    </div>
     <%= yield(:content) %>
   </body>
 </html>
