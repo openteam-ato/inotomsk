@@ -1,9 +1,14 @@
 @import 'compass/utilities'
+@import 'compass/css3'
+
+$shadow_color: #dfdfdf
 
 .news_section
+  +single-box-shadow($shadow_color, 3px, 3px, 3px)
   .nav
     float: right
     +clearfix
+    //+box-shadow(transparent -1px 0 1px, transparent 0 1px 1px, transparent 0 -1px 1px, #999 2px 0 4px)
     li
       float: left
       font-size: 0.9em
@@ -42,4 +47,4 @@
   .news_container
     border: 1px solid #a41162
     background-color: #fff
-
+    +single-box-shadow($shadow_color, -3px, 3px, 3px)
