@@ -1,0 +1,45 @@
+@import 'compass/utilities'
+
+
+.header
+  +clearfix
+  +min-height(130px)
+  .logotype
+    float: left
+    position: relative
+    .symbol
+      position: absolute
+      top: 0
+      left: 0
+      a
+        display: block
+        width: 140px
+        height: 98px
+        overflow: hidden
+        text-indent: -9999em
+        outline: none
+        background: transparent url('symbol.png') no-repeat
+    .site_name
+      position: absolute
+      top: 70px
+      left: 90px
+      color: #141412
+      white-space: nowrap
+      h1
+        font-family: 'header_light'
+        font-size: 2.8em
+        line-height: 1.1
+        margin-left: 6px
+        a
+          color: #141412
+          text-decoration: none
+        .medium
+          font-family: 'header_medium'
+      p
+        font-family: 'header_light'
+        font-size: 1.1em
+        line-height: 1.1
+        &.shift
+          margin-left: 3px
+  .targets
+    float: right

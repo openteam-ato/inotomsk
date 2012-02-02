@@ -12,4 +12,6 @@
  *= require base
  *= require layout
  *= require top_menu
+ *= require header
+ *= require footer
  */
