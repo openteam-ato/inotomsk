@@ -1,9 +1,7 @@
 @import 'compass/utilities'
 
-
 .header
   +clearfix
-  +min-height(130px)
   .logotype
     float: left
     position: relative
@@ -33,6 +31,7 @@
         a
           color: #141412
           text-decoration: none
+          outline: none
         .medium
           font-family: 'header_medium'
       p
@@ -42,4 +41,54 @@
         &.shift
           margin-left: 3px
   .targets
+    $main_width: 460px
+    $arrow_width: 14px
+    $arrow_height: 19px
+    $counter_width: 30px
+    $counter_padding_left: 15px
+    $counter_padding_right: 10px
+    $text_padding: 5px
+    width: $main_width
     float: right
+    margin-top: 40px
+    h1
+      color: #a51263
+      font-family: 'header_medium'
+      font-size: 1.4em
+      margin-left: $arrow_width + $counter_width + $counter_padding_right + $counter_padding_left + $text_padding
+    .larch
+      +clearfix
+      .left,
+      .right
+        float: left
+        width: $arrow_width
+        height: $arrow_height
+        margin-top: 10px
+        a
+          display: block
+          width: $arrow_width
+          height: $arrow_height
+          text-indent: -9999em
+          outline: none
+          background:
+            image: url('larch_arrows.png')
+            repeat: no-repeat
+      .left a
+        background-position: 0 0
+        &:hover
+          background-position: 0 -19px
+      .right a
+        background-position: -14px 0
+        &:hover
+          background-position: -14px -19px
+      .counter
+        float: left
+        color: #dad8ff
+        font-family: 'header_medium'
+        font-size: 4em
+        width: $counter_width
+        padding: 0 $counter_padding_right 0 $counter_padding_left
+      .text
+        float: left
+        width: $main_width - $arrow_width * 2 - $counter_width - $counter_padding_right - $counter_padding_left - $text_padding * 2
+        padding: 0 $text_padding
