@@ -13,5 +13,6 @@
  *= require layout
  *= require top_menu
  *= require header
+ *= require news
  *= require footer
  */

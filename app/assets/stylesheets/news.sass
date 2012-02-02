@@ -1,0 +1,42 @@
+@import 'compass/utilities'
+
+.news_section
+  .nav
+    float: right
+    +clearfix
+    li
+      float: left
+      font-size: 0.9em
+      a
+        display: block
+        color: lighten(#dba0c0, 10%)
+        background-color: #a41162
+        border: 1px solid #a41162
+        border-bottom: 1px solid #a41162
+        margin: 4px 0 0 1px
+        padding: 8px 12px 7px
+        text-decoration: none
+        &:hover
+          color: #fff
+          background-color: #d8277f
+          border: 1px solid #d8277f
+          border-bottom: 1px solid #a41162
+      &.selected a
+        color: #32001d
+        border: 1px solid #a41162
+        border-bottom: 1px solid #fff
+        background-color: #fff
+        padding: 9px 12px 10px
+        margin-top: 0
+
+  h1
+    font-family: 'header_normal'
+    font-size: 1.5em
+    line-height: 1.9
+    margin-bottom: 1px
+    a
+      color: #a61163
+  .news_container
+    border: 1px solid #a41162
+    background-color: #fff
+
