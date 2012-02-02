@@ -12,5 +12,14 @@
  *
  *= require jquery
  *= require jquery_ujs
- *= require_tree .
+ *= require jquery.iepngfix.js
  */
+function ie_png_fix() {
+  if ($.fn.fixPNG) {
+    $('.header .logotype .symbol a').fixPNG();
+  };
+};
+
+$(function() {
+  ie_png_fix();
+});
