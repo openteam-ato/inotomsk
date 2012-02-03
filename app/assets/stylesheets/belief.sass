@@ -92,11 +92,12 @@
           color: #fff
           text-decoration: none
       $container_height: 265px
+      $container_padding_top: 5px
       $container_padding: 15px
       .two_column
-        +min-height($container_height - $container_padding * 2)
+        +min-height($container_height - $container_padding_top - $container_padding)
         background-color: #e8ebfc
-        padding: 5px $container_padding $container_padding $container_padding
+        padding: $container_padding_top $container_padding $container_padding $container_padding
         +clearfix
         .video
           float: left
@@ -106,6 +107,11 @@
           .thumbnail
             padding: 7px 15px 9px 14px
             background: transparent url('mediateka_video_bg.png') no-repeat
+            margin-bottom: 5px
+          .title,
+          .date,
+          .more
+            margin-left: 4px
         .photo
           float: left
           width: 204px
@@ -113,3 +119,18 @@
           .thumbnail
             padding: 17px 7px 11px 21px
             background: transparent url('mediateka_photo_bg.png') no-repeat
+            margin-bottom: 5px
+          .title,
+          .date,
+          .more
+            margin-left: 14px
+        .title
+          font-size: 0.9em
+          font-weight: bold
+          margin-bottom: 5px
+        .date
+          font-size: 0.8em
+          color: #7a7b72
+          margin-bottom: 5px
+        .more
+          font-size: 0.9em
