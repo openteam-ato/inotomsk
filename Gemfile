@@ -16,6 +16,5 @@ end
 
 group :production do
   gem 'hoptoad_notifier'
-  gem 'pg',                 :require => false
   gem 'unicorn',            :require => false       unless ENV['SHARED_DATABASE_URL']
 end
