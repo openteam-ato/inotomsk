@@ -44,8 +44,6 @@ $shadow_color: #dfdfdf
     font-size: 1.5em
     line-height: 1.9
     margin-bottom: 1px
-    a
-      color: #a61163
   .news_container
     border: 1px solid #a41162
     background-color: #fff
@@ -71,3 +69,28 @@ $shadow_color: #dfdfdf
             font-size: 0.9em
             color: #ffa3d6
       .news_list
+        ul
+          margin-bottom: 35px
+          li
+            padding: 10px 20px
+            a
+              color: #000
+              text-decoration: none
+              &:hover
+                color: #d8287d
+                text-decoration: underline
+            &:hover
+              background-color: #f5f2fb
+              a
+                color: #d8287d
+                text-decoration: underline
+            .title
+              margin-bottom: 5px
+            .date
+              font-size: 0.9em
+              color: darken(#93948c, 10%)
+        .all_news
+          position: absolute
+          bottom: 15px
+          right: 15px
+          font-size: 0.9em
