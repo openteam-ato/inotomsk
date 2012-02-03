@@ -1,0 +1,37 @@
+@import 'compass/utilities'
+
+$person_width: 450px
+$photo_width: 150px
+$photo_margin_right: 15px
+
+.interviews_section
+  h1
+    font-family: 'header_normal'
+    font-size: 1.5em
+    margin-bottom: 5px
+  .two_column
+    +clearfix
+    .person
+      width: $person_width
+      float: left
+      +clearfix
+      &.left
+        margin-right: 10px
+      &.right
+        margin-left: 10px
+      .photo
+        float: left
+        width: $photo_width
+        margin-right: $photo_margin_right
+      .interview
+        float: left
+        width: $person_width - $photo_width - $photo_margin_right
+        h1
+          font-family: Verdana, Tahoma, sans-serif
+          font-size: 1.4em
+          margin-bottom: 10px
+        .annotation
+          margin-bottom: 10px
+        .date
+          font-size: 0.9em
+          color: #7a7b72
