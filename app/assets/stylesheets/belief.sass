@@ -1,0 +1,86 @@
+@import 'compass/utilities'
+@import 'compass/css3'
+
+$photo_width: 150px
+$photo_heidth: 150px
+$description_width: 150px
+$description_height: 150px
+$description_padding: 10px
+$triangle_shift: 20px
+
+.belief_section
+  h1
+    font-family: 'header_normal'
+    font-size: 1.5em
+    margin-bottom: 5px
+  .two_column
+    +clearfix
+    .belief,
+    .mediateka
+      width: 450px
+      float: left
+      &.belief
+        margin-right: 10px
+      &.mediateka
+        margin-left: 10px
+    .belief
+      +clearfix
+      .photo
+        width: $photo_width
+        height: $photo_heidth
+        float: left
+        position: relative
+        .triangle
+          position: absolute
+          display: block
+        &.first
+          background-color: #ebfd9a
+          .triangle
+            width: 10px
+            height: 20px
+            top: $triangle_shift
+            right: 0
+            background: transparent url('belief_triangle_first.png') no-repeat
+        &.second
+          background-color: #ffe785
+          .triangle
+            width: 20px
+            height: 10px
+            bottom: 0
+            left: $triangle_shift
+            background: transparent url('belief_triangle_second.png') no-repeat
+        &.third
+          background-color: #e8ebfc
+          .triangle
+            width: 10px
+            height: 20px
+            top: $triangle_shift
+            left: 0
+            background: transparent url('belief_triangle_third.png') no-repeat
+      .description
+        width: $description_width - $description_padding * 2
+        +min-height($description_height - $description_padding * 2)
+        float: left
+        padding: $description_padding
+        &.first
+          background-color: #ebfd9a
+        &.second
+          clear: left
+          background-color: #e8ebfc
+        &.third
+          background-color: #ffe787
+        .annotation
+          font-size: 0.9em
+          margin-bottom: 5px
+          a
+            color: #252535
+            text-decoration: none
+            &:hover
+              color: #d8287d
+              text-decoration: underline
+        .date
+          font-size: 0.8em
+          color: #7a7b72
+
+    .mediateka
+      // TODO
