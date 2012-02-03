@@ -5,10 +5,12 @@ $shadow_color: #dfdfdf
 
 .news_section
   +single-box-shadow($shadow_color, 3px, 3px, 3px)
+  position: relative
   .nav
-    float: right
+    position: absolute
+    top: 0
+    right: 0
     +clearfix
-    //+box-shadow(transparent -1px 0 1px, transparent 0 1px 1px, transparent 0 -1px 1px, #999 2px 0 4px)
     li
       float: left
       font-size: 0.9em
@@ -48,3 +50,24 @@ $shadow_color: #dfdfdf
     border: 1px solid #a41162
     background-color: #fff
     +single-box-shadow($shadow_color, -3px, 3px, 3px)
+    .inner_wrapper
+      +clearfix
+      .picture,
+      .news_list
+        width: 50%
+        float: left
+      .picture
+        position: relative
+        .description
+          color: #fff
+          position: absolute
+          background-color: #b13379
+          +opacity(0.9)
+          bottom: 0
+          padding: 10px
+          .text
+            margin-bottom: 5px
+          .date
+            font-size: 0.9em
+            color: #ffa3d6
+      .news_list
