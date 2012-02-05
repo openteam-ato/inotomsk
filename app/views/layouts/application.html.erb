@@ -238,6 +238,16 @@
       <div class="voting">
         <h1>Опрос</h1>
         <p class='question'>Каким на Ваш взгляд должен быть ИНО Томск 2020г.?</p>
+        <%= semantic_form_for :answers do | form | %>
+          <%= form.inputs do %>
+            <%= form.input :ansver, :as => :radio, :label => false, :collection => ['Как силиконовая долина', 'Ничего не изменится', 'Затрудняюсь я с вами тут'] %>
+          <% end %>
+          <%= form.buttons do %>
+            <%= form.commit_button :label => 'Голосовать' %>
+          <% end %>
+        <% end %>
+        <p class="link"><a href='#'>Результаты</a></p>
+        <p class="link"><a href='#'>Голосование по другим вопросам</a></p>
       </div>
     </div>
 
