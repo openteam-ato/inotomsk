@@ -14,6 +14,7 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
+
     <div class='top_menu_wrapper'>
       <div class='top_menu'>
         <ul>
@@ -36,6 +37,7 @@
         </ul>
       </div>
     </div>
+
     <div class='header'>
       <div class='logotype'>
         <div class='symbol'>
@@ -61,6 +63,7 @@
         </div>
       </div>
     </div>
+
     <div class='news_section'>
       <ul class='nav'>
         <li><a href='#'>В мире</a></li>
@@ -101,6 +104,9 @@
         </div>
       </div>
     </div>
+
+    <%= yield(:content) %>
+
     <div class='interviews_section'>
       <h1><a href='#'>Интервью</a></h1>
       <div class='two_column'>
@@ -131,6 +137,7 @@
         </div>
       </div>
     </div>
+
     <div class='belief_section'>
       <h1><a href='#'>Точки зрения</a></h1>
       <div class='two_column'>
@@ -183,11 +190,62 @@
         </div>
       </div>
     </div>
-    <%= yield(:content) %>
+
+    <div class="calendar_section">
+      <div class="calendar">
+        <h1><a href='#'>Календарь мероприятий</a></h1>
+        <div class="left">
+          <a href="#">назад</a>
+        </div>
+        <div class="right">
+          <a href="#">вперёд</a>
+        </div>
+        <div class="timeline">
+          <div class="event">
+            <p class="day">14 августа - 15 сентября</p>
+            <p class="year">2012г.</p>
+            <p class="separator">&nbsp;</p>
+            <p class="title">
+              <a href="#">Молодёжный форум You LEAD</a>
+            </p>
+          </div>
+          <div class="event">
+            <p class="day">14-15 августа</p>
+            <p class="year">2012г.</p>
+            <p class="separator">&nbsp;</p>
+            <p class="title">
+              <a href="#">Собрание акционеров Восток Газпром</a>
+            </p>
+          </div>
+          <div class="event">
+            <p class="day">14-15 августа</p>
+            <p class="year">2012г.</p>
+            <p class="separator">&nbsp;</p>
+            <p class="title">
+              <a href="#">В Томске пройдёт Форум бизнес-лидеров</a>
+            </p>
+          </div>
+          <div class="event">
+            <p class="day">14-15 августа</p>
+            <p class="year">2012г.</p>
+            <p class="separator">&nbsp;</p>
+            <p class="title">
+              <a href="#">Всероссийский студенческий форум</a>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="voting">
+        <h1>Опрос</h1>
+        <p class='question'>Каким на Ваш взгляд должен быть ИНО Томск 2020г.?</p>
+      </div>
+    </div>
+
     <div class='footer_wrapper'>
       <div class='footer'>
         <p><a href='http://www.fontsquirrel.com/fontface/generator'>@font-face generator</a></p>
       </div>
     </div>
+
   </body>
 </html>

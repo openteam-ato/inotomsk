@@ -1,0 +1,82 @@
+@import 'compass/utilities'
+@import 'compass/css3'
+
+$container_width: 945px
+$calendar_margin_right: 30px
+$calendar_margin_left: 25px
+$voting_width: 205px
+
+.calendar_section
+  +clearfix
+  .calendar
+    float: left
+    position: relative
+    width: $container_width - $calendar_margin_right - $calendar_margin_left - $voting_width
+    margin: 0 $calendar_margin_right 0 $calendar_margin_left
+    h1
+      font-family: 'header_normal'
+      font-size: 1.5em
+      margin-bottom: 5px
+    .left,
+    .right
+      width: 36px
+      height: 36px
+      position: absolute
+      a
+        display: block
+        background: transparent url('calendar_nav.png') no-repeat
+        text-indent: -9999em
+        overflow: hidden
+        width: 36px
+        height: 36px
+    .left
+      top: 70px
+      left: -18px
+      a
+        background-position: 0 0
+        &:hover
+          background-position: 0 -36px
+    .right
+      top: 70px
+      right: -18px
+      a
+        background-position: -36px 0
+        &:hover
+          background-position: -36px -36px
+    .timeline
+      $timeline_padding: 20px
+      $timeline_width: $container_width - $calendar_margin_right - $calendar_margin_left - $voting_width - $timeline_padding * 2
+      +clearfix
+      +border-radius(10px)
+      +single-box-shadow(#ccc, 0, 2px, 2px)
+      background: #fff url('timeline_bg.png') repeat-x top
+      margin-bottom: 10px
+      padding: 0 $timeline_padding
+      .event
+        $event_margin: 5px
+        float: left
+        width: $timeline_width / 4 - $event_margin * 2
+        margin: 0 $event_margin
+        .day,
+        .year
+          color: #7e7874
+          font-size: 0.9em
+        .day
+          margin: 12px 0 5px
+        .year
+          margin-bottom: 12px
+        .separator
+          font-size: 0.5em
+          border-left: 1px solid #ccc
+        .title
+          font-family: 'header_normal'
+          margin-top: 10px
+          margin-bottom: 15px
+
+  .voting
+    float: left
+    width: $voting_width
+    h1
+      font-family: 'header_normal'
+      font-size: 1.5em
+      margin-bottom: 5px
