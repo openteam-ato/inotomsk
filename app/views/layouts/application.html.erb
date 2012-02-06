@@ -17,8 +17,8 @@
 
     <div class='top_menu_wrapper'>
       <div class='top_menu'>
-        <%= render 'regions/#{@main_top_navigation.type.underscore}', :object => @main_top_navigation.content if @main_top_navigation %>
-        <%= render 'regions/#{@main_bottom_navigation.type.underscore}', :object => @main_bottom_navigation.content if @main_bottom_navigation %>
+        <%= render "regions/#{@main_top_navigation.type.underscore}", :object => @main_top_navigation.content if @main_top_navigation %>
+        <%= render "regions/#{@main_bottom_navigation.type.underscore}", :object => @main_bottom_navigation.content if @main_bottom_navigation %>
       </div>
     </div>
 

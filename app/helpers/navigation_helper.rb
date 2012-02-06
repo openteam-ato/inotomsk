@@ -12,13 +12,13 @@ module NavigationHelper
           link_to(value['title'], value['path'], :class => key) +
             render_navigation(value['children'] || {})
         end.concat(separator(hash.size, index))
-      end.join.html_safe
+      end.join(' ').html_safe
     end
   end
 
   private
     def separator(size, index)
-      content_tag(:li, '&nbsp;'.html_safe, :class => css_class(size, index))
+      (' ' + content_tag(:li, '&nbsp;'.html_safe, :class => css_class(size, index))).html_safe
     end
 
     def css_class(size, index)
