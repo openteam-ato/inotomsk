@@ -1,7 +1,5 @@
 cms:
   url:       http://esp-cms.openteam.ru
-  host:      esp-cms.openteam.ru
-  port:      80
   site_slug: inotomsk.openteam.ru
 
 vfs:
