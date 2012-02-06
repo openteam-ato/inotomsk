@@ -61,4 +61,6 @@ Inotomsk::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 
+  # Add font asset path
+  config.assets.paths << "#{Rails.root}/app/assets/fonts"
 end
