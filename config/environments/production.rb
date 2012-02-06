@@ -63,4 +63,8 @@ Inotomsk::Application.configure do
 
   # Add font asset path
   config.assets.paths << "#{Rails.root}/app/assets/fonts"
+
+  # Compile some css also
+  config.assets.precompile << "ie_lower_8.css"
+  config.assets.precompile << "ie_6.css"
 end
