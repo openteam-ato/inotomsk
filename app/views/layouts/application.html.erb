@@ -17,8 +17,8 @@
 
     <div class='top_menu_wrapper'>
       <div class='top_menu'>
-        <%= render "regions/#{@main_top_navigation.type.underscore}", :object => @main_top_navigation.content if @main_top_navigation %>
-        <%= render "regions/#{@main_bottom_navigation.type.underscore}", :object => @main_bottom_navigation.content if @main_bottom_navigation %>
+        <%= render 'regions/#{@main_top_navigation.type.underscore}', :object => @main_top_navigation.content if @main_top_navigation %>
+        <%= render 'regions/#{@main_bottom_navigation.type.underscore}', :object => @main_bottom_navigation.content if @main_bottom_navigation %>
       </div>
     </div>
 
@@ -248,7 +248,28 @@
 
     <div class='footer_wrapper'>
       <div class='footer'>
-        <p><a href='http://www.fontsquirrel.com/fontface/generator'>@font-face generator</a></p>
+        <div class='column logotype'>
+          <a href='#'>ИНО Томск`2020</a>
+        </div>
+        <div class='column address'>
+          <p>&laquo;ИНО Томск`2020&raquo;</p>
+          <p>Россия, 634011, Томск, ул.&nbsp;Первомайская, 15, офис 201</p>
+        </div>
+        <div class='column contacts'>
+          <p>Тел. (3822) <span class='bolder'>46 47 48</span></p>
+          <p>email: <a href='mailto:'>inso@inotomsk.ru</a></p>
+          <div class='social_links'>
+            <a class='youtube' href='#'>You tube</a>
+            <a class='livejournal' href='#'>Live journal</a>
+            <a class='vkontakte' href='#'>В Контакте</a>
+            <a class='twitter' href='#'>Twitter</a>
+            <a class='facebook' href='#'>Facebook</a>
+          </div>
+        </div>
+        <div class='column developers'>
+          <p>Разработка: <a href='http://openteam.ru/'>OpenTeam</a></p>
+          <p>Дизайн: <a href='http://rosbd.com/'>РосБизнесДизайн</a></p>
+        </div>
       </div>
     </div>
 
