@@ -12,4 +12,15 @@
  *
  *= require jquery
  *= require jquery_ujs
+ *= require jquery.caruselko
  */
+
+function init_caruselko() {
+  if ($.fn.caruselko) {
+    $('.targets').caruselko();
+  };
+};
+
+$(function() {
+  init_caruselko();
+});
