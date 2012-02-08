@@ -2,59 +2,79 @@
 
   var caruselko = {};
 
-  var prepare_container = function() {
-    var container_width = 0;
-    $.each(caruselko.target.children(), function(index, item) {
-      container_width += $(item).width();
+  var prepare = function() {
+    var width = 0;
+    $.each(caruselko.container.children(), function(index, item) {
+      width += $(item).width();
     });
-    caruselko.target.width(container_width)
+    caruselko.container.width(width)
       .css({
         'position': 'absolute',
         'top': 0,
         'left': 0
       });
-  },
+  };
 
-  to_left = function(e) {
-    var last_block = caruselko.target.children().last();
-    caruselko.target.prepend(last_block).css('left', - last_block.width());
-    caruselko.target.animate({
-      left: '+=' + last_block.width()
-    }, caruselko.speed);
+  var right = function() {
+    clearInterval(caruselko.timeout_interval);
+    var first = caruselko.container.children().first();
+    caruselko.container
+      .stop()
+      .animate({
+        left: '-=' + first.width()
+      }, caruselko.speed, function() {
+         caruselko.container.css('left', 0);
+         caruselko.container.append(first);
+      });
+    timer();
     return false;
-  },
+  };
 
-  to_right = function(e) {
-    var first_block = caruselko.target.children().first();
-    caruselko.target.animate({
-      left: '-=' + first_block.width()
-    }, caruselko.speed, function() {
-      caruselko.target.append(first_block).css('left', '0');
-    });
+  var left = function() {
+    clearInterval(caruselko.timeout_interval);
+    var last = caruselko.container.children().last();
+    caruselko.container
+      .stop()
+      .css('left', - last.width())
+      .prepend(last)
+      .animate({
+        left: '+=' + last.width()
+      }, caruselko.speed, function() {
+      });
+    timer();
     return false;
+  };
+
+  var timer = function () {
+    if (caruselko.auto_change) {
+      caruselko.timeout_interval = setTimeout(right, caruselko.timeout);
+    };
   };
 
   var methods = {
     init: function(options) {
 
       var opts = $.extend({
-        target: 'ul',
+        auto_change: true,
+        container: 'ul',
         left_nav: '.left a',
         right_nav: '.right a',
-        speed: 500
+        speed: 500,
+        timeout: 20
       }, options);
 
       return this.each(function() {
 
-        caruselko.target = $(opts.target, this),
+        $.extend(caruselko, opts);
+        caruselko.container = $(opts.container, this),
         caruselko.left_nav = $(opts.left_nav, this),
         caruselko.right_nav = $(opts.right_nav, this);
-        caruselko.speed = opts.speed;
+        caruselko.timeout = opts.timeout * 1000;
 
-        prepare_container();
-        caruselko.left_nav.bind('click', to_left);
-        caruselko.right_nav.bind('click', to_right);
-
+        prepare();
+        caruselko.left_nav.bind('click', left);
+        caruselko.right_nav.bind('click', right);
+        timer();
       });
     },
     destroy: function() {
