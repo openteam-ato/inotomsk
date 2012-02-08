@@ -1,36 +1,46 @@
+@import 'compass/reset/utilities'
+
+=width_920
+  width: 920px
+  margin: 0 auto 20px
+
+=width_950
+  width: 950px
+  margin: 0 auto 20px
+  padding-right: 30px
+
 body
   .top_menu_wrapper
     height: 50px
     background: #ce243e url('top_menu_bg.jpg') no-repeat top center
     padding: 15px 0
     .top_menu
-      width: 920px
-      margin: 0 auto
+      +width_920
+      margin-bottom: 20px
 
   .header
-    width: 945px
-    margin: 30px auto 20px
-    padding-right: 30px
+    +width_950
+    margin-top: 30px
 
   .news_section,
   .interviews_section,
   .belief_section
-    width: 920px
-    margin: 0 auto 20px
+    +width_920
 
   .calendar_section
-    width: 945px
-    margin: 0 auto 20px
-    padding-right: 30px
+    +width_950
+
+  .content_wrapper
+    +nested-reset
+    +width_950
 
   .banners_section
-    width: 920px
-    margin: 0 auto 20px
+    +width_920
 
   .footer_wrapper
     background: #fff url('footer_bg.png') no-repeat top center // height = 3px
-    padding: 18px 0 15px
+    padding: 18px 0 0
     margin-top: 20px
     .footer
-      width: 920px
-      margin: 0 auto
+      +width_920
+      margin-bottom: 20px
