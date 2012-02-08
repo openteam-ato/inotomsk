@@ -1,10 +1,17 @@
 @import 'compass/utilities'
 
+$container_width: 920px
+$content_width: 680px
+$content_margin_left: 20px
+
 .content_wrapper
   +clearfix
   .news_list
     float: left
+    width: $content_width
     margin-left: 30px
+    margin-right: $content_margin-left
 
   .content_navigation
     float: left
+    width: $container_width - $content_width - $content_margin_left
