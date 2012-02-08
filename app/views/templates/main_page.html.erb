@@ -180,8 +180,8 @@
             'Ничего не изменится' => 'dos',
             'Затрудняюсь я с вами тут' => 'tres' } %>
         <% end %>
-        <%= form.buttons do %>
-          <%= form.commit_button :label => 'Голосовать' %>
+        <%= form.actions do %>
+          <%= form.action :submit, :label => 'Голосовать' %>
         <% end %>
       <% end %>
       <p class='link'><a href='#'>Результаты</a></p>

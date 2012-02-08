@@ -6,7 +6,7 @@ gem 'curb'
 gem 'el_vfs_client'
 gem 'hashie'
 gem 'jquery-rails'
-gem 'formtastic'
+gem 'formtastic',           '~> 2.1.0.beta'
 gem 'rails'
 
 group :assets do
