@@ -36,5 +36,24 @@ body
       &.break
         display: none
 
+  .content_wrapper
+    .pagination
+      +clearfix
+      a,
+      span
+        display: block
+        float: left
+        margin: 3px 8px 0
+      .current
+        margin-top: 0
+      .gap
+        margin:
+          left: 2px
+          right: 2px
+      .prev
+        margin-right: 2px
+      .next
+        margin-left: 2px
+
   .footer_wrapper
     padding-bottom: 15px
