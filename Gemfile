@@ -1,15 +1,16 @@
 source :rubygems
 
-gem 'compass',              '~> 0.12.alpha.0'
 gem 'configliere'
 gem 'curb'
 gem 'el_vfs_client'
+gem 'formtastic',           '~> 2.1.0.beta'
 gem 'hashie'
 gem 'jquery-rails'
-gem 'formtastic',           '~> 2.1.0.beta'
+gem 'kaminari'
 gem 'rails'
 
 group :assets do
+  gem 'compass-rails'
   gem 'sass-rails'
   gem 'therubyracer'                                unless RUBY_PLATFORM =~ /freebsd/
   gem 'uglifier'

@@ -1,14 +1,3 @@
-=font_face($name, $font-files, $eot: false)
-  $iefont: '#{$eot}?#iefix'
-  @font-face
-    font-family: quote($name)
-    font-style: normal
-    font-weight: normal
-    @if $eot
-      src: font-url($eot)
-      $font-files: font-url($iefont) unquote("format('eot')"), $font-files
-    src: $font-files
-
 +font_face('header_light', font-files('header_light.woff', 'woff', 'header_light.otf', 'opentype', 'header_light.ttf', 'truetype'), 'header_light.eot')
 +font_face('header_normal', font-files('header_normal.woff', 'woff', 'header_normal.otf', 'opentype', 'header_normal.ttf', 'truetype'), 'header_normal.eot')
 +font_face('header_medium', font-files('header_medium.woff', 'woff', 'header_medium.otf', 'opentype', 'header_medium.ttf', 'truetype'), 'header_medium.eot')
