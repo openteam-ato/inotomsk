@@ -1,0 +1,48 @@
+@import 'compass/utilities'
+
+.content_wrapper
+  .pagination
+    margin: 20px 0
+    font-size: 1.17em
+    a,
+    span
+      +inline-block
+      margin: 0 5px 3px
+    span
+      cursor: default
+    a
+      color: #252535
+      text-decoration: none
+      &:hover
+        color: #d8277e
+        text-decoration: underline
+    .current
+      color: #a1306f
+      font-size: 1.6em
+      line-height: 1.2
+      border-bottom: 3px solid #a1306f
+    .gap
+      color: #999
+      margin:
+        left: 0
+        right: 0
+    .prev,
+    .next
+      width: 26px
+      height: 25px
+      background: transparent url('pagination_buttons.png') no-repeat
+      overflow: hidden
+      text-indent: -9999em
+      margin: 0
+    a.prev
+      background-position: 0 0
+      &:hover
+        background-position: 0 -25px
+    span.prev
+      background-position: 0 -50px
+    a.next
+      background-position: -26px 0
+      &:hover
+        background-position: -26px -25px
+    span.next
+      background-position: -26px -50px
