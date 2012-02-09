@@ -4,7 +4,7 @@
 $container_width: 920px
 $content_width: 680px
 $content_margin_left: 20px
-$content_navigation_padding: 12px
+$content_nav_padding: 12px
 
 .content_wrapper
   +clearfix
@@ -15,25 +15,75 @@ $content_navigation_padding: 12px
     margin-right: $content_margin-left
 
     .header
+      // reset
       margin: 0
       padding: 0
       width: auto
+      // end reset
+      +clearfix
 
-  .content_navigation
+      .nav
+        float: right
+        +clearfix
+        margin-top: 5px
+
+        ul
+          float: left
+          +clearfix
+          margin-right: 10px
+          li
+            float: left
+            font-size: 0.9em
+            border: 1px solid #ccc
+            margin-left: 1px
+            a
+              color: #929292
+              +inline-block
+              text-decoration: none
+              background-color: #f7f7fa
+              padding: 5px 10px
+              &:hover
+                color: #d8287d
+            &.selected
+              border: none
+              a
+                color: #fff
+                background: transparent url('content_news_list_selected.png') no-repeat center -17px
+                padding: 6px 11px 12px
+                &:hover
+                  color: #fff
+                  background-position: center bottom
+        .rss
+          float: left
+          a
+            display: block
+            width: 27px
+            height: 26px
+            text-indent: -9999em
+            overflow: hidden
+            outline: none
+            background: transparent url('rss_list.png') no-repeat
+
+      h1
+        font-family: 'header_light'
+        font-size: 2.75em
+        background: transparent url('news_list_header_arrow.png') no-repeat 270px 15px
+
+  .content_nav
     float: left
-    width: $container_width - $content_width - $content_margin_left -$content_navigation_padding * 2
+    width: $container_width - $content_width - $content_margin_left -$content_nav_padding * 2
     background-color: #fff
     +border-radius(10px)
     +single-box-shadow(#aaa, 0, 1px, 3px)
     margin-bottom: 3px
-    padding: $content_navigation_padding
+    padding: $content_nav_padding
     ul
       li
         p
           padding: 5px 5px 5px 20px
           background-repeat: no-repeat
           background-color: transparent
-          background-image: url('content_navigation_markers.png')
+          background-image: url('content_nav_markers.png')
           background-position: 10px 12px
         a
           color: #252535
