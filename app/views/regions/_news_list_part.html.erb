@@ -1,0 +1,33 @@
+<div class="news_list">
+  <% if object.title %>
+    <h1><span><%= object.title %></span></h1>
+  <% end %>
+  <ul class="entries">
+    <% object.items.each do |news| %>
+      <li>
+        <p class='title'>
+          <%= link_to strip_tags(news.title), news.link %>
+          <span class='date'>
+            [<%= l DateTime.parse(news.updated_at), :format => "%d %B %Y" %>]
+          </span>
+        </p>
+        <p class='annotation'>
+          <%= strip_tags news.annotation %>
+        </p>
+      </li>
+    <% end %>
+  </ul>
+
+  <% if object.has_key?('pagination') %>
+    <div class="pagination">
+      <ul>
+        <% object.pagination.each_with_index do |link, index| %>
+          <li<%= " class='selected'" if link.current=='true' %>>
+            <%= link_to index + 1, link.link %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+</div>
+

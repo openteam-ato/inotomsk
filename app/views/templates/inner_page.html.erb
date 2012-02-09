@@ -1,3 +1,4 @@
 <% content_for :content do %>
+  <%= render "regions/#{@content_first.type.underscore}", :object => @content_first.content if @content_first %>
 <% end %>
 <%= render :template => 'layouts/application' %>

@@ -4,11 +4,7 @@
     <div class="news_list">
       <div class="header">
         <div class="nav">
-          <ul>
-            <li><a href="#">В мире</a></li>
-            <li><a href="#">В России</a></li>
-            <li class='selected'><a href="#">В Томске</a></li>
-          </ul>
+          <%= render "regions/#{@navigation_top.type.underscore}", :object => @navigation_top.content if @navigation_top %>
           <div class="rss">
             <a href="#">RSS</a>
           </div>
@@ -33,24 +29,10 @@
         <span class="next" href='#'>назад</span>
       </div>
     </div>
+
     <div class="content_nav">
-      <ul>
-        <li class='selected'>
-          <p><a href="#">Новости инноваций</a></p>
-          <ul>
-            <li><p><a href="#">В Томске</a></p></li>
-            <li><p><a href="#">В России</a></p></li>
-            <li class='selected'><p><a href="#">В мире</a></p></li>
-          </ul>
-        </li>
-        <li><p><a href="#">Календварь мероприятий</a></p></li>
-        <li><p><a href="#">СМИ о проекте</a></p></li>
-        <li><p><a href="#">Фотобанк</a></p></li>
-        <li><p><a href="#">Видеобанк</a></p></li>
-        <li><p><a href="#">Контакты пресс-центра</a></p></li>
-      </ul>
+      <%= render "regions/#{@navigation_right.type.underscore}", :object => @navigation_right.content if @navigation_right %>
     </div>
   </div>
-
 <% end %>
 <%= render :template => 'layouts/application' %>
