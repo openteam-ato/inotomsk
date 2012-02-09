@@ -1,8 +1,10 @@
 @import 'compass/utilities'
+@import 'compass/css3'
 
 $container_width: 920px
 $content_width: 680px
 $content_margin_left: 20px
+$content_navigation_padding: 12px
 
 .content_wrapper
   +clearfix
@@ -14,4 +16,51 @@ $content_margin_left: 20px
 
   .content_navigation
     float: left
-    width: $container_width - $content_width - $content_margin_left
+    width: $container_width - $content_width - $content_margin_left -$content_navigation_padding * 2
+    background-color: #fff
+    +border-radius(10px)
+    +single-box-shadow(#aaa, 0, 1px, 3px)
+    margin-bottom: 3px
+    padding: $content_navigation_padding
+    ul
+      li
+        p
+          padding: 5px 5px 5px 20px
+          background-repeat: no-repeat
+          background-color: transparent
+          background-image: url('content_navigation_markers.png')
+          background-position: 10px 12px
+        a
+          color: #252535
+          text-decoration: none
+          &:hover
+            color: #d8287d
+        li
+          margin-left: 21px
+          p
+            padding-left: 15px
+            background-position: 0 -37px
+            a
+              color: #929292
+        &.selected
+          p
+            +border-radius(7px)
+            background-color: #f5f2fb
+            a
+              color: #a41162
+              &:hover
+                color: #d8287d
+          li
+            p
+              background-color: #fff
+              a
+                color: #929292
+                &:hover
+                  color: #d8287d
+            &.selected
+              p
+                background-position: 0 -85px
+                a
+                  color: #a41162
+                  &:hover
+                    color: #d8287d
