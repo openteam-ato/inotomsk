@@ -1,21 +1,23 @@
 @import 'compass/typography'
 
-.top_menu
-  ul
-    +inline-block-list
-    text-align: justify
-    line-height: 1.2
-    li
-      text-transform: uppercase
-      font-family: 'top_menu'
-      font-size: 1.25em
-      a
-        color: #fff
-        text-decoration: none
-        vertical-align: middle
-        outline: none
-      &.separator
-        background: transparent url('top_menu_separator.png') no-repeat center center
-      &.break
-        height: 1px
-        margin-right: 100%
+.top_menu_wrapper
+  padding-bottom: 14px
+  .top_menu
+    ul
+      +inline-block-list
+      text-align: justify
+      line-height: 1.2
+      li
+        text-transform: uppercase
+        font-family: 'top_menu'
+        font-size: 1.25em
+        a
+          color: #fff
+          text-decoration: none
+          vertical-align: middle
+          outline: none
+        &.separator
+          background: transparent url('top_menu_separator.png') no-repeat center center
+        &.break
+          height: 1px
+          margin-right: 100%
