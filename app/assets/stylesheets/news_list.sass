@@ -21,6 +21,7 @@ $content_nav_padding: 12px
       width: auto
       // end reset
       +clearfix
+      margin-bottom: 10px
 
       .nav
         float: right
@@ -69,7 +70,29 @@ $content_nav_padding: 12px
         font-size: 2.75em
         &.with_arrow
           background: transparent url('news_list_header_arrow.png') no-repeat 270px 15px
-
+    .entries
+      .entry
+        +clearfix
+        margin-bottom: 20px
+        .image
+          +float-left
+          margin-right: 15px
+          img
+            +single-box-shadow(#aaa, 0, 0, 2px)
+            margin: 2px 0 0 2px
+        .description
+          +clearfix
+          .title
+            font-size: 1.4em
+            margin-bottom: 10px
+          .date
+            color: #94948c
+            font-size: 0.9em
+            margin-bottom: 10px
+            .time
+              padding-left: 15px
+              background: transparent url('clock_gray.png') no-repeat left
+              margin-left: 5px
   .content_nav
     float: left
     width: $container_width - $content_width - $content_margin_left -$content_nav_padding * 2
