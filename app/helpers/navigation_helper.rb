@@ -27,10 +27,7 @@ module NavigationHelper
         index += 1
 
         content_tag :li, :class => value['selected'] ? :selected : nil do
-          content_tag :p do
-            link_to(value['title'], value['path'], :class => key) +
-              render_navigation(value['children'] || {})
-          end
+          content_tag(:p, link_to(value['title'], value['path'], :class => key)) + render_navigation(value['children'] || {})
         end
       end.join(' ').html_safe
     end
