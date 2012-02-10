@@ -1,0 +1,6 @@
+ru:
+  views:
+    pagination:
+      next: '>>'
+      previous: '<<'
+      truncate: ...
