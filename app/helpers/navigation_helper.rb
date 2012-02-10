@@ -1,8 +1,9 @@
 module NavigationHelper
-  def render_navigation_with_separator(hash)
+
+  def render_navigation_with_separator(hash, klass)
     return '' if hash.nil? || hash.empty?
 
-    content_tag :ul do
+    content_tag :ul, :class => klass do
       index = 0
 
       hash.map do |key, value|

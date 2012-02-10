@@ -1,16 +1,26 @@
 @import 'compass/typography'
+@import 'compass/css3'
 
 .top_menu_wrapper
   padding-bottom: 14px
   .top_menu
+    position: relative
     ul
       +inline-block-list
       text-align: justify
-      line-height: 1.2
+      line-height: 1
+      position: absolute
+      width: 100%
+      left: 0
+      &.first
+        top: -5px
+      &.second
+        top: 28px
       li
         text-transform: uppercase
         font-family: 'top_menu'
         font-size: 1.25em
+        padding: 5px 7px 4px
         a
           color: #fff
           text-decoration: none
@@ -21,3 +31,7 @@
         &.break
           height: 1px
           margin-right: 100%
+          padding: 0
+        &.selected
+          background-color: #a41162
+          +border-radius
