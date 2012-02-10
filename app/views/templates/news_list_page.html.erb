@@ -4,12 +4,10 @@
       <div class='header'>
         <div class='nav'>
           <%= render "regions/#{@navigation_top.type.underscore}", :object => @navigation_top.content if @navigation_top %>
-
           <div class='rss'>
             <a href='#'>RSS</a>
           </div>
         </div>
-
         <h1<%= " class='with_arrow'" if @navigation_top %>>Список новостей</h1>
       </div>
 

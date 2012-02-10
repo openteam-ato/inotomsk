@@ -8,6 +8,7 @@ gem 'hashie'
 gem 'jquery-rails'
 gem 'kaminari'
 gem 'rails'
+gem 'russian'
 
 group :assets do
   gem 'compass-rails'
