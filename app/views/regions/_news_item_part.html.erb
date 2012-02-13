@@ -1,10 +1,21 @@
-<div class='news_item'>
-  <span class='date'>
-    <%= l DateTime.parse(object.updated_at), :format => :long %>
-  </span>
-  <div class="annotation">
+<div class='entry_show'>
+  <h1><%= object.title %></h1>
+  <p class='date'>
+    <%= l DateTime.parse(object.updated_at), :format => '%d %B %Y' %>
+    <span class='time'>
+      <%= l DateTime.parse(object.updated_at), :format => '%H:%M' %>
+    </span>
+  </p>
+  <div class='annotation'>
     <%= raw object.annotation %>
   </div>
+  <div class='image'>
+    <img src='/assets/fake/entry_show.jpg' alt='' />
+    <p><b>Фото:</b> Пупкин В.Ф.</p>
+  </div>
   <%= raw object.body %>
-  <%= object.author %>
+  <blockquote>
+    Аспирант трудится в составе группы ученых ТУСУРа, разрабатывая собственное направление в рамках большого проекта «Модальный фильтр», имеющего шесть патентов и финансируемого грантом по программе «Старт» и госконтрактом по Федеральному закону № 218.
+  </blockquote>
+  <div class='author'><b>Источник:</b> <%= object.author %></div>
 </div>
