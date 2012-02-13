@@ -1,6 +1,6 @@
 ru:
   views:
     pagination:
-      next: '>>'
-      previous: '<<'
-      truncate: ...
+      next: 'вперёд'
+      previous: 'назад'
+      truncate: '&hellip;'
