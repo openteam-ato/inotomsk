@@ -9,12 +9,18 @@
     <%= raw object.annotation %>
   </div>
   <div class='image'>
-    <img src='/assets/fake/entry_show.jpg' alt='' />
-    <p><b>Фото:</b> Пупкин В.Ф.</p>
+    <%= news_image object.resized_image_url, object.image_description %>
+    <%= content_tag :p, object.image_description if object.image_description %>
   </div>
   <%= raw object.body %>
-  <blockquote>
-    Аспирант трудится в составе группы ученых ТУСУРа, разрабатывая собственное направление в рамках большого проекта «Модальный фильтр», имеющего шесть патентов и финансируемого грантом по программе «Старт» и госконтрактом по Федеральному закону № 218.
-  </blockquote>
-  <div class='author'><b>Источник:</b> <%= object.author %></div>
+  <% if object.source %>
+    <div class='source'>
+      <b>Источник:</b>
+      <% if object.source_link %>
+        <%= link_to object.source, object.source_link, :rel => :nofollow %>
+      <% else %>
+        <%= object.source %>
+      <% end %>
+    </div>
+  <% end %>
 </div>

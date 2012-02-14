@@ -1,6 +1,9 @@
 <div class="entries">
   <% object.items.each do |news| %>
     <div class='entry'>
+      <div class="image">
+        <%= link_to news_image(news.resized_image_url), news.link %>
+      </div>
       <div class='description'>
         <p class='title'><%= link_to strip_tags(news.title), news.link %></p>
         <p class='date'>

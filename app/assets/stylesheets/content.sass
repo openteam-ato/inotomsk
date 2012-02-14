@@ -19,6 +19,7 @@ $content_nav_padding: 12px
     h1
       font-family: 'header_light'
       font-size: 2.75em
+      line-height: 1.2
       &.with_arrow
         background: transparent url('news_list_header_arrow.png') no-repeat 270px 15px
 
@@ -97,15 +98,7 @@ $content_nav_padding: 12px
               background: transparent url('clock_gray.png') no-repeat left
               margin-left: 5px
   .entry_show
-    float: left
     font-size: 1.15em
-    width: $content_width
-    margin-right: $content_margin_right
-    margin-left: $content_margin_left
-    h1
-      font-family: 'header_light'
-      font-size: 2.39em
-      line-height: 1.2
     .date
       color: #94948c
       font-size: 0.8em
@@ -123,7 +116,7 @@ $content_nav_padding: 12px
       padding-bottom: 5px
     .image
       float: left
-      margin: 0 15px 10px
+      margin: 0 15px 5px
       margin-left: -$content_margin_right
       img
         +single-box-shadow(#aaa, 0, 0, 2px)
@@ -139,9 +132,17 @@ $content_nav_padding: 12px
       margin-left: -$content_margin_right
       background: #e8ebfc url('blockquote_bg.png') no-repeat center center
       padding: 10px 20px
-    .author
+      p
+        margin: 5px 0
+    .source
       font-size: 0.8em
       color: #94948c
+      a
+        color: #94948c
+        text-decoration: none
+        &:hover
+          color: #d8287d
+          text-decoration: underline
 
   .content_nav
     float: left
