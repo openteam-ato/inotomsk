@@ -1,8 +1,8 @@
 <div class="entry_show">
   <p class='date'>
-    <%= l DateTime.parse(object.updated_at), :format => '%d %B %Y' %>
+    <%= l DateTime.parse(object.since), :format => '%d %B %Y' %>
     <span class='time'>
-      <%= l DateTime.parse(object.updated_at), :format => '%H:%M' %>
+      <%= l DateTime.parse(object.since), :format => '%H:%M' %>
     </span>
   </p>
   <div class='annotation'>
