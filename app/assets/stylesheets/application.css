@@ -17,7 +17,7 @@
  *= require interviews
  *= require belief
  *= require calendar
- *= require news_list
+ *= require content
  *= require pagination
  *= require banners
  *= require footer

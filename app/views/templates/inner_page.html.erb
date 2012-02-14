@@ -1,4 +1,32 @@
 <% content_for :content do %>
-  <%= render "regions/#{@content_first.type.underscore}", :object => @content_first.content if @content_first %>
+  <div class='content_wrapper'>
+
+    <div class="content_side">
+      <% if @navigation_top %>
+        <div class='header'>
+          <div class='nav'>
+            <%= render "regions/#{@navigation_top.type.underscore}", :object => @navigation_top.content if @navigation_top %>
+            <div class='rss'>
+              <a href='#'>RSS</a>
+            </div>
+          </div>
+          <%= content_tag :h1, @page.title %>
+        </div>
+      <% else %>
+        <%= content_tag :h1, @page.title  %>
+      <% end %>
+
+      <%= render "regions/#{@content_first.type.underscore}", :object => @content_first.content if @content_first %>
+    </div>
+
+    <div class='content_nav'>
+      <% if @navigation_right %>
+        <div class="navigation">
+          <%= render "regions/#{@navigation_right.type.underscore}", :object => @navigation_right.content %>
+        </div>
+      <% end %>
+    </div>
+
+  </div>
 <% end %>
 <%= render :template => 'layouts/application' %>
