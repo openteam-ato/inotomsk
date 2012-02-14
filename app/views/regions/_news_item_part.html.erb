@@ -8,10 +8,12 @@
   <div class='annotation'>
     <%= raw object.annotation %>
   </div>
-  <div class='image'>
-    <%= news_image object.resized_image_url, object.image_description %>
-    <%= content_tag :p, object.image_description if object.image_description %>
-  </div>
+  <% if object.resized_image_url %>
+    <div class='image'>
+      <%= news_image object.resized_image_url, object.image_description %>
+      <%= content_tag :p, object.image_description if object.image_description %>
+    </div>
+  <% end %>
   <%= raw object.body %>
   <% if object.source %>
     <div class='source'>
