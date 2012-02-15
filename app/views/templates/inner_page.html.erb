@@ -10,10 +10,10 @@
               <a href='#'>RSS</a>
             </div>
           </div>
-          <%= content_tag :h1, @page.title %>
+          <%= content_tag :h1, @content_first.part_title if @content_first %>
         </div>
       <% else %>
-        <%= content_tag :h1, @page.title  %>
+        <%= content_tag :h1, @content_first.part_title if @content_first %>
       <% end %>
 
       <%= render "regions/#{@content_first.type.underscore}", :object => @content_first.content if @content_first %>

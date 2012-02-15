@@ -2,7 +2,7 @@
 <html xmlns='http://www.w3.org/1999/xhtml' xml:lang='ru'>
   <head>
     <meta http-equiv='Content-Type' content='text/html;charset=UTF-8' />
-    <title><%= raw @page_title %> | <%= strip_tags(@site_name.content.body) %></title>
+    <title><%= strip_tags(@page_title) %> | <%= strip_tags(@site_name.content.body) %></title>
     <%= favicon_link_tag %>
     <%= stylesheet_link_tag 'application' %>
     <!--[if lt IE 8]>
