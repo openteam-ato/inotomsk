@@ -30,3 +30,26 @@
 <% else %>
   <%= t("errors.news_item_part.#{object.response_status}") %>
 <% end %>
+
+<% content_for :more_like_this do %>
+  <ul>
+    <% object.more_like_this.each do | entry | %>
+      <li>
+        <% if entry.resized_image_url %>
+          <div class='image'>
+            <%= link_to news_image(entry.resized_image_url, entry.image_description), '#' %>
+          </div>
+        <% end %>
+        <div class="title">
+          <%= link_to entry.title, '#' %>
+        </div>
+        <div class='date'>
+          <%= l DateTime.parse(entry.since), :format => '%d %B %Y' %>
+          <span class='time'>
+            <%= l DateTime.parse(entry.since), :format => '%H:%M' %>
+          </span>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+<% end %>

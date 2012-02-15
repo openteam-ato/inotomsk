@@ -146,7 +146,7 @@ $content_nav_padding: 12px
 
   .content_nav
     float: left
-    width: $container_width - $content_width - $content_margin_right -$content_nav_padding * 2
+    width: $container_width - $content_width - $content_margin_right
     .navigation
       background-color: #fff
       border: 1px solid #ccc
@@ -196,3 +196,35 @@ $content_nav_padding: 12px
                     color: #a41162
                     &:hover
                       color: #d8287d
+    .more_like_this
+      background-color: #fff
+      border: 1px solid #a41162
+      +single-box-shadow(#aaa, 0, 0, 5px)
+      margin-top: 20px
+      margin-bottom: 3px
+      ul
+        li
+          border-bottom: 1px solid #ccc
+          padding: $content_nav_padding + 7
+          &:last-child
+            border: none
+          .image
+            margin-bottom: 5px
+            img
+              +single-box-shadow(#aaa, 0, 0, 1px)
+          .title
+            font-size: 0.9em
+            margin-bottom: 5px
+            a
+              color: #252535
+              text-decoration: none
+              &:hover
+                color: #d8287d
+                text-decoration: underline
+          .date
+            color: #94948c
+            font-size: 0.8em
+            .time
+              padding-left: 15px
+              background: transparent url('clock_gray.png') no-repeat left
+              margin-left: 5px
