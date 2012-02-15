@@ -1,6 +1,10 @@
 ru:
+  errors:
+    news_item_part:
+      '404': 'Replace me in config/locales/ru.yml:4'
   views:
     pagination:
       next: 'вперёд'
       previous: 'назад'
       truncate: '&hellip;'
+

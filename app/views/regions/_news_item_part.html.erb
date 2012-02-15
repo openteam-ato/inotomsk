@@ -1,28 +1,32 @@
-<div class="entry_show">
-  <p class='date'>
-    <%= l DateTime.parse(object.since), :format => '%d %B %Y' %>
-    <span class='time'>
-      <%= l DateTime.parse(object.since), :format => '%H:%M' %>
-    </span>
-  </p>
-  <div class='annotation'>
-    <%= raw object.annotation %>
+<% if object.response_status == 200 %>
+  <div class="entry_show">
+    <p class='date'>
+      <%= l DateTime.parse(object.since), :format => '%d %B %Y' %>
+      <span class='time'>
+        <%= l DateTime.parse(object.since), :format => '%H:%M' %>
+      </span>
+    </p>
+    <div class='annotation'>
+      <%= raw object.annotation %>
+    </div>
+    <% if object.resized_image_url %>
+      <div class='image'>
+        <%= news_image object.resized_image_url, object.image_description %>
+        <%= content_tag :p, object.image_description if object.image_description %>
+      </div>
+    <% end %>
+    <%= raw object.body %>
+    <% if object.source %>
+      <div class='source'>
+        <b>Источник:</b>
+        <% if object.source_link %>
+          <%= link_to object.source, object.source_link, :rel => :nofollow %>
+        <% else %>
+          <%= object.source %>
+        <% end %>
+      </div>
+    <% end %>
   </div>
-  <% if object.resized_image_url %>
-    <div class='image'>
-      <%= news_image object.resized_image_url, object.image_description %>
-      <%= content_tag :p, object.image_description if object.image_description %>
-    </div>
-  <% end %>
-  <%= raw object.body %>
-  <% if object.source %>
-    <div class='source'>
-      <b>Источник:</b>
-      <% if object.source_link %>
-        <%= link_to object.source, object.source_link, :rel => :nofollow %>
-      <% else %>
-        <%= object.source %>
-      <% end %>
-    </div>
-  <% end %>
-</div>
+<% else %>
+  <%= t("errors.news_item_part.#{object.response_status}") %>
+<% end %>
