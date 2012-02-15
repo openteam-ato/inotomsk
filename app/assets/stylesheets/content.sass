@@ -23,6 +23,23 @@ $content_nav_padding: 12px
       &.with_arrow
         background: transparent url('news_list_header_arrow.png') no-repeat 270px 15px
 
+    .breadcrumbs
+      color: #94948c
+      font-size: 0.9em
+      margin-bottom: 20px
+      a
+        color: #94948c
+        &:hover
+          color: #d8287d
+      span
+        +inline-block
+        width: 4px
+        height: 7px
+        overflow: hidden
+        text-indent: -9999em
+        background: transparent url('breadcrumb_separator.png') no-repeat
+        margin: 1px 8px 0 9px
+
     .header
       // reset
       margin: 0

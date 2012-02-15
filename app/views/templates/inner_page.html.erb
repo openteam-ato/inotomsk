@@ -2,6 +2,9 @@
   <div class='content_wrapper'>
 
     <div class="content_side">
+
+      <%= content_tag :div, render("regions/#{@breadcrumbs.type.underscore}", :object => @breadcrumbs.content), :class => 'breadcrumbs' if @breadcrumbs %>
+
       <% if @navigation_top %>
         <div class='header'>
           <div class='nav'>
@@ -17,11 +20,14 @@
       <% end %>
 
       <%= render "regions/#{@content_first.type.underscore}", :object => @content_first.content if @content_first %>
+
     </div>
 
     <div class='content_nav'>
+
       <%= content_tag :div, render("regions/#{@navigation_right.type.underscore}", :object => @navigation_right.content), :class => 'navigation' if @navigation_right %>
       <%= content_tag :div, yield(:more_like_this), :class => 'more_like_this' if content_for?(:more_like_this) %>
+
     </div>
 
   </div>
