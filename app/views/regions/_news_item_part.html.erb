@@ -28,7 +28,7 @@
     <% end %>
   </div>
 <% else %>
-  <%= t("errors.news_item_part.#{object.response_status}") %>
+  <%= content_tag :p, raw(t("errors.news_item_part.#{object.response_status}")) %>
 <% end %>
 
 <% content_for :more_like_this do %>
