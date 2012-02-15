@@ -18,6 +18,7 @@
  *= require belief
  *= require calendar
  *= require content
+ *= require error_page
  *= require pagination
  *= require banners
  *= require footer
