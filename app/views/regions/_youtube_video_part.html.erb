@@ -1,0 +1,11 @@
+<%= content_tag(:p, object.video.title) if object.video.try(:title) %>
+
+<%= raw object.embedded_code if object.embedded_code %>
+
+<%= content_tag(:p, object.video.description) if object.video.try(:description) %>
+
+<%= content_tag(:p, object.video.views) if object.video.try(:views) %>
+
+<%= content_tag(:p, object.video.likes) if object.video.try(:likes) %>
+
+<%= content_tag(:p, object.video.dislikes) if object.video.try(:dislikes) %>
