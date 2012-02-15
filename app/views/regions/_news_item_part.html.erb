@@ -37,11 +37,11 @@
       <li>
         <% if entry.resized_image_url %>
           <div class='image'>
-            <%= link_to news_image(entry.resized_image_url, entry.image_description), '#' %>
+            <%= link_to news_image(entry.resized_image_url, entry.image_description), entry.link %>
           </div>
         <% end %>
         <div class="title">
-          <%= link_to entry.title, '#' %>
+          <%= link_to entry.title, entry.link %>
         </div>
         <div class='date'>
           <%= l DateTime.parse(entry.since), :format => '%d %B %Y' %>
@@ -52,4 +52,4 @@
       </li>
     <% end %>
   </ul>
-<% end %>
+<% end if object.more_like_this %>
