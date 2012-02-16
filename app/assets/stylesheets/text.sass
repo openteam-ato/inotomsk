@@ -21,6 +21,22 @@
       margin-bottom: 10px
     p
       margin-bottom: 15px
+    ul
+      li
+        padding-left: 15px
+        background: transparent url('ul_bullet.png') no-repeat left 8px
+        margin-bottom: 5px
+    ol
+      list-style: none
+      counter-reset: list
+      li
+        &:before
+          color: #a41162
+          font-size: 1.2em
+          content: counter(list) '.'
+          counter-increment: list
+          margin-right: 10px
+
     blockquote
       font-style: italic
       margin:

@@ -48,4 +48,4 @@
       </li>
     <% end %>
   </ul>
-<% end if object.more_like_this %>
+<% end unless object.more_like_this.empty? %>
