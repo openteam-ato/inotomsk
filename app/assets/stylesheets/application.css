@@ -17,6 +17,7 @@
  *= require interviews
  *= require belief
  *= require calendar
+ *= require text
  *= require content
  *= require error_page
  *= require pagination
