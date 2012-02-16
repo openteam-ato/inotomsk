@@ -14,7 +14,9 @@
       <%= content_tag :p, object.image_description if object.image_description %>
     </div>
   <% end %>
-  <%= raw object.body %>
+  <div class='content'>
+    <%= raw object.body %>
+  </div>
   <% if object.source %>
     <div class='source'>
       <b>Источник:</b>
