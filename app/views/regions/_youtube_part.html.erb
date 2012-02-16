@@ -3,7 +3,7 @@
     <ul>
       <% slice.each do |item| %>
         <li>
-          <div class='thumbnail'><%= link_to image_tag(item.video.thumb_small, :size => '160x120', :alt => item.video.title), item.link %></div>
+          <div class='thumbnail'><%= link_to image_tag(item.video.thumb_normal, :size => '160x120', :alt => item.video.title), item.link %></div>
           <div class='title'><%= link_to item.video.title, item.link %></div>
           <div class="date">
             <%= l DateTime.parse(item.video.date), :format => '%d %B %Y' %>
