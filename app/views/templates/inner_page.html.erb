@@ -19,8 +19,7 @@
         <%= content_tag :h1, @content_first.part_title if @content_first %>
       <% end %>
 
-      <%= render "regions/#{@content_first.type.underscore}", :object => @content_first.content if @content_first %>
-
+      <%= render_partial_for_region(@content_first) %>
     </div>
 
     <div class='content_nav'>
