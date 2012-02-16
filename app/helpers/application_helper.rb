@@ -5,7 +5,7 @@ module ApplicationHelper
   end
 
   def render_partial_for_region(region)
-    if region && region.response_status == 200
+    if region && (region.response_status == 200 || !region.response_status?)
       render :partial => "regions/#{region.type.underscore}",
              :locals => { :object => region.content, :response_status => region.response_status }
     else

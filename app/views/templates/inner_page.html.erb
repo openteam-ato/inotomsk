@@ -19,7 +19,9 @@
         <%= content_tag :h1, @content_first.part_title if @content_first %>
       <% end %>
 
-      <%= render_partial_for_region(@content_first) %>
+      <div class='content'>
+        <%= render_partial_for_region(@content_first) %>
+      </div>
     </div>
 
     <div class='content_nav'>
