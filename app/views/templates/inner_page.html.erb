@@ -1,3 +1,7 @@
+<% content_for :head_rss_link do %>
+  <%= auto_discovery_link_tag(:rss, @content_first.content.rss_link, {:title => @page_title}) if @content_first.content.rss_link %>
+<% end %>
+
 <% content_for :content do %>
   <div class='content_wrapper'>
 

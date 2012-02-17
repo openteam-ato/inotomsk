@@ -3,6 +3,7 @@
   <head>
     <meta http-equiv='Content-Type' content='text/html;charset=UTF-8' />
     <title><%= strip_tags(@page_title) %> | <%= strip_tags(@site_name.content.body) %></title>
+    <%= yield :head_rss_link %>
     <%= favicon_link_tag %>
     <%= stylesheet_link_tag 'application' %>
     <!--[if lt IE 8]>
