@@ -1,5 +1,3 @@
-<%= content_tag(:p, object.video.title) if object.video.try(:title) %>
-
 <%= raw object.embedded_code if object.embedded_code %>
 
 <%= content_tag(:p, object.video.description) if object.video.try(:description) %>
