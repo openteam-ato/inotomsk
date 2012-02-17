@@ -150,6 +150,52 @@ $content_nav_padding: 12px
               padding-left: 15px
               background: transparent url('clock_gray.png') no-repeat left
               margin-left: 5px
+    .interviews
+      ul
+        +clearfix
+        margin-bottom: 20px
+        li
+          float: left
+          width: $content_width / 3
+          .image
+            +clearfix
+            float: left
+            margin-bottom: 10px
+            position: relative
+            img
+              border: 1px solid #ccc
+              border-bottom: none
+            .stub
+              width: 500px
+              height: 15px
+              background: transparent url('interview_image_stub.png') no-repeat left center
+              position: absolute
+              bottom: 3px
+              left: 0
+          .description
+            clear: left
+            .author
+              font-weight: bold
+              font-style: italic
+              margin:
+                right: 20px
+                bottom: 5px
+            .post
+              font-style: italic
+              margin:
+                right: 20px
+                bottom: 5px
+            .title
+              margin:
+                right: 20px
+                bottom: 5px
+            .date
+              font-size: 10px
+              color: #94948c
+              .time
+                padding-left: 15px
+                background: transparent url('clock_gray.png') no-repeat left
+                margin-left: 5px
 
   .entry_show
     font-size: 1.15em
@@ -186,6 +232,7 @@ $content_nav_padding: 12px
       padding: 0
       width: auto
       +clearfix
+      margin-bottom: 10px
       .image
         +clearfix
         float: left
@@ -218,7 +265,6 @@ $content_nav_padding: 12px
         .date
           color: #94948c
           font-size: 10px
-          margin-bottom: 10px
           .time
             padding-left: 15px
             background: transparent url('clock_gray.png') no-repeat left
