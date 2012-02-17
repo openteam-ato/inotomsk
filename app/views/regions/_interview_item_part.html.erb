@@ -18,6 +18,16 @@
   </div>
   <div class='content'>
     <%= raw object.body %>
+    <% if object.source %>
+      <div class='source'>
+        <b>Источник:</b>
+        <% if object.source_link %>
+          <%= link_to object.source, object.source_link, :rel => :nofollow, :target => '_blank' %>
+        <% else %>
+          <%= object.source %>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </div>
 
