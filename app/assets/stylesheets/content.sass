@@ -50,15 +50,24 @@ $content_nav_padding: 12px
       +clearfix
       margin-bottom: 10px
 
+      .rss
+        float: right
+        margin-left: 10px
+        a
+          display: block
+          width: 27px
+          height: 26px
+          text-indent: -9999em
+          overflow: hidden
+          outline: none
+          background: transparent url('rss_list.png') no-repeat
+
       .nav
         float: right
         +clearfix
-        margin-top: 5px
 
         ul
-          float: left
           +clearfix
-          margin-right: 10px
           li
             float: left
             font-size: 0.9em
@@ -83,16 +92,6 @@ $content_nav_padding: 12px
                 &:hover
                   color: #fff
                   background-position: center bottom
-        .rss
-          float: left
-          a
-            display: block
-            width: 27px
-            height: 26px
-            text-indent: -9999em
-            overflow: hidden
-            outline: none
-            background: transparent url('rss_list.png') no-repeat
 
     .entries
       .entry
@@ -278,9 +277,7 @@ $content_nav_padding: 12px
       border: 1px solid #ccc
       +border-radius(10px)
       +single-box-shadow(#aaa, 0, 1px, 3px)
-      margin:
-        top: 5px
-        bottom: 3px
+      margin-bottom: 3px
       padding: $content_nav_padding
       ul
         li

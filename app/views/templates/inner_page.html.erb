@@ -5,19 +5,20 @@
 
       <%= content_tag :div, render("regions/#{@breadcrumbs.type.underscore}", :object => @breadcrumbs.content), :class => 'breadcrumbs' if @breadcrumbs %>
 
-      <% if @navigation_top %>
-        <div class='header'>
+      <div class='header'>
+        <% if @content_first.content.rss_link %>
+          <div class="rss">
+            <%= link_to 'RSS', @content_first.content.rss_link %>
+          </div>
+        <% end %>
+        <% if @navigation_top %>
           <div class='nav'>
             <%= render "regions/#{@navigation_top.type.underscore}", :object => @navigation_top.content if @navigation_top %>
-            <div class='rss'>
-              <a href='#'>RSS</a>
-            </div>
           </div>
-          <%= content_tag :h1, @content_first.part_title if @content_first %>
-        </div>
-      <% else %>
+        <% end %>
         <%= content_tag :h1, @content_first.part_title if @content_first %>
-      <% end %>
+      </div>
+
 
       <%= render_partial_for_region(@content_first) %>
 
