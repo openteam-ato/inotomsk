@@ -290,23 +290,60 @@ $content_nav_padding: 12px
           padding: $content_nav_padding + 7
           &:last-child
             background: none
+      .entries
+        .image
+          margin-bottom: 5px
+          img
+            +single-box-shadow(#aaa, 0, 0, 1px)
+        .title
+          font-size: 0.9em
+          margin-bottom: 5px
+          a
+            color: #252535
+            text-decoration: none
+            &:hover
+              color: #d8287d
+              text-decoration: underline
+        .date
+          color: #94948c
+          font-size: 0.8em
+          .time
+            padding-left: 15px
+            background: transparent url('clock_gray.png') no-repeat left
+            margin-left: 5px
+      .interviews
+        .speaker
+          +clearfix
+          margin-bottom: 5px
           .image
-            margin-bottom: 5px
+            float: left
+            +clearfix
+            float: left
+            margin-right: 10px
+            position: relative
             img
-              +single-box-shadow(#aaa, 0, 0, 1px)
-          .title
-            font-size: 0.9em
+              border: 1px solid #ccc
+              border-bottom: none
+            .stub
+              width: 240px
+              height: 7px
+              background: transparent url('interview_image_small_stub.png') no-repeat left center
+              position: absolute
+              bottom: 2px
+              left: -1px
+          .author
+            font-weight: bold
+            font-style: italic
             margin-bottom: 5px
-            a
-              color: #252535
-              text-decoration: none
-              &:hover
-                color: #d8287d
-                text-decoration: underline
+          .post
+            display: none
           .date
             color: #94948c
-            font-size: 0.8em
-            .time
-              padding-left: 15px
-              background: transparent url('clock_gray.png') no-repeat left
-              margin-left: 5px
+            font-size: 10px
+        .title
+          a
+            color: #252535
+            text-decoration: none
+            &:hover
+              color: #d8287d
+              text-decoration: underline

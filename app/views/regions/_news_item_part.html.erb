@@ -30,7 +30,7 @@
 </div>
 
 <% content_for :more_like_this do %>
-  <ul>
+  <ul class='entries'>
     <% object.more_like_this.each do | entry | %>
       <li>
         <% if entry.resized_image_url %>

@@ -32,4 +32,27 @@
 </div>
 
 <% content_for :more_like_this do %>
+  <ul class='interviews'>
+    <% object.more_like_this.each do | interview | %>
+      <li>
+        <div class="speaker">
+          <% if interview.resized_image_url %>
+            <div class='image'>
+              <%= link_to news_image(interview.resized_image_url, interview.interview_description), interview.link %>
+              <div class='stub'></div>
+            </div>
+          <% end %>
+          <div class="name">
+            <%= raw interview.annotation %>
+            <p class='date'>
+              <%= l DateTime.parse(interview.since), :format => '%d %B %Y' %>
+            </p>
+          </div>
+        </div>
+        <div class="title">
+          <%= link_to interview.title, interview.link %>
+        </div>
+      </li>
+    <% end %>
+  </ul>
 <% end unless object.more_like_this.blank? %>
