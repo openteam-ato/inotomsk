@@ -167,7 +167,7 @@ $content_nav_padding: 12px
       font-style: italic
       border-bottom: 1px solid #ccc
       margin-bottom: 20px
-      padding-bottom: 5px
+      padding-bottom: 15px
     .image
       float: left
       margin: 0 15px 5px
@@ -179,6 +179,50 @@ $content_nav_padding: 12px
         color: #94948c
         font-size: 0.8em
         margin: 5px 0 0 20px
+
+  .interview_show
+    .header
+      margin: 0
+      padding: 0
+      width: auto
+      +clearfix
+      .image
+        +clearfix
+        float: left
+        margin-right: 20px
+        position: relative
+        img
+          border: 1px solid #ccc
+          border-bottom: none
+        .stub
+          width: 500px
+          height: 15px
+          background: transparent url('interview_image_stub.png') no-repeat left center
+          position: absolute
+          bottom: 3px
+          left: 0
+      .annotation
+        +clearfix
+        .author
+          font-family: 'header_light'
+          font-size: 33px
+          line-height: 1.2
+          margin-left: 2px
+        .post
+          color: #94948c
+          font-size: 16px
+          font-style: italic
+          border-bottom: 1px solid #ccc
+          margin-bottom: 10px
+          padding-bottom: 10px
+        .date
+          color: #94948c
+          font-size: 10px
+          margin-bottom: 10px
+          .time
+            padding-left: 15px
+            background: transparent url('clock_gray.png') no-repeat left
+            margin-left: 5px
 
   .content_nav
     float: left
