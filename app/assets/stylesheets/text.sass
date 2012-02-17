@@ -1,3 +1,5 @@
+@import 'compass/css3'
+
 .content_wrapper .content_side .content
   font-size: 14px
 
@@ -21,6 +23,11 @@
     margin-bottom: 10px
   p
     margin-bottom: 15px
+    &.question
+      background: #faf1cc url('question_bg.png') no-repeat left top
+      margin-left: -20px
+      +single-box-shadow(#ccc, 1px, 1px, 1px)
+      padding: 10px 10px 10px 20px
   ul
     margin-bottom: 15px
     li
