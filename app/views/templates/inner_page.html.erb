@@ -1,5 +1,5 @@
 <% content_for :head_rss_link do %>
-  <%= auto_discovery_link_tag(:rss, @content_first.content.rss_link, {:title => @page_title}) if @content_first.content.rss_link %>
+  <%= auto_discovery_link_tag(:rss, @content_first.content.rss_link, {:title => @page_title}) if @content_first.try(:content).try(:rss_link) %>
 <% end %>
 
 <% content_for :content do %>
@@ -10,7 +10,7 @@
       <%= content_tag :div, render("regions/#{@breadcrumbs.type.underscore}", :object => @breadcrumbs.content), :class => 'breadcrumbs' if @breadcrumbs %>
 
       <div class='header'>
-        <% if @content_first.content.rss_link %>
+        <% if @content_first.try(:content).try(:rss_link) %>
           <div class="rss">
             <%= link_to 'RSS', @content_first.content.rss_link %>
           </div>
