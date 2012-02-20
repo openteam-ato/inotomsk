@@ -7,3 +7,5 @@
 <%= content_tag(:p, object.video.likes) if object.video.try(:likes) %>
 
 <%= content_tag(:p, object.video.dislikes) if object.video.try(:dislikes) %>
+
+<%= render 'commons/disqus' %>
