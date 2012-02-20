@@ -42,34 +42,31 @@
   </div>
 
   <div class='interviews_section'>
-    <h1><a href='#'>Интервью</a></h1>
-    <div class='two_column'>
-      <div class='person left'>
-        <div class='photo'>
-          <a href='#'><img src='/assets/fake/prohorov.jpg' alt='' width='150' height='150' /></a>
-        </div>
-        <div class='interview'>
-          <h1><a href='#'>Очевидное невероятное</a></h1>
-          <div class='annotation'>
-            <p>Миллиардер Михаил Прохоров, заявивший о намерении баллотироваться в президенты РФ, <a href='http://mdp2012.ru/program'>опубликовал в пятницу на своем сайте предвыборную программу</a>.</p>
-            <p>Ранее часть своих предложений он уже озвучил в тезисах к программе, опубликованных 29 декабря 2011 года.</p>
+    <%= content_tag(:h1, link_to(@link_to_interviews_list.content.first.last.title, @link_to_interviews_list.content.first.last.path)) if @link_to_interviews_list %>
+    <% unless @interviews.blank? %>
+      <ul>
+      <% @interviews.content.items.each do | interview | %>
+        <li>
+          <% if interview.resized_image_url %>
+            <div class="image">
+              <%= link_to news_image(interview.resized_image_url), interview.link %>
+              <div class="stub"></div>
+            </div>
+          <% end %>
+          <div class='description'>
+            <%= raw interview.annotation %>
+            <p class='title'><%= link_to strip_tags(interview.title), interview.link %></p>
+            <p class='date'>
+              <%= l DateTime.parse(interview.since), :format => "%d %B %Y" %>
+              <span class='time'>
+                <%= l DateTime.parse(interview.since), :format => "%H:%M" %>
+              </span>
+            </p>
           </div>
-          <div class='date'>20 января 2012</div>
-        </div>
-      </div>
-      <div class='person right'>
-        <div class='photo'>
-          <a href='#'><img src='/assets/fake/yavlinskiy.jpg' alt='' width='150' height='150' /></a>
-        </div>
-        <div class='interview'>
-          <h1><a href='#'>Ситуация с подписями</a></h1>
-          <div class='annotation'>
-            <p>Один из лидеров партии &laquo;Яблоко&raquo; Григорий Явлинский в своем блоге в ЖЖ объяснил &laquo;что произошло с подписями&raquo;, из-за которых ЦИК РФ отказал ему в регистрации в качестве президента РФ.</p>
-          </div>
-          <div class='date'>30 января 2012</div>
-        </div>
-      </div>
-    </div>
+        </li>
+      <% end %>
+      </ul>
+    <% end %>
   </div>
 
   <div class='belief_section'>
