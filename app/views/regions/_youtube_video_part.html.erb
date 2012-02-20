@@ -4,9 +4,9 @@
 
   <%= content_tag(:p, object.video.description) if object.video.try(:description) %>
 
-  <%= render 'commons/disqus' %>
-
 </div>
+
+<%= render 'commons/disqus' %>
 
 <% content_for :more_like_this do %>
   <ul class='videos'>
