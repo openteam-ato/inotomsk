@@ -1,11 +1,26 @@
-<%= raw object.embedded_code if object.embedded_code %>
+<div class="content">
 
-<%= content_tag(:p, object.video.description) if object.video.try(:description) %>
+  <%= content_tag(:p, raw(object.embedded_code)) if object.embedded_code %>
 
-<%= content_tag(:p, object.video.views) if object.video.try(:views) %>
+  <%= content_tag(:p, object.video.description) if object.video.try(:description) %>
 
-<%= content_tag(:p, object.video.likes) if object.video.try(:likes) %>
+  <%= render 'commons/disqus' %>
 
-<%= content_tag(:p, object.video.dislikes) if object.video.try(:dislikes) %>
+</div>
 
-<%= render 'commons/disqus' %>
+<% content_for :more_like_this do %>
+  <ul class='videos'>
+    <% object.related_videos.each do | video | %>
+      <li>
+        <div class='thumbnail'><%= link_to image_tag(video.thumb_normal, :size => '160x120', :alt => video.title), video.link %></div>
+        <div class='title'><%= link_to video.title, video.link %></div>
+        <div class="date">
+          <%= l DateTime.parse(video.date), :format => '%d %B %Y' %>
+          <span class='time'>
+            <%= l DateTime.parse(video.date), :format => '%H:%M' %>
+          </span>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+<% end unless object.related_videos.blank? %>

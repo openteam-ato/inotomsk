@@ -390,3 +390,28 @@ $content_nav_padding: 12px
             &:hover
               color: #d8287d
               text-decoration: underline
+      .videos
+        li
+          padding: $content_nav_padding + 7 $content_nav_padding + 3
+        .thumbnail
+          margin-bottom: 5px
+          img
+            padding: 7px 14px
+            background: transparent url('video_thumb_bg.png') no-repeat center center
+            +single-box-shadow(#aaa, 0, 0, 2px)
+        .title
+          margin: 0 0 5px 14px
+          a
+            color: #252535
+            text-decoration: none
+            &:hover
+              color: #d8287d
+              text-decoration: underline
+        .date
+          color: #94948c
+          font-size: 10px
+          margin-left: 14px
+          .time
+            padding-left: 15px
+            background: transparent url('clock_gray.png') no-repeat left
+            margin-left: 5px
