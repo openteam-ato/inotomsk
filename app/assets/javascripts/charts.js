@@ -42,6 +42,7 @@ function drawChart(){
     'title':  chart_properties.title || '',
     'width':  680,
     'height': 520,
+    'fontName': 'Verdana',
     'backgroundColor': '#f7f7fa'
   };
 
