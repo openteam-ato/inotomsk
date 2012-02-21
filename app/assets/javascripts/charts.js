@@ -41,7 +41,8 @@ function drawChart(){
   var options = {
     'title':  chart_properties.title || '',
     'width':  680,
-    'height': 520
+    'height': 520,
+    'backgroundColor': '#f7f7fa'
   };
 
   var data = new google.visualization.DataTable();
