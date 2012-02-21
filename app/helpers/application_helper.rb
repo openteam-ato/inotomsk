@@ -12,4 +12,11 @@ module ApplicationHelper
       render :partial => 'regions/error', :locals => { :region => region }
     end
   end
+
+  def truncate_words(text, length = 20, end_string = '...')
+    return if text.blank?
+    words = text.gsub('&nbsp;', ' ').split
+    words[0..(length-1)].join(' ') + (words.length > length ? end_string : '')
+  end
+
 end

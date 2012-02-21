@@ -195,6 +195,61 @@ $content_nav_padding: 12px
                 padding-left: 15px
                 background: transparent url('clock_gray.png') no-repeat left
                 margin-left: 5px
+    .beliefs
+      ul
+        +clearfix
+        li
+          width: 330px
+          height: 157px
+          float: left
+          +clearfix
+          margin-bottom: 20px
+          &.odd
+            clear: left
+            margin-right: 20px
+          &.blue
+            background-color: #e8ebfc
+            .stub
+              background-image: url('belief_triangle_blue.png')
+          &.green
+            background-color: #ecfc9a
+            .stub
+              background-image: url('belief_triangle_green.png')
+          &.orange
+            background-color: #ffe787
+            .stub
+              background-image: url('belief_triangle_orange.png')
+          .image
+            float: left
+            margin-right: 15px
+            position: relative
+            .stub
+              position: absolute
+              top: 20px
+              right: 0
+              width: 10px
+              height: 20px
+              background-color: transparent
+              background-repeat: no-repeat
+              background-position: center center
+          .description
+            margin: 10px
+            .person
+              font-style: italic
+              font-weight: bold
+              margin-bottom: 5px
+            .post
+              display: none
+            .title
+              margin-bottom: 5px
+            .date
+              font-size: 10px
+              color: #94948c
+              .time
+                padding-left: 15px
+                background: transparent url('clock_gray.png') no-repeat left
+                margin-left: 5px
+
 
   .entry_show
     font-size: 1.15em
@@ -253,7 +308,6 @@ $content_nav_padding: 12px
           font-family: 'header_light'
           font-size: 33px
           line-height: 1.2
-          margin-left: 2px
         .post
           color: #94948c
           font-size: 16px
@@ -438,5 +492,3 @@ $content_nav_padding: 12px
             padding-left: 15px
             background: transparent url('clock_gray.png') no-repeat left
             margin-left: 5px
-
-
