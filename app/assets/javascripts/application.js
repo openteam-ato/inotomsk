@@ -13,6 +13,7 @@
  *= require jquery
  *= require jquery_ujs
  *= require jquery.caruselko
+ *= require charts
  */
 
 function init_caruselko() {
