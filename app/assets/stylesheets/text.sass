@@ -1,5 +1,12 @@
 @import 'compass/css3'
 
+=question_style
+  background: #faf1cc url('question_bg.png') no-repeat left top
+  font-style: italic
+  margin-left: -20px
+  +single-box-shadow(#ccc, 1px, 1px, 1px)
+  padding: 10px 10px 10px 20px
+
 .content_wrapper .content_side .content
   font-size: 14px
 
@@ -24,11 +31,7 @@
   p
     margin-bottom: 15px
     &.question
-      background: #faf1cc url('question_bg.png') no-repeat left top
-      font-style: italic
-      margin-left: -20px
-      +single-box-shadow(#ccc, 1px, 1px, 1px)
-      padding: 10px 10px 10px 20px
+      +question_style
   ul
     margin-bottom: 15px
     li
@@ -49,6 +52,19 @@
         counter-increment: list
         margin-right: 8px
 
+  cite
+    font-style: italic
+
+  mark
+    color: #fff
+    font-style: italic
+    font-weight: bold
+    background-color: #a41162
+    padding:
+      left: 3px
+      right: 3px
+      bottom: 1px
+
   blockquote
     font-style: italic
     margin:
@@ -58,6 +74,16 @@
     padding: 10px 20px
     p
       margin: 5px 0
+
+    &.speech
+      color: #93948c
+      font-style: normal
+      background: none
+      border: 1px solid #d0d0d0
+      cite
+        color: #252535
+    &.question
+      +question_style
 
   table
     margin-bottom: 15px
