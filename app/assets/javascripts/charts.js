@@ -35,25 +35,29 @@ $.fn.get_properties = function(){
 };
 
 function drawChart(){
-  var chart = $('.chart');
-  var chart_properties = chart.get_properties();
+  var charts = $('.chart');
 
-  var options = {
-    'title':  chart_properties.title || '',
-    'width':  680,
-    'height': 520,
-    'fontName': 'Verdana',
-    'backgroundColor': '#f7f7fa'
-  };
+  charts.each(function(index, chart) {
+    var chart_properties = $(chart).get_properties();
 
-  var data = new google.visualization.DataTable();
-  data.addColumn('string', chart_properties.labels_title);
-  data.addColumn('number', chart_properties.values_title);
-  data.addRows(chart_properties.data);
+    var options = {
+      'title':  chart_properties.title || '',
+      'width':  680,
+      'height': 520,
+      'fontName': 'Verdana',
+      'backgroundColor': '#f7f7fa'
+    };
 
-  var chart_object = new google.visualization[chart_properties.type](chart[0]);
+    var data = new google.visualization.DataTable();
+    data.addColumn('string', chart_properties.labels_title);
+    data.addColumn('number', chart_properties.values_title);
+    data.addRows(chart_properties.data);
 
-  chart_object.draw(data, options);
+    var chart_object = new google.visualization[chart_properties.type](chart);
+    //var chart_object = new google.visualization.BarChart(chart);
+
+    chart_object.draw(data, options);
+  });
 };
 
 $(function(){
