@@ -22,6 +22,7 @@ $.fn.get_type = function(){
 
 $.fn.get_data = function(){
   var chart = this;
+  var multi = $(chart).hasClass('multi');
   var data= [];
 
   chart.find('tbody tr').each(function(i, val){
@@ -33,6 +34,9 @@ $.fn.get_data = function(){
         collection.push(parseFloat($(item).text())) ;
       } else {
         collection.push($(item).text());
+      };
+      if (index==1 && !multi) {
+        return false;
       };
     });
     data.push(collection);
@@ -47,18 +51,28 @@ $.fn.get_label_title = function(){
 
 $.fn.get_values_title = function(){
   var chart = this;
+  var multi = $(chart).hasClass('multi');
   var collection = [];
   var head = chart.find('th');
 
   if (head.length < 1) {
-    var col_count = chart.find('tr:first td').length;
-    collection = new Array(col_count-1);
+    if (multi) {
+      collection = [];
+    } else {
+      var col_count = chart.find('tr:first td').length;
+      collection = new Array(col_count-1);
+    };
+
     return collection;
   };
 
   head.each(function(i, item) {
     if (i > 0) {
       collection.push($(item).text());
+    };
+
+    if (i==1 && !multi) {
+      return false;
     };
   });
 
