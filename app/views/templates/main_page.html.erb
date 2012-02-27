@@ -67,32 +67,35 @@
   </div>
 
   <div class='belief_section'>
-    <h1><a href='#'>Точки зрения</a></h1>
+    <h1><a href='/ru/tochka-zreniya/mneniya-o-proekte'>Точки зрения</a></h1>
     <div class='two_column'>
+      <% first = @belief_list.content.items.first %>
+      <% second = @belief_list.content.items.second %>
+      <% third = @belief_list.content.items.third %>
       <div class='belief'>
         <div class='photo first'>
-          <img src='/assets/fake/medvedev.jpg' alt='' width='150' height='150' />
+          <%= link_to news_image(first.resized_image_url, first.image_description), first.link %>
           <span class='triangle'></span>
         </div>
         <div class='description first'>
-          <p class='annotation'><a href='#'>Представим себе подобную ситуацию где-нибудь на Рублёво-Успенском шоссе...</a></p>
-          <p class='date'>1 апреля</p>
+          <p class='annotation'><%= link_to truncate(first.title, :length => 130, :separator => ' '), first.link %></p>
+          <p class='date'><%= l DateTime.parse(first.since), :format => "%d %B %Y" %></p>
         </div>
         <div class='photo second'>
-          <img src='/assets/fake/chubays.jpg' alt='' width='150' height='150' />
+          <%= link_to news_image(second.resized_image_url, second.image_description), second.link %>
           <span class='triangle'></span>
         </div>
         <div class='description second'>
-          <p class='annotation'><a href='#'>Давайте, ребята, работайте шибче, Россия в опасности! Если что, так вот, а приглядишься и нате...</a></p>
-          <p class='date'>15 марта</p>
+          <p class='annotation'><%= link_to truncate(third.title, :length => 130, :separator => ' '), third.link %></p>
+          <p class='date'><%= l DateTime.parse(third.since), :format => "%d %B %Y" %></p>
         </div>
         <div class='photo third'>
-          <img src='/assets/fake/kress.jpg' alt='' width='150' height='150' />
+          <%= link_to news_image(third.resized_image_url, third.image_description), third.link %>
           <span class='triangle'></span>
         </div>
         <div class='description third'>
-          <p class='annotation'><a href='#'>Я бы не рекомендовал впечатлительным ходить на тайные встречи чекистов. Опасно это для психики...</a></p>
-          <p class='date'>21 марта</p>
+          <p class='annotation'><%= link_to truncate(second.title, :length => 130, :separator => ' '), second.link %></p>
+          <p class='date'><%= l DateTime.parse(second.since), :format => "%d %B %Y" %></p>
         </div>
       </div>
       <div class='mediateka'>
