@@ -19,4 +19,15 @@ module ApplicationHelper
     words[0..(length-1)].join(' ') + (words.length > length ? end_string : '')
   end
 
+  def belief_color
+    case rand(3)
+    when 0
+      'blue'
+    when 1
+      'green'
+    when 2
+      'orange'
+    end
+  end
+
 end

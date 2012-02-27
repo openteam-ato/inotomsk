@@ -1,0 +1,59 @@
+<div class='belief_show'>
+  <div class="header <%= belief_color %>">
+    <% if object.resized_image_url %>
+      <div class='image'>
+        <%= news_image object.resized_image_url, object.image_description %>
+        <div class='stub'></div>
+      </div>
+    <% end %>
+    <div class="annotation">
+      <%= raw object.annotation %>
+      <p class='date'>
+        <%= l DateTime.parse(object.since), :format => '%d %B %Y' %>
+        <span class='time'>
+          <%= l DateTime.parse(object.since), :format => '%H:%M' %>
+        </span>
+      </p>
+    </div>
+  </div>
+  <div class='content'>
+    <%= raw object.body %>
+    <% if object.source %>
+      <div class='source'>
+        <b>Источник:</b>
+        <% if object.source_link %>
+          <%= link_to object.source, object.source_link, :rel => :nofollow, :target => '_blank' %>
+        <% else %>
+          <%= object.source %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <%= render 'commons/social_links' %>
+  <%= render 'commons/disqus' %>
+</div>
+
+<% content_for :more_like_this do %>
+  <ul class='beliefs'>
+    <% object.more_like_this.each do | interview | %>
+      <li>
+        <div class="speaker">
+          <% if interview.resized_image_url %>
+            <div class='image'>
+              <%= link_to news_image(interview.resized_image_url, interview.interview_description), interview.link %>
+            </div>
+          <% end %>
+          <div class="name">
+            <%= raw interview.annotation %>
+            <p class='date'>
+              <%= l DateTime.parse(interview.since), :format => '%d %B %Y' %>
+            </p>
+          </div>
+        </div>
+        <div class="title">
+          <%= link_to interview.title, interview.link %>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+<% end unless object.more_like_this.blank? %>

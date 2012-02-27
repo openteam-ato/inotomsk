@@ -250,7 +250,6 @@ $content_nav_padding: 12px
                 background: transparent url('clock_gray.png') no-repeat left
                 margin-left: 5px
 
-
   .entry_show
     font-size: 1.15em
     .date
@@ -313,6 +312,64 @@ $content_nav_padding: 12px
           font-size: 16px
           font-style: italic
           border-bottom: 1px solid #ccc
+          margin-bottom: 10px
+          padding-bottom: 10px
+        .date
+          color: #94948c
+          font-size: 10px
+          .time
+            padding-left: 15px
+            background: transparent url('clock_gray.png') no-repeat left
+            margin-left: 5px
+
+  .belief_show
+    .header
+      margin: 0
+      padding: 0
+      width: auto
+      +clearfix
+      margin-bottom: 10px
+      height: 157px
+      &.blue
+        background-color: #e8ebfc
+        .stub
+          background-image: url('belief_triangle_blue.png')
+      &.green
+        background-color: #ecfc9a
+        .stub
+          background-image: url('belief_triangle_green.png')
+      &.orange
+        background-color: #ffe787
+        .stub
+          background-image: url('belief_triangle_orange.png')
+      .image
+        +clearfix
+        float: left
+        margin-right: 20px
+        position: relative
+        .stub
+          position: absolute
+          top: 20px
+          right: 0
+          width: 10px
+          height: 20px
+          background-color: transparent
+          background-repeat: no-repeat
+          background-position: center center
+      .annotation
+        +clearfix
+        .person
+          font-family: 'header_light'
+          font-size: 33px
+          line-height: 1.2
+          margin-top: 15px
+          margin-right: 15px
+        .post
+          color: #94948c
+          font-size: 16px
+          font-style: italic
+          border-bottom: 1px solid #ccc
+          margin-right: 15px
           margin-bottom: 10px
           padding-bottom: 10px
         .date
@@ -452,6 +509,32 @@ $content_nav_padding: 12px
               bottom: 2px
               left: -1px
           .author
+            font-weight: bold
+            font-style: italic
+            margin-bottom: 5px
+          .post
+            display: none
+          .date
+            color: #94948c
+            font-size: 10px
+        .title
+          a
+            color: #252535
+            text-decoration: none
+            &:hover
+              color: #d8287d
+              text-decoration: underline
+      .beliefs
+        .speaker
+          +clearfix
+          margin-bottom: 5px
+          .image
+            float: left
+            +clearfix
+            float: left
+            margin-right: 10px
+            position: relative
+          .person
             font-weight: bold
             font-style: italic
             margin-bottom: 5px
