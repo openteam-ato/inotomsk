@@ -10,7 +10,7 @@
       <% end %>
       <div class='description'>
         <%= raw belief.annotation %>
-        <p class='title'><%= link_to truncate(strip_tags(belief.title), :length => 80), belief.link %></p>
+        <p class='title'><%= link_to truncate(strip_tags(belief.title), :length => 80, :separator => ' '), belief.link %></p>
         <p class='date'>
           <%= l DateTime.parse(belief.since), :format => "%d %B %Y" %>
           <span class='time'>
