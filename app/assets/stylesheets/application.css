@@ -10,6 +10,7 @@
  *
  *= require_self
  *= require base
+ *= require jscrollpane
  *= require layout
  *= require top_menu
  *= require header

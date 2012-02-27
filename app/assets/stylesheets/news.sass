@@ -69,11 +69,16 @@ $shadow_color: #dfdfdf
             font-size: 0.9em
             color: #ffa3d6
       .news_list
+        height: 347px
+        +clearfix
+        overflow-y: scroll
         ul
           margin-top: 10px
-          margin-bottom: 35px
+          margin-bottom: 10px
           li
             padding: 10px 20px
+            &.selected
+              background-color: #f5f2fb
             a
               color: #252535
               text-decoration: none

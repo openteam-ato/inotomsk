@@ -43,7 +43,6 @@
               <% end %>
             </ul>
           <% end %>
-          <p class='all_news'><a href='/ru/press-tsentr/novosti-innovatsiy/v-tomske/'>Все новости</a></p>
         </div>
       </div>
     </div>
@@ -184,14 +183,15 @@
     </div>
     <div class='voting'>
       <h1>Опрос</h1>
-      <p class='question'>Каким на Ваш взгляд должен быть ИНО Томск 2020г.?</p>
+      <p class='question'>Что вы ожидаете от реализации проекта &laquo;ИНОТомск`2020&raquo;?</p>
       <%= semantic_form_for :answers do | form | %>
         <%= form.inputs do %>
           <%= form.input :ansver, :as => :radio, :label => false,
             :collection => {
-            'Как силиконовая долина' => 'uno',
-            'Ничего не изменится' => 'dos',
-            'Затрудняюсь я с вами тут' => 'tres' } %>
+            'создания комфортной городской среды' => 'uno',
+            'повышения уровня жизни' => 'dos',
+            'лидерства Томска среди российских городов' => 'tres',
+            'ничего не изменится' => 'quatro' } %>
         <% end %>
         <%= form.actions do %>
           <%= form.action :submit, :label => 'Голосовать' %>
