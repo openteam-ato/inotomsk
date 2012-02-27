@@ -22,6 +22,18 @@ function init_caruselko() {
   };
 };
 
+function init_main_news_list() {
+  var image_container = $('.news_container .picture');
+  $('.news_container .news_list ul li .title a').hover(
+    function () {
+      $('img', image_container).attr('src', $('img', $(this).closest('li')).attr('src'));
+      $('.description .text', image_container).html($('.annotation', $(this).closest('li')).html());
+      $('.description .date', image_container).html($('.date', $(this).closest('li')).html());
+    }
+  );
+};
+
 $(function() {
   init_caruselko();
+  init_main_news_list();
 });

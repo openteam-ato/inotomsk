@@ -1,3 +1,6 @@
+<% content_for :targets do %>
+<% end %>
+
 <% content_for :content do %>
 
   <div class='news_section'>
@@ -6,14 +9,20 @@
       <li><a href='/ru/press-tsentr/novosti-innovatsiy/v-rossii/'>В России</a></li>
       <li class='selected'><a href='/ru/press-tsentr/novosti-innovatsiy/v-tomske/'>В Томске</a></li>
     </ul>
-    <h1><a href='/ru/press-tsentr/novosti-innovatsiy/v-tomske/'>Новости</a></h1>
+    <h1><a href='/ru/press-tsentr/novosti-innovatsiy/v-tomske/'>Новости инноваций в Томске</a></h1>
     <div class='news_container'>
       <div class='inner_wrapper'>
         <div class='picture'>
-          <div class='img'><img src='/assets/fake/caltonhilledinburgh.jpg' alt='' width='459' height='344' /></div>
+          <% first_news = @news_list.content.items.first %>
+          <div class='img'><%= news_image first_news.resized_image_url, first_news.title %></div>
           <div class='description'>
-            <p class='text'>Структурный голод столь же важен для жизни, как и архетип понимает возрастной экстремум функции, откуда следует доказываемое равенство.</p>
-            <p class='date'>11 ноября 2011</p>
+            <p class='text'><%= strip_tags truncate(strip_tags(first_news.annotation), :length => 200, :separator => ' ') %></p>
+            <p class='date'>
+              <%= l DateTime.parse(first_news.since), :format => "%d %B %Y" %>
+              <span class='time'>
+                <%= l DateTime.parse(first_news.since), :format => "%H:%M" %>
+              </span>
+            </p>
           </div>
         </div>
         <div class='news_list'>
@@ -22,6 +31,8 @@
               <% @news_list.content.items.each do | news | %>
                 <li>
                   <p class='title'><%= link_to news.title, news.link %></p>
+                  <p class='image'><%= news_image(news.resized_image_url) %></p>
+                  <p class='annotation'><%= strip_tags truncate(strip_tags(news.annotation), :length => 200, :separator => ' ') %></p>
                   <p class='date'>
                     <%= l DateTime.parse(news.since), :format => "%d %B %Y" %>
                     <span class='time'>
@@ -39,7 +50,7 @@
   </div>
 
   <div class='interviews_section'>
-    <h1><a href='/ru/analiticheskie-materialy/intervyu-s-ekspertami/'>Интервью</a></h1>
+    <h1><a href='/ru/analiticheskie-materialy/intervyu-s-ekspertami/'>Интервью с экспертами</a></h1>
     <% unless @interview_list.blank? %>
       <ul>
       <% @interview_list.content.items.each do | interview | %>
@@ -67,7 +78,7 @@
   </div>
 
   <div class='belief_section'>
-    <h1><a href='/ru/tochka-zreniya/mneniya-o-proekte'>Точки зрения</a></h1>
+    <h1><a href='/ru/tochka-zreniya/mneniya-o-proekte'>Мнения о проекте</a></h1>
     <div class='two_column'>
       <% unless @belief_list.blank? %>
         <% first = @belief_list.content.items.first %>
