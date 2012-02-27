@@ -101,15 +101,18 @@
         </div>
       <% end %>
       <div class='mediateka'>
-        <h2><a href='#'>Медиатека</a></h2>
+        <h2>Медиатека</h2>
         <div class='two_column'>
           <div class='video'>
-            <div class='thumbnail'>
-              <a href='#'><img src='/assets/fake/video.jpg' alt='' width='160' height='120' /></a>
-            </div>
-            <p class='title'>Сколково: новый век</p>
-            <p class='date'>10 августа, ТВ2, Часпик</p>
-            <p class='more'><a href='#'>Всё видео</a></p>
+            <% unless @last_video.blank? %>
+              <% video = @last_video.content.items.first %>
+              <div class='thumbnail'>
+                <%= link_to image_tag(video.video.thumb_normal, :size => '160x120', :alt => video.video.description), video.link %>
+              </div>
+              <p class='title'><%= link_to video.video.title, video.link %></p>
+              <p class='date'><%= l DateTime.parse(video.video.date), :format => "%d %B %Y %H:%M" %></p>
+            <% end %>
+            <p class='more'><a href='/ru/press-tsentr/videobank/'>Всё видео</a></p>
           </div>
           <div class='photo'>
             <div class='thumbnail'>
