@@ -2,9 +2,6 @@ cms:
   url:       http://esp-cms.openteam.ru
   site_slug: inotomsk.openteam.ru
 
-vfs:
-  url:       http://pool.openteam.ru
-
 production:
   hoptoad:
     api_key: key
