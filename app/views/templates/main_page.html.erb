@@ -16,7 +16,7 @@
           <% first_news = @news_list.content.items.first %>
           <div class='img'><%= news_image first_news.resized_image_url, first_news.title %></div>
           <div class='description'>
-            <p class='text'><%= strip_tags truncate(strip_tags(first_news.annotation), :length => 200, :separator => ' ') %></p>
+            <p class='text'><%= link_to main_news_annotation(first_news.annotation), first_news.link %></p>
             <p class='date'>
               <%= l DateTime.parse(first_news.since), :format => "%d %B %Y" %>
               <span class='time'>
@@ -32,7 +32,7 @@
                 <li>
                   <p class='title'><%= link_to news.title, news.link %></p>
                   <p class='image'><%= news_image(news.resized_image_url) %></p>
-                  <p class='annotation'><%= strip_tags truncate(strip_tags(news.annotation), :length => 200, :separator => ' ') %></p>
+                  <p class='annotation'><%= link_to main_news_annotation(news.annotation), news.link %></p>
                   <p class='date'>
                     <%= l DateTime.parse(news.since), :format => "%d %B %Y" %>
                     <span class='time'>

@@ -30,4 +30,8 @@ module ApplicationHelper
     end
   end
 
+  def main_news_annotation(text)
+    strip_tags(truncate(strip_tags(text), :length => 200, :separator => ' '))
+  end
+
 end

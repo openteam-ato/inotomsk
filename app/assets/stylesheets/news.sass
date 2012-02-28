@@ -65,16 +65,19 @@ $shadow_color: #dfdfdf
           padding: 10px
           .text
             margin-bottom: 5px
+            a
+              color: #fff
+              text-decoration: none
+              &:hover
+                text-decoration: underline
           .date
             font-size: 0.9em
             color: #ffa3d6
       .news_list
-        height: 347px
+        height: 348px
         +clearfix
         overflow-y: scroll
         ul
-          margin-top: 10px
-          margin-bottom: 10px
           li
             padding: 10px 20px
             &.selected
