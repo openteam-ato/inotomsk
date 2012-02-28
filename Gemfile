@@ -2,8 +2,7 @@ source :rubygems
 
 gem 'configliere'
 gem 'curb'
-gem 'el_vfs_client'
-gem 'formtastic',           '~> 2.1.0.beta'
+gem 'formtastic'
 gem 'hashie'
 gem 'jquery-rails'
 gem 'kaminari'
