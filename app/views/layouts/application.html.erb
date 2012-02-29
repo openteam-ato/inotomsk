@@ -13,6 +13,12 @@
     <%= stylesheet_link_tag 'ie_6' %>
     <![endif]-->
     <%= javascript_include_tag 'application' %>
+
+    <!--[if lte IE 7]>
+    <%= stylesheet_link_tag    'stop_ie/application' %>
+    <%= javascript_include_tag 'stop_ie/application' %>
+    <![endif]-->
+
     <%= csrf_meta_tags %>
   </head>
   <body>

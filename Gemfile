@@ -8,6 +8,7 @@ gem 'jquery-rails'
 gem 'kaminari'
 gem 'rails'
 gem 'russian'
+gem 'stop_ie'
 
 group :assets do
   gem 'compass-rails'
