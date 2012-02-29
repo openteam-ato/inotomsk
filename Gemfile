@@ -2,7 +2,6 @@ source :rubygems
 
 gem 'configliere'
 gem 'curb'
-gem 'formtastic'
 gem 'hashie'
 gem 'jquery-rails'
 gem 'kaminari'
