@@ -9,23 +9,25 @@
 
       <%= content_tag :div, render("regions/#{@breadcrumbs.type.underscore}", :object => @breadcrumbs.content), :class => 'breadcrumbs' if @breadcrumbs %>
 
-      <% unless %w(belief_item_part).include?(@content_first.template) %>
-        <div class='header'>
-          <% if @content_first.try(:content).try(:rss_link) %>
-            <div class="rss">
-              <%= link_to 'RSS', @content_first.content.rss_link %>
-            </div>
-          <% end %>
-          <% if @navigation_top %>
-            <div class='nav'>
-              <%= render "regions/#{@navigation_top.type.underscore}", :object => @navigation_top.content if @navigation_top %>
-            </div>
-          <% end %>
-          <%= content_tag :h1, @content_first.part_title if @content_first %>
-        </div>
-      <% end %>
+      <% if @content_first %>
+        <% unless %w(belief_item_part).include?(@content_first.template) && @content_first %>
+          <div class='header'>
+            <% if @content_first.try(:content).try(:rss_link) %>
+              <div class="rss">
+                <%= link_to 'RSS', @content_first.content.rss_link %>
+              </div>
+            <% end %>
+            <% if @navigation_top %>
+              <div class='nav'>
+                <%= render "regions/#{@navigation_top.type.underscore}", :object => @navigation_top.content if @navigation_top %>
+              </div>
+            <% end %>
+            <%= content_tag :h1, @content_first.part_title if @content_first %>
+          </div>
+        <% end %>
 
-      <%= render_partial_for_region(@content_first) %>
+        <%= render_partial_for_region(@content_first) %>
+      <% end %>
 
     </div>
 
