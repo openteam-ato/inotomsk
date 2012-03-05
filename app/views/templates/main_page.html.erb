@@ -55,7 +55,7 @@
       <ul>
       <% @interview_list.content.items.each do | interview | %>
         <li>
-          <% if interview.resized_image_url %>
+          <% if interview.thumbnail %>
             <div class="image">
               <%= link_to image_tag_for(interview.thumbnail), interview.link %>
               <div class="stub"></div>

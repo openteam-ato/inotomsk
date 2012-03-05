@@ -8,9 +8,9 @@
   <div class='annotation'>
     <%= raw object.annotation %>
   </div>
-  <% if object.resized_image_url %>
+  <% if object.thumbnail %>
     <div class='image'>
-      <%= news_image object.resized_image_url, object.image_description %>
+      <%= image_tag_for(object.thumbnail) %>
       <%= content_tag :p, object.image_description if object.image_description %>
     </div>
   <% end %>
@@ -35,9 +35,9 @@
   <ul class='entries'>
     <% object.more_like_this.each do | entry | %>
       <li>
-        <% if entry.resized_image_url %>
+        <% if entry.thumbnail %>
           <div class='image'>
-            <%= link_to news_image(entry.resized_image_url, entry.image_description), entry.link %>
+            <%= link_to image_tag_for(entry.thumbnail), entry.link %>
           </div>
         <% end %>
         <div class="title">

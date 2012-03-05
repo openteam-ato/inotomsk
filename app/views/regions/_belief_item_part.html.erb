@@ -1,8 +1,8 @@
 <div class='belief_show'>
   <div class="header <%= belief_color %>">
-    <% if object.resized_image_url %>
+    <% if object.thumbnail %>
       <div class='image'>
-        <%= news_image object.resized_image_url, object.image_description %>
+        <%= image_tag_for(object.thumbnail) %>
         <div class='stub'></div>
       </div>
     <% end %>
@@ -39,9 +39,9 @@
     <% object.more_like_this.each do | interview | %>
       <li>
         <div class="speaker">
-          <% if interview.resized_image_url %>
+          <% if interview.thumbnail %>
             <div class='image'>
-              <%= link_to news_image(interview.resized_image_url, interview.interview_description), interview.link %>
+              <%= link_to image_tag_for(interview.thumbnail), interview.link %>
             </div>
           <% end %>
           <div class="name">
