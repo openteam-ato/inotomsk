@@ -1,9 +1,9 @@
 <div class="entries">
   <% object.items.each do |news| %>
     <div class='entry'>
-      <% if news.resized_image_url %>
+      <% if news.thumbnail %>
         <div class="image">
-          <%= link_to news_image(news.resized_image_url), news.link %>
+          <%= link_to image_tag_for(news.thumbnail), news.link %>
         </div>
       <% end %>
       <div class='description'>
