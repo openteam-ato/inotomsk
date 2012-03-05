@@ -14,7 +14,7 @@
       <div class='inner_wrapper'>
         <div class='picture'>
           <% first_news = @news_list.content.items.first %>
-          <div class='img'><%= news_image first_news.resized_image_url, first_news.title %></div>
+          <div class='img'><%= image_tag_for(first_news.thumbnail) %></div>
           <div class='description'>
             <p class='text'><%= link_to main_news_annotation(first_news.annotation), first_news.link %></p>
             <p class='date'>
@@ -31,7 +31,7 @@
               <% @news_list.content.items.each do | news | %>
                 <li>
                   <p class='title'><%= link_to news.title, news.link %></p>
-                  <p class='image'><%= news_image(news.resized_image_url) %></p>
+                  <p class='image'><%= image_tag_for(news.thumbnail) %></p>
                   <p class='annotation'><%= link_to main_news_annotation(news.annotation), news.link %></p>
                   <p class='date'>
                     <%= l DateTime.parse(news.since), :format => "%d %B %Y" %>
@@ -57,7 +57,7 @@
         <li>
           <% if interview.resized_image_url %>
             <div class="image">
-              <%= link_to news_image(interview.resized_image_url, interview.image_description), interview.link %>
+              <%= link_to image_tag_for(interview.thumbnail), interview.link %>
               <div class="stub"></div>
             </div>
           <% end %>
@@ -86,7 +86,7 @@
         <% third = @belief_list.content.items.third %>
         <div class='belief'>
           <div class='photo first'>
-            <%= link_to news_image(first.resized_image_url, first.image_description), first.link %>
+            <%= link_to image_tag_for(first.thumbnail), first.link %>
             <span class='triangle'></span>
           </div>
           <div class='description first'>
@@ -94,7 +94,7 @@
             <p class='date'><%= l DateTime.parse(first.since), :format => "%d %B %Y" %></p>
           </div>
           <div class='photo second'>
-            <%= link_to news_image(second.resized_image_url, second.image_description), second.link %>
+            <%= link_to image_tag_for(second.thumbnail), second.link %>
             <span class='triangle'></span>
           </div>
           <div class='description second'>
@@ -102,7 +102,7 @@
             <p class='date'><%= l DateTime.parse(third.since), :format => "%d %B %Y" %></p>
           </div>
           <div class='photo third'>
-            <%= link_to news_image(third.resized_image_url, third.image_description), third.link %>
+            <%= link_to image_tag_for(third.thumbnail), third.link %>
             <span class='triangle'></span>
           </div>
           <div class='description third'>

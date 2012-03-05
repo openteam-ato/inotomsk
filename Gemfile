@@ -2,6 +2,7 @@ source :rubygems
 
 gem 'configliere'
 gem 'curb'
+gem 'esp-commons'
 gem 'hashie'
 gem 'jquery-rails'
 gem 'kaminari'
