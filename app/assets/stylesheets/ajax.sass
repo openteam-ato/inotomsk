@@ -1,0 +1,41 @@
+@import 'compass/utilities'
+
+body
+  .calendar_section .voting .run_ajax
+    padding-right: 21px
+    background: transparent url('ajax_loading.gif') no-repeat right center
+  .ui-dialog-content
+    .anketaHeader
+      margin-bottom: 10px
+      font-size: 14px
+      font-weight: bold
+    .innerTab
+      .left
+        text-align: left
+      .center
+        text-align: center
+      th,
+      td
+        padding: 5px 8px
+        border: 1px solid #ccc
+      th
+        color: #fff
+        font-weight: bold
+        background-color: #a1306e
+      tr:nth-of-type(odd)
+        background-color: #fff
+      tr:nth-of-type(even)
+        background-color: #e8ebfc
+      td
+        font-size: 11px
+        .statGraphBG
+          height: 8px
+          width: 150px
+          background-color: #ccc
+          +clearfix
+        .statGraph
+          float: left
+          height: 8px
+      .resultRow
+        &.right
+          text-align: right

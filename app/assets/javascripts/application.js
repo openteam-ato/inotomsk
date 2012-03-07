@@ -11,12 +11,29 @@
  * GO AFTER THE REQUIRES BELOW.
  *
  *= require jquery
+ *= require jquery-ui
  *= require jquery_ujs
  *= require jquery.caruselko
  *= require jquery.mousewheel
  *= require jquery.jscrollpane
  *= require charts
  */
+
+function preload_images(images) {
+  $("<div/>")
+    .addClass("images_preload")
+    .appendTo("body")
+    .css({
+      "position": "absolute",
+      "bottom": 0,
+      "left": 0,
+      "visibility": "hidden",
+      "z-index": -9999
+    });
+  $.each(images, function(index, value) {
+    $("<img src='" + value + "' />").appendTo($(".images_preload"));
+  });
+};
 
 function init_caruselko() {
   if ($.fn.caruselko) {
@@ -46,8 +63,54 @@ function init_main_news_scroll() {
   };
 };
 
+function poll_results() {
+  $('.voting p a').click(function() {
+    var link = $(this);
+    var result = $('<div/>', { id: 'ajax_result' }).appendTo('body').hide();
+    $.ajax({
+      url: link.attr('href'),
+      beforeSend: function(jqXHR, settings) {
+        link.addClass('run_ajax');
+      },
+      success: function(data, textStatus, jqXHR) {
+        result.html($(data).filter('.body').html());
+        $('div.top_art', result).remove();
+        $('form#formAnswerOneMore', result).remove();
+        $('div.statQ', result).remove();
+        $('table th div.sortTypes', result).remove();
+        $('div.anketaFooter', result).remove();
+        $('div.bottom_art', result).remove();
+        $('div.anchor, p.anchor', result).remove();
+        result.html(result.html().replace(/\t/g, '  ').replace(/(\n)+/g, '$1'));
+        $('table td img', result).each(function(index, el) {
+          $(el).attr('src', '/assets/stat_bar.png');
+        });
+        $('table td.resultRow', result).each(function(index, el) {
+          $(el).html($(el).html().split('<br>')[0]);
+        });
+        link.removeClass('run_ajax');
+        result.dialog({
+          title: link.text(),
+          width: 600,
+          modal: true,
+          resizable: false,
+          close: function(event, ui) {
+            $(this).parent().remove();
+            $(this).remove();
+          }
+        });
+      }
+    });
+    return false;
+  });
+};
+
 $(function() {
+  preload_images([
+    "/assets/ajax_loading.gif"
+  ]);
   init_caruselko();
   init_main_news_list();
   init_main_news_scroll();
+  poll_results();
 });

@@ -11,6 +11,8 @@
  *= require_self
  *= require base
  *= require jscrollpane
+ *= require smoothness
+ *= require ajax
  *= require layout
  *= require top_menu
  *= require header
