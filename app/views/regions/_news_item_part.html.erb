@@ -11,7 +11,7 @@
   <% if object.thumbnail %>
     <div class='image'>
       <%= image_tag_for(object.thumbnail) %>
-      <%= content_tag :p, object.image_description if object.image_description %>
+      <%= content_tag :p, object.thumbnail.description if object.thumbnail.description %>
     </div>
   <% end %>
   <div class='content'>
