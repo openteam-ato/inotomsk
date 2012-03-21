@@ -5,7 +5,7 @@ ru:
       '500': '<h1>Внутренняя ошибка сервера (500 ошибка)</h1>'
 
     news_list_part:
-      '500': Find me in config/locales/ru.yml at line 7
+      '500': '<h1>Внутренняя ошибка сервера (500 ошибка)</h1>'
 
   views:
     pagination:
