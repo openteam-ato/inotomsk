@@ -1,22 +1,18 @@
-<div class="entries">
-  <% object.items.each do |news| %>
-    <div class='entry'>
-      <% if news.thumbnail %>
-        <div class="image">
-          <%= link_to image_tag_for(news.thumbnail), news.link %>
-        </div>
-      <% end %>
-      <div class='description'>
-        <div class='title'><%= link_to strip_tags(news.title), news.link %></div>
-        <div class='date'>
-          <%= l DateTime.parse(news.since), :format => "%d %B %Y" %>
-          <span class='time'>
-            <%= l DateTime.parse(news.since), :format => "%H:%M" %>
-          </span>
-        </div>
-        <div class='annotation'>
-          <%= raw news.annotation %>
-        </div>
+<div class="events">
+  <% object.items.each do |event| %>
+    <div class='event'>
+      <div class='interval_and_location'>
+        <ul>
+          <% event.event_entry_properties.each do |event_property| %>
+            <li>
+              <p class='interval'><%= event_interval(event_property.since, event_property.until).html_safe %></p>
+              <p class='location'><%= event_property.location %></p>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+      <div class='title'>
+        <%= link_to strip_tags(event.title), event.link %>
       </div>
     </div>
   <% end %>

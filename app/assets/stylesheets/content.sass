@@ -116,6 +116,49 @@ $content_nav_padding: 12px
               padding-left: 15px
               background: transparent url('clock_gray.png') no-repeat left
               margin-left: 5px
+
+    .events
+      .event
+        +clearfix
+        +border-radius(7px)
+        +single-box-shadow(#999, 0, 0, 1px)
+        border: 1px solid transparent
+        &:hover
+          border: 1px solid #a41162
+        margin-bottom: 3px
+        .interval_and_location
+          float: left
+          width: 159px
+          background-color: #fffae4
+          padding: 20px
+          padding-bottom: 522px
+          margin-bottom: -500px
+          .interval
+            font-size: 16px
+            font-weight: bold
+            margin-bottom: 5px
+            .year
+              color: #94948c
+              font-size: 12px
+              font-weight: normal
+          .location
+            color: #94948c
+            font-style: italic
+        .title
+          float: left
+          width: 439px
+          font-size: 14px
+          background-color: #fff
+          padding: 20px
+          padding-bottom: 522px
+          margin-bottom: -500px
+          a
+            color: #252535
+            text-decoration: none
+            &:hover
+              color: #d8287d
+              text-decoration: underline
+
     .video_list
       ul
         +clearfix
@@ -149,6 +192,7 @@ $content_nav_padding: 12px
               padding-left: 15px
               background: transparent url('clock_gray.png') no-repeat left
               margin-left: 5px
+
     .interviews
       ul
         +clearfix
@@ -195,6 +239,7 @@ $content_nav_padding: 12px
                 padding-left: 15px
                 background: transparent url('clock_gray.png') no-repeat left
                 margin-left: 5px
+
     .beliefs
       ul
         +clearfix

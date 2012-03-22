@@ -63,9 +63,9 @@ module ApplicationHelper
       since_arr << since_time if since_time != '00:00'
       if until_time != '00:00'
         until_arr << until_time
-        until_arr << "&ndash;"
+        until_arr << "&mdash;<br />"
       else
-        until_arr << "&ndash;"
+        until_arr << "&mdash;<br />"
       end
     end
     (since_arr.reverse + until_arr.reverse).join(' ')
