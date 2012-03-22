@@ -1,0 +1,55 @@
+<div class="entry_show">
+  <p class='date'>
+    <%= l DateTime.parse(object.since), :format => '%d %B %Y' %>
+    <span class='time'>
+      <%= l DateTime.parse(object.since), :format => '%H:%M' %>
+    </span>
+  </p>
+  <div class='annotation'>
+    <%= raw object.annotation %>
+  </div>
+  <% if object.thumbnail %>
+    <div class='image'>
+      <%= image_tag_for(object.thumbnail) %>
+      <%= content_tag :p, object.thumbnail.description if object.thumbnail.description %>
+    </div>
+  <% end %>
+  <div class='content'>
+    <%= raw object.body %>
+    <% unless object.source.blank? %>
+      <div class='source'>
+        <b>Источник:</b>
+        <% unless object.source_link.blank? %>
+          <%= link_to object.source, object.source_link, :rel => :nofollow, :target => '_blank' %>
+        <% else %>
+          <%= object.source %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <%= render 'commons/social_links' %>
+  <%= render 'commons/disqus' %>
+</div>
+
+<% content_for :more_like_this do %>
+  <ul class='entries'>
+    <% object.more_like_this.each do | entry | %>
+      <li>
+        <% if entry.thumbnail %>
+          <div class='image'>
+            <%= link_to image_tag_for(entry.thumbnail), entry.link %>
+          </div>
+        <% end %>
+        <div class="title">
+          <%= link_to entry.title, entry.link %>
+        </div>
+        <div class='date'>
+          <%= l DateTime.parse(entry.since), :format => '%d %B %Y' %>
+          <span class='time'>
+            <%= l DateTime.parse(entry.since), :format => '%H:%M' %>
+          </span>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+<% end unless object.more_like_this.blank? %>
