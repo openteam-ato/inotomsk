@@ -75,7 +75,7 @@
   </div>
 
   <div class='belief_section'>
-    <h1><a href='/ru/tochka-zreniya/mneniya-o-proekte'>Мнения о проекте</a></h1>
+    <h1><a href='/ru/tochka-zreniya/mneniya-o-proekte/'>Мнения о проекте</a></h1>
     <div class='two_column'>
       <% unless @belief_list.blank? %>
         <% first = @belief_list.content.items.first %>
@@ -137,47 +137,26 @@
 
   <div class='calendar_section'>
     <div class='calendar'>
-      <h1><a href='#'>Календарь мероприятий</a></h1>
+      <h1><a href='/ru/press-tsentr/kalendar-meropriyatiy/'>Календарь мероприятий</a></h1>
       <div class='left'>
         <a href='#'>назад</a>
       </div>
       <div class='right'>
         <a href='#'>вперёд</a>
       </div>
-      <div class='timeline'>
-        <div class='event'>
-          <p class='day'>14 августа - 15 сентября</p>
-          <p class='year'>2012г.</p>
-          <p class='separator'>&nbsp;</p>
-          <p class='title'>
-            <a href='#'>Молодёжный форум You LEAD</a>
-          </p>
+      <% unless @event_list.blank? %>
+        <div class='timeline'>
+          <% @event_list.content.items.each do |event| %>
+            <div class='event'>
+              <p class='day'><%= event_interval(event.event_entry_properties.first.since, event.event_entry_properties.first.until).html_safe %></p>
+              <p class='separator'>&nbsp;</p>
+              <p class='title'>
+                <%= link_to strip_tags(event.title), event.link %>
+              </p>
+            </div>
+          <% end %>
         </div>
-        <div class='event'>
-          <p class='day'>14-15 августа</p>
-          <p class='year'>2012г.</p>
-          <p class='separator'>&nbsp;</p>
-          <p class='title'>
-            <a href='#'>Собрание акционеров Восток Газпром</a>
-          </p>
-        </div>
-        <div class='event'>
-          <p class='day'>14-15 августа</p>
-          <p class='year'>2012г.</p>
-          <p class='separator'>&nbsp;</p>
-          <p class='title'>
-            <a href='#'>В Томске пройдёт Форум бизнес-лидеров</a>
-          </p>
-        </div>
-        <div class='event'>
-          <p class='day'>14-15 августа</p>
-          <p class='year'>2012г.</p>
-          <p class='separator'>&nbsp;</p>
-          <p class='title'>
-            <a href='#'>Всероссийский студенческий форум</a>
-          </p>
-        </div>
-      </div>
+      <% end %>
     </div>
     <div class='voting'>
       <h1>Опрос</h1>
