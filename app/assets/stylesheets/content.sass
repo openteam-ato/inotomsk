@@ -121,7 +121,7 @@ $content_nav_padding: 12px
       .event
         +clearfix
         +border-radius(7px)
-        +single-box-shadow(#999, 0, 0, 1px)
+        +single-box-shadow(#aaa, 0, 0, 1px)
         border: 1px solid transparent
         &:hover
           border: 1px solid #a41162
@@ -323,6 +323,30 @@ $content_nav_padding: 12px
         color: #94948c
         font-size: 0.8em
         margin: 5px 0 0 20px
+
+  .event_show
+    .interval_and_location
+      background-color: #fffae4
+      +border-radius(7px)
+      +single-box-shadow(#aaa, 0, 1px, 2px)
+      padding: 10px
+      margin-bottom: 20px
+      br
+        display: none
+      .interval
+        font-size: 16px
+        font-weight: bold
+        .year
+          color: #94948c
+          font-size: 12px
+          font-weight: normal
+      .location
+        color: #94948c
+        font-style: italic
+    .annotation
+      font-size: 14px
+      p
+        margin-bottom: 15px
 
   .interview_show
     .header

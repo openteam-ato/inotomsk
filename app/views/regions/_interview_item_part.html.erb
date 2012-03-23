@@ -18,16 +18,7 @@
   </div>
   <div class='content'>
     <%= raw object.body %>
-    <% unless object.source.blank? %>
-      <div class='source'>
-        <b>Источник:</b>
-        <% unless object.source_link.blank? %>
-          <%= link_to object.source, object.source_link, :rel => :nofollow, :target => '_blank' %>
-        <% else %>
-          <%= object.source %>
-        <% end %>
-      </div>
-    <% end %>
+    <%= render :partial => 'commons/source_link', :locals => { :object => object } %>
   </div>
   <%= render 'commons/social_links' %>
   <%= render 'commons/disqus' %>
