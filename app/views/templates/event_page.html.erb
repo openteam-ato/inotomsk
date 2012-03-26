@@ -19,7 +19,7 @@
             <% end %>
             <div class='nav'>
               <ul>
-                <li<%= " class='selected'" if !params[:from] && !params[:to] %>>
+                <li<%= " class='selected'" if !params[:since] && !params[:until] %>>
                   <p><a href="<%= "/#{params[:path]}/" %>">Все мероприятия</a></p>
                 </li>
               </ul>
@@ -27,8 +27,8 @@
             <%= content_tag :h1, @content_first.part_title if @content_first %>
             <ul class='months'>
               <% intervals.each_slice(2) do |interval| %>
-                <li<%= " class='selected'" if interval.first.to_s == params[:from] && interval.last.to_s == params[:to] %>>
-                  <a href="?from=<%= interval.first %>&to=<%= interval.last %>"><%= t("date.month_names")[interval.first.month] %></a>
+                <li<%= " class='selected'" if interval.first.to_s == params[:since] && interval.last.to_s == params[:until] %>>
+                  <a href="<%= "/#{params[:path]}/" %>?since=<%= interval.first %>&until=<%= interval.last %>"><%= t("date.month_names")[interval.first.month] %></a>
                 </li>
               <% end %>
             </ul>
