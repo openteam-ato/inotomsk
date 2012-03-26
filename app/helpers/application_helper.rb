@@ -71,4 +71,14 @@ module ApplicationHelper
     (since_arr.reverse + until_arr.reverse).join(' ')
   end
 
+  def intervals
+    res = []
+    year = Date.today.year
+    (1..12).each do |month|
+      res << "01.#{month}.#{year}".to_date.beginning_of_month
+      res << "01.#{month}.#{year}".to_date.end_of_month
+    end
+    res
+  end
+
 end

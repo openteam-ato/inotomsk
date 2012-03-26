@@ -1,0 +1,53 @@
+<% content_for :head_rss_link do %>
+  <%= auto_discovery_link_tag(:rss, @content_first.content.rss_link, {:title => @page_title}) if @content_first.try(:content).try(:rss_link) %>
+<% end %>
+
+<% content_for :content do %>
+  <div class='content_wrapper'>
+
+    <div class="content_side">
+
+      <%= content_tag :div, render("regions/#{@breadcrumbs.type.underscore}", :object => @breadcrumbs.content), :class => 'breadcrumbs' if @breadcrumbs %>
+
+      <% if @content_first %>
+        <% unless %w(belief_item_part).include?(@content_first.template) && @content_first %>
+          <div class='header'>
+            <% if @content_first.try(:content).try(:rss_link) %>
+              <div class="rss">
+                <%= link_to 'RSS', @content_first.content.rss_link %>
+              </div>
+            <% end %>
+            <div class='nav'>
+              <ul>
+                <li<%= " class='selected'" if !params[:from] && !params[:to] %>>
+                  <p><a href="<%= "/#{params[:path]}/" %>">Все мероприятия</a></p>
+                </li>
+              </ul>
+            </div>
+            <%= content_tag :h1, @content_first.part_title if @content_first %>
+            <ul class='months'>
+              <% intervals.each_slice(2) do |interval| %>
+                <li<%= " class='selected'" if interval.first.to_s == params[:from] && interval.last.to_s == params[:to] %>>
+                  <a href="?from=<%= interval.first %>&to=<%= interval.last %>"><%= t("date.month_names")[interval.first.month] %></a>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <%= render_partial_for_region(@content_first) %>
+      <% end %>
+
+    </div>
+
+    <div class='content_nav'>
+
+      <%= content_tag :div, render("regions/#{@navigation_right.type.underscore}", :object => @navigation_right.content), :class => 'navigation' if @navigation_right %>
+      <%= content_tag :div, yield(:more_like_this), :class => 'more_like_this' if content_for?(:more_like_this) %>
+
+    </div>
+
+  </div>
+<% end %>
+
+<%= render :template => 'layouts/application' %>
