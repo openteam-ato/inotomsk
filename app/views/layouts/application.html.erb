@@ -29,21 +29,16 @@
     <div class='header'>
       <div class='logotype'>
         <div class='symbol'>
-          <a href='/'>ИНО Томск`2020</a>
+          <a href='/<%= @current_lang %>/'>ИНО Томск`2020</a>
         </div>
         <div class='site_name'>
-          <h1><a href='/'>ИНО<span class='medium'>Томск`2020</a></h1>
+          <h1><a href='/<%= @current_lang %>/'>ИНО<span class='medium'>Томск`2020</a></h1>
           <p class='shift'>Федеральный центр образования,</p>
           <p>исследований и разработок</p>
         </div>
       </div>
       <div class="languages">
-        <ul>
-          <li>Рус</li>
-          <li class="separator"> | </li>
-          <li><a href="/en/">Eng</a>
-          </li>
-        </ul>
+        <%= languages %>
       </div>
       <div class='targets'>
         <div class='left'>

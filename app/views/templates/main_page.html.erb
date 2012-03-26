@@ -1,81 +1,83 @@
 <% content_for :content do %>
 
-  <div class='news_section'>
-    <ul class='nav'>
-      <li><a href='/ru/press-tsentr/novosti-innovatsiy/v-mire/'>В мире</a></li>
-      <li><a href='/ru/press-tsentr/novosti-innovatsiy/v-rossii/'>В России</a></li>
-      <li class='selected'><a href='/ru/press-tsentr/novosti-innovatsiy/v-tomske/'>В Томске</a></li>
-    </ul>
-    <h1><a href='/ru/press-tsentr/novosti-innovatsiy/v-tomske/'>Новости инноваций в Томске</a></h1>
-    <div class='news_container'>
-      <div class='inner_wrapper'>
-        <div class='picture'>
-          <% first_news = @news_list.content.items.first %>
-          <div class='img'><%= image_tag_for(first_news.thumbnail) %></div>
-          <div class='description'>
-            <p class='text'><%= link_to main_news_annotation(first_news.annotation), first_news.link %></p>
-            <p class='date'>
-              <%= l DateTime.parse(first_news.since), :format => "%d %B %Y" %>
-              <span class='time'>
-                <%= l DateTime.parse(first_news.since), :format => "%H:%M" %>
-              </span>
-            </p>
+  <% if @news_list %>
+    <div class='news_section'>
+      <ul class='nav'>
+        <li><a href='/ru/press-tsentr/novosti-innovatsiy/v-mire/'>В мире</a></li>
+        <li><a href='/ru/press-tsentr/novosti-innovatsiy/v-rossii/'>В России</a></li>
+        <li class='selected'><a href='/ru/press-tsentr/novosti-innovatsiy/v-tomske/'>В Томске</a></li>
+      </ul>
+      <h1><a href='/ru/press-tsentr/novosti-innovatsiy/v-tomske/'>Новости инноваций в Томске</a></h1>
+      <div class='news_container'>
+        <div class='inner_wrapper'>
+          <div class='picture'>
+            <% first_news = @news_list.content.items.first %>
+            <div class='img'><%= image_tag_for(first_news.thumbnail) %></div>
+            <div class='description'>
+              <p class='text'><%= link_to main_news_annotation(first_news.annotation), first_news.link %></p>
+              <p class='date'>
+                <%= l DateTime.parse(first_news.since), :format => "%d %B %Y" %>
+                <span class='time'>
+                  <%= l DateTime.parse(first_news.since), :format => "%H:%M" %>
+                </span>
+              </p>
+            </div>
           </div>
-        </div>
-        <div class='news_list'>
-          <% unless @news_list.blank? %>
-            <ul>
-              <% @news_list.content.items.each do | news | %>
-                <li>
-                  <p class='title'><%= link_to news.title, news.link %></p>
-                  <p class='image'><%= image_tag_for(news.thumbnail) %></p>
-                  <p class='annotation'><%= link_to main_news_annotation(news.annotation), news.link %></p>
-                  <p class='date'>
-                    <%= l DateTime.parse(news.since), :format => "%d %B %Y" %>
-                    <span class='time'>
-                      <%= l DateTime.parse(news.since), :format => "%H:%M" %>
-                    </span>
-                  </p>
-                </li>
-              <% end %>
-            </ul>
-          <% end %>
-          <p class='all_news'><a href='/ru/press-tsentr/novosti-innovatsiy/v-tomske/'>Все новости</a></p>
+          <div class='news_list'>
+            <% unless @news_list.blank? %>
+              <ul>
+                <% @news_list.content.items.each do | news | %>
+                  <li>
+                    <p class='title'><%= link_to news.title, news.link %></p>
+                    <p class='image'><%= image_tag_for(news.thumbnail) %></p>
+                    <p class='annotation'><%= link_to main_news_annotation(news.annotation), news.link %></p>
+                    <p class='date'>
+                      <%= l DateTime.parse(news.since), :format => "%d %B %Y" %>
+                      <span class='time'>
+                        <%= l DateTime.parse(news.since), :format => "%H:%M" %>
+                      </span>
+                    </p>
+                  </li>
+                <% end %>
+              </ul>
+            <% end %>
+            <p class='all_news'><a href='/ru/press-tsentr/novosti-innovatsiy/v-tomske/'>Все новости</a></p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  <% end %>
 
-  <div class='interviews_section'>
-    <h1><a href='/ru/analiticheskie-materialy/intervyu-s-ekspertami/'>Интервью с экспертами</a></h1>
-    <% unless @interview_list.blank? %>
+  <% unless @interview_list.blank? %>
+    <div class='interviews_section'>
+      <h1><a href='/ru/analiticheskie-materialy/intervyu-s-ekspertami/'>Интервью с экспертами</a></h1>
       <ul>
-      <% @interview_list.content.items.each do | interview | %>
-        <li>
-          <% if interview.thumbnail %>
-            <div class="image">
-              <%= link_to image_tag_for(interview.thumbnail), interview.link %>
-              <div class="stub"></div>
+        <% @interview_list.content.items.each do | interview | %>
+          <li>
+            <% if interview.thumbnail %>
+              <div class="image">
+                <%= link_to image_tag_for(interview.thumbnail), interview.link %>
+                <div class="stub"></div>
+              </div>
+            <% end %>
+            <div class='description'>
+              <%= raw interview.annotation %>
+              <p class='title'><%= link_to interview.title, interview.link %></p>
+              <p class='date'>
+                <%= l DateTime.parse(interview.since), :format => "%d %B %Y" %>
+                <span class='time'>
+                  <%= l DateTime.parse(interview.since), :format => "%H:%M" %>
+                </span>
+              </p>
             </div>
-          <% end %>
-          <div class='description'>
-            <%= raw interview.annotation %>
-            <p class='title'><%= link_to interview.title, interview.link %></p>
-            <p class='date'>
-              <%= l DateTime.parse(interview.since), :format => "%d %B %Y" %>
-              <span class='time'>
-                <%= l DateTime.parse(interview.since), :format => "%H:%M" %>
-              </span>
-            </p>
-          </div>
-        </li>
-      <% end %>
+          </li>
+        <% end %>
       </ul>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 
   <div class='belief_section'>
-    <h1><a href='/ru/tochka-zreniya/mneniya-o-proekte/'>Мнения о проекте</a></h1>
+    <%= content_tag(:h1, link_to("Мнения о проекте", "/ru/tochka-zreniya/mneniya-o-proekte/")) unless @belief_list.blank? %>
     <div class='two_column'>
       <% unless @belief_list.blank? %>
         <% first = @belief_list.content.items.first %>
@@ -109,34 +111,37 @@
         </div>
       <% end %>
       <div class='mediateka'>
-        <h2>Медиатека</h2>
-        <div class='two_column'>
-          <div class='video'>
-            <% unless @last_video.blank? %>
-              <% video = @last_video.content.items.first %>
-              <div class='thumbnail'>
-                <%= link_to image_tag(video.video.thumb_normal, :size => '160x120', :alt => video.video.description), video.link %>
-              </div>
-              <p class='title'><%= link_to video.video.title, video.link %></p>
-              <p class='date'><%= l DateTime.parse(video.video.date), :format => "%d %B %Y %H:%M" %></p>
-            <% end %>
-            <p class='more'><a href='/ru/press-tsentr/videobank/'>Всё видео</a></p>
-          </div>
-          <div class='photo'>
-            <div class='thumbnail'>
-              <a href='#'><img src='/assets/fake/photo.jpg' alt='' width='176' height='116'/></a>
+        <% if @current_lang.eql?('ru') %>
+          <h2>Медиатека</h2>
+          <div class='two_column'>
+            <div class='video'>
+              <% unless @last_video.blank? %>
+                <% video = @last_video.content.items.first %>
+                <div class='thumbnail'>
+                  <%= link_to image_tag(video.video.thumb_normal, :size => '160x120', :alt => video.video.description), video.link %>
+                </div>
+                <p class='title'><%= link_to video.video.title, video.link %></p>
+                <p class='date'><%= l DateTime.parse(video.video.date), :format => "%d %B %Y %H:%M" %></p>
+              <% end %>
+              <p class='more'><a href='/ru/press-tsentr/videobank/'>Всё видео</a></p>
             </div>
-            <p class='title'>Презентация &laquo;Машинстройкомплекта&raquo; в Томской области</p>
-            <p class='date'>23 октября</p>
-            <p class='more'><a href='#'>Всё фото</a></p>
+            <div class='photo'>
+              <div class='thumbnail'>
+                <a href='#'><img src='/assets/fake/photo.jpg' alt='' width='176' height='116'/></a>
+              </div>
+              <p class='title'>Презентация &laquo;Машинстройкомплекта&raquo; в Томской области</p>
+              <p class='date'>23 октября</p>
+              <p class='more'><a href='#'>Всё фото</a></p>
+            </div>
           </div>
-        </div>
+        <% end %>
       </div>
     </div>
   </div>
 
   <div class='calendar_section'>
     <div class='calendar'>
+      <% unless @event_list.blank? %>
       <h1><a href='/ru/press-tsentr/kalendar-meropriyatiy/'>Календарь мероприятий</a></h1>
       <div class='left'>
         <a href='#'>назад</a>
@@ -144,7 +149,6 @@
       <div class='right'>
         <a href='#'>вперёд</a>
       </div>
-      <% unless @event_list.blank? %>
         <div class='timeline'>
           <% @event_list.content.items.each do |event| %>
             <div class='event'>
@@ -159,11 +163,13 @@
       <% end %>
     </div>
     <div class='voting'>
-      <h1>Опрос</h1>
-      <script type="text/javascript">var WebAnketaParams = ["64wkae9k5xhk4e9s6xh3gc0/ru", "Что вы ожидаете от реализации проекта «ИНОТомск`2020»?"];
-        document.write(unescape("%3Cscript src='http"+(/^https:\/\//.test(document.URL) ? "s" : "")+"://webanketa.com/direct/js/embed.js' type='text/javascript'>%3C/script>"));
-      </script><noscript><a href="http://webanketa.com/forms/64wkae9k5xhk4e9s6xh3gc0/ru/" target="_blank">Что вы ожидаете от реализации проекта «ИНОТомск`2020»?</a></noscript>
-      <p><%= link_to "Результаты голосования", poll_path(:code => '64wkae9k5xhk4e9s6xh3gc0') %></a></p>
+      <% if @current_lang.eql?('ru') %>
+        <h1>Опрос</h1>
+        <script type="text/javascript">var WebAnketaParams = ["64wkae9k5xhk4e9s6xh3gc0/ru", "Что вы ожидаете от реализации проекта «ИНОТомск`2020»?"];
+          document.write(unescape("%3Cscript src='http"+(/^https:\/\//.test(document.URL) ? "s" : "")+"://webanketa.com/direct/js/embed.js' type='text/javascript'>%3C/script>"));
+          </script><noscript><a href="http://webanketa.com/forms/64wkae9k5xhk4e9s6xh3gc0/ru/" target="_blank">Что вы ожидаете от реализации проекта «ИНОТомск`2020»?</a></noscript>
+          <p><%= link_to "Результаты голосования", poll_path(:code => '64wkae9k5xhk4e9s6xh3gc0') %></a></p>
+      <% end %>
     </div>
   </div>
 

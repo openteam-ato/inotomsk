@@ -10,6 +10,8 @@ class MainController < ApplicationController
 
     @page_title = page.title
 
+    @current_lang = request.fullpath.split('/').compact.reject(&:blank?).first || 'ru'
+
     render "templates/#{page.template}"
   end
 

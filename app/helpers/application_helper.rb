@@ -11,10 +11,18 @@ module ApplicationHelper
     end
   end
 
-  def truncate_words(text, length = 20, end_string = '...')
-    return if text.blank?
-    words = text.gsub('&nbsp;', ' ').split
-    words[0..(length-1)].join(' ') + (words.length > length ? end_string : '')
+  def languages
+    res = ''
+    langs = {'ru' => 'Рус', 'en' => 'Eng' }
+    langs.each_with_index do |lang, index|
+      if @current_lang == lang.first
+        res += content_tag :li, lang.second
+      else
+        res += content_tag :li, link_to(lang.second, "/#{lang.first}/")
+      end
+      res += content_tag :li, '|', :class => 'separator' if index < langs.size - 1
+    end
+    content_tag :ul, res.html_safe
   end
 
   def belief_color
