@@ -29,27 +29,29 @@
     <div class='header'>
       <div class='logotype'>
         <div class='symbol'>
-          <a href='/<%= @current_lang %>/'><%= t "#{@current_lang}.ino_tomsk_2020" %></a>
+          <a href='/<%= I18n.locale %>/'><%= t "ino_tomsk_2020" %></a>
         </div>
         <div class='site_name'>
-          <h1><a href='/<%= @current_lang %>/'><%= t "#{@current_lang}.ino" %><span class='medium'><%= t "#{@current_lang}.tomsk_2020" %></a></h1>
-          <p class='shift'><%= t "#{@current_lang}.federal_centre_education" %></p>
-          <p><%= t "#{@current_lang}.research_and_development" %></p>
+          <h1><a href='/<%= I18n.locale %>/'><%= t "ino" %><span class='medium'><%= t "tomsk_2020" %></a></h1>
+          <p class='shift'><%= t "federal_centre_education" %></p>
+          <p><%= t "research_and_development" %></p>
         </div>
       </div>
       <div class="languages">
         <%= languages %>
       </div>
       <div class='targets'>
-        <div class='left'>
-          <a href='#'>назад</a>
-        </div>
-        <div class="container">
-          <%= render_partial_for_region(@targets) %>
-        </div>
-        <div class='right'>
-          <a href='#'>вперед</a>
-        </div>
+        <% unless @targets.blank? %>
+          <div class='left'>
+            <a href='#'>назад</a>
+          </div>
+          <div class="container">
+            <%= render_partial_for_region(@targets) %>
+          </div>
+          <div class='right'>
+            <a href='#'>вперед</a>
+          </div>
+        <% end %>
       </div>
     </div>
 
@@ -64,15 +66,15 @@
 
     <div class='footer_wrapper'>
       <div class='footer'>
-        <div class='column logotype_<%= @current_lang %>'>
-          <p><%= t "#{@current_lang}.ino_tomsk_2020" %></p>
+        <div class='column logotype_<%= I18n.locale %>'>
+          <p><%= t "ino_tomsk_2020" %></p>
         </div>
         <div class='column address'>
-          <p>&laquo;<%= t "#{@current_lang}.ino_tomsk_2020" %>&raquo;</p>
-          <p><%= t "#{@current_lang}.ino_tomsk_address" %></p>
+          <p>&laquo;<%= t "ino_tomsk_2020" %>&raquo;</p>
+          <p><%= t "ino_tomsk_address" %></p>
         </div>
         <div class='column contacts'>
-          <p><%= t "#{@current_lang}.tel" %> (3822) <span class='bolder'>46 47 48</span></p>
+          <p><%= t "tel" %> (3822) <span class='bolder'>46 47 48</span></p>
           <p>email: <a href='mailto:'>inso@inotomsk.ru</a></p>
           <div class='social_links'>
             <a class='youtube' href='#'>You tube</a>
@@ -83,8 +85,8 @@
           </div>
         </div>
         <div class='column developers'>
-          <p><%= t "#{@current_lang}.development" %>: <a href='http://openteam.ru/'>OpenTeam</a></p>
-          <p><%= t "#{@current_lang}.design" %>: <a href='http://rosbd.com/'>РосБизнесДизайн</a></p>
+          <p><%= t "development" %>: <a href='http://openteam.ru/'>OpenTeam</a></p>
+          <p><%= t "design" %>: <a href='http://rosbd.com/'>РосБизнесДизайн</a></p>
         </div>
       </div>
     </div>

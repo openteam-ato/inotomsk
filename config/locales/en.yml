@@ -1,5 +1,14 @@
-# Sample localization file for English. Add more files in this directory for other locales.
-# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
-
 en:
-  hello: "Hello world"
+  locale:
+    ru: Rus
+    en: Eng
+
+  ino_tomsk_2020: "INO Tomsk`2020"
+  ino: "INO"
+  tomsk_2020: "Tomsk`2020"
+  federal_centre_education: "Federal centre for education,"
+  research_and_development: "research and development"
+  ino_tomsk_address: "Russia, 634011, Tomsk, Pervomayskaya str., 15, 201 office"
+  tel: "Phone"
+  development: "Development"
+  design: "Design"

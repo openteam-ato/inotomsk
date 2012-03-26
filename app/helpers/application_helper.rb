@@ -13,14 +13,13 @@ module ApplicationHelper
 
   def languages
     res = ''
-    langs = {'ru' => 'Рус', 'en' => 'Eng' }
-    langs.each_with_index do |lang, index|
-      if @current_lang == lang.first
-        res += content_tag :li, lang.second
+    I18n.available_locales.each_with_index do |lang, index|
+      if I18n.locale == lang
+        res += content_tag :li, I18n.t("locale.#{lang}")
       else
-        res += content_tag :li, link_to(lang.second, "/#{lang.first}/")
+        res += content_tag :li, link_to(I18n.t("locale.#{lang}"), "/#{lang}/")
       end
-      res += content_tag :li, '|', :class => 'separator' if index < langs.size - 1
+      res += content_tag :li, '|', :class => 'separator' if index < I18n.available_locales.size - 1
     end
     content_tag :ul, res.html_safe
   end
