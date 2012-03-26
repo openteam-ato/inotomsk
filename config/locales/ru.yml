@@ -1,4 +1,5 @@
 ru:
+
   errors:
     news_item_part:
       '404': 'Запрашиваемый Вами ресурс не найден. Для поиска интересующей Вас информации попробуйте начать с <a href="/">главной страницы</a> или воспользуйтесь поиском.'
@@ -12,4 +13,16 @@ ru:
       next: 'вперёд'
       previous: 'назад'
       truncate: '&hellip;'
+  ru:
+    ino_tomsk_2020: "ИНО Томск`2020"
+    ino: "ИНО"
+    tomsk_2020: "Томск`2020"
+    federal_centre_education: "Федеральный центр образования,"
+    research_and_development: "исследований и разработок"
 
+  en:
+    ino_tomsk_2020: "INO Tomsk`2020"
+    ino: "INO"
+    tomsk_2020: "Tomsk`2020"
+    federal_centre_education: "Federal centre for education,"
+    research_and_development: "research and development"

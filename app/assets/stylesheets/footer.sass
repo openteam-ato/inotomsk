@@ -10,14 +10,19 @@ $column_right_margin: 20px
     float: left
     width: $container_width / 4 - $column_right_margin
     margin-right: $column_right_margin
-    &.logotype p
-      width: 200px
-      height: 51px
-      +clearfix
-      text-indent: -9999em
-      background-color: #fff
-      background-repeat: no-repeat
+    &.logotype_ru,
+    &.logotype_en
+      p
+        width: 200px
+        height: 51px
+        +clearfix
+        text-indent: -9999em
+        background-color: #fff
+        background-repeat: no-repeat
+    &.logotype_ru p
       background-image: url('footer_logotype_ru.png')
+    &.logotype_en p
+      background-image: url('footer_logotype_en.png')
     &.contacts
       .bolder
         font-size: 1.8em

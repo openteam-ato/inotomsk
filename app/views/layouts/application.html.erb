@@ -29,12 +29,12 @@
     <div class='header'>
       <div class='logotype'>
         <div class='symbol'>
-          <a href='/<%= @current_lang %>/'>ИНО Томск`2020</a>
+          <a href='/<%= @current_lang %>/'><%= t "#{@current_lang}.ino_tomsk_2020" %></a>
         </div>
         <div class='site_name'>
-          <h1><a href='/<%= @current_lang %>/'>ИНО<span class='medium'>Томск`2020</a></h1>
-          <p class='shift'>Федеральный центр образования,</p>
-          <p>исследований и разработок</p>
+          <h1><a href='/<%= @current_lang %>/'><%= t "#{@current_lang}.ino" %><span class='medium'><%= t "#{@current_lang}.tomsk_2020" %></a></h1>
+          <p class='shift'><%= t "#{@current_lang}.federal_centre_education" %></p>
+          <p><%= t "#{@current_lang}.research_and_development" %></p>
         </div>
       </div>
       <div class="languages">
@@ -114,8 +114,8 @@
 
     <div class='footer_wrapper'>
       <div class='footer'>
-        <div class='column logotype'>
-          <p>ИНО Томск`2020</p>
+        <div class='column logotype_<%= @current_lang %>'>
+          <p><%= t "#{@current_lang}.ino_tomsk_2020" %></p>
         </div>
         <div class='column address'>
           <p>&laquo;ИНО Томск`2020&raquo;</p>
