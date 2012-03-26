@@ -2,6 +2,7 @@
 
 .header
   +clearfix
+  position: relative
   .logotype
     float: left
     +min-height(135px)
@@ -41,6 +42,16 @@
         line-height: 1.1
         &.shift
           margin-left: 3px
+  .languages
+    position: absolute
+    right: 30px
+    +clearfix
+    li
+      float: left
+      font-size: 11px
+      &.separator
+        color: #bdbdbd
+        margin: 0 5px
   .targets
     $main_width: 460px
     $arrow_width: 14px
