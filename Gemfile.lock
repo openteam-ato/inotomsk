@@ -56,9 +56,6 @@ GEM
     fssm (0.2.8.1)
     hashie (1.2.0)
     hike (1.2.1)
-    hoptoad_notifier (2.4.11)
-      activesupport
-      builder
     i18n (0.6.0)
     journey (1.0.3)
     jquery-rails (2.0.1)
@@ -145,11 +142,9 @@ PLATFORMS
 
 DEPENDENCIES
   compass-rails
-  configliere
   curb
   esp-commons
   hashie
-  hoptoad_notifier
   jquery-rails
   kaminari
   openteam-commons
@@ -159,4 +154,3 @@ DEPENDENCIES
   stop_ie
   therubyracer
   uglifier
-  unicorn

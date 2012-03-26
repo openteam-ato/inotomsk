@@ -1,6 +1,5 @@
 source :rubygems
 
-gem 'configliere'
 gem 'curb'
 gem 'esp-commons'
 gem 'hashie'
@@ -16,9 +15,4 @@ group :assets do
   gem 'sass-rails'
   gem 'therubyracer'                                unless RUBY_PLATFORM =~ /freebsd/
   gem 'uglifier'
-end
-
-group :production do
-  gem 'hoptoad_notifier'
-  gem 'unicorn',            :require => false       unless ENV['SHARED_DATABASE_URL']
 end
