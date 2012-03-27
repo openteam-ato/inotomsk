@@ -7,7 +7,7 @@ gem 'jquery-rails'
 gem 'kaminari'
 gem 'openteam-commons'
 gem 'rails'
-gem 'russian'
+gem 'rails-i18n'
 gem 'stop_ie'
 
 group :assets do
