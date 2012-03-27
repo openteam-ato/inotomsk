@@ -17,7 +17,7 @@ class MainController < ApplicationController
 
   private
     def prepare_locale
-      I18n.locale = request.fullpath.split('/').compact.reject(&:blank?).first || 'ru'
+      I18n.locale = request.fullpath.split('/').map(&:presence).compact.first || 'ru'
     end
 
     def cms_address
