@@ -75,7 +75,7 @@ module ApplicationHelper
         until_arr << "&mdash;<br />"
       end
     end
-    until_arr.delete_if {|x| x == '23:59'}
+    until_arr.delete('23:59')
     (since_arr.reverse + until_arr.reverse).join(' ')
   end
 
