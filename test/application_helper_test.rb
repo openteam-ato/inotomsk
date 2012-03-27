@@ -32,8 +32,16 @@ class ApplicationHelperTest < ActionView::TestCase
     assert_equal "22 марта &mdash;<br /> 24 марта, <span class=\"year\">2012</span>", event_interval("2012-03-22T00:00:00+07:00", "2012-03-24T00:00:00+07:00")
   end
 
+  test "interval helper: 22 марта - 24 марта, 2012 (with 23:59)" do
+    assert_equal "22 марта &mdash;<br /> 24 марта, <span class=\"year\">2012</span>", event_interval("2012-03-22T00:00:00+07:00", "2012-03-24T23:59:00+07:00")
+  end
+
   test "interval helper: 22 марта - 12:00 22 апреля, 2012" do
     assert_equal "22 марта &mdash;<br /> 10:00 22 апреля, <span class=\"year\">2012</span>", event_interval("2012-03-22T00:00:00+07:00", "2012-04-22T10:00:00+07:00")
+  end
+
+  test "interval helper: 22 марта - 22 апреля, 2012 (with 23:59)" do
+    assert_equal "22 марта &mdash;<br /> 22 апреля, <span class=\"year\">2012</span>", event_interval("2012-03-22T00:00:00+07:00", "2012-04-22T23:59:00+07:00")
   end
 
 end
