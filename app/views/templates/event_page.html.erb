@@ -24,7 +24,7 @@
                 </li>
               </ul>
             </div>
-            <%= content_tag :h1, @content_first.part_title if @content_first %>
+            <%= content_tag :h1, @page.title if @content_first %>
             <ul class='months'>
               <% intervals.each_slice(2) do |interval| %>
                 <li<%= " class='selected'" if params[:parts_params] && interval.first.to_s == params[:parts_params][:news_list][:since] && interval.last.to_s == params[:parts_params][:news_list][:until] %>>
@@ -36,6 +36,8 @@
         <% end %>
 
         <%= render_partial_for_region(@content_first) %>
+        <%= render_partial_for_region(@content_second) %>
+        <%= render_partial_for_region(@content_third) %>
       <% end %>
 
     </div>
