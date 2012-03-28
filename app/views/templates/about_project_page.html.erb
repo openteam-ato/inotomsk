@@ -2,6 +2,7 @@
   <div class='content_wrapper'>
     <div class="about_project">
       <div class="content">
+        <%= content_tag :h1, @content_first.part_title if @content_first %>
         <%= render_partial_for_region(@content_first) %>
       </div>
       <%= content_tag :div, render_navigation_with_separator(@content_navigation.content.values.first['children']), :class => 'navigation' if @content_navigation %>
