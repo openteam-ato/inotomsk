@@ -44,7 +44,7 @@
 
     <div class='content_nav'>
 
-      <%= content_tag :div, render("regions/#{@navigation_right.type.underscore}", :object => @navigation_right.content), :class => 'navigation' if @navigation_right %>
+      <%= content_tag :div, render("regions/#{@content_navigation.type.underscore}", :object => @content_navigation.content), :class => 'navigation' if @content_navigation %>
       <%= content_tag :div, yield(:more_like_this), :class => 'more_like_this' if content_for?(:more_like_this) %>
 
     </div>
