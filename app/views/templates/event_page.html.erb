@@ -26,9 +26,9 @@
             </div>
             <%= content_tag :h1, @page.title if @content_first %>
             <ul class='months'>
-              <% intervals.each_slice(2) do |interval| %>
-                <li<%= " class='selected'" if params[:parts_params] && interval.first.to_s == params[:parts_params][:news_list][:since] && interval.last.to_s == params[:parts_params][:news_list][:until] %>>
-                  <a href="<%= "/#{params[:path]}/" %>?parts_params[news_list][since]=<%= interval.first %>&parts_params[news_list][until]=<%= interval.last %>"><%= t("date.month_names")[interval.first.month] %></a>
+              <% (1..12).each do |month| %>
+                <li<%= " class='selected'" if params[:parts_params] && params[:parts_params][:news_list][:interval_year] == Date.today.year.to_s && params[:parts_params][:news_list][:interval_month] == month.to_s %>>
+                  <a href="<%= "/#{params[:path]}/" %>?parts_params[news_list][interval_year]=<%= Date.today.year %>&parts_params[news_list][interval_month]=<%= month %>"><%= t("date.month_names")[month] %></a>
                 </li>
               <% end %>
             </ul>
