@@ -17,9 +17,9 @@
                 <%= link_to 'RSS', @content_first.content.rss_link %>
               </div>
             <% end %>
-            <% if @navigation_top %>
+            <% if @content_header_navigation %>
               <div class='nav'>
-                <%= render "regions/#{@navigation_top.type.underscore}", :object => @navigation_top.content if @navigation_top %>
+                <%= render "regions/#{@content_header_navigation.type.underscore}", :object => @content_header_navigation.content if @content_header_navigation %>
               </div>
             <% end %>
             <%= content_tag :h1, @content_first.part_title if @content_first %>
