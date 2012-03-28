@@ -1,0 +1,12 @@
+<% content_for :content do %>
+  <div class='content_wrapper'>
+    <div class="about_project">
+      <div class="content">
+        <%= render_partial_for_region(@content_first) %>
+      </div>
+      <%= content_tag :div, render_navigation_with_separator(@content_navigation.content.values.first['children']), :class => 'navigation' if @content_navigation %>
+    </div>
+  </div>
+<% end %>
+
+<%= render :template => 'layouts/application' %>
