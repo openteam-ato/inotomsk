@@ -89,7 +89,7 @@
             <span class='triangle'></span>
           </div>
           <div class='description first'>
-            <p class='annotation'><%= link_to truncate(first.title, :length => 130, :separator => ' '), first.link %></p>
+            <p class='annotation'><%= link_to truncate(first.title, :length => 120, :separator => ' '), first.link, :title => first.title %></p>
             <p class='date'><%= l DateTime.parse(first.since), :format => "%d %B %Y" %></p>
           </div>
           <div class='photo second'>
@@ -97,7 +97,7 @@
             <span class='triangle'></span>
           </div>
           <div class='description second'>
-            <p class='annotation'><%= link_to truncate(third.title, :length => 130, :separator => ' '), third.link %></p>
+            <p class='annotation'><%= link_to truncate(third.title, :length => 120, :separator => ' '), third.link, :title => third.title %></p>
             <p class='date'><%= l DateTime.parse(third.since), :format => "%d %B %Y" %></p>
           </div>
           <div class='photo third'>
@@ -105,7 +105,7 @@
             <span class='triangle'></span>
           </div>
           <div class='description third'>
-            <p class='annotation'><%= link_to truncate(second.title, :length => 130, :separator => ' '), second.link %></p>
+            <p class='annotation'><%= link_to truncate(second.title, :length => 120, :separator => ' '), second.link, :title => second.title %></p>
             <p class='date'><%= l DateTime.parse(second.since), :format => "%d %B %Y" %></p>
           </div>
         </div>
@@ -142,14 +142,17 @@
   <div class='calendar_section'>
     <div class='calendar'>
       <% unless @event_list.blank? %>
+      <a name='calendar'></a>
       <h1><a href='/ru/press-tsentr/kalendar-meropriyatiy/'>Календарь мероприятий</a></h1>
+      <% current_page = params[:parts_params] && params[:parts_params][:news_list] && params[:parts_params][:news_list][:events_page] ? params[:parts_params][:news_list][:events_page] : 0 %>
       <div class='left'>
-        <a href='#'>назад</a>
+        <a href='/<%= I18n.locale %>/?parts_params[news_list][events_page]=<%= current_page.to_i - 1 %>#calendar'>назад</a>
       </div>
       <div class='right'>
-        <a href='#'>вперёд</a>
+        <a href='/<%= I18n.locale %>/?parts_params[news_list][events_page]=<%= current_page.to_i + 1 %>#calendar'>вперёд</a>
       </div>
-        <div class='timeline'>
+      <div class='timeline'>
+        <% if @event_list.content.items.any? %>
           <% @event_list.content.items.each do |event| %>
             <div class='event'>
               <p class='day'><%= event_interval(event.event_entry_properties.first.since, event.event_entry_properties.first.until).html_safe %></p>
@@ -159,7 +162,10 @@
               </p>
             </div>
           <% end %>
-        </div>
+        <% else %>
+          <h2>Список мероприятий пуст</h2>
+        <% end %>
+      </div>
       <% end %>
     </div>
     <div class='voting'>

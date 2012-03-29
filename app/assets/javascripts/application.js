@@ -105,6 +105,48 @@ function poll_results() {
   });
 };
 
+function show_alert_message(data) {
+  $("<div id='alert-modal-dialog'></div>").appendTo("body").hide().html(data.responseText.replace(/<head([\s\S]*)\/head>/im, ''));
+  $("#alert-modal-dialog").dialog({
+    title: "Ошибка!",
+    width: 1000,
+    height: 500,
+    modal: true,
+    resizable: false,
+    close: function() {
+      $(this).remove();
+    }
+  });
+};
+
+function change_events_list(page) {
+  page = typeof page !== 'undefined' ? page : 0;
+  $.ajax({
+    url: '?parts_params[news_lis][event_page]=' + page,
+    type: 'GET',
+    success: function(data, textStatus, jqXHR) {
+      // TODO this with data
+    },
+    error: function(jqXHR, textStatus, errorThrown) {
+      show_alert_message(jqXHR);
+    }
+  });
+};
+
+function events_manipulate() {
+  var events_page = 0;
+  $('.calendar .right').click(function() {
+    events_page += 1;
+    //change_events_list(events_page);
+    //return false;
+  });
+  $('.calendar .left').click(function() {
+    events_page -= 1;
+    //change_events_list(events_page);
+    //return false;
+  });
+};
+
 $(function() {
   preload_images([
     "/assets/ajax_loading.gif"
@@ -113,4 +155,5 @@ $(function() {
   init_main_news_list();
   init_main_news_scroll();
   poll_results();
+  events_manipulate();
 });
