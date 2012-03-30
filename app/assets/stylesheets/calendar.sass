@@ -29,6 +29,9 @@ $voting_width: 220px
         overflow: hidden
         width: 36px
         height: 36px
+      &.disabled a
+        cursor: default
+        outline: none
     .left
       top: 70px
       left: -18px
@@ -36,6 +39,10 @@ $voting_width: 220px
         background-position: 0 0
         &:hover
           background-position: 0 -36px
+      &.disabled a
+        background-position: 0 -72px
+        &:hover
+          background-position: 0 -72px
     .right
       top: 70px
       right: -18px
@@ -43,6 +50,10 @@ $voting_width: 220px
         background-position: -36px 0
         &:hover
           background-position: -36px -36px
+      &.disabled a
+        background-position: -36px -72px
+        &:hover
+          background-position: -36px -72px
     .timeline
       $timeline_padding: 20px
       $timeline_width: $container_width - $calendar_margin_right - $calendar_margin_left - $voting_width - $timeline_padding * 2

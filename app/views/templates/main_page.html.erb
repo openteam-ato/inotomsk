@@ -141,19 +141,7 @@
 
   <div class='calendar_section'>
     <div class='calendar'>
-      <% unless @event_list.blank? %>
-      <a name='calendar'></a>
-      <h1><a href='/ru/press-tsentr/kalendar-meropriyatiy/'>Календарь мероприятий</a></h1>
-      <div class='left'>
-        <a href=''>назад</a>
-      </div>
-      <div class='right'>
-        <a href=''>вперёд</a>
-      </div>
-      <div class='timeline'>
-        <%= render_partial_for_region(@event_list) %>
-      </div>
-      <% end %>
+      <%= render_partial_for_region(@event_list) %>
     </div>
     <div class='voting'>
       <% if locale.eql?(:ru) %>

@@ -1,13 +1,24 @@
-<% if object.items.any? %>
-  <% object.items.each do |event| %>
-    <div class='event'>
-      <p class='day'><%= event_interval(event.event_entry_properties.first.since, event.event_entry_properties.first.until).html_safe %></p>
-      <p class='separator'>&nbsp;</p>
-      <p class='title'>
-        <%= link_to strip_tags(event.title), event.link %>
-      </p>
-    </div>
-  <% end %>
-<% else %>
-  <h2>Список мероприятий пуст</h2>
+<% unless object.blank? %>
+  <h1><a href='/ru/press-tsentr/kalendar-meropriyatiy/'>Календарь мероприятий</a></h1>
+  <div class='left<%= ' disabled' if object.first_page %>'>
+    <a href=''>назад</a>
+  </div>
+  <div class='right<%= ' disabled' if object.last_page %>'>
+    <a href=''>вперёд</a>
+  </div>
+  <div class='timeline'>
+    <% if object.items.any? %>
+      <% object.items.each do |event| %>
+        <div class='event'>
+          <p class='day'><%= event_interval(event.event_entry_properties.first.since, event.event_entry_properties.first.until).html_safe %></p>
+          <p class='separator'>&nbsp;</p>
+          <p class='title'>
+            <%= link_to strip_tags(event.title), event.link %>
+          </p>
+        </div>
+      <% end %>
+    <% else %>
+      <h2>Список мероприятий пуст</h2>
+    <% end %>
+  </div>
 <% end %>

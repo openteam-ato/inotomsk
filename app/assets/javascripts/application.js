@@ -137,7 +137,7 @@ function change_events_list(page, position) {
       loader = set_event_ajax_loader(position);
     },
     success: function(data, textStatus, jqXHR) {
-      $('.calendar .timeline').html(jqXHR.responseText);
+      $('.calendar_section .calendar').html(jqXHR.responseText);
       loader.remove();
     },
     error: function(jqXHR, textStatus, errorThrown) {
@@ -149,12 +149,14 @@ function change_events_list(page, position) {
 
 function events_manipulate() {
   var events_page = 0;
-  $('.calendar .right a').click(function() {
+  $('.calendar .right a').live('click', function() {
+    if ($(this).parent().hasClass('disabled')) return false;
     events_page += 1;
     change_events_list(events_page, $(this).parent().attr('class'));
     return false;
   });
-  $('.calendar .left a').click(function() {
+  $('.calendar .left a').live('click', function() {
+    if ($(this).parent().hasClass('disabled')) return false;
     events_page -= 1;
     change_events_list(events_page, $(this).parent().attr('class'));
     return false;
