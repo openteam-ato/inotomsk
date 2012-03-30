@@ -4,6 +4,45 @@
 .content_wrapper .about_project
   margin-left: 30px
 
+  .presentation
+    +clearfix
+    .accordion
+      float: right
+      width: 200px
+      padding: 10px
+      background-color: #fff
+      +border-radius(10px)
+      +single-box-shadow(#aaa, 0, 1px, 2px)
+      margin: 0 2px 2px 0
+      & > li
+        font-size: 14px
+        margin: 1px 0
+        & > p > a
+          display: block
+          color: #262533
+          text-decoration: none
+          background-color: #f5f2fb
+          +border-radius(7px)
+          padding: 10px
+          span
+            color: #939290
+            font-style: italic
+          &:hover
+            color: #fff
+            background-color: #a41162
+            span
+              color: #fff
+        ul
+          display: none
+        &.selected
+          & > p > a
+            color: #fff
+            background-color: #a41162
+            span
+              color: #fff
+          ul
+            display: block
+
   .navigation
     background-color: #fff
     +border-radius(10px)

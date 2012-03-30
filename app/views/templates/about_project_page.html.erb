@@ -1,9 +1,50 @@
 <% content_for :content do %>
   <div class='content_wrapper'>
     <div class="about_project">
-      <div class="content">
-        <%= content_tag :h1, @content_first.part_title if @content_first %>
-        <%= render_partial_for_region(@content_first) %>
+      <div class="presentation">
+        <%= javascript_include_tag "presentation" %>
+        <%#= content_tag :h1, @content_first.part_title if @content_first %>
+        <%#= render_partial_for_region(@content_first) %>
+        <ul class='accordion'>
+          <li>
+            <p><a href="#tab-1">ИНОТомск’2020</a></p>
+          </li>
+          <li class="selected">
+            <p><a href="#tab-2">Почему Томск <span>(предпосылки)</span></a></p>
+            <ul>
+              <li><a href="#">15 лет инновационного развития</a></li>
+              <li><a href="#">Уникальный научно-образовательный комплекс</a></li>
+              <li><a href="#">Университеты — лидеры российского высшего образования</a></li>
+              <li><a href="#">Развитая инфраструктура инновационной деятельности</a></li>
+              <li><a href="#">Особая экономическая зона технико-внедренческого типа «Томск»</a></li>
+              <li><a href="#">Предпринимательская среда</a></li>
+              <li><a href="#">Показатели роста</a></li>
+            </ul>
+          </li>
+          <li>
+            <p><a href="#tab-3">Преодоление ограничений <span>(задачи и действия)</span></a></p>
+            <ul>
+              <li><a href="#">Этапы</a></li>
+              <li><a href="#">Развитие научно-образовательного парка</a></li>
+              <li><a href="#">Развитие инновационной инфраструктуры</a></li>
+              <li><a href="#">Развитие транспортной инфраструктуры</a></li>
+              <li><a href="#">Развитие социальной инфраструктуры</a></li>
+              <li><a href="#">Финансирование</a></li>
+            </ul>
+          </li>
+          <li>
+            <p><a href="#tab-4">Комфортная среда <span>(результаты)</span></a></p>
+            <ul>
+              <li><a href="#">Центр с уникальной предпринимательской средой</a></li>
+              <li><a href="#">Для России и Томской области</a></li>
+              <li><a href="#">Для науки и образования</a></li>
+              <li><a href="#">Для бизнеса</a></li>
+              <li><a href="#">Для населения</a></li>
+              <li><a href="#">Для России и мира</a></li>
+              <li><a href="#">Целевые индикаторы проекта</a></li>
+            </ul>
+          </li>
+        </ul>
       </div>
       <%= content_tag :div, render_navigation_with_separator(@content_navigation.content.values.first['children']), :class => 'navigation' if @content_navigation %>
     </div>
