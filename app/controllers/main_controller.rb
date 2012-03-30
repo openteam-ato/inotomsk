@@ -2,15 +2,22 @@ class MainController < ApplicationController
   helper_method :cms_address
   before_filter :prepare_locale
 
+  include ApplicationHelper
+
   def index
     render :file => "#{Rails.root}/public/404.html", :layout => false and return if request_status == 404
+
+    if request.xhr?
+      render_partial_for_region(request_hashie)
+
+      return
+    end
 
     page_regions.each do |region|
       eval "@#{region} = page.regions.#{region}"
     end
 
     @page_title = page.title
-
 
     render "templates/#{page.template}"
   end
@@ -26,21 +33,21 @@ class MainController < ApplicationController
 
     def remote_url
       request_path, parts_params = request.fullpath.split('?')
-
-      # TODO: выяснить нужно ли энкодить
-      #parts_params = URI.encode(parts_params || '')
-
       "#{cms_address}#{request_path.split('/').compact.join('/')}.json?#{parts_params}"
     end
 
     def page
-      @page ||= Hashie::Mash.new(request_json).page
+      @page ||= request_hashie.page
     end
 
     def curl_request
       @curl_request ||= Curl::Easy.perform(remote_url) do |curl|
         curl.headers['Accept'] = 'application/json'
       end
+    end
+
+    def request_hashie
+      @request_hashie ||= Hashie::Mash.new(request_json)
     end
 
     def request_status

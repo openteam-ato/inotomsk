@@ -122,10 +122,10 @@ function show_alert_message(data) {
 function change_events_list(page) {
   page = typeof page !== 'undefined' ? page : 0;
   $.ajax({
-    url: '?parts_params[news_lis][event_page]=' + page,
+    url: '?parts_params[news_list][events_page]=' + page + '&region=event_list',
     type: 'GET',
     success: function(data, textStatus, jqXHR) {
-      // TODO this with data
+      $('.calendar .timeline').html(jqXHR.responseText);
     },
     error: function(jqXHR, textStatus, errorThrown) {
       show_alert_message(jqXHR);
@@ -137,13 +137,13 @@ function events_manipulate() {
   var events_page = 0;
   $('.calendar .right').click(function() {
     events_page += 1;
-    //change_events_list(events_page);
-    //return false;
+    change_events_list(events_page);
+    return false;
   });
   $('.calendar .left').click(function() {
     events_page -= 1;
-    //change_events_list(events_page);
-    //return false;
+    change_events_list(events_page);
+    return false;
   });
 };
 

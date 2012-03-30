@@ -1,0 +1,13 @@
+<% if object.items.any? %>
+  <% object.items.each do |event| %>
+    <div class='event'>
+      <p class='day'><%= event_interval(event.event_entry_properties.first.since, event.event_entry_properties.first.until).html_safe %></p>
+      <p class='separator'>&nbsp;</p>
+      <p class='title'>
+        <%= link_to strip_tags(event.title), event.link %>
+      </p>
+    </div>
+  <% end %>
+<% else %>
+  <h2>Список мероприятий пуст</h2>
+<% end %>

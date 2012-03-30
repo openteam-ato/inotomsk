@@ -152,19 +152,7 @@
         <a href='/<%= I18n.locale %>/?parts_params[news_list][events_page]=<%= current_page.to_i + 1 %>#calendar'>вперёд</a>
       </div>
       <div class='timeline'>
-        <% if @event_list.content.items.any? %>
-          <% @event_list.content.items.each do |event| %>
-            <div class='event'>
-              <p class='day'><%= event_interval(event.event_entry_properties.first.since, event.event_entry_properties.first.until).html_safe %></p>
-              <p class='separator'>&nbsp;</p>
-              <p class='title'>
-                <%= link_to strip_tags(event.title), event.link %>
-              </p>
-            </div>
-          <% end %>
-        <% else %>
-          <h2>Список мероприятий пуст</h2>
-        <% end %>
+        <%= render_partial_for_region(@event_list) %>
       </div>
       <% end %>
     </div>
