@@ -119,37 +119,51 @@ function show_alert_message(data) {
   });
 };
 
-function change_events_list(page) {
+function set_event_ajax_loader(position) {
+  var loader = $('<div />').addClass('run_ajax').css({'top': '115px', position: '-8px'});
+  if (position == 'right') loader.css('right', '-8px');
+  if (position == 'left') loader.css('left', '-8px');
+  $('.calendar .timeline').before(loader);
+  return loader;
+};
+
+function change_events_list(page, position) {
   page = typeof page !== 'undefined' ? page : 0;
+  var loader = new Object();
   $.ajax({
     url: '?parts_params[news_list][events_page]=' + page + '&region=event_list',
     type: 'GET',
+    beforeSend: function(jqXHR, settings) {
+      loader = set_event_ajax_loader(position);
+    },
     success: function(data, textStatus, jqXHR) {
       $('.calendar .timeline').html(jqXHR.responseText);
+      loader.remove();
     },
     error: function(jqXHR, textStatus, errorThrown) {
       show_alert_message(jqXHR);
+      loader.remove();
     }
   });
 };
 
 function events_manipulate() {
   var events_page = 0;
-  $('.calendar .right').click(function() {
+  $('.calendar .right a').click(function() {
     events_page += 1;
-    change_events_list(events_page);
+    change_events_list(events_page, $(this).parent().attr('class'));
     return false;
   });
-  $('.calendar .left').click(function() {
+  $('.calendar .left a').click(function() {
     events_page -= 1;
-    change_events_list(events_page);
+    change_events_list(events_page, $(this).parent().attr('class'));
     return false;
   });
 };
 
 $(function() {
   preload_images([
-    "/assets/ajax_loading.gif"
+    '/assets/ajax_loading.gif'
   ]);
   init_caruselko();
   init_main_news_list();

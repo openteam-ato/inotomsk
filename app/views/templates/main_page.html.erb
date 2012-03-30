@@ -144,12 +144,11 @@
       <% unless @event_list.blank? %>
       <a name='calendar'></a>
       <h1><a href='/ru/press-tsentr/kalendar-meropriyatiy/'>Календарь мероприятий</a></h1>
-      <% current_page = params[:parts_params] && params[:parts_params][:news_list] && params[:parts_params][:news_list][:events_page] ? params[:parts_params][:news_list][:events_page] : 0 %>
       <div class='left'>
-        <a href='/<%= I18n.locale %>/?parts_params[news_list][events_page]=<%= current_page.to_i - 1 %>#calendar'>назад</a>
+        <a href=''>назад</a>
       </div>
       <div class='right'>
-        <a href='/<%= I18n.locale %>/?parts_params[news_list][events_page]=<%= current_page.to_i + 1 %>#calendar'>вперёд</a>
+        <a href=''>вперёд</a>
       </div>
       <div class='timeline'>
         <%= render_partial_for_region(@event_list) %>
