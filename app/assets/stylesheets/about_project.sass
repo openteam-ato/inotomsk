@@ -1,14 +1,19 @@
 @import 'compass/utilities'
 @import 'compass/css3'
 
+$container_width: 920px
+$menu_width: 200px
+$content_padding: 30px
+
 .content_wrapper .about_project
   margin-left: 30px
 
   .presentation
     +clearfix
+
     .accordion
       float: right
-      width: 200px
+      width: $menu_width
       padding: 10px
       background-color: #fff
       position: relative
@@ -61,6 +66,20 @@
               color: #fff
           ul
             display: block
+            > .selected a
+              background-color: #fffae4
+
+    .content
+      +min-height(400px)
+      +border-radius(10px)
+      +single-box-shadow(#aaa, 0, 0, 5px)
+      background: #fff url('about_project_presentation_bg.png') no-repeat right bottom
+      padding: $content_padding ($content_padding + $menu_width) ($content_padding - 15px) $content_padding
+      margin: 10px 10px 0 10px
+      div
+        display: none
+      #tab-1
+        display: block
 
   .navigation
     background-color: #fff
