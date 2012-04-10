@@ -24,6 +24,7 @@
           text-decoration: none
           background-color: #f5f2fb
           +border-radius(7px)
+          outline: none
           padding: 10px
           span
             color: #939290
@@ -35,7 +36,24 @@
               color: #fff
         ul
           display: none
+          li
+            border-bottom: 1px solid #d9d9d9
+            &:last-child
+              border-bottom: none
+            a
+              display: block
+              color: #929292
+              font-size: 12px
+              text-decoration: none
+              padding: 10px
+              &:hover
+                background-color: #fffae4
+            &:first-child
+              a:hover
+                background: #fffae4 url('about_project_menu_triangle.png') no-repeat 10px top
         &.selected
+          ul
+            background: transparent url('about_project_menu_triangle.png') no-repeat 10px top
           & > p > a
             color: #fff
             background-color: #a41162
