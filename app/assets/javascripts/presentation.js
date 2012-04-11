@@ -5,10 +5,18 @@ function set_location(elem) {
 };
 
 function trigger_main_items() {
-  if (window.location.hash) {
-    window.scrollTo(0, 0);
-  };
   var speed_animation = 200;
+  if (window.location.hash) {
+    var id = window.location.hash;
+    window.location.hash = '';
+    $('.accordion li').removeClass('selected');
+    $('a[href=' + id + ']').parents('li').addClass('selected');
+    $('.presentation .content div:visible').hide();
+    $('.presentation .content ' + id).show();
+    var offset_y = window.scrollY;
+    window.location.hash = id;
+    window.scrollTo(0, offset_y);
+  };
   $('.presentation .accordion > li > p > a').click(function(e) {
     var link = $(this),
         clicked_item = link.closest('li'),
