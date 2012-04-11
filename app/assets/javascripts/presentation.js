@@ -1,6 +1,15 @@
+function set_location(elem) {
+  var offset_y = window.scrollY;
+  window.location.hash = elem.attr('href');
+  window.scrollTo(0, offset_y);
+};
+
 function trigger_main_items() {
+  if (window.location.hash) {
+    window.scrollTo(0, 0);
+  };
   var speed_animation = 200;
-  $('.presentation .accordion > li > p > a').click(function() {
+  $('.presentation .accordion > li > p > a').click(function(e) {
     var link = $(this),
         clicked_item = link.closest('li'),
         selected_item = $('.selected', link.closest('.accordion'));
@@ -16,29 +25,36 @@ function trigger_main_items() {
         if ($('.presentation .content ' + $('a', first_submenu).attr('href')).length) {
           $('.presentation .content div:visible').fadeOut(speed_animation, function() {
             $('.presentation .content ' + $('a', first_submenu).attr('href')).fadeIn(speed_animation);
+            set_location($('a', first_submenu));
           });
         };
       } else {
         $('.presentation .content div:visible').fadeOut(speed_animation, function() {
           $('.presentation .content ' + link.attr('href')).fadeIn(speed_animation);
+          set_location(link);
         });
       };
     };
+    e.preventDefault();
     return false;
   });
-  $('.presentation .accordion > li > ul > li > a').click(function() {
+  $('.presentation .accordion > li > ul > li > a').click(function(e) {
     var link = $(this);
     if (!link.parent().hasClass('selected') && $('.presentation .content ' + link.attr('href')).length) {
       link.parent().siblings().removeClass('selected');
       link.parent().addClass('selected');
       $('.presentation .content div:visible').fadeOut(speed_animation, function() {
         $('.presentation .content ' + link.attr('href')).fadeIn(speed_animation);
+        set_location(link);
       });
     };
+    e.preventDefault();
     return false;
   });
 };
 
 $(function() {
-  trigger_main_items();
+  if ($('.presentation').length) {
+    trigger_main_items();
+  };
 });
