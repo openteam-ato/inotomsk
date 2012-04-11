@@ -2,7 +2,7 @@
 @import 'compass/css3'
 
 $container_width: 920px
-$menu_width: 210px
+$menu_width: 230px
 $content_padding: 30px
 
 .content_wrapper .about_project
@@ -40,7 +40,7 @@ $content_padding: 30px
           background-color: #f5f2fb
           +border-radius(7px)
           outline: none
-          padding: 10px
+          padding: 10px 20px
           span
             color: #939290
             font-style: italic
@@ -60,16 +60,16 @@ $content_padding: 30px
               color: #929292
               font-size: 12px
               text-decoration: none
-              padding: 10px
+              padding: 10px 20px
               &:hover
                 color: #515151
                 background-color: #fffae4
             &:first-child
               a:hover
-                background: #fffae4 url('about_project_menu_triangle.png') no-repeat 10px top
+                background: #fffae4 url('about_project_menu_triangle.png') no-repeat 20px top
         &.selected
           ul
-            background: transparent url('about_project_menu_triangle.png') no-repeat 10px top
+            background: transparent url('about_project_menu_triangle.png') no-repeat 20px top
           & > p > a
             color: #fff
             background-color: #a41162
@@ -81,7 +81,7 @@ $content_padding: 30px
               color: #252535
               background-color: #fffae4
           ul > li:first-child.selected a
-            background: #fffae4 url('about_project_menu_triangle.png') no-repeat 10px top
+            background: #fffae4 url('about_project_menu_triangle.png') no-repeat 20px top
 
     .content
       +min-height(600px)
@@ -122,9 +122,14 @@ $content_padding: 30px
         padding-top: 200px
         padding-left: 150px
         h1
-          font-size: 40px
-          font-family: 'header_normal'
+          font-size: 42px
           text-align: left
+          font-family: 'header_light'
+          span
+            font-family: 'header_medium'
+        p
+          line-height: 1.8
+          margin-top: 10px
 
   .navigation
     background-color: #fff
