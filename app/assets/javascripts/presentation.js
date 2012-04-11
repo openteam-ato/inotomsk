@@ -17,6 +17,10 @@ function trigger_main_items() {
     window.location.hash = id;
     window.scrollTo(0, offset_y);
   };
+  $('.presentation .accordion li.important').each(function() {
+    $(this).prepend('<span class=\'icon\' />');
+    $('.presentation .content ' + $('a', this).attr('href') + ' h3 ').addClass('important').prepend('<span class=\'icon\' />');
+  });
   $('.presentation .accordion > li > p > a').click(function(e) {
     var link = $(this),
         clicked_item = link.closest('li'),

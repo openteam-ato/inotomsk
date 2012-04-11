@@ -67,6 +67,16 @@ $content_padding: 30px
             &:first-child
               a:hover
                 background: #fffae4 url('about_project_menu_triangle.png') no-repeat 20px top
+            &.important
+              position: relative
+              .icon
+                display: block
+                position: absolute
+                top: 11px
+                left: 0
+                width: 20px
+                height: 16px
+                background: transparent url('about_project_menu_important.png') no-repeat
         &.selected
           ul
             background: transparent url('about_project_menu_triangle.png') no-repeat 20px top
@@ -109,6 +119,18 @@ $content_padding: 30px
         padding: 20px 50px
         margin-top: 15px
         margin-bottom: 20px
+        &.important
+          position: relative
+          padding-bottom: 30px
+          margin-bottom: 30px
+          .icon
+            display: block
+            position: absolute
+            width: 65px
+            height: 32px
+            bottom: -16px
+            left: 590px / 2 - 65px / 2
+            background: transparent url('about_project_content_important.png') no-repeat
       p, li
         font-size: 16px
         line-height: 1.6
