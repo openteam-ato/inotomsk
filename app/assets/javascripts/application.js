@@ -46,11 +46,17 @@ function init_main_news_list() {
   $('.news_container .news_list ul li:first').addClass('selected');
   var image_container = $('.news_container .picture');
   $('.news_container .news_list ul li .title a').hover(function () {
-    $('img', image_container).attr('src', $('img', $(this).closest('li')).attr('src'));
-    $('.description .text', image_container).html($('.annotation', $(this).closest('li')).html());
-    $('.description .date', image_container).html($('.date', $(this).closest('li')).html());
-    $('li', $(this).closest('ul')).removeClass('selected');
-    $(this).closest('li').addClass('selected');
+    var $this = $(this);
+    if ($('img', image_container).attr('src') != $('img', $this.closest('li')).attr('src')) {
+      $('img', image_container).stop(true).animate({ opacity: 0.2 }, 200, function() {
+        $('img', image_container).attr('src', $('img', $this.closest('li')).attr('src'));
+        $('img', image_container).stop(true).animate({ opacity: 1 }, 200);
+      });
+      $('.description .text', image_container).html($('.annotation', $(this).closest('li')).html());
+      $('.description .date', image_container).html($('.date', $(this).closest('li')).html());
+      $('li', $(this).closest('ul')).removeClass('selected');
+      $(this).closest('li').addClass('selected');
+    };
   });
 };
 
