@@ -77,7 +77,7 @@
   <% end %>
 
   <div class='belief_section'>
-    <%= content_tag(:h1, link_to("Мнения о проекте", "/ru/tochka-zreniya/mneniya-o-proekte/")) unless @belief_list.blank? %>
+    <%= content_tag(:h1, link_to(@belief_list.part_title, "/#{ locale }/tochka-zreniya/mneniya-o-proekte/")) unless @belief_list.blank? %>
     <div class='two_column'>
       <% unless @belief_list.blank? %>
         <% first = @belief_list.content.items.first %>
@@ -89,7 +89,7 @@
             <span class='triangle'></span>
           </div>
           <div class='description first'>
-            <p class='annotation'><%= link_to truncate(first.title, :length => 120, :separator => ' '), first.link, :title => first.title %></p>
+            <p class='annotation'><%= link_to raw(truncate(first.title, :length => 120, :separator => ' ')), first.link, :title => raw(first.title) %></p>
             <p class='date'><%= l DateTime.parse(first.since), :format => "%d %B %Y" %></p>
           </div>
           <div class='photo second'>
@@ -97,7 +97,7 @@
             <span class='triangle'></span>
           </div>
           <div class='description second'>
-            <p class='annotation'><%= link_to truncate(third.title, :length => 120, :separator => ' '), third.link, :title => third.title %></p>
+            <p class='annotation'><%= link_to raw(truncate(third.title, :length => 120, :separator => ' ')), third.link, :title => raw(third.title) %></p>
             <p class='date'><%= l DateTime.parse(third.since), :format => "%d %B %Y" %></p>
           </div>
           <div class='photo third'>
@@ -105,7 +105,7 @@
             <span class='triangle'></span>
           </div>
           <div class='description third'>
-            <p class='annotation'><%= link_to truncate(second.title, :length => 120, :separator => ' '), second.link, :title => second.title %></p>
+            <p class='annotation'><%= link_to raw(truncate(second.title, :length => 120, :separator => ' ')), second.link, :title => raw(second.title) %></p>
             <p class='date'><%= l DateTime.parse(second.since), :format => "%d %B %Y" %></p>
           </div>
         </div>
