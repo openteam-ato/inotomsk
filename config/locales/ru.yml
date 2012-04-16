@@ -15,6 +15,7 @@ ru:
   development: "Разработка"
   design: "Дизайн"
   source_link: "Источник:"
+  share_this: "Поделиться:"
 
   errors:
     news_item_part:
