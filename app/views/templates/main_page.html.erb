@@ -1,13 +1,23 @@
 <% content_for :content do %>
 
-  <% if @news_list %>
+  <% unless @news_list.blank? %>
     <div class='news_section'>
       <ul class='nav'>
-        <li><a href='/ru/press-tsentr/novosti-innovatsiy/v-mire/'>В мире</a></li>
-        <li><a href='/ru/press-tsentr/novosti-innovatsiy/v-rossii/'>В России</a></li>
-        <li class='selected'><a href='/ru/press-tsentr/novosti-innovatsiy/v-tomske/'>В Томске</a></li>
+        <% if locale.eql?(:ru) %>
+          <li><a href='/<%= locale %>/press-tsentr/novosti-innovatsiy/v-mire/'>В мире</a></li>
+          <li><a href='/<%= locale %>/press-tsentr/novosti-innovatsiy/v-rossii/'>В России</a></li>
+          <li class='selected'><a href='/<%= locale %>/press-tsentr/novosti-innovatsiy/v-tomske/'>В Томске</a></li>
+        <% end %>
+        <% if locale.eql?(:en) %>
+          <li class='selected'><a href='/<%= locale %>/press-tsentr/novosti-innovatsiy/'><%= @news_list.part_title %></a></li>
+        <% end %>
       </ul>
-      <h1><a href='/ru/press-tsentr/novosti-innovatsiy/v-tomske/'>Новости инноваций в Томске</a></h1>
+      <% if locale.eql?(:ru) %>
+        <h1><a href='/<%= locale %>/press-tsentr/novosti-innovatsiy/v-tomske/'>Новости инноваций в Томске</a></h1>
+      <% end %>
+      <% if locale.eql?(:en) %>
+        <h1><a href='/<%= locale %>/press-tsentr/novosti-innovatsiy/'><%= @news_list.part_title %></a></h1>
+      <% end %>
       <div class='news_container'>
         <div class='inner_wrapper'>
           <div class='picture'>
@@ -41,7 +51,12 @@
                 <% end %>
               </ul>
             <% end %>
-            <p class='all_news'><a href='/ru/press-tsentr/novosti-innovatsiy/v-tomske/'>Все новости</a></p>
+            <% if locale.eql?(:ru) %>
+              <p class='all_news'><a href='/ru/press-tsentr/novosti-innovatsiy/v-tomske/'>Все новости</a></p>
+            <% end %>
+            <% if locale.eql?(:en) %>
+              <p class='all_news'><a href='/ru/press-tsentr/novosti-innovatsiy/'>All news</a></p>
+            <% end %>
           </div>
         </div>
       </div>
@@ -50,7 +65,7 @@
 
   <% unless @interview_list.blank? %>
     <div class='interviews_section'>
-      <h1><a href='/ru/analiticheskie-materialy/intervyu-s-ekspertami/'>Интервью с экспертами</a></h1>
+      <%= content_tag(:h1, link_to(@interview_list.part_title, "/#{ locale }/analiticheskie-materialy/intervyu-s-ekspertami/")) unless @interview_list.blank? %>
       <ul>
         <% @interview_list.content.items.each do | interview | %>
           <li>

@@ -14,6 +14,7 @@ ru:
   tel: "Тел."
   development: "Разработка"
   design: "Дизайн"
+  source_link: "Источник:"
 
   errors:
     news_item_part:
