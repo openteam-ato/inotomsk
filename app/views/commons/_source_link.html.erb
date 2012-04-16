@@ -1,6 +1,6 @@
 <% unless object.source.blank? %>
   <div class='source'>
-    <b><%= t('source') %></b>
+    <b><%= t('source_link') %></b>
     <% unless object.source_link.blank? %>
       <%= link_to object.source, object.source_link, :rel => :nofollow, :target => '_blank' %>
     <% else %>
