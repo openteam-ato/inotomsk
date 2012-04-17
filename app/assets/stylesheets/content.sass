@@ -317,6 +317,37 @@ $content_nav_padding: 12px
                 background: transparent url('clock_gray.png') no-repeat left
                 margin-left: 5px
 
+    .photo_albums
+      ul
+        +clearfix
+        margin-bottom: 15px
+        li
+          float: left
+          width: 226px
+          .image
+            background: transparent url("mediateka_photo_bg.png") no-repeat
+            padding: 17px 7px 11px 21px
+            margin-bottom: 5px
+          .title
+            font-size: 11px
+            margin: 0 10px 5px 15px
+            a
+              color: #252535
+              font-weight: bold
+              text-decoration: none
+              &:hover
+                color: #d8287d
+            .count
+              color: #94948c
+          .date
+            font-size: 10px
+            color: #94948c
+            margin-left: 15px
+            .time
+              padding-left: 15px
+              background: transparent url('clock_gray.png') no-repeat left
+              margin-left: 5px
+
   .entry_show
     font-size: 1.15em
     .date
