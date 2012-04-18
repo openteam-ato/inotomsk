@@ -171,6 +171,33 @@ function events_manipulate() {
   });
 };
 
+function photo_album_manipulate() {
+  var container = $('.photo_album_show');
+  if (container.length) {
+    $('.thumbnails a', container).click(function() {
+      var link = $(this),
+          li = link.closest('li'),
+          target_src = link.attr('href'),
+          target_size = target_src.match(new RegExp(/\d+-\d+/))[0].split('-'),
+          target_width = target_size[0],
+          target_height = target_size[1],
+          target_description = $('img', link).attr('alt'),
+          source_img = $('.image img', container),
+          source_description = $('.description', container);
+      li.siblings().removeClass('selected');
+      li.addClass('selected');
+      source_img.attr({
+        'src': target_src,
+        'width': target_width,
+        'height': target_height,
+        'alt': target_description
+      });
+      source_description.html(target_description);
+      return false;
+    });
+  };
+};
+
 $(function() {
   preload_images([
     '/assets/ajax_loading.gif'
@@ -180,4 +207,5 @@ $(function() {
   init_main_news_scroll();
   poll_results();
   events_manipulate();
+  photo_album_manipulate();
 });
