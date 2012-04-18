@@ -536,11 +536,34 @@ $content_nav_padding: 12px
       ul
         +clearfix
         background-color: #e8ebfc
+        $thumb_width: 82px
+        $thumb_heidht: 55px
+        $hover_border: 3px
         li
           float: left
-          width: 82px
-          height: 55px
+          width: $thumb_width
+          height: $thumb_heidht
+          position: relative
           margin: 0 0 1px 1px
+          a
+            display: block
+            width: $thumb_width
+            height: $thumb_heidht
+            position: relative
+            span
+              display: none
+              position: absolute
+              top: 0
+              left: 0
+              width: $thumb_width - $hover_border * 2
+              height: $thumb_heidht - $hover_border * 2
+              border: $hover_border solid #d8287d
+            &:hover span
+              display: block
+          &.selected
+            background-color: #a41162
+            img
+              +opacity(0.5)
 
   .addthis_toolbox
     border: 1px solid #ccc

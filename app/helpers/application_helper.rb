@@ -90,10 +90,11 @@ module ApplicationHelper
   end
 
   def album_thumbnail(image, width = 176, height = 116)
-    image.width = width
-    image.height = height
-    image.url.gsub!(/\d+-\d+/, "#{width}-#{height}!")
-    image_tag_for(image)
+    image_dup = image.dup
+    image_dup.width = width
+    image_dup.height = height
+    image_dup.url = image.url.gsub(/\d+-\d+/, "#{width}-#{height}!")
+    image_tag_for(image_dup)
   end
 
 end

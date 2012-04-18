@@ -16,7 +16,9 @@
       <div class="thumbnails">
         <ul>
           <% object.images.each_with_index do | element, index | %>
-            <li<%= " class='selected'" if index.eql?(0) %>><%= album_thumbnail(element.thumbnail, 82, 55) %></li>
+            <li<%= " class='selected'" if index.eql?(0) %>>
+              <%= link_to raw("#{ album_thumbnail(element.thumbnail, 82, 55) } #{ content_tag :span }"), element.thumbnail.url %>
+            </li>
           <% end %>
         </ul>
       </div>
