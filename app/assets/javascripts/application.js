@@ -50,6 +50,8 @@ function init_main_news_list() {
     if ($('img', image_container).attr('src') != $('img', $this.closest('li')).attr('src')) {
       $('img', image_container).stop(true).animate({ opacity: 0.2 }, 100, function() {
         $('img', image_container).attr('src', $('img', $this.closest('li')).attr('src'));
+        $('img', image_container).attr('width', $('img', $this.closest('li')).attr('width'));
+        $('img', image_container).attr('height', $('img', $this.closest('li')).attr('height'));
         $('img', image_container).stop(true).animate({ opacity: 1 }, 250);
       });
       $('.description .text', image_container).html($('.annotation', $(this).closest('li')).html());
