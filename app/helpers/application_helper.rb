@@ -89,10 +89,10 @@ module ApplicationHelper
     res
   end
 
-  def album_thumbnail(image)
-    image.width = 176
-    image.height = 116
-    image.url.gsub!(/\d+-\d+/, '176-116!')
+  def album_thumbnail(image, width = 176, height = 116)
+    image.width = width
+    image.height = height
+    image.url.gsub!(/\d+-\d+/, "#{width}-#{height}!")
     image_tag_for(image)
   end
 

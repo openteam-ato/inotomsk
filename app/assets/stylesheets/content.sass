@@ -503,11 +503,50 @@ $content_nav_padding: 12px
             background: transparent url('clock_gray.png') no-repeat left
             margin-left: 5px
 
+  .photo_album_show
+    margin-bottom: 2px
+    .date
+      color: #94948c
+      font-size: 0.8em
+      margin-bottom: 15px
+      .time
+        padding-left: 15px
+        background: transparent url('clock_gray.png') no-repeat left
+        margin-left: 5px
+    .image_container
+      +clearfix
+      background-color: #fff
+      +single-box-shadow(#aaa, 0, 0, 2px)
+      .image
+        text-align: center
+        margin: 8px 8px 5px 8px
+        img
+          margin: auto
+      .description
+        color: #94948c
+        font-weight: bold
+        text-align: center
+        margin-bottom: 10px
+    .thumbnails
+      +clearfix
+      background-color: #fff
+      +single-box-shadow(#aaa, 0, 0, 1px)
+      margin-top: 20px
+      padding: 8px
+      ul
+        +clearfix
+        background-color: #e8ebfc
+        li
+          float: left
+          width: 82px
+          height: 55px
+          margin: 0 0 1px 1px
+
   .addthis_toolbox
     border: 1px solid #ccc
     border-left: none
     border-right: none
-    color: #94948C
+    color: #94948c
     margin: 20px 0
     padding: 15px 0 5px 0
 
