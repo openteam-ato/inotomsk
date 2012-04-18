@@ -141,12 +141,15 @@
               <p class='more'><a href='/ru/press-tsentr/videobank/'>Всё видео</a></p>
             </div>
             <div class='photo'>
-              <div class='thumbnail'>
-                <a href='#'><img src='/assets/fake/photo.jpg' alt='' width='176' height='116'/></a>
-              </div>
-              <p class='title'>Презентация &laquo;Машинстройкомплекта&raquo; в Томской области</p>
-              <p class='date'>23 октября</p>
-              <p class='more'><a href='#'>Всё фото</a></p>
+              <% if !@last_photo.blank? && @last_photo.response_status == 200 %>
+                <div class='thumbnail'>
+                  <% photo = @last_photo.content.items.first %>
+                  <%= link_to album_thumbnail(photo.images.first.thumbnail), photo.link %>
+                </div>
+                <p class='title'><%= link_to photo.title, photo.link %></p>
+                <p class='date'><%= l DateTime.parse(photo.since), :format => "%d %B %Y %H:%M" %></p>
+              <% end %>
+              <p class='more'><a href='/ru/press-tsentr/fotobank/'>Всё фото</a></p>
             </div>
           </div>
         <% end %>

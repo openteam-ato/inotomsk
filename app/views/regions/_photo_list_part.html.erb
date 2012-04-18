@@ -11,7 +11,7 @@
           <div class='description'>
             <p class='title'>
               <%= link_to strip_tags(album.title), album.link %>
-              <span class="count">(12)</span>
+              <span class="count">(<%= album.images.size %>)</span>
             </p>
             <p class='date'>
               <%= l DateTime.parse(album.since), :format => "%d %B %Y" %>
