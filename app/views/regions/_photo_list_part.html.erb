@@ -3,9 +3,9 @@
     <ul>
       <% slice.each do | album | %>
         <li>
-          <% if album.thumbnail %>
+          <% if album.images.any? %>
             <div class="image">
-              <%= link_to album_thumbnail(album.thumbnail), album.link %>
+              <%= link_to album_thumbnail(album.images.first.thumbnail), album.link %>
             </div>
           <% end %>
           <div class='description'>

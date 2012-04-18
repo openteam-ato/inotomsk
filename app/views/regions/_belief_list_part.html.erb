@@ -2,9 +2,9 @@
   <ul>
   <% object.items.each do |belief| %>
     <li class="<%= cycle('blue', 'green', 'orange', :name => 'color') %> <%= cycle('odd', 'even', :name => 'parity') %>">
-      <% if belief.thumbnail %>
+      <% if belief.images.any? %>
         <div class="image">
-          <%= link_to image_tag_for(belief.thumbnail), belief.link %>
+          <%= link_to image_tag_for(belief.images.first.thumbnail), belief.link %>
           <div class='stub'></div>
         </div>
       <% end %>

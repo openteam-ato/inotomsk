@@ -3,9 +3,9 @@
     <ul>
       <% slice.each do | interview | %>
         <li>
-          <% if interview.thumbnail %>
+          <% if interview.images.any? %>
             <div class="image">
-              <%= link_to image_tag_for(interview.thumbnail), interview.link %>
+              <%= link_to image_tag_for(interview.images.first.thumbnail), interview.link %>
               <div class="stub"></div>
             </div>
           <% end %>

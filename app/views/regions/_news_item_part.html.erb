@@ -8,10 +8,10 @@
   <div class='annotation'>
     <%= raw object.annotation %>
   </div>
-  <% if object.thumbnail %>
+  <% if object.images.any? %>
     <div class='image'>
-      <%= image_tag_for(object.thumbnail) %>
-      <%= content_tag :p, object.thumbnail.description if object.thumbnail.description %>
+      <%= image_tag_for(object.images.first.thumbnail) %>
+      <%= content_tag :p, object.images.first.thumbnail.description if object.images.first.thumbnail.description %>
     </div>
   <% end %>
   <div class='content'>
@@ -26,9 +26,9 @@
   <ul class='entries'>
     <% object.more_like_this.each do | entry | %>
       <li>
-        <% if entry.thumbnail %>
+        <% if entry.images.any? %>
           <div class='image'>
-            <%= link_to image_tag_for(entry.thumbnail), entry.link %>
+            <%= link_to image_tag_for(entry.images.first.thumbnail), entry.link %>
           </div>
         <% end %>
         <div class="title">
