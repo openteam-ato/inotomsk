@@ -12,7 +12,7 @@
       <% if @content_first %>
         <% unless %w(belief_item_part).include?(@content_first.template) && @content_first %>
           <div class='header'>
-            <% if @content_first.try(:content).try(:rss_link) %>
+            <% if @content_first.try(:content).try(:rss_link) && !%w(photo_list_part).include?(@content_first.template) %>
               <div class="rss">
                 <%= link_to 'RSS', @content_first.content.rss_link %>
               </div>
