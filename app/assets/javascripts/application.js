@@ -186,13 +186,29 @@ function photo_album_manipulate() {
           source_description = $('.description', container);
       li.siblings().removeClass('selected');
       li.addClass('selected');
-      source_img.attr({
-        'src': target_src,
-        'width': target_width,
-        'height': target_height,
-        'alt': target_description
+      source_img.stop(true, true).animate({
+        'opacity': '0'
+      }, 300, function() {
+        $(this).animate({
+          'width': target_width,
+          'height': target_height
+        }, 200, function() {
+          $(this).attr({
+            'src': target_src,
+            'width': target_width,
+            'height': target_height,
+            'alt': target_description
+          }).animate({
+            'opacity': '1'
+          }, 300, function() {
+            if (target_description) {
+              source_description.html(target_description);
+            } else {
+              source_description.html('&nbsp;');
+            };
+          });
+        });
       });
-      source_description.html(target_description);
       return false;
     });
   };
