@@ -42,7 +42,7 @@ module Inotomsk
     # By default rails-i18n loads all locale files, pluralization and transliteration rules available
     # in the gem. This behaviour can be changed, if you specify the locales which have to be loaded
     # via I18n.available_locales option
-    config.i18n.available_locales = [:ru, :en]
+    config.i18n.available_locales = [:ru, :en, :de]
 
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
