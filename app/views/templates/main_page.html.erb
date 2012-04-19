@@ -11,12 +11,18 @@
         <% if locale.eql?(:en) %>
           <li class='selected'><a href='/en/press-centre/news/'><%= @news_list.part_title %></a></li>
         <% end %>
+        <% if locale.eql?(:de) %>
+          <li class='selected'><a href='/de/pressebereich/nachrichten/'><%= @news_list.part_title %></a></li>
+        <% end %>
       </ul>
       <% if locale.eql?(:ru) %>
         <h1><a href='/ru/press-tsentr/novosti-innovatsiy/v-tomske/'>Новости инноваций в Томске</a></h1>
       <% end %>
       <% if locale.eql?(:en) %>
         <h1><a href='/en/press-centre/news/'><%= @news_list.part_title %></a></h1>
+      <% end %>
+      <% if locale.eql?(:de) %>
+        <h1><a href='/de/pressebereich/nachrichten/'><%= @news_list.part_title %></a></h1>
       <% end %>
       <div class='news_container'>
         <div class='inner_wrapper'>
@@ -56,6 +62,9 @@
             <% end %>
             <% if locale.eql?(:en) %>
               <p class='all_news'><a href='/en/press-centre/news/'>All news</a></p>
+            <% end %>
+            <% if locale.eql?(:de) %>
+              <p class='all_news'><a href='/de/pressebereich/nachrichten/'>Alle nachrichten</a></p>
             <% end %>
           </div>
         </div>
