@@ -71,6 +71,9 @@
       <% if locale.eql?(:en) %>
         <%= content_tag(:h1, link_to(@interview_list.part_title, "/en/analytic/interview-with-experts/")) unless @interview_list.blank? %>
       <% end %>
+      <% if locale.eql?(:de) %>
+        <%= content_tag(:h1, link_to(@interview_list.part_title, "/de/analytisch/interviews-mit-experten/")) unless @interview_list.blank? %>
+      <% end %>
       <ul>
         <% @interview_list.content.items.each do | interview | %>
           <li>
@@ -103,6 +106,9 @@
     <% if locale.eql?(:en) %>
       <%= content_tag(:h1, link_to(@belief_list.part_title, "/en/viewpoint/opinions-of-the-project/")) unless @belief_list.blank? %>
     <% end %>
+    <% if locale.eql?(:de) %>
+      <%= content_tag(:h1, link_to(@belief_list.part_title, "/de/meinung/meinungen-zum-projekt/")) unless @belief_list.blank? %>
+    <% end %>
     <div class='two_column'>
       <% unless @belief_list.blank? %>
         <% first = @belief_list.content.items.first %>
@@ -110,28 +116,34 @@
         <% third = @belief_list.content.items.third %>
         <div class='belief'>
           <div class='photo first'>
-            <%= link_to image_tag_for(first.images.first.thumbnail), first.link %>
+            <%= link_to image_tag_for(first.images.first.thumbnail), first.link unless first.blank? %>
             <span class='triangle'></span>
           </div>
           <div class='description first'>
-            <p class='annotation'><%= link_to raw(truncate(first.title, :length => 120, :separator => ' ')), first.link, :title => raw(first.title) %></p>
-            <p class='date'><%= l DateTime.parse(first.since), :format => "%d %B %Y" %></p>
+            <% unless first.blank? %>
+              <p class='annotation'><%= link_to raw(truncate(first.title, :length => 120, :separator => ' ')), first.link, :title => raw(first.title) %></p>
+              <p class='date'><%= l DateTime.parse(first.since), :format => "%d %B %Y" %></p>
+            <% end %>
           </div>
           <div class='photo second'>
-            <%= link_to image_tag_for(second.images.first.thumbnail), second.link %>
+            <%= link_to image_tag_for(second.images.first.thumbnail), second.link unless second.blank? %>
             <span class='triangle'></span>
           </div>
           <div class='description second'>
-            <p class='annotation'><%= link_to raw(truncate(third.title, :length => 120, :separator => ' ')), third.link, :title => raw(third.title) %></p>
-            <p class='date'><%= l DateTime.parse(third.since), :format => "%d %B %Y" %></p>
+            <% unless third.blank? %>
+              <p class='annotation'><%= link_to raw(truncate(third.title, :length => 120, :separator => ' ')), third.link, :title => raw(third.title) %></p>
+              <p class='date'><%= l DateTime.parse(third.since), :format => "%d %B %Y" %></p>
+            <% end %>
           </div>
           <div class='photo third'>
-            <%= link_to image_tag_for(third.images.first.thumbnail), third.link %>
+            <%= link_to image_tag_for(third.images.first.thumbnail), third.link unless third.blank? %>
             <span class='triangle'></span>
           </div>
           <div class='description third'>
-            <p class='annotation'><%= link_to raw(truncate(second.title, :length => 120, :separator => ' ')), second.link, :title => raw(second.title) %></p>
-            <p class='date'><%= l DateTime.parse(second.since), :format => "%d %B %Y" %></p>
+            <% unless second.blank? %>
+              <p class='annotation'><%= link_to raw(truncate(second.title, :length => 120, :separator => ' ')), second.link, :title => raw(second.title) %></p>
+              <p class='date'><%= l DateTime.parse(second.since), :format => "%d %B %Y" %></p>
+            <% end %>
           </div>
         </div>
       <% end %>
