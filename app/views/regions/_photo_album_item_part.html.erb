@@ -6,6 +6,9 @@
     </span>
   </p>
   <% if object.images.any? %>
+    <div class="content">
+      <%= raw object.body %>
+    </div>
     <div class="image_container">
       <div class="image">
         <%= image_tag_for(object.images.first.thumbnail) %>
