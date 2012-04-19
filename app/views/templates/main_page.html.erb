@@ -4,19 +4,19 @@
     <div class='news_section'>
       <ul class='nav'>
         <% if locale.eql?(:ru) %>
-          <li><a href='/<%= locale %>/press-tsentr/novosti-innovatsiy/v-mire/'>В мире</a></li>
-          <li><a href='/<%= locale %>/press-tsentr/novosti-innovatsiy/v-rossii/'>В России</a></li>
-          <li class='selected'><a href='/<%= locale %>/press-tsentr/novosti-innovatsiy/v-tomske/'>В Томске</a></li>
+          <li><a href='/ru/press-tsentr/novosti-innovatsiy/v-mire/'>В мире</a></li>
+          <li><a href='/ru/press-tsentr/novosti-innovatsiy/v-rossii/'>В России</a></li>
+          <li class='selected'><a href='/ru/press-tsentr/novosti-innovatsiy/v-tomske/'>В Томске</a></li>
         <% end %>
         <% if locale.eql?(:en) %>
-          <li class='selected'><a href='/<%= locale %>/press-tsentr/novosti-innovatsiy/'><%= @news_list.part_title %></a></li>
+          <li class='selected'><a href='/en/press-centre/news/'><%= @news_list.part_title %></a></li>
         <% end %>
       </ul>
       <% if locale.eql?(:ru) %>
-        <h1><a href='/<%= locale %>/press-tsentr/novosti-innovatsiy/v-tomske/'>Новости инноваций в Томске</a></h1>
+        <h1><a href='/ru/press-tsentr/novosti-innovatsiy/v-tomske/'>Новости инноваций в Томске</a></h1>
       <% end %>
       <% if locale.eql?(:en) %>
-        <h1><a href='/<%= locale %>/press-tsentr/novosti-innovatsiy/'><%= @news_list.part_title %></a></h1>
+        <h1><a href='/en/press-centre/news/'><%= @news_list.part_title %></a></h1>
       <% end %>
       <div class='news_container'>
         <div class='inner_wrapper'>
@@ -52,10 +52,10 @@
               </ul>
             <% end %>
             <% if locale.eql?(:ru) %>
-              <p class='all_news'><a href='/<%= locale %>/press-tsentr/novosti-innovatsiy/v-tomske/'>Все новости</a></p>
+              <p class='all_news'><a href='/ru/press-tsentr/novosti-innovatsiy/v-tomske/'>Все новости</a></p>
             <% end %>
             <% if locale.eql?(:en) %>
-              <p class='all_news'><a href='/<%= locale %>/press-tsentr/novosti-innovatsiy/'>All news</a></p>
+              <p class='all_news'><a href='/en/press-centre/news/'>All news</a></p>
             <% end %>
           </div>
         </div>
@@ -65,7 +65,12 @@
 
   <% unless @interview_list.blank? %>
     <div class='interviews_section'>
-      <%= content_tag(:h1, link_to(@interview_list.part_title, "/#{ locale }/analiticheskie-materialy/intervyu-s-ekspertami/")) unless @interview_list.blank? %>
+      <% if locale.eql?(:ru) %>
+        <%= content_tag(:h1, link_to(@interview_list.part_title, "/ru/analiticheskie-materialy/intervyu-s-ekspertami/")) unless @interview_list.blank? %>
+      <% end %>
+      <% if locale.eql?(:en) %>
+        <%= content_tag(:h1, link_to(@interview_list.part_title, "/en/analytic/interview-with-experts/")) unless @interview_list.blank? %>
+      <% end %>
       <ul>
         <% @interview_list.content.items.each do | interview | %>
           <li>
@@ -92,7 +97,12 @@
   <% end %>
 
   <div class='belief_section'>
-    <%= content_tag(:h1, link_to(@belief_list.part_title, "/#{ locale }/tochka-zreniya/mneniya-o-proekte/")) unless @belief_list.blank? %>
+    <% if locale.eql?(:ru) %>
+      <%= content_tag(:h1, link_to(@belief_list.part_title, "/ru/tochka-zreniya/mneniya-o-proekte/")) unless @belief_list.blank? %>
+    <% end %>
+    <% if locale.eql?(:en) %>
+      <%= content_tag(:h1, link_to(@belief_list.part_title, "/en/viewpoint/opinions-of-the-project/")) unless @belief_list.blank? %>
+    <% end %>
     <div class='two_column'>
       <% unless @belief_list.blank? %>
         <% first = @belief_list.content.items.first %>
