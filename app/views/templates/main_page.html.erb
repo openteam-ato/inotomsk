@@ -12,7 +12,7 @@
           <li class='selected'><a href='/en/press-centre/news/'><%= @news_list.part_title %></a></li>
         <% end %>
         <% if locale.eql?(:de) %>
-          <li class='selected'><a href='/de/pressebereich/nachrichten/'><%= @news_list.part_title %></a></li>
+          <li class='selected'><a href='/de/pressezentrum/nachrichten/'><%= @news_list.part_title %></a></li>
         <% end %>
       </ul>
       <% if locale.eql?(:ru) %>
@@ -22,7 +22,7 @@
         <h1><a href='/en/press-centre/news/'><%= @news_list.part_title %></a></h1>
       <% end %>
       <% if locale.eql?(:de) %>
-        <h1><a href='/de/pressebereich/nachrichten/'><%= @news_list.part_title %></a></h1>
+        <h1><a href='/de/pressezentrum/nachrichten/'><%= @news_list.part_title %></a></h1>
       <% end %>
       <div class='news_container'>
         <div class='inner_wrapper'>
@@ -64,7 +64,7 @@
               <p class='all_news'><a href='/en/press-centre/news/'>All news</a></p>
             <% end %>
             <% if locale.eql?(:de) %>
-              <p class='all_news'><a href='/de/pressebereich/nachrichten/'>Alle nachrichten</a></p>
+              <p class='all_news'><a href='/de/pressezentrum/nachrichten/'>Alle nachrichten</a></p>
             <% end %>
           </div>
         </div>
@@ -81,7 +81,7 @@
         <%= content_tag(:h1, link_to(@interview_list.part_title, "/en/analytic/interview-with-experts/")) unless @interview_list.blank? %>
       <% end %>
       <% if locale.eql?(:de) %>
-        <%= content_tag(:h1, link_to(@interview_list.part_title, "/de/analytisch/interviews-mit-experten/")) unless @interview_list.blank? %>
+        <%= content_tag(:h1, link_to(@interview_list.part_title, "/de/analysen/interviews-mit-experten/")) unless @interview_list.blank? %>
       <% end %>
       <ul>
         <% @interview_list.content.items.each do | interview | %>
@@ -116,7 +116,7 @@
       <%= content_tag(:h1, link_to(@belief_list.part_title, "/en/viewpoint/opinions-of-the-project/")) unless @belief_list.blank? %>
     <% end %>
     <% if locale.eql?(:de) %>
-      <%= content_tag(:h1, link_to(@belief_list.part_title, "/de/meinung/meinungen-zum-projekt/")) unless @belief_list.blank? %>
+      <%= content_tag(:h1, link_to(@belief_list.part_title, "/de/standpunkt/meinungen-zum-projekt/")) unless @belief_list.blank? %>
     <% end %>
     <div class='two_column'>
       <% unless @belief_list.blank? %>

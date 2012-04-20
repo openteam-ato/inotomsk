@@ -20,7 +20,7 @@
   <body>
 
     <div class='top_menu_wrapper'>
-      <div class='top_menu'>
+      <div class='top_menu <%= I18n.locale %>'>
         <%= render :partial => "regions/main_navigation", :locals => { :object => @main_top_navigation.content, :klass => 'first' } if @main_top_navigation %>
         <%= render :partial => "regions/main_navigation", :locals => { :object => @main_bottom_navigation.content, :klass => 'second' } if @main_bottom_navigation %>
       </div>
