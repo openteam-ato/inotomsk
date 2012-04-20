@@ -14,9 +14,9 @@
               <span class="count">(<%= album.images.size %>)</span>
             </p>
             <p class='date'>
-              <%= l DateTime.parse(album.since), :format => "%d %B %Y" %>
+              <%= l Date.parse(album.since), :format => :custom %>
               <span class='time'>
-                <%= l DateTime.parse(album.since), :format => "%H:%M" %>
+                <%= l Time.parse(album.since), :format => :custom %>
               </span>
             </p>
           </div>

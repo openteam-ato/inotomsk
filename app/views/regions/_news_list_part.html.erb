@@ -9,9 +9,9 @@
       <div class='description'>
         <div class='title'><%= link_to strip_tags(news.title), news.link %></div>
         <div class='date'>
-          <%= l DateTime.parse(news.since), :format => "%d %B %Y" %>
+          <%= l Date.parse(news.since), :format => :custom %>
           <span class='time'>
-            <%= l DateTime.parse(news.since), :format => "%H:%M" %>
+            <%= l Time.parse(news.since), :format => :custom %>
           </span>
         </div>
         <div class='annotation'>

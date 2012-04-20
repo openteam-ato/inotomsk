@@ -32,9 +32,9 @@
             <div class='description'>
               <p class='text'><%= link_to main_news_annotation(first_news.annotation), first_news.link %></p>
               <p class='date'>
-                <%= l DateTime.parse(first_news.since), :format => "%d %B %Y" %>
+                <%= l Date.parse(first_news.since), :format => :custom %>
                 <span class='time'>
-                  <%= l DateTime.parse(first_news.since), :format => "%H:%M" %>
+                  <%= l Time.parse(first_news.since), :format => :custom %>
                 </span>
               </p>
             </div>
@@ -48,9 +48,9 @@
                     <p class='image'><%= image_tag_for(news.images.first.thumbnail) %></p>
                     <p class='annotation'><%= link_to main_news_annotation(news.annotation), news.link %></p>
                     <p class='date'>
-                      <%= l DateTime.parse(news.since), :format => "%d %B %Y" %>
+                      <%= l Date.parse(news.since), :format => :custom %>
                       <span class='time'>
-                        <%= l DateTime.parse(news.since), :format => "%H:%M" %>
+                        <%= l Time.parse(news.since), :format => :custom %>
                       </span>
                     </p>
                   </li>
@@ -96,9 +96,9 @@
               <%= raw interview.annotation %>
               <p class='title'><%= link_to interview.title, interview.link %></p>
               <p class='date'>
-                <%= l DateTime.parse(interview.since), :format => "%d %B %Y" %>
+                <%= l Date.parse(interview.since), :format => :custom %>
                 <span class='time'>
-                  <%= l DateTime.parse(interview.since), :format => "%H:%M" %>
+                  <%= l Time.parse(interview.since), :format => :custom %>
                 </span>
               </p>
             </div>
@@ -131,7 +131,7 @@
           <div class='description first'>
             <% unless first.blank? %>
               <p class='annotation'><%= link_to raw(truncate(first.title, :length => 120, :separator => ' ')), first.link, :title => raw(first.title) %></p>
-              <p class='date'><%= l DateTime.parse(first.since), :format => "%d %B %Y" %></p>
+              <p class='date'><%= l Date.parse(first.since), :format => :custom %></p>
             <% end %>
           </div>
           <div class='photo second'>
@@ -141,7 +141,7 @@
           <div class='description second'>
             <% unless third.blank? %>
               <p class='annotation'><%= link_to raw(truncate(third.title, :length => 120, :separator => ' ')), third.link, :title => raw(third.title) %></p>
-              <p class='date'><%= l DateTime.parse(third.since), :format => "%d %B %Y" %></p>
+              <p class='date'><%= l Date.parse(third.since), :format => :custom %></p>
             <% end %>
           </div>
           <div class='photo third'>
@@ -151,7 +151,7 @@
           <div class='description third'>
             <% unless second.blank? %>
               <p class='annotation'><%= link_to raw(truncate(second.title, :length => 120, :separator => ' ')), second.link, :title => raw(second.title) %></p>
-              <p class='date'><%= l DateTime.parse(second.since), :format => "%d %B %Y" %></p>
+              <p class='date'><%= l Date.parse(second.since), :format => :custom %></p>
             <% end %>
           </div>
         </div>
@@ -167,7 +167,12 @@
                   <%= link_to image_tag(video.video.thumb_normal, :size => '160x120', :alt => video.video.description), video.link %>
                 </div>
                 <p class='title'><%= link_to video.video.title, video.link %></p>
-                <p class='date'><%= l DateTime.parse(video.video.date), :format => "%d %B %Y %H:%M" %></p>
+                <p class='date'>
+                  <%= l Date.parse(video.video.date), :format => :custom %>
+                  <span class='time'>
+                    <%= l Time.parse(video.video.date), :format => :custom %>
+                  </span>
+                </p>
               <% end %>
               <p class='more'><a href='/ru/press-tsentr/videobank/'>Всё видео</a></p>
             </div>
@@ -178,7 +183,12 @@
                   <%= link_to album_thumbnail(photo.images.first.thumbnail), photo.link %>
                 </div>
                 <p class='title'><%= link_to photo.title, photo.link %></p>
-                <p class='date'><%= l DateTime.parse(photo.since), :format => "%d %B %Y %H:%M" %></p>
+                <p class='date'>
+                  <%= l Date.parse(photo.since), :format => :custom %>
+                  <span class='time'>
+                    <%= l Time.parse(photo.since), :format => :custom %>
+                  </span>
+                </p>
               <% end %>
               <p class='more'><a href='/ru/press-tsentr/fotobank/'>Всё фото</a></p>
             </div>

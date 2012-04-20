@@ -13,9 +13,9 @@
             <%= raw interview.annotation %>
             <p class='title'><%= link_to strip_tags(interview.title), interview.link %></p>
             <p class='date'>
-              <%= l DateTime.parse(interview.since), :format => "%d %B %Y" %>
+              <%= l Date.parse(interview.since), :format => :custom %>
               <span class='time'>
-                <%= l DateTime.parse(interview.since), :format => "%H:%M" %>
+                <%= l Time.parse(interview.since), :format => :custom %>
               </span>
             </p>
           </div>

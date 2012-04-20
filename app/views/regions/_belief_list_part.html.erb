@@ -12,9 +12,9 @@
         <%= raw belief.annotation %>
         <p class='title'><%= link_to raw(truncate(strip_tags(belief.title), :length => 80, :separator => ' ')), belief.link %></p>
         <p class='date'>
-          <%= l DateTime.parse(belief.since), :format => "%d %B %Y" %>
+          <%= l Date.parse(belief.since), :format => :custom %>
           <span class='time'>
-            <%= l DateTime.parse(belief.since), :format => "%H:%M" %>
+            <%= l Time.parse(belief.since), :format => :custom %>
           </span>
         </p>
       </div>

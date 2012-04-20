@@ -31,3 +31,11 @@ en:
       next: 'next'
       previous: 'prev'
       truncate: '&hellip;'
+
+  date:
+    formats:
+      custom: "%B %d, %Y"
+
+  time:
+    formats:
+      custom: "%H:%M"

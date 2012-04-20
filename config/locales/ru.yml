@@ -31,3 +31,9 @@ ru:
       next: 'вперёд'
       previous: 'назад'
       truncate: '&hellip;'
+  date:
+    formats:
+      custom: "%d %B %Y"
+  time:
+    formats:
+      custom: "%H:%M"
