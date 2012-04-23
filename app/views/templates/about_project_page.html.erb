@@ -1,9 +1,9 @@
 <% content_for :content do %>
-  <div class='content_wrapper'>
+  <div class='content_wrapper index'>
     <div class="about_project">
-      <%= javascript_include_tag "presentation" %>
+      <div class='noindex'><%= javascript_include_tag "presentation" %></div>
       <%= render_partial_for_region(@content_first) %>
-      <%= content_tag :div, render_navigation_with_separator(@content_navigation.content.values.first['children']), :class => 'navigation' if @content_navigation %>
+      <%= content_tag :div, render_navigation_with_separator(@content_navigation.content.values.first['children']), :class => 'navigation noindex' if @content_navigation %>
     </div>
   </div>
 <% end %>

@@ -3,22 +3,21 @@
 <% end %>
 
 <% content_for :content do %>
-  <div class='content_wrapper'>
+  <div class='content_wrapper index'>
 
     <div class="content_side">
 
-      <%= content_tag :div, render("regions/#{@breadcrumbs.type.underscore}", :object => @breadcrumbs.content), :class => 'breadcrumbs' if @breadcrumbs %>
-
+      <%= content_tag :div, render("regions/#{@breadcrumbs.type.underscore}", :object => @breadcrumbs.content), :class => 'breadcrumbs noindex' if @breadcrumbs %>
 
       <% if @content_first %>
         <% unless %w(belief_item_part).include?(@content_first.template) && @content_first %>
           <div class='header'>
             <% if @content_first.try(:content).try(:rss_link) %>
-              <div class="rss">
+              <div class="rss noindex">
                 <%= link_to 'RSS', @content_first.content.rss_link %>
               </div>
             <% end %>
-            <div class='nav'>
+            <div class='nav noindex'>
               <% all_events_path = params[:path].split('/').uniq.delete_if{|x| x=='monthly'}.join('/') %>
               <ul>
                 <li<%= " class='selected'" if !params[:parts_params] %>>
@@ -27,7 +26,7 @@
               </ul>
             </div>
             <%= content_tag :h1, @page.title if @content_first %>
-            <ul class='months'>
+            <ul class='months noindex'>
               <% (1..12).each do |month| %>
                 <li<%= " class='selected'" if params[:parts_params] && params[:parts_params][:news_list][:interval_year] == Date.today.year.to_s && params[:parts_params][:news_list][:interval_month] == month.to_s %>>
                   <a href="<%= "/#{all_events_path}/monthly/" %>?parts_params[news_list][interval_year]=<%= Date.today.year %>&parts_params[news_list][interval_month]=<%= month %>"><%= t("date.month_names")[month] %></a>
@@ -45,7 +44,7 @@
 
     </div>
 
-    <div class='content_nav'>
+    <div class='content_nav noindex'>
 
       <%= content_tag :div, render("regions/#{@content_navigation.type.underscore}", :object => @content_navigation.content), :class => 'navigation' if @content_navigation %>
       <%= content_tag :div, yield(:more_like_this), :class => 'more_like_this' if content_for?(:more_like_this) %>
