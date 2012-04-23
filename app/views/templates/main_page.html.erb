@@ -14,15 +14,21 @@
         <% if locale.eql?(:de) %>
           <li class='selected'><a href='/de/pressezentrum/nachrichten/'><%= @news_list.part_title %></a></li>
         <% end %>
+        <% if locale.eql?(:fr) %>
+          <li class='selected'><a href='/fr/centre-de-presse/nouvelles/'><%= @news_list.part_title %></a></li>
+        <% end %>
       </ul>
       <% if locale.eql?(:ru) %>
-        <h1><a href='/ru/press-tsentr/novosti-innovatsiy/v-tomske/'>Новости инноваций в Томске</a></h1>
+        <h1><a href='/ru/press-tsentr/novosti-innovatsiy/v-tomske/'><%= @news_list.part_title %></a></h1>
       <% end %>
       <% if locale.eql?(:en) %>
         <h1><a href='/en/press-centre/news/'><%= @news_list.part_title %></a></h1>
       <% end %>
       <% if locale.eql?(:de) %>
         <h1><a href='/de/pressezentrum/nachrichten/'><%= @news_list.part_title %></a></h1>
+      <% end %>
+      <% if locale.eql?(:fr) %>
+        <h1><a href='/fr/centre-de-presse/nouvelles/'><%= @news_list.part_title %></a></h1>
       <% end %>
       <div class='news_container'>
         <div class='inner_wrapper'>
