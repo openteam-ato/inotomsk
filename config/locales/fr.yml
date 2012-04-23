@@ -1,0 +1,40 @@
+fr:
+  locale:
+    ru: "Рус"
+    en: "Eng"
+    de: "Deu"
+    fr: "Fra"
+
+  ino_tomsk_2020: "INO Tomsk`2020"
+  ino: "INO"
+  tomsk_2020: "Tomsk`2020"
+  events_list_is_empty: "Liste des événements est vide"
+  # footer
+  federal_centre_education: "Centre fédéral pour l'éducation,"
+  research_and_development: "la recherche et le développement"
+  ino_tomsk_address: "La Russie, 634011, Tomsk, r.&nbsp;Pervomayskaya, 15, bureau&nbsp;201"
+  tel: "Tél."
+  development: "Développement"
+  design: "Design"
+  source_link: "Source:"
+  share_this: "Portion:"
+
+  errors:
+    news_item_part:
+      '404': 'La ressource que vous avez demandé n`a pas été trouvé. Pour trouver l`information dont vous avez besoin, essayez de démarrer avec <a href="/">Accueil</ a> ou utilisez la recherche.'
+      '500': '<h1>Internal server error (500 erreur)</h1>'
+
+    news_list_part:
+      '500': '<h1>Internal server error (500 erreur)</h1>'
+
+  views:
+    pagination:
+      next: 'prochain'
+      previous: 'actu'
+      truncate: '&hellip;'
+  date:
+    formats:
+      custom: "%d %B %Y"
+  time:
+    formats:
+      custom: "%H:%M"
