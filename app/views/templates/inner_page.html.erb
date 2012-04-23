@@ -9,7 +9,7 @@
 
     <div class="content_side">
 
-      <%= content_tag :div, render("regions/#{@breadcrumbs.type.underscore}", :object => @breadcrumbs.content), :class => 'breadcrumbs' if @breadcrumbs %>
+      <%= content_tag :div, render("regions/#{@breadcrumbs.type.underscore}", :object => @breadcrumbs.content), :class => 'breadcrumbs noindex' if @breadcrumbs %>
 
       <% if @content_first %>
         <% unless %w(belief_item_part).include?(@content_first.template) && @content_first %>
