@@ -124,6 +124,9 @@
     <% if locale.eql?(:de) %>
       <%= content_tag(:h1, link_to(@belief_list.part_title, "/de/standpunkt/meinungen-zum-projekt/")) unless @belief_list.blank? %>
     <% end %>
+    <% if locale.eql?(:fr) %>
+      <%= content_tag(:h1, link_to(@belief_list.part_title, "/fr/point-de-vue/avis-sur-le-projet/")) unless @belief_list.blank? %>
+    <% end %>
     <div class='two_column'>
       <% unless @belief_list.blank? %>
         <% first = @belief_list.content.items.first %>
