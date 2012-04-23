@@ -1,8 +1,8 @@
 <% content_for :content do %>
 
   <% unless @news_list.blank? %>
-    <div class='news_section'>
-      <ul class='nav'>
+    <div class='news_section index'>
+      <ul class='nav noindex'>
         <% if locale.eql?(:ru) %>
           <li><a href='/ru/press-tsentr/novosti-innovatsiy/v-mire/'>В мире</a></li>
           <li><a href='/ru/press-tsentr/novosti-innovatsiy/v-rossii/'>В России</a></li>
@@ -73,7 +73,7 @@
   <% end %>
 
   <% unless @interview_list.blank? %>
-    <div class='interviews_section'>
+    <div class='interviews_section index'>
       <% if locale.eql?(:ru) %>
         <%= content_tag(:h1, link_to(@interview_list.part_title, "/ru/analiticheskie-materialy/intervyu-s-ekspertami/")) unless @interview_list.blank? %>
       <% end %>
@@ -108,7 +108,7 @@
     </div>
   <% end %>
 
-  <div class='belief_section'>
+  <div class='belief_section index'>
     <% if locale.eql?(:ru) %>
       <%= content_tag(:h1, link_to(@belief_list.part_title, "/ru/tochka-zreniya/mneniya-o-proekte/")) unless @belief_list.blank? %>
     <% end %>
@@ -156,7 +156,7 @@
           </div>
         </div>
       <% end %>
-      <div class='mediateka'>
+      <div class='mediateka noindex'>
         <% if locale.eql?(:ru) %>
           <h2>Медиатека</h2>
           <div class='two_column'>
@@ -198,11 +198,11 @@
     </div>
   </div>
 
-  <div class='calendar_section'>
+  <div class='calendar_section index'>
     <div class='calendar'>
       <%= render_partial_for_region(@event_list) %>
     </div>
-    <div class='voting'>
+    <div class='voting noindex'>
       <% if locale.eql?(:ru) %>
         <h1>Опрос</h1>
         <script type="text/javascript">var WebAnketaParams = ["64wkae9k5xhk4e9s6xh3gc0/ru", "Что вы ожидаете от реализации проекта «ИНОТомск`2020»?"];

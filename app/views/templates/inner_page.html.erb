@@ -5,7 +5,7 @@
 <% end %>
 
 <% content_for :content do %>
-  <div class='content_wrapper'>
+  <div class='content_wrapper index'>
 
     <div class="content_side">
 
@@ -15,12 +15,12 @@
         <% unless %w(belief_item_part).include?(@content_first.template) && @content_first %>
           <div class='header'>
             <% if @content_first.try(:content).try(:rss_link) && !%w(photo_album_list_part).include?(@content_first.template) %>
-              <div class="rss">
+              <div class="rss noindex">
                 <%= link_to 'RSS', @content_first.content.rss_link %>
               </div>
             <% end %>
             <% if @content_header_navigation %>
-              <div class='nav'>
+              <div class='nav noindex'>
                 <%= render "regions/#{@content_header_navigation.type.underscore}", :object => @content_header_navigation.content if @content_header_navigation %>
               </div>
             <% end %>
@@ -33,7 +33,7 @@
 
     </div>
 
-    <div class='content_nav'>
+    <div class='content_nav noindex'>
 
       <%= content_tag :div, render("regions/#{@content_navigation.type.underscore}", :object => @content_navigation.content), :class => 'navigation' if @content_navigation %>
       <%= content_tag :div, yield(:more_like_this), :class => 'more_like_this' if content_for?(:more_like_this) %>

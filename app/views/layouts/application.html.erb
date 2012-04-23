@@ -19,14 +19,14 @@
   </head>
   <body>
 
-    <div class='top_menu_wrapper'>
+    <div class='top_menu_wrapper noindex'>
       <div class='top_menu <%= I18n.locale %>'>
         <%= render :partial => "regions/main_navigation", :locals => { :object => @main_top_navigation.content, :klass => 'first' } if @main_top_navigation %>
         <%= render :partial => "regions/main_navigation", :locals => { :object => @main_bottom_navigation.content, :klass => 'second' } if @main_bottom_navigation %>
       </div>
     </div>
 
-    <div class='header'>
+    <div class='header noindex'>
       <div class='logotype'>
         <div class='symbol'>
           <a href='/<%= I18n.locale %>/'><%= t "ino_tomsk_2020" %></a>
@@ -57,14 +57,14 @@
 
     <%= yield(:content) %>
 
-    <div class='banners_section'>
+    <div class='banners_section noindex'>
       <p><a href='#'><img src='/assets/fake/adv_1.jpg' alt='' width='296' height='84' /></a></p>
       <p><a href='#'><img src='/assets/fake/adv_2.jpg' alt='' width='296' height='84' /></a></p>
       <p><a href='#'><img src='/assets/fake/adv_3.jpg' alt='' width='296' height='84' /></a></p>
       <p class='break'>&nbsp;</p>
     </div>
 
-    <div class='footer_wrapper'>
+    <div class='footer_wrapper noindex'>
       <div class='footer'>
         <div class='column logotype_<%= I18n.locale %>'>
           <p><%= t "ino_tomsk_2020" %></p>
