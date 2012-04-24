@@ -38,6 +38,23 @@
       text-indent: 15px
       background: transparent url('ul_bullet.png') no-repeat left 8px
       margin-bottom: 5px
+    &.documents
+      li
+        text-indent: 0
+        background: none
+        a
+          padding-left: 25px
+          background: transparent url('mime/default.png') no-repeat left top
+          &.doc
+            background-image: url('mime/doc.png')
+          &.pdf
+            background-image: url('mime/pdf.png')
+          &.ppt
+            background-image: url('mime/ppt.png')
+          &.rtf
+            background-image: url('mime/rtf.png')
+          &.xls
+            background-image: url('mime/xls.png')
   ol
     list-style: none
     counter-reset: list
