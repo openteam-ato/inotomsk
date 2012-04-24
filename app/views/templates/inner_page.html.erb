@@ -2,7 +2,7 @@
   <% unless %w(photo_album_list_part).include?(@content_first.template) %>
     <%= auto_discovery_link_tag(:rss, @content_first.content.rss_link, {:title => @page_title}) if @content_first.try(:content).try(:rss_link) %>
   <% end %>
-<% end %>
+<% end if @content_first %>
 
 <% content_for :content do %>
   <div class='content_wrapper index'>
