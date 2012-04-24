@@ -20,18 +20,21 @@
  */
 
 function preload_images(images) {
-  $("<div/>")
-    .addClass("images_preload")
-    .appendTo("body")
-    .css({
-      "position": "absolute",
-      "bottom": 0,
-      "left": 0,
-      "visibility": "hidden",
-      "z-index": -9999
-    });
+  var container = $('div.images_preload');
+  if (!container.length) {
+    $("<div/>")
+      .addClass("images_preload")
+      .appendTo("body")
+      .css({
+        "position": "absolute",
+        "bottom": 0,
+        "left": 0,
+        "visibility": "hidden",
+        "z-index": -9999
+      });
+  };
   $.each(images, function(index, value) {
-    $("<img src='" + value + "' />").appendTo($(".images_preload"));
+    $("<img src='" + value + "' />").appendTo(container);
   });
 };
 
@@ -174,6 +177,12 @@ function events_manipulate() {
 function photo_album_manipulate() {
   var container = $('.photo_album_show');
   if (container.length) {
+    var links_to_images = $('.thumbnails a', container),
+        links_array = new Array();
+    $.each(links_to_images, function() {
+      links_array.push($(this).attr('href'));
+    });
+    preload_images(links_array);
     $('.thumbnails a', container).click(function() {
       var link = $(this),
           li = link.closest('li'),
