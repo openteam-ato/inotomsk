@@ -1,6 +1,6 @@
 <% content_for :content do %>
 
-  <% unless @news_list.blank? %>
+  <% if @news_list && (@news_list.response_status == 200 || !@news_list.response_status?) %>
     <div class='news_section index'>
       <ul class='nav noindex'>
         <% if locale.eql?(:ru) %>
@@ -46,7 +46,7 @@
             </div>
           </div>
           <div class='news_list'>
-            <% unless @news_list.blank? %>
+            <% if @news_list.content.items.many? %>
               <ul>
                 <% @news_list.content.items.each do | news | %>
                   <li>
@@ -78,7 +78,7 @@
     </div>
   <% end %>
 
-  <% unless @interview_list.blank? %>
+  <% if @interview_list && (@interview_list.response_status == 200 || !@interview_list.response_status?) %>
     <div class='interviews_section index'>
       <% if locale.eql?(:ru) %>
         <%= content_tag(:h1, link_to(@interview_list.part_title, "/ru/analiticheskie-materialy/intervyu-s-ekspertami/")) unless @interview_list.blank? %>
@@ -128,7 +128,7 @@
       <%= content_tag(:h1, link_to(@belief_list.part_title, "/fr/point-de-vue/avis-sur-le-projet/")) unless @belief_list.blank? %>
     <% end %>
     <div class='two_column'>
-      <% unless @belief_list.blank? %>
+      <% if @belief_list && (@belief_list.response_status == 200 || !@belief_list.response_status?) %>
         <% first = @belief_list.content.items.first %>
         <% second = @belief_list.content.items.second %>
         <% third = @belief_list.content.items.third %>
