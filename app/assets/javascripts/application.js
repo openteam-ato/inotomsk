@@ -138,12 +138,13 @@ function set_event_ajax_loader(position) {
   return loader;
 };
 
-function change_events_list(page, position) {
-  page = typeof page !== 'undefined' ? page : 0;
-  var loader = new Object();
+function change_events_list(link) {
+  var loader = new Object(),
+      position = $(link).parent().attr('class');
   $.ajax({
-    url: '?parts_params[news_list][events_page]=' + page + '&region=event_list',
     type: 'GET',
+    url: $(link).attr('href'),
+    data: { 'region': 'event_list' },
     beforeSend: function(jqXHR, settings) {
       loader = set_event_ajax_loader(position);
     },
@@ -159,17 +160,9 @@ function change_events_list(page, position) {
 };
 
 function events_manipulate() {
-  var events_page = 0;
-  $('.calendar .right a').live('click', function() {
+  $('.calendar .right a, .calendar .left a').live('click', function() {
     if ($(this).parent().hasClass('disabled')) return false;
-    events_page += 1;
-    change_events_list(events_page, $(this).parent().attr('class'));
-    return false;
-  });
-  $('.calendar .left a').live('click', function() {
-    if ($(this).parent().hasClass('disabled')) return false;
-    events_page -= 1;
-    change_events_list(events_page, $(this).parent().attr('class'));
+    change_events_list(this);
     return false;
   });
 };

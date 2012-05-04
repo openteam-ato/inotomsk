@@ -1,0 +1,9 @@
+<% if current_page.first? %>
+  <div class='left disabled'>
+    <a href=''>назад</a>
+  </div>
+<% else %>
+  <div class='left'>
+    <%= link_to 'назад', url %>
+  </div>
+<% end %>
