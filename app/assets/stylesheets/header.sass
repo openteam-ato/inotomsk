@@ -1,3 +1,4 @@
+@import 'compass/css3'
 @import 'compass/utilities'
 
 .header
@@ -18,7 +19,7 @@
         overflow: hidden
         text-indent: -9999em
         outline: none
-        background: transparent url('symbol.png') no-repeat
+        background: transparent image_url('symbol.png') no-repeat
     .site_name
       position: absolute
       top: 70px
@@ -44,6 +45,7 @@
           margin-left: 3px
   .languages
     position: absolute
+    top: 4px
     right: 30px
     +clearfix
     li
@@ -52,6 +54,31 @@
       &.separator
         color: #bdbdbd
         margin: 0 5px
+  .search_form
+    position: absolute
+    top: 0
+    right: 177px
+    form
+      position: relative
+      .inputs
+        input
+          width: 200px
+          border: 1px solid #d2d2d4
+          +border-radius(10px)
+          font-size: 11px
+          padding: 5px 28px 5px 8px
+          background: transparent image_url('search_input_bg.png') repeat-x top
+      .buttons
+        position: absolute
+        right: 10px
+        top: 5px
+        input
+          width: 16px
+          height: 16px
+          border: none
+          text-indent: -9999em
+          cursor: pointer
+          background: transparent image_url('search_button.png') no-repeat
   .targets
     $main_width: 460px
     $arrow_width: 14px
@@ -73,7 +100,7 @@
         text-indent: -9999em
         outline: none
         background:
-          image: url('targets_arrows.png')
+          image: iamge_url('targets_arrows.png')
           repeat: no-repeat
     .left a
       background-position: 0 0

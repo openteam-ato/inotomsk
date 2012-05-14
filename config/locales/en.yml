@@ -11,6 +11,7 @@ en:
   federal_centre_education: "Federal centre for education,"
   research_and_development: "research and development"
   events_list_is_empty: "List of events is empty"
+  search_total_count: "Found"
   # footer
   ino_tomsk_address: "Russia, 634011, Tomsk, Pervomayskaya str., 15, 201 office"
   tel: "Phone"

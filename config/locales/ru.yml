@@ -8,10 +8,11 @@ ru:
   ino_tomsk_2020: "ИНО Томск`2020"
   ino: "ИНО"
   tomsk_2020: "Томск`2020"
-  events_list_is_empty: "Список мероприятий пуст"
-  # footer
   federal_centre_education: "Федеральный центр образования,"
   research_and_development: "исследований и разработок"
+  events_list_is_empty: "Список мероприятий пуст"
+  search_total_count: "Найдено"
+  # footer
   ino_tomsk_address: "Россия, 634011, Томск, ул.&nbsp;Первомайская, 15, офис 201"
   tel: "Тел."
   development: "Разработка"

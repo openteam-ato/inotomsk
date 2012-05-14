@@ -40,6 +40,20 @@
       <div class="languages">
         <%= languages %>
       </div>
+      <div class="search_form">
+        <form action="/<%= I18n.locale %>/search">
+          <ul class="inputs">
+            <li>
+              <input type="text" name="parts_params[search][q]" value='<%= params[:parts_params].try(:[], "search").try(:[], "q") %>'>
+            </li>
+          </ul>
+          <ul class="buttons">
+            <li>
+              <input type="submit" value="искать">
+            </li>
+          </ul>
+        </form>
+      </div>
       <div class='targets'>
         <% unless @targets.blank? %>
           <div class='left'>

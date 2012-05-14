@@ -22,6 +22,7 @@
  *= require calendar
  *= require text
  *= require content
+ *= require search_results
  *= require about_project
  *= require error_page
  *= require pagination

@@ -66,7 +66,7 @@ $content_padding: 30px
                 background-color: #fffae4
             &:first-child
               a:hover
-                background: #fffae4 url('about_project_menu_triangle.png') no-repeat 20px top
+                background: #fffae4 image_url('about_project_menu_triangle.png') no-repeat 20px top
             &.important
               position: relative
               .icon
@@ -76,10 +76,10 @@ $content_padding: 30px
                 left: 0
                 width: 20px
                 height: 16px
-                background: transparent url('about_project_menu_important.png') no-repeat
+                background: transparent image_url('about_project_menu_important.png') no-repeat
         &.selected
           ul
-            background: transparent url('about_project_menu_triangle.png') no-repeat 20px top
+            background: transparent image_url('about_project_menu_triangle.png') no-repeat 20px top
           & > p > a
             color: #fff
             background-color: #a41162
@@ -91,13 +91,13 @@ $content_padding: 30px
               color: #252535
               background-color: #fffae4
           ul > li:first-child.selected a
-            background: #fffae4 url('about_project_menu_triangle.png') no-repeat 20px top
+            background: #fffae4 image_url('about_project_menu_triangle.png') no-repeat 20px top
 
     .content
       +min-height(600px)
       +border-radius(10px)
       +single-box-shadow(#aaa, 0, 0, 5px)
-      background: #fff url('about_project_presentation_bg.png') no-repeat right bottom
+      background: #fff image_url('about_project_presentation_bg.png') no-repeat right bottom
       padding: $content_padding ($content_padding + $menu_width) ($content_padding + 25px) $content_padding
       margin: 20px
       h1
@@ -130,7 +130,7 @@ $content_padding: 30px
             height: 32px
             bottom: -16px
             left: 590px / 2 - 65px / 2
-            background: transparent url('about_project_content_important.png') no-repeat
+            background: transparent image_url('about_project_content_important.png') no-repeat
       p, li
         font-size: 16px
         line-height: 1.6
@@ -138,7 +138,7 @@ $content_padding: 30px
         display: none
       #tab-1
         display: block
-        background: transparent url('about_project_main_bg.png') no-repeat left top
+        background: transparent image_url('about_project_main_bg.png') no-repeat left top
         margin-top: - $content_padding
         margin-left: - $content_padding
         padding-top: 200px

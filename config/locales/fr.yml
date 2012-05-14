@@ -9,9 +9,10 @@ fr:
   ino: "INO"
   tomsk_2020: "Tomsk`2020"
   events_list_is_empty: "Liste des événements est vide"
-  # footer
   federal_centre_education: "Centre fédéral de l'éducation,"
   research_and_development: "de la recherche et du développement"
+  search_total_count: "Trouvé"
+  # footer
   ino_tomsk_address: "15, rue Pervomayskaya, bureau&nbsp;201,<br />Tomsk, 634011, Russie"
   tel: "Tél."
   development: "Développement"

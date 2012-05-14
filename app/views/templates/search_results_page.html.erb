@@ -1,0 +1,15 @@
+<% content_for :content do %>
+  <div class='content_wrapper index'>
+    <div class="search_results_wrapper">
+      <% if @content_first %>
+        <div class='search_total_count'>
+          <%= t('search_total_count') %>: <strong><%= @content_first.content.pagination.total_count %></strong>
+        </div>
+      <% end %>
+      <%= content_tag :h1, @content_first.part_title if @content_first %>
+      <%= render_partial_for_region(@content_first) %>
+    </div>
+  </div>
+<% end %>
+
+<%= render :template => 'layouts/application' %>
