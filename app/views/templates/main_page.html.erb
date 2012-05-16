@@ -187,17 +187,19 @@
             </div>
             <div class='photo'>
               <% if !@last_photo.blank? && @last_photo.response_status == 200 %>
-                <div class='thumbnail'>
-                  <% photo = @last_photo.content.items.first %>
-                  <%= link_to album_thumbnail(photo.images.first.thumbnail), photo.link %>
-                </div>
-                <p class='title'><%= link_to photo.title, photo.link %></p>
-                <p class='date'>
-                  <%= l Date.parse(photo.since), :format => :custom %>
-                  <span class='time'>
-                    <%= l Time.parse(photo.since), :format => :custom %>
-                  </span>
-                </p>
+                <% photo = @last_photo.content.items.first %>
+                <% if photo %>
+                  <div class='thumbnail'>
+                    <%= link_to album_thumbnail(photo.images.first.thumbnail), photo.link %>
+                  </div>
+                  <p class='title'><%= link_to photo.title, photo.link %></p>
+                  <p class='date'>
+                    <%= l Date.parse(photo.since), :format => :custom %>
+                    <span class='time'>
+                      <%= l Time.parse(photo.since), :format => :custom %>
+                    </span>
+                  </p>
+                <% end %>
               <% end %>
               <p class='more'><a href='/ru/press-tsentr/fotobank/'>Всё фото</a></p>
             </div>

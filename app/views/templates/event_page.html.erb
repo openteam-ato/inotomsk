@@ -28,7 +28,7 @@
             <%= content_tag :h1, @page.title if @content_first %>
             <ul class='months noindex'>
               <% (1..12).each do |month| %>
-                <li<%= " class='selected'" if params[:parts_params] && params[:parts_params][:events_list][:interval_year] == Date.today.year.to_s && params[:parts_params][:events_list][:interval_month] == month.to_s %>>
+                <li<%= " class='selected'" if params[:parts_params] && params[:parts_params].try(:[], 'events_list').try(:[], 'interval_year') == Date.today.year.to_s && params[:parts_params].try(:[], 'events_list').try(:[], 'interval_month') == month.to_s %>>
                   <a href="<%= "/#{all_events_path}/monthly/" %>?parts_params[events_list][interval_year]=<%= Date.today.year %>&parts_params[events_list][interval_month]=<%= month %>"><%= t("date.month_names")[month] %></a>
                 </li>
               <% end %>
