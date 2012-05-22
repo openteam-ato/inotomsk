@@ -1,4 +1,9 @@
 @init_presentation = ->
+
+  if $.browser.msie and $.browser.version <= 7
+    alert "У Вас устаревший браузер!\nПросмотр информации о проекте невозможен."
+    return false
+
   preload_images [
     "/assets/presentation/main_slide_1_bg.png",
     "/assets/presentation/main_slide_2_bg.png",
@@ -23,12 +28,9 @@
     block.click (evnt) ->
       klass = $(this).attr("class")
       $this = $(this).addClass("selected")
-      $(".presentation .bg_image").animate
-        "opacity": 0
-      , 500, ->
-        $(this).removeClass().addClass("bg_image #{klass}_bg").animate
-          "opacity": 1
-        , 500
+      fade_speed = if $.browser.msie and $.browser.version == '8.0' then 0 else 500
+      $(".presentation .bg_image").fadeOut fade_speed, ->
+        $(this).removeClass().addClass("bg_image #{klass}_bg").fadeIn fade_speed
       presentation_title.animate
         "right": "-=500"
       , 500, "easeInBack", ->
@@ -85,19 +87,16 @@ change_main_slide = (block) ->
       top: "-171px"
   klass = block.attr("class").replace(" minimazed", "")
 
+  fade_speed = if $.browser.msie and $.browser.version == '8.0' then 0 else 1000
+
   block.addClass("selected").css
     top: "-156px"
 
-  $(".presentation .bg_image").stop(true, true).animate
-    "opacity": 0
-  , 1000, ->
+  $(".presentation .bg_image").stop(true, true).fadeOut fade_speed, ->
     $(this).remove()
 
-  $("<div />").prependTo(".presentation .inside_wrapper").css
-    "opacity": 0
-  .addClass("bg_image #{klass}_bg").stop(true, true).animate
-    "opacity": 1
-  , 1000
+  $("<div />").prependTo(".presentation .inside_wrapper").hide()
+  .addClass("bg_image #{klass}_bg").stop(true, true).fadeIn fade_speed
   hide_inner_slides()
   show_inner_slides(block, 500)
 
@@ -113,13 +112,11 @@ hide_inner_slides = ->
     "right": "-=700"
   , 500, "easeInBack"
   $(".inner_slide", visible_block).each (index, element) ->
-    $(element).sleep(100 * index).animate
-      "opacity": 0
-    , 300, ->
+    $(element).sleep(100 * index).fadeOut 300, ->
       $(this).css
         "top": -210
         "left": left_offset
-        "opacity": 1
+      .show()
       visible_block.hide()
 
 show_inner_slides = (block, sleep_interval = 1500) ->
