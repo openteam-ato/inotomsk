@@ -125,7 +125,7 @@ show_inner_slides = (block, sleep_interval = 1500) ->
   klass = block.attr("class").replace("main_", "").replace("selected", "").replace("minimazed", "")
   block = $(".inner_wrapper.#{klass}")
   block.show()
-  $(".slide_name", block).sleep(sleep_interval).animate
+  $(".slide_name", block).sleep(1000 + sleep_interval).animate
     "right": "+=700"
   , 500, "easeOutBack"
   $(".presentation .inside_wrapper").animate
