@@ -122,7 +122,7 @@ hide_inner_slides = ->
       visible_block.hide()
 
 show_inner_slides = (block, sleep_interval = 1500) ->
-  klass = block.attr("class").replace("main_", "").replace("selected", "").replace("minimazed", "")
+  klass = block.attr("class").replace("main_", "").replace("selected", "").replace("minimazed", "").replace(/^\s\s*/, "").replace(/\s\s*$/, "")
   block = $(".inner_wrapper.#{klass}")
   block.show()
   $(".slide_name", block).sleep(1000 + sleep_interval).animate
@@ -131,6 +131,8 @@ show_inner_slides = (block, sleep_interval = 1500) ->
   $(".presentation .inside_wrapper").animate
     "min-height": 1000
   , 500
+  slide_with_submenu_offset = if klass == "slide_3" then 60 else 0
+  handle_slide_submenu(block, sleep_interval) if klass == "slide_3"
   $(".inner_slide", block).each (index, element) ->
     switch (index) % 3
       when 0 then left_offset = 100
@@ -140,8 +142,16 @@ show_inner_slides = (block, sleep_interval = 1500) ->
     top_offset = 440 if index >= 3 and index <= 5
     top_offset = 680 if index >= 6 and index <= 8
     $(element).sleep(sleep_interval + (100 * index)).animate
-      "top": top_offset
+      "top": top_offset + slide_with_submenu_offset
       "left": left_offset
+
+handle_slide_submenu = (block, sleep_interval) ->
+  $(".slide_submenu", block).sleep(1000 + sleep_interval).fadeIn(500)
+  $(".slide_submenu a", block).click ->
+    unless $(this).closest("li").hasClass("selected")
+      $(this).closest("li").addClass("selected")
+      $(this).closest("li").siblings("li").removeClass("selected")
+    false
 
 $.fn.sleep = (time) ->
   obj = $(this)

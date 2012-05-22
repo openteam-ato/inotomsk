@@ -40,7 +40,7 @@ $content_padding: 30px
   .presentation
     +min-height($main_height)
     +border-radius(10px)
-    background: #fff image_url('about_project_presentation_bg.png') no-repeat right bottom
+    background: #fff image_url('presentation/about_project_presentation_bg.png') no-repeat right bottom
     +single-box-shadow(#aaa, 0, 0, 3px)
     margin-top: 3px
 
@@ -56,7 +56,7 @@ $content_padding: 30px
         width: 100%
         height: 100%
         +border-radius(10px)
-        background: transparent image_url('about_project_main_bg.png') no-repeat left top
+        background: transparent image_url('presentation/about_project_main_bg.png') no-repeat left top
         &.main_slide_1_bg
           background-image: image_url('presentation/main_slide_1_bg.png')
         &.main_slide_2_bg
@@ -146,6 +146,7 @@ $content_padding: 30px
           font-size: 18px
           font-family: 'header_normal'
 
+
       .inner_slide
         position: absolute
         border: 1px solid #d4d4d4
@@ -154,7 +155,7 @@ $content_padding: 30px
         width: 210px
         height: 195px
         +single-box-shadow(#e2e2e2, 0, 0, 4px)
-        background: #f5f2fb image_url('presentation/inner_slide_11_bg.png') no-repeat center 4px
+        background: #f5f2fb image_url('presentation/inner_slide_11_bg.jpg') no-repeat center 4px
         &:hover
           +single-box-shadow(#c2c2c2, 0, 0, 6px)
 
@@ -230,8 +231,44 @@ $content_padding: 30px
             background-color: #ec5914
             +background-image(linear-gradient(#ec5914, #f05815, #e25716))
 
+        .slide_submenu
+          display: none
+          position: absolute
+          top: 190px
+          width: 78%
+          text-align: center
+          margin: 0 11%
+          border-top: 1px solid #c1c1c3
+          border-bottom: 1px solid #c1c1c3
+          li
+            +inline-block
+            width: 135px
+            font-size: 18px
+            border-bottom: 5px solid transparent
+            margin: 10px 5px 0
+            padding-bottom: 5px
+            a
+              color: #797979
+              text-decoration: none
+            &.selected
+              border-color: #e15517
+              a
+                color: #e05615
+
         .inner_slide_1
           background-image: image_url('presentation/inner_slide_31_bg.jpg')
+        .inner_slide_2
+          background-image: image_url('presentation/inner_slide_32_bg.jpg')
+        .inner_slide_3
+          background-image: image_url('presentation/inner_slide_33_bg.jpg')
+        .inner_slide_4
+          background-image: image_url('presentation/inner_slide_34_bg.jpg')
+        .inner_slide_5
+          background-image: image_url('presentation/inner_slide_35_bg.jpg')
+        .inner_slide_6
+          background-image: image_url('presentation/inner_slide_36_bg.jpg')
+        .inner_slide_7
+          background-image: image_url('presentation/inner_slide_37_bg.jpg')
 
       .slide_4
         .inner_slide
