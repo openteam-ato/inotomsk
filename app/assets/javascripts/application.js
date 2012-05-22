@@ -12,6 +12,7 @@
  *
  * = require jquery
  * = require jquery-ui
+ * = require scroll_to
  * = require preload_images
  * = require alert_message
  * = require charts

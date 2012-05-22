@@ -5,159 +5,255 @@ $container_width: 920px
 $menu_width: 230px
 $content_padding: 30px
 
+=main_slide($image_url)
+  display: none
+  position: absolute
+  width: 250px
+  height: 220px
+  cursor: pointer
+  border: 1px solid #e2e2e2
+  background: #f5f2fb image_url($image_url) no-repeat center 5px
+  +border-radius
+  +single-box-shadow(#e2e2e2, 0, 0, 4px)
+  &:hover
+    +single-box-shadow(#c2c2c2, 0, 0, 6px)
+  h1
+    text-align: center
+    font-family: 'header_light'
+    font-weight: bold
+    font-size: 15px
+    color: #fff
+    margin-top: 170px
+    background-color: #777
+    padding-top: 5px
+  p
+    color: #929292
+    text-align: center
+    font-family: 'header_normal'
+    font-size: 13px
+    margin-top: 5px
+
 .content_wrapper .about_project
   margin-left: 30px
-  .content .presentation
-    .accordion
-      p
-        margin-bottom: 0
-      ul
-        margin-bottom: 0
-      li
-        background: none
-        margin-bottom: 0
-        text-indent: 0
 
+  $main_height: 750px
   .presentation
-    +clearfix
+    +min-height($main_height)
+    +border-radius(10px)
+    background: #fff image_url('about_project_presentation_bg.png') no-repeat right bottom
+    +single-box-shadow(#aaa, 0, 0, 3px)
+    margin-top: 3px
 
-    .accordion
-      float: right
-      width: $menu_width
-      padding: 10px
-      background-color: #fff
+    .inside_wrapper
       position: relative
-      +border-radius(10px)
-      +single-box-shadow(#aaa, 0, 1px, 2px)
-      margin: 2px
-      & > li
-        font-size: 14px
-        margin: 1px 0
-        & > p > a
-          display: block
-          color: #262533
-          text-decoration: none
-          background-color: #f5f2fb
-          +border-radius(7px)
-          outline: none
-          padding: 10px 20px
-          span
-            color: #939290
-            font-style: italic
-          &:hover
-            color: #fff
-            background-color: #a41162
-            span
-              color: #fff
-        ul
-          display: none
-          li
-            border-bottom: 1px solid #d9d9d9
-            &:last-child
-              border-bottom: none
-            a
-              display: block
-              color: #929292
-              font-size: 12px
-              text-decoration: none
-              padding: 10px 20px
-              &:hover
-                color: #515151
-                background-color: #fffae4
-            &:first-child
-              a:hover
-                background: #fffae4 image_url('about_project_menu_triangle.png') no-repeat 20px top
-            &.important
-              position: relative
-              .icon
-                display: block
-                position: absolute
-                top: 11px
-                left: 0
-                width: 20px
-                height: 16px
-                background: transparent image_url('about_project_menu_important.png') no-repeat
-        &.selected
-          ul
-            background: transparent image_url('about_project_menu_triangle.png') no-repeat 20px top
-          & > p > a
-            color: #fff
-            background-color: #a41162
-            span
-              color: #fff
-          ul
-            display: block
-            > .selected a
-              color: #252535
-              background-color: #fffae4
-          ul > li:first-child.selected a
-            background: #fffae4 image_url('about_project_menu_triangle.png') no-repeat 20px top
+      +clearfix
+      +min-height($main_height)
 
-    .content
-      +min-height(600px)
-      +border-radius(10px)
-      +single-box-shadow(#aaa, 0, 0, 5px)
-      background: #fff image_url('about_project_presentation_bg.png') no-repeat right bottom
-      padding: $content_padding ($content_padding + $menu_width) ($content_padding + 25px) $content_padding
-      margin: 20px
-      h1
-        font-size: 38px
-        font-family: 'header_medium'
-        text-align: center
-        margin-bottom: 0
-      h2
-        color: #252535
-        font-size: 21px
-        text-align: center
-      h3
-
-        font-size: 18px
-        font-weight: bold
-        text-align: center
-        border-top: 1px solid #d9d9d9
-        border-bottom: 1px solid #d9d9d9
-        padding: 20px 50px
-        margin-top: 15px
-        margin-bottom: 20px
-        &.important
-          position: relative
-          padding-bottom: 30px
-          margin-bottom: 30px
-          .icon
-            display: block
-            position: absolute
-            width: 65px
-            height: 32px
-            bottom: -16px
-            left: 590px / 2 - 65px / 2
-            background: transparent image_url('about_project_content_important.png') no-repeat
-      p, li
-        font-size: 16px
-        line-height: 1.6
-      div
-        display: none
-      #tab-1
-        display: block
+      .bg_image
+        position: absolute
+        top: 0
+        left: 0
+        width: 100%
+        height: 100%
+        +border-radius(10px)
         background: transparent image_url('about_project_main_bg.png') no-repeat left top
-        margin-top: - $content_padding
-        margin-left: - $content_padding
-        padding-top: 200px
-        padding-left: 150px
+        &.main_slide_1_bg
+          background-image: image_url('presentation/main_slide_1_bg.png')
+        &.main_slide_2_bg
+          background-image: image_url('presentation/main_slide_2_bg.png')
+        &.main_slide_3_bg
+          background-image: image_url('presentation/main_slide_3_bg.png')
+        &.main_slide_4_bg
+          background-image: image_url('presentation/main_slide_4_bg.png')
+
+      .presentation_title
+        width: 400px
+        position: absolute
+        top: 30px
+        right: -458px
         h1
-          font-size: 42px
-          text-align: left
+          font-size: 38px
           font-family: 'header_light'
-          span
+          .medium
             font-family: 'header_medium'
-        p
-          line-height: 1.8
-          margin-top: 10px
+        ul
+          li:before
+            content: "–"
+            float: left
+            left: -20px
+            padding: 0
+            position: relative
+            width: 0
+
+      $main_slide_offset_y: 190px
+      .main_slide_1
+        +main_slide('presentation/main_slide_1.jpg')
+        left: $main_slide_offset_y
+        top: 180px
+        h1
+          background-color: #d32234
+        &.minimazed
+          h1
+            +background-image(linear-gradient(#d92d3d, #de3242, #d32234))
+      .main_slide_2
+        +main_slide('presentation/main_slide_2.jpg')
+        right: $main_slide_offset_y
+        top: 180px
+        h1
+          background-color: #ed008c
+        &.minimazed
+          h1
+            +background-image(linear-gradient(#e92289, #ed268d, #de157d))
+      .main_slide_3
+        +main_slide('presentation/main_slide_3.jpg')
+        left: $main_slide_offset_y
+        top: 440px
+        h1
+          background-color: #e15517
+        &.minimazed
+          h1
+            +background-image(linear-gradient(#ec5914, #f05815, #e25716))
+      .main_slide_4
+        +main_slide('presentation/main_slide_4.jpg')
+        right: $main_slide_offset_y
+        top: 440px
+        h1
+          background-color: #a7c203
+        &.minimazed
+          h1
+            +background-image(linear-gradient(#b4d00c, #b7d30f, #a9c403))
+
+      .inner_wrapper
+        display: none
+
+      .slide_name
+        width: 700px
+        position: absolute
+        top: 100px
+        right: -600px
+        text-align: right
+        h1
+          color: #a51165
+          font-size: 36px
+          font-family: 'header_medium'
+        h2
+          color: #262537
+          font-size: 18px
+          font-family: 'header_normal'
+
+      .inner_slide
+        position: absolute
+        border: 1px solid #d4d4d4
+        cursor: pointer
+        +border-radius
+        width: 210px
+        height: 195px
+        +single-box-shadow(#e2e2e2, 0, 0, 4px)
+        background: #f5f2fb image_url('presentation/inner_slide_11_bg.png') no-repeat center 4px
+        &:hover
+          +single-box-shadow(#c2c2c2, 0, 0, 6px)
+
+        .wrapper
+          margin-top: 138px
+
+        h3
+          height: 57px
+          width: 210px
+          color: #fff
+          text-align: center
+          font-family: 'header_light'
+          font-weight: bold
+          font-size: 13px
+          line-height: 15px
+          display: table-cell
+          vertical-align: middle
+          background-color: #d32234
+          +background-image(linear-gradient(#d32234, #de2739, #d32234))
+          padding: 7px 5px 5px
+          +border-bottom-left-radius
+          +border-bottom-right-radius
+
+      .slide_1
+        .inner_slide
+          top: -210px
+          left: 30px
+          h3
+            background-color: #d32234
+            +background-image(linear-gradient(#d32234, #de2739, #d32234))
+
+        .inner_slide_1
+          background-image: url('presentation/inner_slide_11_bg.png')
+        .inner_slide_2
+          background-image: url('presentation/inner_slide_12_bg.png')
+        .inner_slide_3
+          background-image: url('presentation/inner_slide_13_bg.png')
+        .inner_slide_4
+          background-image: url('presentation/inner_slide_14_bg.png')
+        .inner_slide_5
+          background-image: url('presentation/inner_slide_15_bg.png')
+        .inner_slide_6
+          background-image: url('presentation/inner_slide_16_bg.png')
+        .inner_slide_7
+          background-image: url('presentation/inner_slide_17_bg.png')
+
+      .slide_2
+        .inner_slide
+          top: -210px
+          left: 250px
+          h3
+            background-color: #de137c
+            +background-image(linear-gradient(#de137c, #f22f95, #de157d))
+
+        .inner_slide_1
+          background-image: url('presentation/inner_slide_21_bg.png')
+        .inner_slide_2
+          background-image: url('presentation/inner_slide_22_bg.png')
+        .inner_slide_3
+          background-image: url('presentation/inner_slide_23_bg.png')
+        .inner_slide_4
+          background-image: url('presentation/inner_slide_24_bg.png')
+        .inner_slide_5
+          background-image: url('presentation/inner_slide_25_bg.png')
+        .inner_slide_6
+          background-image: url('presentation/inner_slide_26_bg.png')
+
+      .slide_3
+        .inner_slide
+          top: -210px
+          left: 470px
+          h3
+            background-color: #ec5914
+            +background-image(linear-gradient(#ec5914, #f05815, #e25716))
+
+        .inner_slide_1
+          background-image: url('presentation/inner_slide_31_bg.png')
+
+      .slide_4
+        .inner_slide
+          top: -210px
+          left: 690px
+          h3
+            background-color: #a7c203
+            +background-image(linear-gradient(#a7c203, #b3cf08, #a8c302))
+
+        .inner_slide_1
+          background-image: url('presentation/inner_slide_41_bg.png')
+        .inner_slide_2
+          background-image: url('presentation/inner_slide_42_bg.png')
+        .inner_slide_3
+          background-image: url('presentation/inner_slide_43_bg.png')
+        .inner_slide_4
+          background-image: url('presentation/inner_slide_44_bg.png')
+        .inner_slide_5
+          background-image: url('presentation/inner_slide_45_bg.png')
+        .inner_slide_6
+          background-image: url('presentation/inner_slide_46_bg.png')
 
   .navigation
     background-color: #fff
     +border-radius(10px)
     +single-box-shadow(#aaa, 0, 1px, 2px)
-    margin: 0 0 2px
+    margin: 20px 0 2px
     ul
       text-align: center
       padding: 10px 0 15px
