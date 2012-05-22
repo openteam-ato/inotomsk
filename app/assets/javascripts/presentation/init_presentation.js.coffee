@@ -44,7 +44,9 @@ move_main_slides = ->
     selected_offset = if main_slide.hasClass("selected") then 15 else 0
     single_line_offset = if index == 1 or index == 4 then 8 else 0
 
-    main_slide.addClass("minimazed").sleep(100 * (index - 1)).animate
+    main_slide.addClass("minimazed").sleep(100 * (index - 1)).css
+      "z-index": 1
+    .animate
       "top": -171 + selected_offset
       "width": 200
       "right": 0
