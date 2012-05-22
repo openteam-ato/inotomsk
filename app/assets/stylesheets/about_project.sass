@@ -77,13 +77,18 @@ $content_padding: 30px
           .medium
             font-family: 'header_medium'
         ul
-          li:before
-            content: "–"
-            float: left
-            left: -20px
-            padding: 0
-            position: relative
-            width: 0
+          li
+            text-indent: 0
+            background: none
+            font-size: 12px
+            &:before
+              content: "–"
+              float: left
+              left: -20px
+              padding: 0
+              position: relative
+              width: 0
+
 
       $main_slide_offset_y: 190px
       .main_slide_1
