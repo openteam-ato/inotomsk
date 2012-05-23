@@ -53,11 +53,11 @@ move_main_slides = ->
       "left": 220 * index - 190
     , 500, "easeOutBack", ->
       $(this).hover ->
-        $(this).animate
+        $(this).stop(true, true).animate
           top: "+=15px"
         , 100 unless $(this).hasClass("selected")
       , ->
-        $(this).animate
+        $(this).stop(true, true).animate
           top: "-=15px"
         , 100 unless $(this).hasClass("selected")
       $(this).unbind("click").click ->
@@ -104,13 +104,20 @@ change_main_slide = (block) ->
 
 hide_inner_slides = ->
   visible_block = $(".presentation .inner_wrapper:visible")
-  slide_name = visible_block.attr("class").replace("inner_wrapper ", "").replace(/^\s\s*/, "").replace(/\s\s*$/, "")
+  slide_name = visible_block.attr("class")
+    .replace("inner_wrapper ", "")
+    .replace(/^\s\s*/, "")
+    .replace(/\s\s*$/, "")
   switch slide_name
     when "slide_1" then left_offset = 30
     when "slide_2" then left_offset = 250
-    when "slide_3" then left_offset = 470
+    when "slide_3"
+      $(".slide_3 .slide_submenu").fadeOut(500)
+      $(".slide_3 .slide_submenu li").removeClass("selected")
+      $(".slide_3 .slide_submenu li:first").addClass("selected")
+      left_offset = 470
     when "slide_4" then left_offset = 690
-  $(".slide_name", visible_block).animate
+  $(".slide_name", visible_block).stop(true, true).animate
     "right": "-=700"
   , 500, "easeInBack"
   $(".inner_slide", visible_block).each (index, element) ->
@@ -122,18 +129,37 @@ hide_inner_slides = ->
       visible_block.hide()
 
 show_inner_slides = (block, sleep_interval = 1500) ->
-  klass = block.attr("class").replace("main_", "").replace("selected", "").replace("minimazed", "").replace(/^\s\s*/, "").replace(/\s\s*$/, "")
+  klass = block.attr("class")
+    .replace("main_", "")
+    .replace("selected", "")
+    .replace("minimazed", "")
+    .replace(/^\s\s*/, "")
+    .replace(/\s\s*$/, "")
   block = $(".inner_wrapper.#{klass}")
   block.show()
-  $(".slide_name", block).sleep(1000 + sleep_interval).animate
+  $(".slide_name", block).stop(true, true).sleep(1000 + sleep_interval).animate
     "right": "+=700"
   , 500, "easeOutBack"
   $(".presentation .inside_wrapper").animate
     "min-height": 1000
   , 500
-  slide_with_submenu_offset = if klass == "slide_3" then 60 else 0
-  handle_slide_submenu(block, sleep_interval) if klass == "slide_3"
-  $(".inner_slide", block).each (index, element) ->
+  slides = $(".inner_slide", block).hide()
+  slide_with_submenu_offset = 0
+  if klass == "slide_3"
+    slide_with_submenu_offset = 60
+    $(".slide_submenu", block).sleep(1000 + sleep_interval).fadeIn(500)
+    handle_slide_submenu(block, sleep_interval)
+    slide_number = $(".slide_submenu .selected", block).attr("class")
+      .replace("selected", "")
+      .replace("submenu_", "")
+      .replace(/^\s\s*/, "")
+      .replace(/\s\s*$/, "")
+    matches = []
+    $(".inner_slide", block).each (index, element) ->
+      matches.push $(element)[0] if $(element).attr("class").match(new RegExp("\^inner_slide_#{slide_number}\\d+", "g"))
+    slides = $(matches)
+
+  slides.each (index, element) ->
     switch (index) % 3
       when 0 then left_offset = 100
       when 1 then left_offset = 354
@@ -141,16 +167,42 @@ show_inner_slides = (block, sleep_interval = 1500) ->
     top_offset = 200 if index >= 0 and index <= 2
     top_offset = 440 if index >= 3 and index <= 5
     top_offset = 680 if index >= 6 and index <= 8
-    $(element).sleep(sleep_interval + (100 * index)).animate
+    $(element).sleep(sleep_interval + (100 * index)).show().animate
       "top": top_offset + slide_with_submenu_offset
       "left": left_offset
 
 handle_slide_submenu = (block, sleep_interval) ->
-  $(".slide_submenu", block).sleep(1000 + sleep_interval).fadeIn(500)
   $(".slide_submenu a", block).click ->
     unless $(this).closest("li").hasClass("selected")
       $(this).closest("li").addClass("selected")
       $(this).closest("li").siblings("li").removeClass("selected")
+      $(".inner_slide:visible", block).each (index, element) ->
+        $(element).sleep(100 * index).fadeOut 300, ->
+          $(this).show().hide().css
+            "top": -210
+            "left": 470
+      slide_with_submenu_offset = 60
+      slide_number = $(".slide_submenu .selected", block).attr("class")
+        .replace("selected", "")
+        .replace("submenu_", "")
+        .replace(/^\s\s*/, "")
+        .replace(/\s\s*$/, "")
+      matches = []
+      $(".inner_slide", block).each (index, element) ->
+        matches.push $(element)[0] if $(element).attr("class").match(new RegExp("\^inner_slide_#{slide_number}\\d+", "g"))
+      slides = $(matches)
+
+      slides.each (index, element) ->
+        switch (index) % 3
+          when 0 then left_offset = 100
+          when 1 then left_offset = 354
+          when 2 then left_offset = 608
+        top_offset = 200 if index >= 0 and index <= 2
+        top_offset = 440 if index >= 3 and index <= 5
+        top_offset = 680 if index >= 6 and index <= 8
+        $(element).sleep(500 + 100 * index).show().animate
+          "top": top_offset + slide_with_submenu_offset
+          "left": left_offset
     false
 
 $.fn.sleep = (time) ->

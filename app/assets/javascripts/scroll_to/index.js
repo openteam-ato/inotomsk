@@ -1,3 +1,3 @@
 /*
- * = require ./jquery.scroll_to.js
+ * = require_tree .
  */
