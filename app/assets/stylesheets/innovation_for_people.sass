@@ -1,0 +1,46 @@
+@import 'compass/utilities'
+@import 'compass/css3'
+
+$container_width: 920px
+$menu_width: 230px
+$content_padding: 30px
+
+.content_wrapper .innovation_for_people
+  margin-left: 30px
+
+  .navigation
+    float: right
+    width: $menu_width
+    padding: 10px
+    background-color: #fff
+    position: relative
+    +border-radius(10px)
+    +single-box-shadow(#aaa, 0, 1px, 2px)
+    margin: 2px
+    li
+      font-size: 14px
+      margin: 1px 0
+      a
+        display: block
+        color: #262533
+        text-decoration: none
+        background-color: #f5f2fb
+        +border-radius(7px)
+        outline: none
+        padding: 10px 20px
+        &.innovatsii-dlya-vseh
+          background-color: #ffebd8
+        &:hover
+          color: #fff
+          background-color: #a41162
+      &.selected a
+        color: #fff
+        background-color: #a41162
+        &.innovatsii-dlya-vseh
+          color: #262533
+          background-color: #ffebd8
+          &:hover
+            color: #fff
+            background-color: #a41162
+
+  .content

@@ -1,8 +1,8 @@
 <% content_for :content do %>
   <div class='content_wrapper index'>
     <div class="innovation_for_people">
-      <%#= content_tag :div, render_navigation_with_separator(@content_navigation.content.values.first['children']), :class => 'navigation noindex' if @content_navigation %>
-      <%#= render_partial_for_region(@content_first) %>
+      <%= content_tag :div, render_navigation(@content_navigation.content.values.first['children']), :class => 'navigation noindex' if @content_navigation %>
+      <%= render_partial_for_region(@content_first) %>
     </div>
   </div>
 <% end %>
