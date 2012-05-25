@@ -6,6 +6,7 @@ $menu_width: 230px
 $content_padding: 30px
 
 .content_wrapper .innovation_for_people
+  +clearfix
   margin-left: 30px
 
   .navigation
@@ -44,3 +45,37 @@ $content_padding: 30px
             background-color: #a41162
 
   .content
+    +min-height(600px)
+    +border-radius(10px)
+    +single-box-shadow(#aaa, 0, 0, 5px)
+    background: #fff image_url('innovation_for_people_bg.png') no-repeat right bottom
+    padding: $content_padding ($content_padding + $menu_width) ($content_padding + 25px) $content_padding
+    margin: 20px 20px 5px 5px
+
+    h1
+      text-align: center
+      font-family: 'header_medium'
+      margin-bottom: 5px
+
+    h2
+      font-size: 18px
+      font-family: Verdana, Arial, sans-serif
+
+    img
+      border-bottom: 10px solid #f5f2fb
+      padding-top: 30px
+      background: #fff image_url('innovation_for_people_image_bg.png') no-repeat center top
+
+    hr
+      height: 1px
+      border: none
+      border-bottom: 1px solid #d9d9d9
+      line-height: 0px
+      margin: 20px 0
+
+    .main_slide
+      background: transparent image_url('innovation_for_people_main_bg.png') no-repeat left top
+      padding-top: $content_padding
+      padding-left: $content_padding
+      margin-top: - $content_padding
+      margin-left: - $content_padding
