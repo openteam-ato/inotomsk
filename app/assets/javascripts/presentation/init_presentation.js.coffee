@@ -111,12 +111,12 @@ hide_inner_slides = ->
   switch slide_name
     when "slide_1" then left_offset = 30
     when "slide_2" then left_offset = 250
-    when "slide_3"
-      $(".slide_3 .slide_submenu").fadeOut(500)
-      $(".slide_3 .slide_submenu li").removeClass("selected")
-      $(".slide_3 .slide_submenu li:first").addClass("selected")
-      left_offset = 470
-    when "slide_4" then left_offset = 690
+    when "slide_3" then left_offset = 470
+    when "slide_4"
+      $(".slide_4 .slide_submenu").fadeOut(500)
+      $(".slide_4 .slide_submenu li").removeClass("selected")
+      $(".slide_4 .slide_submenu li:first").addClass("selected")
+      left_offset = 690
   $(".slide_name", visible_block).stop(true, true).animate
     "right": "-=700"
   , 500, "easeInBack"
@@ -145,7 +145,7 @@ show_inner_slides = (block, sleep_interval = 1500) ->
   , 500
   slides = $(".inner_slide", block).hide()
   slide_with_submenu_offset = 0
-  if klass == "slide_3"
+  if klass == "slide_4"
     slide_with_submenu_offset = 60
     $(".slide_submenu", block).sleep(1000 + sleep_interval).fadeIn(500)
     handle_slide_submenu(block, sleep_interval)
