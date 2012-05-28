@@ -76,6 +76,7 @@ module ApplicationHelper
       end
     end
     until_arr.delete('23:59')
+    until_arr.delete('&mdash;<br />') if since_time == '00:00' && until_time == '23:59' && since_day == until_day && since_month == until_month
     (since_arr.reverse + until_arr.reverse).join(' ')
   end
 
