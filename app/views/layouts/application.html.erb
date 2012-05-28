@@ -57,13 +57,13 @@
       <div class='targets'>
         <% unless @targets.blank? %>
           <div class='left'>
-            <a href='#'>назад</a>
+            <a href='#'><%= t('views.pagination.previous') %></a>
           </div>
           <div class="container">
             <%= render_partial_for_region(@targets) %>
           </div>
           <div class='right'>
-            <a href='#'>вперед</a>
+            <a href='#'><%= t('views.pagination.next') %></a>
           </div>
         <% end %>
       </div>
