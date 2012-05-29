@@ -5,10 +5,10 @@
     return false
 
   preload_images [
-    "/assets/presentation/main_slide_1_bg.png",
-    "/assets/presentation/main_slide_2_bg.png",
-    "/assets/presentation/main_slide_3_bg.png",
-    "/assets/presentation/main_slide_4_bg.png"
+    "/assets/presentation/main_slide_1_bg.jpg",
+    "/assets/presentation/main_slide_2_bg.jpg",
+    "/assets/presentation/main_slide_3_bg.jpg",
+    "/assets/presentation/main_slide_4_bg.jpg"
   ]
 
   $.scrollTo ".presentation", 300,
@@ -49,15 +49,19 @@
       .strip()
     view_block = $(".view_#{slide_klass}", main_slide)
     return false unless view_block.length
-    show_slide_dialog($("h3", $this).text(), view_block, main_slide_class)
+    show_slide_dialog(slide_klass, main_slide_class)
 
-show_slide_dialog = (title, block, header_class) ->
+  #$(".presentation .slide_1 .inner_slide_11").sleep(500).click()
+
+show_slide_dialog = (slide_klass, header_class) ->
   $("<div />", { "class": "slide_dialog_overlay" }).appendTo("body") unless $("div.slide_dialog_overlay").length
-  overlay = $("div.slide_dialog_overlay")
+  overlay = $("div.slide_dialog_overlay").hide()
   overlay.css
     "height": $("body").outerHeight()
+  .fadeIn 1000
   $("<div />", { "class": "slide_dialog_wrapper" }).appendTo("body") unless $("div.slide_dialog_wrapper").length
   dialog_wrapper = $("div.slide_dialog_wrapper")
+  title = $(".#{slide_klass} h3").text()
   dialog_wrapper
     .css
       "left": $("body").outerWidth() / 2 - dialog_wrapper.outerWidth() / 2
@@ -68,9 +72,18 @@ show_slide_dialog = (title, block, header_class) ->
   $("<a href='' class='next'>next</a>").appendTo($(".slide_dialog_header"))
   $("<h1>#{title}</h1>").appendTo($(".slide_dialog_header"))
   $("<div />", { "class": "slide_dialog_content" }).appendTo(dialog_wrapper)
-  dialog_content = $(".slide_dialog_content")
-  console.log block.attr("class")
-  dialog_content.html(block.html())
+  dialog_content_height = dialog_wrapper.outerHeight() - $(".slide_dialog_top", dialog_wrapper).outerHeight() - $(".slide_dialog_header", dialog_wrapper).outerHeight()
+  dialog_content = $(".slide_dialog_content").css
+    "height": dialog_content_height
+  $("<ul/>").appendTo(dialog_content)
+  $(".view_inner_slide", $(".#{header_class}")).each (index, element) ->
+    element_klass = $(element).attr("class").replace(" view_inner_slide", "").strip()
+    element_header = $(".#{header_class} .#{element_klass.replace("view_", "")} h3").text()
+    html = ""
+    html += "<h3 class='hidden'>#{element_header}</h3>"
+    html += $(element).html()
+    $("<li class='#{element_klass}'>#{html}</li>").appendTo($("ul", dialog_content))
+
   $("body").keypress (event) ->
     if event.keyCode == 27
       $("body").unbind "keypress"
@@ -79,6 +92,14 @@ show_slide_dialog = (title, block, header_class) ->
     remove_slide_dialog()
   $(".slide_dialog_top .close").click ->
     remove_slide_dialog()
+    false
+  $("..slide_dialog_wrapper .slide_dialog_header .prev").click ->
+    return false if $(this).hasClass("disabled")
+    console.log "prev"
+    false
+  $("..slide_dialog_wrapper .slide_dialog_header .next").click ->
+    return false if $(this).hasClass("disabled")
+    console.log "next"
     false
 
 remove_slide_dialog = ->

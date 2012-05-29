@@ -58,13 +58,13 @@ $content_padding: 30px
         +border-radius(10px)
         background: transparent image_url('presentation/about_project_main_bg.png') no-repeat left top
         &.main_slide_1_bg
-          background-image: image_url('presentation/main_slide_1_bg.png')
+          background-image: image_url('presentation/main_slide_1_bg.jpg')
         &.main_slide_2_bg
-          background-image: image_url('presentation/main_slide_2_bg.png')
+          background-image: image_url('presentation/main_slide_2_bg.jpg')
         &.main_slide_3_bg
-          background-image: image_url('presentation/main_slide_3_bg.png')
+          background-image: image_url('presentation/main_slide_3_bg.jpg')
         &.main_slide_4_bg
-          background-image: image_url('presentation/main_slide_4_bg.png')
+          background-image: image_url('presentation/main_slide_4_bg.jpg')
 
       .presentation_title
         width: 400px
@@ -447,4 +447,11 @@ $content_padding: 30px
           background-position: -32px -64px
 
   .slide_dialog_content
-    padding: 20px
+    +clearfix
+    .hidden
+      display: none
+    ul
+      li
+        float: left
+        height: 100%
+        padding: 20px
