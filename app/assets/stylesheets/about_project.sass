@@ -82,7 +82,7 @@ $content_padding: 30px
             background: none
             font-size: 12px
             &:before
-              content: "–"
+              content: '–'
               float: left
               left: -20px
               padding: 0
@@ -187,19 +187,19 @@ $content_padding: 30px
             background-color: #d32234
             +background-image(linear-gradient(#d32234, #de2739, #d32234))
 
-        .inner_slide_1
+        .inner_slide_11
           background-image: image_url('presentation/inner_slide_11_bg.jpg')
-        .inner_slide_2
+        .inner_slide_12
           background-image: image_url('presentation/inner_slide_12_bg.jpg')
-        .inner_slide_3
+        .inner_slide_13
           background-image: image_url('presentation/inner_slide_13_bg.jpg')
-        .inner_slide_4
+        .inner_slide_14
           background-image: image_url('presentation/inner_slide_14_bg.jpg')
-        .inner_slide_5
+        .inner_slide_15
           background-image: image_url('presentation/inner_slide_15_bg.jpg')
-        .inner_slide_6
+        .inner_slide_16
           background-image: image_url('presentation/inner_slide_16_bg.jpg')
-        .inner_slide_7
+        .inner_slide_17
           background-image: image_url('presentation/inner_slide_17_bg.jpg')
 
       .slide_2
@@ -210,17 +210,17 @@ $content_padding: 30px
             background-color: #de137c
             +background-image(linear-gradient(#de137c, #f22f95, #de157d))
 
-        .inner_slide_1
+        .inner_slide_21
           background-image: image_url('presentation/inner_slide_21_bg.jpg')
-        .inner_slide_2
+        .inner_slide_22
           background-image: image_url('presentation/inner_slide_22_bg.jpg')
-        .inner_slide_3
+        .inner_slide_23
           background-image: image_url('presentation/inner_slide_23_bg.jpg')
-        .inner_slide_4
+        .inner_slide_24
           background-image: image_url('presentation/inner_slide_24_bg.jpg')
-        .inner_slide_5
+        .inner_slide_25
           background-image: image_url('presentation/inner_slide_25_bg.jpg')
-        .inner_slide_6
+        .inner_slide_26
           background-image: image_url('presentation/inner_slide_26_bg.jpg')
 
       .slide_3
@@ -231,17 +231,17 @@ $content_padding: 30px
             background-color: #a7c203
             +background-image(linear-gradient(#a7c203, #b3cf08, #a8c302))
 
-        .inner_slide_1
+        .inner_slide_31
           background-image: image_url('presentation/inner_slide_31_bg.jpg')
-        .inner_slide_2
+        .inner_slide_32
           background-image: image_url('presentation/inner_slide_32_bg.jpg')
-        .inner_slide_3
+        .inner_slide_33
           background-image: image_url('presentation/inner_slide_33_bg.jpg')
-        .inner_slide_4
+        .inner_slide_34
           background-image: image_url('presentation/inner_slide_34_bg.jpg')
-        .inner_slide_5
+        .inner_slide_35
           background-image: image_url('presentation/inner_slide_35_bg.jpg')
-        .inner_slide_6
+        .inner_slide_36
           background-image: image_url('presentation/inner_slide_36_bg.jpg')
 
       .slide_4
@@ -269,11 +269,11 @@ $content_padding: 30px
             text-indent: 0
             background: none
             margin: 5px 0 0
-            &.submenu_1
+            &.submenu_41
               margin-left: 130px
-            &.submenu_2
+            &.submenu_42
               margin-left: 39px
-            &.submenu_3
+            &.submenu_43
               margin-left: 39px
             a
               color: #797979
@@ -287,44 +287,47 @@ $content_padding: 30px
                 color: #e05615
                 border-color: #e15517
 
-        .inner_slide_11
+        .inner_slide_411
           background-image: image_url('presentation/inner_slide_411_bg.jpg')
-        .inner_slide_12
+        .inner_slide_412
           background-image: image_url('presentation/inner_slide_412_bg.jpg')
-        .inner_slide_13
+        .inner_slide_413
           background-image: image_url('presentation/inner_slide_413_bg.jpg')
-        .inner_slide_14
+        .inner_slide_414
           background-image: image_url('presentation/inner_slide_414_bg.jpg')
-        .inner_slide_15
+        .inner_slide_415
           background-image: image_url('presentation/inner_slide_415_bg.jpg')
-        .inner_slide_16
+        .inner_slide_416
           background-image: image_url('presentation/inner_slide_416_bg.jpg')
-        .inner_slide_17
+        .inner_slide_417
           background-image: image_url('presentation/inner_slide_417_bg.jpg')
 
-        .inner_slide_21
+        .inner_slide_421
           background-image: image_url('presentation/inner_slide_421_bg.jpg')
-        .inner_slide_22
+        .inner_slide_422
           background-image: image_url('presentation/inner_slide_422_bg.jpg')
-        .inner_slide_23
+        .inner_slide_423
           background-image: image_url('presentation/inner_slide_423_bg.jpg')
-        .inner_slide_24
+        .inner_slide_424
           background-image: image_url('presentation/inner_slide_424_bg.jpg')
-        .inner_slide_25
+        .inner_slide_425
           background-image: image_url('presentation/inner_slide_425_bg.jpg')
-        .inner_slide_26
+        .inner_slide_426
           background-image: image_url('presentation/inner_slide_426_bg.jpg')
 
-        .inner_slide_31
+        .inner_slide_431
           background-image: image_url('presentation/inner_slide_431_bg.jpg')
-        .inner_slide_32
+        .inner_slide_432
           background-image: image_url('presentation/inner_slide_432_bg.jpg')
-        .inner_slide_33
+        .inner_slide_433
           background-image: image_url('presentation/inner_slide_433_bg.jpg')
-        .inner_slide_34
+        .inner_slide_434
           background-image: image_url('presentation/inner_slide_434_bg.jpg')
-        .inner_slide_35
+        .inner_slide_435
           background-image: image_url('presentation/inner_slide_435_bg.jpg')
+
+      .view_inner_slide
+        display: none
 
   .navigation
     background-color: #fff
@@ -353,3 +356,95 @@ $content_padding: 30px
       margin: 0 40px
     .break
       display: none
+
+.slide_dialog_overlay
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  background-color: #aeb2c8
+  +opacity(0.4)
+  z-index: 10
+
+.slide_dialog_wrapper
+  position: absolute
+  top: 465px
+  left: 500px
+  width: 780px
+  +min-height(650px)
+  background-color: #fff
+  +border-radius(10px)
+  +single-box-shadow(#aaa, 0, 0, 2px)
+  z-index: 15
+
+  .slide_dialog_top
+    +clearfix
+    height: 25px
+    background-color: #fffae4
+    +border-top-left-radius(10px)
+    +border-top-right-radius(10px)
+    .close
+      display: block
+      float: right
+      width: 16px
+      height: 16px
+      overflow: hidden
+      text-indent: -9999em
+      outline: none
+      background: #fffae4 image_url('presentation/slide_dialog_close.png') no-repeat
+      margin: 5px 5px
+
+  .slide_dialog_header
+    +clearfix
+    &.slide_1
+      background-color: #d32234
+      +background-image(linear-gradient(#d92d3d, #de3242, #d32234))
+    &.slide_2
+      background-color: #ed008c
+      +background-image(linear-gradient(#e92289, #ed268d, #de157d))
+    &.slide_3
+      background-color: #a7c203
+      +background-image(linear-gradient(#b4d00c, #b7d30f, #a9c403))
+    &.slide_4
+      background-color: #e15517
+      +background-image(linear-gradient(#ec5914, #f05815, #e25716))
+    h1
+      text-align: center
+      color: #fff
+      font-size: 24px
+      font-family: 'header_medium'
+      margin-top: 10px
+      padding: 0 45px
+    .prev,
+    .next
+      display: block
+      width: 32px
+      height: 32px
+      text-indent: -9999em
+      overflow: hidden
+      background: transparent url('presentation/slide_nav.png') no-repeat left top
+      margin: 6px
+    .prev
+      float: left
+      background-position: 0 0
+      &:hover
+        background-position: 0 -32px
+      &.disabled
+        cursor: default
+        background-position: 0 -64px
+        &:hover
+          background-position: 0 -64px
+    .next
+      float: right
+      background-position: -32px 0
+      &:hover
+        background-position: -32px -32px
+      &.disabled
+        cursor: default
+        background-position: -32px -64px
+        &:hover
+          background-position: -32px -64px
+
+  .slide_dialog_content
+    padding: 20px

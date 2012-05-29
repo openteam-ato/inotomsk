@@ -37,6 +37,54 @@
         move_main_slides()
       show_inner_slides($(this))
 
+  $('.presentation .inner_wrapper .inner_slide').click ->
+    $this = $(this)
+    main_slide = $this.closest(".inner_wrapper")
+    main_slide_class = main_slide.attr("class")
+      .replace("inner_wrapper", "")
+      .strip()
+    visible_siblings = $(this).siblings(".inner_slide:visible")
+    slide_klass = $this.attr("class")
+      .replace(" inner_slide", "")
+      .strip()
+    view_block = $(".view_#{slide_klass}", main_slide)
+    return false unless view_block.length
+    show_slide_dialog($("h3", $this).text(), view_block, main_slide_class)
+
+show_slide_dialog = (title, block, header_class) ->
+  $("<div />", { "class": "slide_dialog_overlay" }).appendTo("body") unless $("div.slide_dialog_overlay").length
+  overlay = $("div.slide_dialog_overlay")
+  overlay.css
+    "height": $("body").outerHeight()
+  $("<div />", { "class": "slide_dialog_wrapper" }).appendTo("body") unless $("div.slide_dialog_wrapper").length
+  dialog_wrapper = $("div.slide_dialog_wrapper")
+  dialog_wrapper
+    .css
+      "left": $("body").outerWidth() / 2 - dialog_wrapper.outerWidth() / 2
+  $("<div />", { "class": "slide_dialog_top" }).appendTo(dialog_wrapper)
+  $("<a href='' class='close'>close</a>").appendTo($(".slide_dialog_top"))
+  $("<div />", { "class": "slide_dialog_header #{header_class}" }).appendTo(dialog_wrapper)
+  $("<a href='' class='prev'>prev</a>").appendTo($(".slide_dialog_header"))
+  $("<a href='' class='next'>next</a>").appendTo($(".slide_dialog_header"))
+  $("<h1>#{title}</h1>").appendTo($(".slide_dialog_header"))
+  $("<div />", { "class": "slide_dialog_content" }).appendTo(dialog_wrapper)
+  dialog_content = $(".slide_dialog_content")
+  console.log block.attr("class")
+  dialog_content.html(block.html())
+  $("body").keypress (event) ->
+    if event.keyCode == 27
+      $("body").unbind "keypress"
+      remove_slide_dialog()
+  $("div.slide_dialog_overlay").click ->
+    remove_slide_dialog()
+  $(".slide_dialog_top .close").click ->
+    remove_slide_dialog()
+    false
+
+remove_slide_dialog = ->
+  $("div.slide_dialog_overlay").remove()
+  $("div.slide_dialog_wrapper").remove()
+
 move_main_slides = ->
 
   for index in [1..4]
@@ -87,7 +135,9 @@ change_main_slide = (block) ->
     main_slide = $(".main_slide_#{index}")
     main_slide.removeClass("selected").css
       top: "-171px"
-  klass = block.attr("class").replace(" minimazed", "")
+  klass = block.attr("class")
+    .replace("minimazed", "")
+    .strip()
 
   fade_speed = if $.browser.msie and $.browser.version == '8.0' then 0 else 1000
 
@@ -106,8 +156,7 @@ hide_inner_slides = ->
   visible_block = $(".presentation .inner_wrapper:visible")
   slide_name = visible_block.attr("class")
     .replace("inner_wrapper ", "")
-    .replace(/^\s\s*/, "")
-    .replace(/\s\s*$/, "")
+    .strip()
   switch slide_name
     when "slide_1" then left_offset = 30
     when "slide_2" then left_offset = 250
@@ -133,8 +182,7 @@ show_inner_slides = (block, sleep_interval = 1500) ->
     .replace("main_", "")
     .replace("selected", "")
     .replace("minimazed", "")
-    .replace(/^\s\s*/, "")
-    .replace(/\s\s*$/, "")
+    .strip()
   block = $(".inner_wrapper.#{klass}")
   block.show()
   $(".slide_name", block).stop(true, true).sleep(1000 + sleep_interval).animate
@@ -152,8 +200,7 @@ show_inner_slides = (block, sleep_interval = 1500) ->
     slide_number = $(".slide_submenu .selected", block).attr("class")
       .replace("selected", "")
       .replace("submenu_", "")
-      .replace(/^\s\s*/, "")
-      .replace(/\s\s*$/, "")
+      .strip()
     matches = []
     $(".inner_slide", block).each (index, element) ->
       matches.push $(element)[0] if $(element).attr("class").match(new RegExp("\^inner_slide_#{slide_number}\\d+", "g"))
@@ -185,8 +232,7 @@ handle_slide_submenu = (block, sleep_interval) ->
       slide_number = $(".slide_submenu .selected", block).attr("class")
         .replace("selected", "")
         .replace("submenu_", "")
-        .replace(/^\s\s*/, "")
-        .replace(/\s\s*$/, "")
+        .strip()
       matches = []
       $(".inner_slide", block).each (index, element) ->
         matches.push $(element)[0] if $(element).attr("class").match(new RegExp("\^inner_slide_#{slide_number}\\d+", "g"))
@@ -211,3 +257,7 @@ $.fn.sleep = (time) ->
     setTimeout ->
       obj.dequeue()
     , time
+
+if typeof(String.prototype.strip) == "undefined"
+  String.prototype.strip = ->
+    String(this).replace(/^\s\s*/, "").replace(/\s\s*$/, "")
