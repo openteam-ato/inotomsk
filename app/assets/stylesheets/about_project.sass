@@ -372,7 +372,6 @@ $content_padding: 30px
   top: 465px
   left: 500px
   width: 780px
-  +min-height(650px)
   background-color: #fff
   +border-radius(10px)
   +single-box-shadow(#aaa, 0, 0, 2px)
@@ -412,8 +411,8 @@ $content_padding: 30px
     h1
       text-align: center
       color: #fff
-      font-size: 24px
-      font-family: 'header_medium'
+      font-size: 22px
+      font-family: 'header_normal'
       margin-top: 10px
       padding: 0 45px
     .prev,
@@ -448,10 +447,13 @@ $content_padding: 30px
 
   .slide_dialog_content
     +clearfix
+    position: relative
     .hidden
       display: none
     ul
+      position: absolute
+      top: 0
+      left: 0
       li
         float: left
-        height: 100%
         padding: 20px
