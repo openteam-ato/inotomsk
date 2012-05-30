@@ -363,8 +363,7 @@ $content_padding: 30px
   left: 0
   width: 100%
   height: 100%
-  background-color: #aeb2c8
-  +opacity(0.4)
+  background: transparent image_url('presentation/slide_dialog_overlay_bg.png')
   z-index: 10
 
 .slide_dialog_wrapper
@@ -476,15 +475,15 @@ $content_padding: 30px
             width: 57px
             line-height: 35px
             text-align: center
-            font-family: "header_normal"
-            background: transparent url("presentation/green_list_item_counter_bg.png") no-repeat
+            font-family: 'header_normal'
+            background: transparent url('presentation/green_list_item_counter_bg.png') no-repeat
             padding-right: 10px
             padding-top: 2px
           .check
             float: left
             width: 57px
             line-height: 35px
-            background: transparent url("presentation/green_list_item_check_bg.png") no-repeat
+            background: transparent url('presentation/green_list_item_check_bg.png') no-repeat
             text-align: center
             padding-right: 10px
           .text
@@ -492,7 +491,7 @@ $content_padding: 30px
             margin-top: 7px
         h5
           font-size: 18px
-          font-family: "header_normal"
+          font-family: 'header_normal'
           margin-bottom: 5px
         .orange_list
           li
@@ -504,16 +503,21 @@ $content_padding: 30px
             width: 73px
             line-height: 35px
             text-align: center
-            font-family: "header_normal"
-            background: transparent url("presentation/green_list_item_year_bg.png") no-repeat
+            font-family: 'header_normal'
+            background: transparent url('presentation/orange_list_item_year_bg.png') no-repeat
             padding-right: 10px
             padding-top: 2px
           .text
             margin-left: 88px
             margin-top: 7px
-            .important
-              +inline-block
-              color: #a31162
-              font-size: 14px
-              font-weight: bold
-              margin-bottom: 2px
+        ul.dotted
+          margin-top: 10px
+          li
+            padding-left: 16px
+            background: transparent image_url('presentation/dotted_list_item_bg.png') no-repeat left 6px
+        .important
+          +inline-block
+          color: #a31162
+          font-size: 14px
+          font-weight: bold
+          margin-bottom: 2px

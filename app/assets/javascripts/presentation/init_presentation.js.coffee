@@ -108,8 +108,8 @@ show_slide_dialog = (slide_klass, header_class) ->
     dialog_content_list.css
       "left": - ul_position
 
-    slide_navigation_prev.addClass("disabled") if $("li:first", dialog_content_list).hasClass("selected")
-    slide_navigation_next.addClass("disabled") if $("li:last", dialog_content_list).hasClass("selected")
+    slide_navigation_prev.addClass("disabled") if dialog_content_list.children("li").first().hasClass("selected")
+    slide_navigation_next.addClass("disabled") if dialog_content_list.children("li").last().hasClass("selected")
 
     slide_navigation_prev.fadeIn(300)
     slide_navigation_next.fadeIn(300)
