@@ -411,7 +411,7 @@ $content_padding: 30px
     h1
       text-align: center
       color: #fff
-      font-size: 22px
+      font-size: 20px
       font-family: 'header_normal'
       margin-top: 10px
       padding: 0 45px
@@ -457,3 +457,63 @@ $content_padding: 30px
       li
         float: left
         padding: 20px
+
+        .info
+          margin: 10px 20px
+          ul
+            position: static
+            li
+              float: none
+              padding: 0
+        .green_list
+          li
+            +clearfix
+            margin-bottom: 10px
+          .counter
+            float: left
+            color: #fff
+            font-size: 16px
+            width: 57px
+            line-height: 35px
+            text-align: center
+            font-family: "header_normal"
+            background: transparent url("presentation/green_list_item_counter_bg.png") no-repeat
+            padding-right: 10px
+            padding-top: 2px
+          .check
+            float: left
+            width: 57px
+            line-height: 35px
+            background: transparent url("presentation/green_list_item_check_bg.png") no-repeat
+            text-align: center
+            padding-right: 10px
+          .text
+            margin-left: 72px
+            margin-top: 7px
+        h5
+          font-size: 18px
+          font-family: "header_normal"
+          margin-bottom: 5px
+        .orange_list
+          li
+            +clearfix
+            margin-bottom: 10px
+          .year
+            float: left
+            color: #fff
+            width: 73px
+            line-height: 35px
+            text-align: center
+            font-family: "header_normal"
+            background: transparent url("presentation/green_list_item_year_bg.png") no-repeat
+            padding-right: 10px
+            padding-top: 2px
+          .text
+            margin-left: 88px
+            margin-top: 7px
+            .important
+              +inline-block
+              color: #a31162
+              font-size: 14px
+              font-weight: bold
+              margin-bottom: 2px
