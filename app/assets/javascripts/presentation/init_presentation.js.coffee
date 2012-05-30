@@ -129,7 +129,7 @@ show_slide_dialog = (slide_klass, header_class) ->
     dialog_content_list = $(".slide_dialog_content").children("ul")
     $("li.selected", dialog_content_list).prev("li").addClass("selected").siblings("li").removeClass("selected")
     title = $("li.selected h3", dialog_content_list).text()
-    $(".slide_dialog_header h1").fadeOut ->
+    $(".slide_dialog_header h1").fadeOut 300, ->
       $(this).text(title).fadeIn()
     slide_navigation_prev.addClass("disabled") if dialog_content_list.children("li").first().hasClass("selected")
     slide_navigation_prev.removeClass("disabled") unless dialog_content_list.children("li").first().hasClass("selected")
@@ -145,7 +145,7 @@ show_slide_dialog = (slide_klass, header_class) ->
     dialog_content_list = $(".slide_dialog_content").children("ul")
     $("li.selected", dialog_content_list).next("li").addClass("selected").siblings("li").removeClass("selected")
     title = $("li.selected h3", dialog_content_list).text()
-    $(".slide_dialog_header h1").fadeOut ->
+    $(".slide_dialog_header h1").fadeOut 300, ->
       $(this).text(title).fadeIn()
     slide_navigation_prev.addClass("disabled") if dialog_content_list.children("li").first().hasClass("selected")
     slide_navigation_prev.removeClass("disabled") unless dialog_content_list.children("li").first().hasClass("selected")
