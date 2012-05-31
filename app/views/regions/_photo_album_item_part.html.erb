@@ -1,42 +1,44 @@
-<div class="photo_album_show">
-  <p class='date'>
-    <%= l DateTime.parse(object.since), :format => '%d %B %Y' %>
-    <span class='time'>
-      <%= l DateTime.parse(object.since), :format => '%H:%M' %>
-    </span>
-  </p>
-  <% if object.images.any? %>
-    <div class="content">
-      <%= raw object.body %>
-    </div>
-    <div class="image_container">
-      <div class="image">
-        <%= image_tag_for(object.images.first.thumbnail) %>
+<% unless object.blank? %>
+  <div class="photo_album_show">
+    <p class='date'>
+      <%= l DateTime.parse(object.since), :format => '%d %B %Y' %>
+      <span class='time'>
+        <%= l DateTime.parse(object.since), :format => '%H:%M' %>
+      </span>
+    </p>
+    <% if object.images.any? %>
+      <div class="content">
+        <%= raw object.body %>
       </div>
-      <div class="description">
-      <%= object.images.first.description unless object.images.first.description.blank? %>
+      <div class="image_container">
+        <div class="image">
+          <%= image_tag_for(object.images.first.thumbnail) %>
+        </div>
+        <div class="description">
+          <%= object.images.first.description unless object.images.first.description.blank? %>
+        </div>
       </div>
-    </div>
-    <% if object.images.many? %>
-      <div class="thumbnails">
-        <ul>
-          <% object.images.each_with_index do | element, index | %>
-            <li<%= " class='selected'" if index.eql?(0) %>>
-              <%= link_to raw("#{ album_thumbnail(element.thumbnail, 82, 55) } #{ content_tag :span }"), element.thumbnail.url %>
-            </li>
-          <% end %>
-        </ul>
+      <% if object.images.many? %>
+        <div class="thumbnails">
+          <ul>
+            <% object.images.each_with_index do | element, index | %>
+              <li<%= " class='selected'" if index.eql?(0) %>>
+                <%= link_to raw("#{ album_thumbnail(element.thumbnail, 82, 55) } #{ content_tag :span }"), element.thumbnail.url %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    <% else %>
+      <div class="content">
+        <p>Фотогалерея пуста</p>
       </div>
     <% end %>
-  <% else %>
-    <div class="content">
-      <p>Фотогалерея пуста</p>
-    </div>
-  <% end %>
-  <%= render 'commons/social_links' %>
-  <%= render 'commons/disqus' %>
-</div>
+    <%= render 'commons/social_links' %>
+    <%= render 'commons/disqus' %>
+  </div>
 
-<% content_for :more_like_this do %>
-  <!-- TODO доделать похожие -->
-<% end unless object.more_like_this.blank? %>
+  <% content_for :more_like_this do %>
+    <!-- TODO доделать похожие -->
+  <% end unless object.more_like_this.blank? %>
+<% end %>
