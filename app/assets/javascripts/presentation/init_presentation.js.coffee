@@ -11,7 +11,7 @@
     "/assets/presentation/main_slide_4_bg.jpg"
   ]
 
-  $.scrollTo ".presentation", 300,
+  $.scrollTo $(".presentation"), 300,
     axis:"y"
     offset: -20
 
@@ -76,9 +76,14 @@ show_slide_dialog = (slide_klass, header_class) ->
   slide_navigation_next = $("<a href='' class='next'>next</a>").appendTo($(".slide_dialog_header")).hide()
   $("<h1>#{title}</h1>").appendTo($(".slide_dialog_header"))
   $("<div />", { "class": "slide_dialog_content" }).appendTo(dialog_wrapper)
+
+  $.scrollTo $(".presentation"), 300,
+    axis:"y"
+    offset: 80
+
   dialog_wrapper.animate
     "width": "780"
-    "height": "570"
+    "height": "590"
     "top": "465"
     "left": $("body").outerWidth() / 2 - 390
     "opacity": "1"
