@@ -519,6 +519,34 @@ $content_padding: 30px
           li
             padding-left: 16px
             background: transparent image_url('presentation/dotted_list_item_bg.png') no-repeat left 6px
+
+        table
+          width: 100%
+          margin: 15px 0
+          font-size: 12px
+          caption
+            font-size: 14px
+            font-weight: bold
+            margin: 0 0 5px 9px
+          th,
+          td
+            width: 40%
+            padding: 5px 8px
+            border: 1px solid #ccc
+          th
+            color: #fff
+            font-weight: bold
+            background-color: #a1306e
+          tr:nth-of-type(odd)
+            background-color: #fff
+          tr:nth-of-type(even)
+            background-color: #e8ebfc
+          .center
+            width: 15%
+
+        .center
+          text-align: center
+
         .important
           +inline-block
           color: #a31162
