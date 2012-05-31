@@ -91,8 +91,10 @@ show_slide_dialog = (slide_klass, header_class) ->
       "width": list_width
       "height": dialog_content_height
     ul_position = 0
-    $(".view_inner_slide", $(".#{header_class}")).each (index, element) ->
-      element_klass = $(element).attr("class").replace(" view_inner_slide", "").strip()
+    $(".#{header_class} .inner_slide:visible").each (index, element) ->
+      element_klass = $(element).attr("class").replace(" inner_slide", "").strip()
+      element_klass = "view_#{element_klass}"
+      return true unless $(".#{header_class} .#{element_klass}").length
       element_header = $(".#{header_class} .#{element_klass.replace("view_", "")} h3").text()
       selected_klass = ""
       if element_klass.replace("view_", "") == slide_klass
@@ -100,7 +102,7 @@ show_slide_dialog = (slide_klass, header_class) ->
         selected_klass = " selected"
       html = ""
       html += "<h3 class='hidden'>#{element_header}</h3>"
-      html += $(element).html()
+      html += $(".#{header_class} .#{element_klass}").html()
       $("<li class='#{element_klass}#{selected_klass}'>#{html}</li>").appendTo(dialog_content_list).css
         "width": dialog_content.outerWidth() - 40
         "height": dialog_content_height - 40
