@@ -39,45 +39,54 @@ module ApplicationHelper
     strip_tags(truncate(strip_tags(text), :length => 200, :separator => ' '))
   end
 
-  def event_interval(since_str, until_str)
-    since_day, since_month, since_year, since_time = l(since_str.to_datetime, :format => :long).gsub(',', '').split(' ').to_a
-    until_day, until_month, until_year, until_time = l(until_str.to_datetime, :format => :long).gsub(',', '').split(' ').to_a
+  def interval_for(event)
+    since_date, since_time = l(event.since.to_datetime, :format => '%d.%B.%Y %H:%M').split(' ')
+    until_date, until_time = l(event.until.to_datetime, :format => '%d.%B.%Y %H:%M').split(' ')
+
+    since_date.gsub!(".", " ")
+    since_date.gsub!(" #{Date.today.year}", "")
+    until_date.gsub!('.', ' ')
+    until_date.gsub!(" #{Date.today.year}", "")
+
     since_arr = []
     until_arr = []
-    if since_year == until_year
-      until_arr << content_tag(:span, until_year, :class => 'year')
-    else
-      since_arr << since_year
-      until_arr << until_year
-    end
-    if since_month == until_month && since_day == until_day
-      until_arr << "#{until_month},"
-    else
-      since_arr << since_month
-      until_arr << "#{until_month},"
-    end
-    if since_month == until_month && since_day == until_day
-      until_arr << until_day
-    else
-      since_arr << since_day
-      until_arr << until_day
-    end
-    if since_time == until_time && since_month == until_month && since_day == until_day
-      if since_time != '00:00'
-        until_arr << until_time
+
+    since_arr << content_tag(:span, since_date, :class => 'nobr')
+    until_arr << content_tag(:span, until_date, :class => 'nobr') if since_date != until_date
+
+
+    if since_time != '00:00'
+      since_arr << ", #{since_time}"
+      if until_time != '00:00' && until_time != '23:59'
+        if since_time != until_time
+          if until_arr.empty?
+            until_arr << until_time
+          else
+            until_arr << ", #{until_time}"
+          end
+        else
+          unless until_arr.empty?
+            until_arr << ", #{until_time}"
+          end
+        end
       end
     else
-      since_arr << since_time if since_time != '00:00'
-      if until_time != '00:00'
-        until_arr << until_time
-        until_arr << "&mdash;<br />"
-      else
-        until_arr << "&mdash;<br />"
+      if until_time != '00:00' && until_time != '23:59'
+        unless until_arr.empty?
+          until_arr << ", #{until_time}"
+        end
       end
     end
-    until_arr.delete('23:59')
-    until_arr.delete('&mdash;<br />') if since_time == '00:00' && until_time == '23:59' && since_day == until_day && since_month == until_month
-    (since_arr.reverse + until_arr.reverse).join(' ')
+
+    res = since_arr.join
+
+    unless until_arr.empty?
+      res += ' &mdash; '
+      res += until_arr.join
+    end
+
+    res.html_safe
+
   end
 
   def intervals

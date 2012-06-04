@@ -4,48 +4,74 @@ require 'test_helper'
 
 class ApplicationHelperTest < ActionView::TestCase
 
-  test "interval helper: 22 марта 2012" do
-    assert_equal "22 марта, <span class=\"year\">2012</span>", event_interval("2012-03-22T00:00:00+07:00", "2012-03-22T00:00:00+07:00")
+  def setup
+    @event = Hashie::Mash.new
   end
 
-  test "interval helper: 01 июня 2012 (00:00 - 23:59)" do
-    assert_equal "01 июня, <span class=\"year\">2012</span>", event_interval("2012-06-01T00:00:00+07:00", "2012-06-01T23:59:00+07:00")
+  test "interval helper: 22 марта 2011" do
+    @event.since = "2011-03-22T00:00:00+07:00"
+    @event.until = "2011-03-22T00:00:00+07:00"
+    assert_equal "<span class=\"nobr\">22 марта 2011</span>", interval_for(@event)
   end
 
-  test "interval helper: 08:00 22 марта, 2012" do
-    assert_equal "08:00 22 марта, <span class=\"year\">2012</span>", event_interval("2012-03-22T08:00:00+07:00", "2012-03-22T08:00:00+07:00")
+  test "interval helper: 01 июня 2011 (00:00 - 23:59)" do
+    @event.since = "2011-06-01T00:00:00+07:00"
+    @event.until = "2011-06-01T23:59:00+07:00"
+    assert_equal "<span class=\"nobr\">01 июня 2011</span>", interval_for(@event)
   end
 
-  test "interval helper: 08:00 - 12:00 22 марта, 2012" do
-    assert_equal "08:00 &mdash;<br /> 12:00 22 марта, <span class=\"year\">2012</span>", event_interval("2012-03-22T08:00:00+07:00", "2012-03-22T12:00:00+07:00")
+  test "interval helper: 22 марта 2011, 08:00" do
+    @event.since = "2011-03-22T08:00:00+07:00"
+    @event.until = "2011-03-22T08:00:00+07:00"
+    assert_equal "<span class=\"nobr\">22 марта 2011</span>, 08:00", interval_for(@event)
   end
 
-  test "interval helper: 08:00 22 марта - 08:00 23 марта, 2012" do
-    assert_equal "08:00 22 марта &mdash;<br /> 08:00 23 марта, <span class=\"year\">2012</span>", event_interval("2012-03-22T08:00:00+07:00", "2012-03-23T08:00:00+07:00")
+  test "interval helper: 22 марта 2011, 08:00 - 12:00" do
+    @event.since = "2011-03-22T08:00:00+07:00"
+    @event.until = "2011-03-22T12:00:00+07:00"
+    assert_equal "<span class=\"nobr\">22 марта 2011</span>, 08:00 &mdash; 12:00", interval_for(@event)
   end
 
-  test "interval helper: 08:00 22 марта - 12:00 23 марта, 2012" do
-    assert_equal "08:00 22 марта &mdash;<br /> 12:00 23 марта, <span class=\"year\">2012</span>", event_interval("2012-03-22T08:00:00+07:00", "2012-03-23T12:00:00+07:00")
+  test "interval helper: 22 марта 2011, 08:00 - 23 марта 2011, 08:00" do
+    @event.since = "2011-03-22T08:00:00+07:00"
+    @event.until = "2011-03-23T08:00:00+07:00"
+    assert_equal "<span class=\"nobr\">22 марта 2011</span>, 08:00 &mdash; <span class=\"nobr\">23 марта 2011</span>, 08:00", interval_for(@event)
   end
 
-  test "interval helper: 08:00 22 марта - 23 марта, 2012" do
-    assert_equal "08:00 22 марта &mdash;<br /> 23 марта, <span class=\"year\">2012</span>", event_interval("2012-03-22T08:00:00+07:00", "2012-03-23T00:00:00+07:00")
+  test "interval helper: 22 марта 2011, 08:00 - 23 марта 2011, 12:00" do
+    @event.since = "2011-03-22T08:00:00+07:00"
+    @event.until = "2011-03-23T12:00:00+07:00"
+    assert_equal "<span class=\"nobr\">22 марта 2011</span>, 08:00 &mdash; <span class=\"nobr\">23 марта 2011</span>, 12:00", interval_for(@event)
   end
 
-  test "interval helper: 22 марта - 24 марта, 2012" do
-    assert_equal "22 марта &mdash;<br /> 24 марта, <span class=\"year\">2012</span>", event_interval("2012-03-22T00:00:00+07:00", "2012-03-24T00:00:00+07:00")
+  test "interval helper: 22 марта 2011, 08:00 - 23 марта 2011" do
+    @event.since = "2011-03-22T08:00:00+07:00"
+    @event.until = "2011-03-23T00:00:00+07:00"
+    assert_equal "<span class=\"nobr\">22 марта 2011</span>, 08:00 &mdash; <span class=\"nobr\">23 марта 2011</span>", interval_for(@event)
   end
 
-  test "interval helper: 22 марта - 24 марта, 2012 (with 23:59)" do
-    assert_equal "22 марта &mdash;<br /> 24 марта, <span class=\"year\">2012</span>", event_interval("2012-03-22T00:00:00+07:00", "2012-03-24T23:59:00+07:00")
+  test "interval helper: 22 марта 2011 - 24 марта 2012" do
+    @event.since = "2011-03-22T00:00:00+07:00"
+    @event.until = "2011-03-24T00:00:00+07:00"
+    assert_equal "<span class=\"nobr\">22 марта 2011</span> &mdash; <span class=\"nobr\">24 марта 2011</span>", interval_for(@event)
   end
 
-  test "interval helper: 22 марта - 12:00 22 апреля, 2012" do
-    assert_equal "22 марта &mdash;<br /> 10:00 22 апреля, <span class=\"year\">2012</span>", event_interval("2012-03-22T00:00:00+07:00", "2012-04-22T10:00:00+07:00")
+  test "interval helper: 22 марта 2011 - 24 марта 2012 (with 23:59)" do
+    @event.since = "2011-03-22T00:00:00+07:00"
+    @event.until = "2011-03-24T23:59:00+07:00"
+    assert_equal "<span class=\"nobr\">22 марта 2011</span> &mdash; <span class=\"nobr\">24 марта 2011</span>", interval_for(@event)
+  end
+
+  test "interval helper: 22 марта 2011 - 22 апреля 2011, 10:00" do
+    @event.since = "2011-03-22T00:00:00+07:00"
+    @event.until = "2011-04-22T10:00:00+07:00"
+    assert_equal "<span class=\"nobr\">22 марта 2011</span> &mdash; <span class=\"nobr\">22 апреля 2011</span>, 10:00", interval_for(@event)
   end
 
   test "interval helper: 22 марта - 22 апреля, 2012 (with 23:59)" do
-    assert_equal "22 марта &mdash;<br /> 22 апреля, <span class=\"year\">2012</span>", event_interval("2012-03-22T00:00:00+07:00", "2012-04-22T23:59:00+07:00")
+    @event.since = "2011-03-22T00:00:00+07:00"
+    @event.until = "2011-04-22T23:59:00+07:00"
+    assert_equal "<span class=\"nobr\">22 марта 2011</span> &mdash; <span class=\"nobr\">22 апреля 2011</span>", interval_for(@event)
   end
 
 end

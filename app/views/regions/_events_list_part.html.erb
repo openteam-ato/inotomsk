@@ -7,7 +7,7 @@
           <ul>
             <% event.event_entry_properties.each do |event_property| %>
               <li>
-                <p class='interval'><%= event_interval(event_property.since, event_property.until).html_safe %></p>
+                <p class='interval'><%= interval_for(event_property) %></p>
                 <p class='location'><%= event_property.location %></p>
               </li>
             <% end %>
