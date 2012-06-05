@@ -22,5 +22,6 @@
  * = require poll_results
  * = require photo_album
  * = require presentation
+ * = require barley_break
  * = require init
  */

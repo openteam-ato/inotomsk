@@ -24,6 +24,7 @@
  *= require content
  *= require search_results
  *= require about_project
+ *= require barley_break
  *= require innovation_for_people
  *= require error_page
  *= require pagination

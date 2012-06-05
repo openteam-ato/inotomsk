@@ -1,0 +1,124 @@
+@import "compass/css3"
+@import "compass/utilities"
+
+.barley_break
+
+  h1
+    color: #a41362
+    text-align: center
+    font-family: 'header_normal'
+    font-size: 24px
+    line-height: 1.2
+    margin-bottom: 10px
+
+  $ul_size: 734px
+  $ul_border: 2px
+  ul
+    position: relative
+    width: $ul_size - $ul_border * 2
+    height: $ul_size - $ul_border * 2
+    +single-box-shadow(#aaa, 1px, 1px, 4px)
+    border: $ul_border solid #a41162
+    +border-radius(5px)
+    background-color: #fff
+    margin: 0 auto 2px
+    li
+      position: absolute
+      width: 134px
+      height: 134px
+      border: 1px solid #c47e86
+      +border-radius(3px)
+      +single-box-shadow(#aaa, 0, 0, 1px)
+      padding: 22px
+
+      .counter
+        color: #fff
+        font-size: 18px
+        +clearfix
+        text-indent: -9999em
+        position: absolute
+        width: 40px
+        height: 40px
+        line-height: 40px
+        top: 5px
+        right: 5px
+        text-align: center
+        background: transparent image_url('barley_break/counter_bg.png') no-repeat center center
+
+      &.tomskie-vuzy
+        background: transparent image_url('barley_break/slide_01_bg.png') no-repeat center center
+        .counter
+          background-image: image_url('barley_break/counter_01_bg.png')
+      &.akademii
+        background: transparent image_url('barley_break/slide_02_bg.png') no-repeat center center
+        .counter
+          background-image: image_url('barley_break/counter_02_bg.png')
+      &.zakonodatelnaya-baza
+        background: transparent image_url('barley_break/slide_03_bg.png') no-repeat center center
+        .counter
+          background-image: image_url('barley_break/counter_03_bg.png')
+      &.biznes-inkubatory
+        background: transparent image_url('barley_break/slide_04_bg.png') no-repeat center center
+        .counter
+          background-image: image_url('barley_break/counter_04_bg.png')
+      &.nauchno-issledovatelskie-instituty
+        background: transparent image_url('barley_break/slide_05_bg.png') no-repeat center center
+        .counter
+          background-image: image_url('barley_break/counter_05_bg.png')
+      &.innovatsionnye-kompanii
+        background: transparent image_url('barley_break/slide_06_bg.png') no-repeat center center
+        .counter
+          background-image: image_url('barley_break/counter_06_bg.png')
+      &.gosudarstvennaya-podderzhka
+        background: transparent image_url('barley_break/slide_07_bg.png') no-repeat center center
+        .counter
+          background-image: image_url('barley_break/counter_07_bg.png')
+      &.tsentry-podderzhki-predprinimatelstva
+        background: transparent image_url('barley_break/slide_08_bg.png') no-repeat center center
+        .counter
+          background-image: image_url('barley_break/counter_08_bg.png')
+      &.konsaltingovye-kompanii
+        background: transparent image_url('barley_break/slide_09_bg.png') no-repeat center center
+        .counter
+          background-image: image_url('barley_break/counter_09_bg.png')
+      &.ofisy-kommertsializatsii-razrabotok
+        background: transparent image_url('barley_break/slide_10_bg.png') no-repeat center center
+        .counter
+          background-image: image_url('barley_break/counter_10_bg.png')
+      &.regionalnoe-agentstvo-privlecheniya-investitsiy
+        background: transparent image_url('barley_break/slide_11_bg.png') no-repeat center center
+        .counter
+          background-image: image_url('barley_break/counter_11_bg.png')
+      &.innovatsionno-tehnologicheskie-tsentry
+        background: transparent image_url('barley_break/slide_12_bg.png') no-repeat center center
+        .counter
+          background-image: image_url('barley_break/counter_12_bg.png')
+      &.venchurnye-fondy
+        background: transparent image_url('barley_break/slide_13_bg.png') no-repeat center center
+        .counter
+          background-image: image_url('barley_break/counter_13_bg.png')
+      &.mezhvedomstvennyy-tsentr-nanotehnologiy-tomsknanoteh
+        background: transparent image_url('barley_break/slide_14_bg.png') no-repeat center center
+        .counter
+          background-image: image_url('barley_break/counter_14_bg.png')
+      &.osobaya-ekonomicheskaya-zona-tehniko-vnedrencheskogo-tipa-g-tomsk
+        background: transparent image_url('barley_break/slide_15_bg.png') no-repeat center center
+        .counter
+          background-image: image_url('barley_break/counter_15_bg.png')
+
+      p
+        width: 114px
+        height: 134px
+        font-size: 14px
+        font-weight: bold
+        text-align: center
+        line-height: 18px
+        display: table-cell
+        vertical-align: middle
+        padding: 10px
+        a
+          color: #252535
+          text-decoration: none
+          &:hover
+            color: #a31061
+            text-decoration: underline

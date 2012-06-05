@@ -1,7 +1,7 @@
-<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.1//EN' 'http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd'>
-<html xmlns='http://www.w3.org/1999/xhtml' xml:lang='ru'>
+<!DOCTYPE HTML>
+<html lang="<%= I18n.locale %>">
   <head>
-    <meta http-equiv='Content-Type' content='text/html;charset=UTF-8' />
+	  <meta charset="UTF-8">
     <title><%= strip_tags(@page_title) %> | <%= strip_tags(@site_name.content.body) %></title>
     <%= yield :head_rss_link %>
     <%= favicon_link_tag %>
@@ -32,7 +32,7 @@
           <a href='/<%= I18n.locale %>/'><%= t "ino_tomsk_2020" %></a>
         </div>
         <div class='site_name'>
-          <h1><a href='/<%= I18n.locale %>/'><%= t "ino" %><span class='medium'><%= t "tomsk_2020" %></a></h1>
+          <h1><a href='/<%= I18n.locale %>/'><%= t "ino" %><span class='medium'><%= t "tomsk_2020" %></span></a></h1>
           <p class='shift'><%= t "federal_centre_education" %></p>
           <p><%= t "research_and_development" %></p>
         </div>
