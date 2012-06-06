@@ -1,4 +1,8 @@
+@barley_break_list_solution = new Array
+
 @init_barley_break = ->
+
+  save_solution()
 
   restore_from_cookie() if $.cookie "barley_break_list"
 
@@ -22,10 +26,16 @@
     shuffle_list()
     false
 
+save_solution = ->
+  list = new Array
+  $(".barley_break ul li").each (index, element) ->
+    list.push $("a", element).attr("class")
+  list.push "empty"
+  @barley_break_list_solution = list
+
 restore_from_cookie = ->
   list = $.cookie("barley_break_list").split(",")
   $(list).each (index, element) ->
-    console.log element
     unless element == "empty"
       link = $(".barley_break ul .#{element}").removeClass(element)
       li = link.closest("li").addClass(element)
@@ -44,10 +54,10 @@ shuffle_list = ->
   $(".barley_break ul").shuffle()
   $(".barley_break ul li").each (index, element) ->
     $element = $(element)
-    $element.stop(true,true).sleep(30 * index).animate
+    $element.stop(true,true).sleep(100 * index).animate
       "left": get_offset(index + 1).offset_x
       "top": get_offset(index + 1).offset_y
-    , 300, 'easeOutBack', ->
+    , 500, 'easeInOutBack', ->
       save_to_cookie()
 
 get_offset = (index) ->
