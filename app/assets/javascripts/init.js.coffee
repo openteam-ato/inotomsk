@@ -10,5 +10,6 @@ $ ->
   init_poll_results() if $(".voting").length
   init_main_news_list() if $('.news_container .news_list').length
   init_photo_album() if $('.photo_album_show').length
+  init_barley_break() if $('.barley_break').length
 
   false

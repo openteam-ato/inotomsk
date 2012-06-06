@@ -14,6 +14,7 @@
   $ul_size: 734px
   $ul_border: 2px
   ul
+    +clearfix
     position: relative
     width: $ul_size - $ul_border * 2
     height: $ul_size - $ul_border * 2
@@ -21,7 +22,7 @@
     border: $ul_border solid #a41162
     +border-radius(5px)
     background-color: #fff
-    margin: 0 auto 2px
+    margin: 0 auto 15px
     li
       position: absolute
       width: 134px
@@ -105,6 +106,8 @@
         background: transparent image_url('barley_break/slide_15_bg.png') no-repeat center center
         .counter
           background-image: image_url('barley_break/counter_15_bg.png')
+      &.empty
+        display: none
 
       p
         width: 114px
@@ -122,3 +125,6 @@
           &:hover
             color: #a31061
             text-decoration: underline
+  .shuffle
+    font-size: 14px
+    text-align: center

@@ -13,6 +13,8 @@
  * = require jquery
  * = require jquery-ui
  * = require scroll_to
+ * = require cookie
+ * = require shuffle
  * = require preload_images
  * = require alert_message
  * = require charts

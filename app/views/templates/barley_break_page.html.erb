@@ -2,8 +2,8 @@
   <div class='content_wrapper index'>
     <div class="barley_break">
       <h1><%= @content_first.content.values.first.title %></h1>
-      <%= content_tag :div, render_navigation_with_separator(@content_navigation.content.values.first['children']), :class => 'navigation noindex' if @content_navigation %>
       <%= render_partial_for_region(@content_first) %>
+      <p class="shuffle"><a href="#">Перемешать</a></p>
     </div>
   </div>
 <% end %>
