@@ -4,7 +4,9 @@
 
   save_solution()
 
-  restore_from_cookie() if $.cookie "barley_break_list"
+  if $.cookie "barley_break_list"
+    check_valid_cookie()
+    restore_from_cookie()
 
   $(".barley_break ul li").each (index, element) ->
     $element = $(element)
@@ -28,23 +30,41 @@
     shuffle_list()
     false
 
-  render_navigation()
+  render_navigation() if $.cookie "barley_break_list"
 
   handle_navigation()
+
+check_valid_cookie = ->
+  size = $.cookie("barley_break_list").split(",").length
+  if size != 16
+    alert("Ошибка сохранения расположения!\nКоличество ячеек должно быть равно 16\nСохранено #{size}")
+    $.cookie("barley_break_list", @barley_break_list_solution)
+    shuffle_list()
+    restore_from_cookie()
 
 save_solution = ->
   list = new Array
   $(".barley_break ul li").each (index, element) ->
     list.push $("a", element).attr("class")
   list.push "empty"
-  @barley_break_list_solution = list
+  @barley_break_list_solution = list.join(",")
 
 save_to_cookie = ->
   list = new Array
   $(".barley_break ul li").each (index, element) ->
     list.push $(element).attr("class")
-  $.cookie "barley_break_list", list, { expires: 365 }
-  alert("YOU ARE WIN!") if $.cookie("barley_break_list") == @barley_break_list_solution
+  $.cookie("barley_break_list", list, { expires: 365 })
+  steps = $.cookie("barley_break_steps")
+  if steps
+    $.cookie("barley_break_steps", parseInt(steps) + 1, { expires: 365 })
+  else
+    $.cookie("barley_break_steps", 0, { expires: 365 })
+  if $.cookie("barley_break_list") == @barley_break_list_solution
+    $(".barley_break ul li .move").remove()
+    $.cookie("barley_break_list", null)
+    steps = $.cookie("barley_break_steps")
+    $.cookie("barley_break_steps", null)
+    alert("Поздравляем!\nВы успешно собрали инопятнашки за #{pluralize(steps, { nom: 'шаг', gen: 'шага', plu: 'шагов' })}")
 
 restore_from_cookie = ->
   list = $.cookie("barley_break_list").split(",")
@@ -58,15 +78,23 @@ restore_from_cookie = ->
       $("<li class='empty'><p>empty</p></li>").hide().appendTo($(".barley_break ul"))
 
 shuffle_list = ->
+  $.cookie("barley_break_test", "success", { expires: 365 })
+  if $.cookie("barley_break_test") !=  "success"
+    alert("Для возможности играть в наши инопятнашки необходимо включить поддержку cookie!")
+    return false
+  else
+    $.cookie("barley_break_test", null)
+
   $(".barley_break ul").shuffle()
   save_to_cookie()
+  $.cookie("barley_break_steps", 0, { expires: 365 })
   $(".barley_break ul li").each (index, element) ->
     $element = $(element)
     $element.stop(true,true).sleep(100 * index).animate
       "left": get_offset(index + 1).offset_x
       "top": get_offset(index + 1).offset_y
     , 500, 'easeInOutBack', ->
-      render_navigation()
+  render_navigation()
 
 get_offset = (index) ->
   offset_x = 2
@@ -95,5 +123,55 @@ render_navigation = ->
 
 handle_navigation = ->
   $(".barley_break ul li .move").live "click", ->
+    empty = $(".barley_break ul li.empty")
+    block = $(this).closest("li")
+    switch $(this).attr("class").replace("move", "").strip()
+      when "to_left"
+        block.insertBefore(empty)
+        empty.css
+          "left": "+=182"
+        block.animate
+          "left": "-=182"
+        , 100, "easeOutCubic", ->
+          save_to_cookie()
+      when "to_right"
+        empty.insertBefore(block)
+        empty.css
+          "left": "-=182"
+        block.animate
+          "left": "+=182"
+        , 100, "easeOutCubic", ->
+          save_to_cookie()
+      when "to_top"
+        for index in [1..3]
+          block.insertBefore(block.prev())
+          empty.insertAfter(empty.next())
+        empty.insertAfter(empty.next())
+        empty.css
+          "top": "+=182"
+        block.animate
+          "top": "-=182"
+        , 100, "easeOutCubic", ->
+          save_to_cookie()
+      when "to_bottom"
+        for index in [1..3]
+          empty.insertBefore(empty.prev())
+          block.insertAfter(block.next())
+        block.insertAfter(block.next())
+        empty.css
+          "top": "-=182"
+        block.animate
+          "top": "+=182"
+        , 100, "easeOutCubic", ->
+          save_to_cookie()
     render_navigation()
     return false
+
+pluralize = (num, cases) ->
+  num = Math.abs(num)
+  word = ""
+  if num.toString().indexOf(".") > -1
+    word = cases.gen
+  else
+    word = (if num % 10 is 1 and num % 100 isnt 11 then cases.nom else (if num % 10 >= 2 and num % 10 <= 4 and (num % 100 < 10 or num % 100 >= 20) then cases.gen else cases.plu))
+  "#{num} #{word}"
