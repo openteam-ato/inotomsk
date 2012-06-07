@@ -24,6 +24,7 @@
     background-color: #fff
     margin: 0 auto 15px
     li
+      display: none
       position: absolute
       width: 134px
       height: 134px
@@ -125,6 +126,45 @@
           &:hover
             color: #a31061
             text-decoration: underline
+      a.move
+        position: absolute
+        +clearfix
+        display: block
+        background: transparent image_url('barley_break/navigation_arrows.png') no-repeat center center
+        text-indent: -9999em
+        outline: none
+        &.to_left
+          top: 80px
+          left: 4px
+          width: 12px
+          height: 19px
+          background-position: -3px -47px
+          &:hover
+            background-position: -22px -47px
+        &.to_right
+          top: 80px
+          right: 4px
+          width: 12px
+          height: 19px
+          background-position: -4px -27px
+          &:hover
+            background-position: -23px -27px
+        &.to_top
+          top: 4px
+          left: 80px
+          width: 19px
+          height: 12px
+          background-position: 0 -14px
+          &:hover
+            background-position: -19px -14px
+        &.to_bottom
+          bottom: 4px
+          left: 80px
+          width: 19px
+          height: 12px
+          background-position: 0 -1px
+          &:hover
+            background-position: -19px -1px
   .shuffle
     font-size: 14px
     text-align: center
