@@ -2,6 +2,9 @@
 
 @init_barley_break = ->
 
+  $(".barley_break ul li p").addClass("hyphenate")
+  Hyphenator.run()
+
   save_solution()
 
   if $.cookie "barley_break_list"

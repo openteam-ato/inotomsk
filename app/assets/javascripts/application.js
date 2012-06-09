@@ -15,6 +15,7 @@
  * = require scroll_to
  * = require cookie
  * = require shuffle
+ * = require hyphenator
  * = require preload_images
  * = require alert_message
  * = require charts
