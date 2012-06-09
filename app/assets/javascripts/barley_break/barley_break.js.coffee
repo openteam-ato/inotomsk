@@ -72,10 +72,10 @@ show_solved_message = (count) ->
   url =
   $("<div class='solved_message'></div>").hide().appendTo("body")
   $(".solved_message").html("
-    <p>Вы успешно собрали инопятнашки за #{pluralize(count, { nom: 'ход', gen: 'хода', plu: 'ходов' })}</p>
+    <p>Вы успешно собрали ИНОПятнашки за #{pluralize(count, { nom: 'ход', gen: 'хода', plu: 'ходов' })}</p>
       <div class='addthis_toolbox addthis_default_style addthis_32x32_style'addthis:title=''>
       <span class='addthis_title'>Поделиться:</span>
-      <a class='addthis_button_twitter' title='Отправить в Twitter' addthis:url='#{link}' addthis:title='#{message}' addthis:description='#{message}'></a>
+      <a class='addthis_button_twitter' title='Отправить в Twitter' addthis:url='#{link}' addthis:title='#{message}' addthis:description='На #inotomsk #{message}'></a>
       <a class='addthis_button_vk' title='Отправить на страницу ВКонтакте' addthis:url='#{link}' addthis:title='#{message}' addthis:description='#{message} #{link}'></a>
       <a class='addthis_button_facebook' title='Отправить в Facebook' addthis:url='#{link}' addthis:title='#{message}' addthis:description='#{message}'></a>
       <a class='addthis_button_odnoklassniki_ru' title='Отправить в Однокласники' addthis:url='#{link}' addthis:title='#{message}' addthis:description='#{message}'></a>
