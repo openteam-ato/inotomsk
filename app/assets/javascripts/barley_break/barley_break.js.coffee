@@ -68,7 +68,7 @@ save_to_cookie = ->
 
 show_solved_message = (count) ->
   link = window.location.href
-  message = "Я собрал инопятнашки за #{pluralize(count, { nom: 'ход', gen: 'хода', plu: 'ходов' })}!"
+  message = "Я собрал ИНОПятнашки за #{pluralize(count, { nom: 'ход', gen: 'хода', plu: 'ходов' })}!"
   url =
   $("<div class='solved_message'></div>").hide().appendTo("body")
   $(".solved_message").html("
