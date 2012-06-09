@@ -57,8 +57,10 @@ save_to_cookie = ->
   steps = $.cookie("barley_break_steps")
   if steps
     $.cookie("barley_break_steps", parseInt(steps) + 1, { expires: 365 })
+    $(".barley_break p.indicator span.number").text(parseInt(steps) + 1)
   else
     $.cookie("barley_break_steps", 0, { expires: 365 })
+    $(".barley_break p.indicator span.number").text(0)
   if $.cookie("barley_break_list") == @barley_break_list_solution
     $(".barley_break ul li .move").remove()
     $.cookie("barley_break_list", null)
@@ -92,7 +94,10 @@ show_solved_message = (count) ->
     title: "Поздравляем!"
     modal: true
     resizable: false
-    width: 375
+    width: 400
+    close: (event, ui) ->
+      $(this).parent().remove()
+      $(this).remove()
 
 restore_from_cookie = ->
   list = $.cookie("barley_break_list").split(",")
@@ -104,6 +109,7 @@ restore_from_cookie = ->
       li.appendTo($(".barley_break ul"))
     else
       $("<li class='empty'><p>empty</p></li>").hide().appendTo($(".barley_break ul"))
+  $(".barley_break p.indicator span.number").text($.cookie("barley_break_steps"))
 
 solvable = (array) ->
   inversions = 0
@@ -172,6 +178,7 @@ shuffle_list = ->
 
   save_to_cookie()
   $.cookie("barley_break_steps", 0, { expires: 365 })
+  $(".barley_break p.indicator span.number").text(0)
   $(".barley_break ul li").each (index, element) ->
     $element = $(element)
     $element.stop(true,true).sleep(100 * index).animate
