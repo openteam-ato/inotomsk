@@ -64,7 +64,35 @@ save_to_cookie = ->
     $.cookie("barley_break_list", null)
     steps = $.cookie("barley_break_steps")
     $.cookie("barley_break_steps", null)
-    alert("Поздравляем!\nВы успешно собрали инопятнашки за #{pluralize(steps, { nom: 'шаг', gen: 'шага', plu: 'шагов' })}")
+    show_solved_message(steps)
+
+show_solved_message = (count) ->
+  link = window.location.href
+  message = "Я собрал инопятнашки за #{pluralize(count, { nom: 'ход', gen: 'хода', plu: 'ходов' })}!"
+  url =
+  $("<div class='solved_message'></div>").hide().appendTo("body")
+  $(".solved_message").html("
+    <p>Вы успешно собрали инопятнашки за #{pluralize(count, { nom: 'ход', gen: 'хода', plu: 'ходов' })}</p>
+      <div class='addthis_toolbox addthis_default_style addthis_32x32_style'addthis:title=''>
+      <span class='addthis_title'>Поделиться:</span>
+      <a class='addthis_button_twitter' title='Отправить в Twitter' addthis:url='#{link}' addthis:title='#{message}' addthis:description='#{message}'></a>
+      <a class='addthis_button_vk' title='Отправить на страницу ВКонтакте' addthis:url='#{link}' addthis:title='#{message}' addthis:description='#{message} #{link}'></a>
+      <a class='addthis_button_facebook' title='Отправить в Facebook' addthis:url='#{link}' addthis:title='#{message}' addthis:description='#{message}'></a>
+      <a class='addthis_button_odnoklassniki_ru' title='Отправить в Однокласники' addthis:url='#{link}' addthis:title='#{message}' addthis:description='#{message}'></a>
+      <a class='addthis_button_mymailru' title='Отправить на страницу Mail.Ru' addthis:url='#{link}' addthis:title='#{message}' addthis:description='#{message}'></a>
+      <a class='addthis_button_google_plusone_share' title='Отправить в Google+' addthis:url='#{link}' addthis:title='#{message}' addthis:description='#{message}'></a>
+    </div>
+    <script type='text/javascript'>
+      var addthis_config = {
+        'data_track_addressbar': true
+      };
+    </script>
+    <script type='text/javascript' src='http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4fa1e20b23c1cc76'></script>
+  ").dialog
+    title: "Поздравляем!"
+    modal: true
+    resizable: false
+    width: 375
 
 restore_from_cookie = ->
   list = $.cookie("barley_break_list").split(",")
@@ -77,6 +105,42 @@ restore_from_cookie = ->
     else
       $("<li class='empty'><p>empty</p></li>").hide().appendTo($(".barley_break ul"))
 
+solvable = (array) ->
+  inversions = 0
+  blank_position = null
+  width = 4
+  length = array.length
+  i = 0
+
+  while i < length
+    tile = array.shift()
+    unless tile
+      switch i
+        when 0, 1, 2, 3
+          blank_position = 4
+        when 4, 5, 6, 7
+          blank_position = 3
+        when 8, 9, 10, 11
+          blank_position = 2
+        when 12, 13, 14, 15
+          blank_position = 1
+      i++
+      continue
+    count = 0
+    n = 0
+    while n < array.length
+      count++ if (array[n]) and (array[n] < tile)
+      n++
+    inversions += count
+    i++
+  (not is_even(width)) and (is_even(inversions)) or (is_even(width)) and (not is_even(blank_position)) is (is_even(inversions))
+
+is_even = (num) ->
+  if num % 2 is 0
+    true
+  else
+    false
+
 shuffle_list = ->
   $.cookie("barley_break_test", "success", { expires: 365 })
   if $.cookie("barley_break_test") !=  "success"
@@ -85,7 +149,27 @@ shuffle_list = ->
   else
     $.cookie("barley_break_test", null)
 
+  solution = @barley_break_list_solution.split(",")
+
   $(".barley_break ul").shuffle()
+  mixed = []
+  $(".barley_break ul li").each (index, element) ->
+    klass = $(element).attr("class")
+    if klass == "empty"
+      mixed.push null
+    else
+      mixed.push solution.indexOf(klass) + 1
+
+  while not solvable(mixed)
+    $(".barley_break ul").shuffle()
+    mixed = []
+    $(".barley_break ul li").each (index, element) ->
+      klass = $(element).attr("class")
+      if klass == "empty"
+        mixed.push null
+      else
+        mixed.push solution.indexOf(klass) + 1
+
   save_to_cookie()
   $.cookie("barley_break_steps", 0, { expires: 365 })
   $(".barley_break ul li").each (index, element) ->
@@ -122,6 +206,21 @@ render_navigation = ->
   $("<a href='#' class='move to_top'>move to top</a>").appendTo(empty.next().next().next().next()) unless empty_is_bottom
 
 handle_navigation = ->
+  $("body").keydown (event) ->
+    switch event.keyCode
+      when 37 # left
+        $(".barley_break ul li .move.to_left").click()
+        return false
+      when 38 # up
+        $(".barley_break ul li .move.to_top").click()
+        return false
+      when 39 # right
+        $(".barley_break ul li .move.to_right").click()
+        return false
+      when 40 # down
+        $(".barley_break ul li .move.to_bottom").click()
+        return false
+
   $(".barley_break ul li .move").live "click", ->
     empty = $(".barley_break ul li.empty")
     block = $(this).closest("li")
