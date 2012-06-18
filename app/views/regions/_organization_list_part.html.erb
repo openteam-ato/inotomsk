@@ -1,7 +1,7 @@
 <% object.items.each do |item| %>
   <ul>
     <li>
-      <%= link_to item.title, '#' %>
+      <%= link_to item.title, item.link %>
       <%= simple_format item.dossier %>
       <br />
       <%= item.status.join %>
