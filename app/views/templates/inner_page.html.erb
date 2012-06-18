@@ -1,5 +1,5 @@
 <% content_for :head_rss_link do %>
-  <% unless %w(photo_album_list_part).include?(@content_first.template) %>
+  <% unless %w(photo_album_list_part organization_list_part).include?(@content_first.template) %>
     <%= auto_discovery_link_tag(:rss,
                                 @content_first.content.rss_link,
                                 {:title => @page_title}) if !@content_first.content.blank? && @content_first.content.rss_link %>
@@ -16,7 +16,7 @@
       <% if @content_first %>
         <% unless %w(belief_item_part).include?(@content_first.template) && @content_first %>
           <div class='header'>
-            <% if !@content_first.content.blank? && @content_first.try(:content).try(:rss_link) && !%w(photo_album_list_part).include?(@content_first.template) %>
+            <% if !@content_first.content.blank? && !%w(photo_album_list_part organization_list_part).include?(@content_first.template) && @content_first.try(:content).try(:rss_link) %>
               <div class="rss noindex">
                 <%= link_to 'RSS', @content_first.content.rss_link %>
               </div>
