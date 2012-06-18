@@ -1,4 +1,32 @@
-<% object.items.each do |item| %>
+<%= form_tag('/ru/innovatsionnaya-infrastruktura/innovatsionnye-kompanii/', :method => :get) do %>
+  <p>
+    <%= text_field_tag 'parts_params[organization_list][q]', object.query %>
+  </p>
+
+  <p>
+    <% object.filters['sphere'].each do |key, value| %>
+      <%= check_box_tag('parts_params[organization_list][sphere][]', key, value.checked, :id => key) %>
+      <%= label_tag(key, value.value) %>
+    <% end %>
+    <%= hidden_field_tag 'parts_params[organization_list][sphere][]', '_' %>
+  </p>
+
+  <hr />
+
+  <p>
+    <% object.filters['status'].each do |key, value| %>
+      <%= check_box_tag('parts_params[organization_list][status][]', key, value.checked, :id => key) %>
+      <%= label_tag(key, value.value) %>
+    <% end %>
+    <%= hidden_field_tag 'parts_params[organization_list][status][]', '_' %>
+  </p>
+
+  <p>
+    <%= submit_tag 'Поиск' %>
+  </p>
+<% end %>
+
+<% object.organizations.each do |item| %>
   <ul>
     <li>
       <%= link_to item.title, item.link %>
@@ -11,6 +39,6 @@
   </ul>
 <% end %>
 
-<% @array = object.items %>
+<% @array = object.organizations %>
 <% @array = Kaminari.paginate_array(@array, :total_count => object.pagination.total_count).page(object.pagination.current_page).per(object.pagination.per_page)%>
 <%= paginate @array, :outer_window => 3 %>
