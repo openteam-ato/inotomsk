@@ -96,7 +96,7 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.18)
     multi_json (1.3.6)
-    openteam-commons (0.1.7)
+    openteam-commons (0.2.3)
       airbrake
       configliere
       rails
