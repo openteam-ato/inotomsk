@@ -762,3 +762,31 @@ $content_nav_padding: 12px
             padding-left: 15px
             background: transparent image_url('clock_gray.png') no-repeat left
             margin-left: 5px
+  .barley_break_nav
+    float: left
+    width: $container_width - $content_width - $content_margin_right - 11px
+    margin-left: 11px
+    .navigation
+      background-color: #fff
+      +single-box-shadow(#aaa, 1px, 1px, 3px)
+      margin-top: 2px
+      margin-bottom: 5px
+      +clearfix
+      padding: 1px 0 0 1px
+      $block_size: 49px
+      li
+        width: $block_size
+        height: $block_size
+        float: left
+        border: 1px solid #d1969c
+        +border-radius(3px)
+        margin: 0 1px 1px 0
+        a
+          display: block
+          width: $block_size
+          height: $block_size
+          +clearfix
+          text-indent: -9999em
+        &.selected
+          a
+            background-color: #e8ebfc
