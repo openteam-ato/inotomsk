@@ -1,0 +1,48 @@
+<% content_for :head_rss_link do %>
+  <% unless %w(photo_album_list_part organization_list_part).include?(@content_first.template) %>
+    <%= auto_discovery_link_tag(:rss,
+                                @content_first.content.rss_link,
+                                {:title => @page_title}) if !@content_first.content.blank? && @content_first.content.rss_link %>
+  <% end %>
+<% end if @content_first %>
+
+<% content_for :content do %>
+  <div class='content_wrapper index'>
+
+    <div class="content_side">
+
+      <%= content_tag :div, render("regions/#{@breadcrumbs.type.underscore}", :object => @breadcrumbs.content), :class => 'breadcrumbs noindex' if @breadcrumbs %>
+
+      <% if @content_first %>
+        <% unless %w(belief_item_part).include?(@content_first.template) && @content_first %>
+          <div class='header'>
+            <% if !@content_first.content.blank? && !%w(photo_album_list_part organization_list_part).include?(@content_first.template) && @content_first.try(:content).try(:rss_link) %>
+              <div class="rss noindex">
+                <%= link_to 'RSS', @content_first.content.rss_link %>
+              </div>
+            <% end %>
+            <% if @content_header_navigation %>
+              <div class='nav noindex'>
+                <%= render "regions/#{@content_header_navigation.type.underscore}", :object => @content_header_navigation.content if @content_header_navigation %>
+              </div>
+            <% end %>
+            <%= content_tag :h1, @content_first.part_title if @content_first %>
+          </div>
+        <% end %>
+
+        <%= render_partial_for_region(@content_first) %>
+      <% end %>
+
+    </div>
+
+    <div class='content_nav noindex'>
+
+      <%= content_tag :div, render("regions/#{@content_navigation.type.underscore}", :object => @content_navigation.content), :class => 'navigation' if @content_navigation %>
+      <%= content_tag :div, yield(:more_like_this), :class => 'more_like_this' if content_for?(:more_like_this) %>
+
+    </div>
+
+  </div>
+<% end %>
+
+<%= render :template => 'layouts/application' %>
