@@ -1,1 +1,25 @@
-<%= object %>
+<p>
+  <%= object.title %>
+</p>
+
+<p>
+  <%= simple_format object.dossier %>
+</p>
+
+<p>
+  <%= object.production %>
+</p>
+
+<ul>
+  <% object.sphere.each do |sphere| %>
+    <li><%= sphere %></li>
+  <% end %>
+</ul>
+
+<ul>
+  <% object.status.each do |status| %>
+    <li><%= status %></li>
+  <% end %>
+</ul>
+
+
