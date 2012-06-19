@@ -284,3 +284,11 @@ pluralize = (num, cases) ->
   else
     word = (if num % 10 is 1 and num % 100 isnt 11 then cases.nom else (if num % 10 >= 2 and num % 10 <= 4 and (num % 100 < 10 or num % 100 >= 20) then cases.gen else cases.plu))
   "#{num} #{word}"
+
+@init_barley_break_inner_nav = ->
+  $(".barley_break_nav .navigation li a").each (index, element) ->
+    $(element).attr("title", $(element).text())
+    $(element).text(index + 1)
+    if $(element).closest("li").hasClass("selected")
+      $(element).css("text-indent", "0").click ->
+        return false

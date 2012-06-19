@@ -11,5 +11,6 @@ $ ->
   init_main_news_list() if $('.news_container .news_list').length
   init_photo_album() if $('.photo_album_show').length
   init_barley_break() if $('.barley_break').length
+  init_barley_break_inner_nav() if $('.barley_break_nav .navigation').length
 
   false
