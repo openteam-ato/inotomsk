@@ -17,6 +17,9 @@
 
     <div class='barley_break_nav noindex'>
       <%= content_tag :div, render("regions/#{@content_navigation.type.underscore}", :object => @content_navigation.content), :class => 'navigation' if @content_navigation %>
+      <p class="redirect_back">
+        <a href="/ru/innovatsionnaya-infrastruktura/">Вернуться к игре</a>
+      </p>
     </div>
 
   </div>
