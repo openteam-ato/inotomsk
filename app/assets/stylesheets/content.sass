@@ -766,6 +766,8 @@ $content_nav_padding: 12px
     float: left
     width: $container_width - $content_width - $content_margin_right - 11px
     margin-left: 11px
+    .hidden
+      display: none
     .navigation
       background-color: #fff
       +single-box-shadow(#aaa, 1px, 1px, 3px)
@@ -828,6 +830,7 @@ $content_nav_padding: 12px
             cursor: default
             line-height: 46px
             text-decoration: none
+
     .redirect_back
       text-align: center
       margin-top: 10px
@@ -839,3 +842,89 @@ $content_nav_padding: 12px
         &:hover
           color: #d6287d
           background-position: 0 0
+
+    .organizations_filter
+      margin-top: 10px
+      background-color: #fff
+      border: 1px solid #a41162
+      +single-box-shadow(#777, 0, 0, 3px)
+      margin-bottom: 3px
+      hr
+        height: 1px
+        border: none
+        background: transparent image_url('barley_break/organizations_search_form_hr.png') no-repeat left center
+        margin: 0
+      .search_field_wrapper
+        position: relative
+        margin: 20px 10px 10px
+        .search_field
+          width: 169px
+          border: 1px solid #d0d0d0
+          +border-radius(10px)
+          font-size: 11px
+          font-family: Verdana, Tahoma, sans-serif
+          padding: 4px 8px
+        label
+          position: absolute
+          top: 5px
+          right: 30px
+          color: #ccc
+          font-size: 11px
+          cursor: text
+        .pseudo_submit
+          position: absolute
+          top: 4px
+          right: 8px
+          display: block
+          width: 16px
+          height: 16px
+          +clearfix
+          outline: none
+          background: transparent image_url('search_button.png') no-repeat
+          text-indent: -9999em
+      h5
+        font-size: 14px
+        font-weight: bold
+        text-align: center
+      .reset
+        text-align: center
+        margin-bottom: 8px
+        a
+          color: #93948c
+          font-size: 11px
+          &:hover
+            color: #d6287d
+
+      .search_status_wrapper,
+      .search_sphere_wrapper
+        margin: 10px
+        ul
+          li
+            +clearfix
+            font-size: 11px
+            margin-bottom: 7px
+            input
+              float: left
+              margin: 0 5px 0 0
+            label
+              float: left
+              width: 168px
+      .search_status_wrapper ul li
+        input
+          margin-top: 6px
+        label
+          width: 123px
+          padding-left: 45px
+          background-repeat: no-repeat
+          background-position: left top
+          &.sez
+            background-image: image_url('barley_break/organizations_search_status_sez.png')
+          &.skolkovo
+            background-image: image_url('barley_break/organizations_search_status_skolkovo.png')
+          &.business-incubator
+            background-image: image_url('barley_break/organizations_search_status_incubator.png')
+          &.innovation_company
+            background-image: image_url('barley_break/organizations_search_status_innovation_company.png')
+
+      .search_submit
+        margin: 10px

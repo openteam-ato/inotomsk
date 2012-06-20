@@ -1,29 +1,44 @@
-<%= form_tag('/ru/innovatsionnaya-infrastruktura/innovatsionnye-kompanii/', :method => :get) do %>
-  <p>
-    <%= text_field_tag 'parts_params[organization_list][q]', object.query %>
-  </p>
+<% content_for :organizations_filter do %>
 
-  <p>
-    <% object.filters['sphere'].each do |key, value| %>
-      <%= check_box_tag('parts_params[organization_list][sphere][]', key, value.checked, :id => key) %>
-      <%= label_tag(key, value.value) %>
-    <% end %>
-    <%= hidden_field_tag 'parts_params[organization_list][sphere][]', '_' %>
-  </p>
-
-  <hr />
-
-  <p>
-    <% object.filters['status'].each do |key, value| %>
-      <%= check_box_tag('parts_params[organization_list][status][]', key, value.checked, :id => key) %>
-      <%= label_tag(key, value.value) %>
-    <% end %>
-    <%= hidden_field_tag 'parts_params[organization_list][status][]', '_' %>
-  </p>
-
-  <p>
-    <%= submit_tag 'Поиск' %>
-  </p>
+  <%= form_tag('/ru/innovatsionnaya-infrastruktura/innovatsionnye-kompanii/', :method => :get, :class => 'organizations_search_form') do %>
+    <div class='search_field_wrapper'>
+      <%= text_field_tag 'parts_params[organization_list][q]', object.query, :class => 'search_field' %>
+      <%= label_tag 'parts_params_organization_list_q', 'Поиск компании' %>
+      <a href='#' class='pseudo_submit'>Поиск</a>
+    </div>
+    <hr />
+    <div class='search_status_wrapper'>
+      <h5>Статус</h5>
+      <p class="reset"><a href="#">Сбросить</a></p>
+      <ul>
+        <% object.filters['status'].each do |key, value| %>
+          <li>
+            <%= check_box_tag('parts_params[organization_list][status][]', key, value.checked, :id => key) %>
+            <%= label_tag(key, value.value, :class => key) %>
+          </li>
+        <% end %>
+        <li class='hidden'><%= hidden_field_tag 'parts_params[organization_list][status][]', '_' %></li>
+      </ul>
+    </div>
+    <hr />
+    <div class='search_sphere_wrapper'>
+      <h5>Направления деятельности</h5>
+      <p class="reset"><a href="#">Сбросить</a></p>
+      <ul>
+        <% object.filters['sphere'].each do |key, value| %>
+          <li>
+            <%= check_box_tag('parts_params[organization_list][sphere][]', key, value.checked, :id => key) %>
+            <%= label_tag(key, value.value, :class => key) %>
+          </li>
+        <% end %>
+        <li class='hidden'><%= hidden_field_tag 'parts_params[organization_list][sphere][]', '_' %></li>
+      </ul>
+    </div>
+    <hr />
+    <div class='search_submit'>
+      <%= submit_tag 'Поиск' %>
+    </div>
+  <% end %>
 <% end %>
 
 <% object.organizations.each do |item| %>
@@ -32,9 +47,9 @@
       <%= link_to item.title, item.link %>
       <%= simple_format item.dossier %>
       <br />
-      <%= item.status.join %>
+      <%= item.status.join(", ") %>
       <br />
-      <%= item.sphere.join %>
+      <%= item.sphere.join(", ") %>
     </li>
   </ul>
 <% end %>

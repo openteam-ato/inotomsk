@@ -27,5 +27,6 @@
  * = require photo_album
  * = require presentation
  * = require barley_break
+ * = require barley_break_filter
  * = require init
  */
