@@ -12,6 +12,7 @@
  *= require base
  *= require jscrollpane
  *= require smoothness
+ *= require tipsy
  *= require ajax
  *= require layout
  *= require top_menu

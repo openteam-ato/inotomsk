@@ -288,6 +288,11 @@ pluralize = (num, cases) ->
 @init_barley_break_inner_nav = ->
   $(".barley_break_nav .navigation li a").each (index, element) ->
     $(element).attr("title", $(element).text())
+    if $.fn.tipsy
+      $(element).tipsy
+        gravity: 's'
+        offset: -10
+        opacity: 1
     $(element).text(index + 1)
     if $(element).closest("li").hasClass("selected")
       $(element).css("text-indent", "0").click ->

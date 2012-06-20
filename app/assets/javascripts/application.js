@@ -16,6 +16,7 @@
  * = require cookie
  * = require shuffle
  * = require hyphenator
+ * = require tipsy
  * = require preload_images
  * = require alert_message
  * = require charts
