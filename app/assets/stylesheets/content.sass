@@ -867,7 +867,7 @@ $content_nav_padding: 12px
         label
           position: absolute
           top: 5px
-          right: 30px
+          left: 10px
           color: #ccc
           font-size: 11px
           cursor: text
@@ -928,3 +928,24 @@ $content_nav_padding: 12px
 
       .search_submit
         margin: 10px
+        text-align: center
+        input
+          cursor: pointer
+          font-weight: bold
+          background-color: #cfcdf5
+          +background-image(linear-gradient(#e0ddfa, #c8c5f4))
+          border: 1px solid #a5a4c4
+          border-top-color: #b7b5da
+          border-bottom-color: #a4a3c5
+          +border-radius
+          padding: 3px 45px
+          &:hover
+            border-color: darken(#a5a4c4, 2)
+            border-top-color: darken(#b7b5da, 2)
+            border-bottom-color: darken(#a4a3c5, 2)
+            +background-image(linear-gradient(darken(#e0ddfa, 2), darken(#c8c5f4, 2)))
+          &:active
+            +background-image(linear-gradient(#c8c5f4, #e0ddfa))
+            border: 1px solid #a5a4c4
+            border-top-color: #a4a3c5
+            border-bottom-color: #b7b5da
