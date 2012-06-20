@@ -290,6 +290,7 @@ pluralize = (num, cases) ->
     $(element).attr("title", $(element).text())
     if $.fn.tipsy
       $(element).tipsy
+        delayIn: 200
         gravity: 's'
         offset: -10
         opacity: 1
