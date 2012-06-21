@@ -14,7 +14,7 @@
         <% object.filters['status'].each do |key, value| %>
           <li>
             <%= check_box_tag('parts_params[organization_list][status][]', key, value.checked, :id => key) %>
-            <%= label_tag(key, value.value, :class => key) %>
+            <%= label_tag(key, value.value.html_safe, :class => key) %>
           </li>
         <% end %>
         <li class='hidden'><%= hidden_field_tag 'parts_params[organization_list][status][]', '_' %></li>
@@ -28,7 +28,7 @@
         <% object.filters['sphere'].each do |key, value| %>
           <li>
             <%= check_box_tag('parts_params[organization_list][sphere][]', key, value.checked, :id => key) %>
-            <%= label_tag(key, value.value, :class => key) %>
+            <%= label_tag(key, value.value.html_safe, :class => key) %>
           </li>
         <% end %>
         <li class='hidden'><%= hidden_field_tag 'parts_params[organization_list][sphere][]', '_' %></li>
@@ -41,18 +41,30 @@
   <% end %>
 <% end %>
 
-<% object.organizations.each do |item| %>
-  <ul>
+<ul class='innovation_organizations_list'>
+  <% object.organizations.each do |item| %>
     <li>
-      <%= link_to item.title, item.link %>
-      <%= simple_format item.dossier %>
-      <br />
-      <%= item.status.join(", ") %>
-      <br />
-      <%= item.sphere.join(", ") %>
+      <% unless item.image_url.blank? %>
+        <div class="name_with_logo">
+          <%= inoorganization_logo(item.image_url)  %>
+          <h2><%= link_to item.title, item.link %></h2>
+        </div>
+      <% else %>
+        <h2><%= link_to item.title, item.link %></h2>
+      <% end %>
+      <div class="dossier">
+        <%= item.dossier.html_safe %>
+      </div>
+      <div class="tags">
+        <% %w[status sphere].each do |type| %>
+          <% item.send(type).each do |st| %>
+            <%= content_tag :span, object.filters[type][st].value.html_safe, :class => "#{type} #{st}", :title => type.eql?("status") ? object.filters[type][st].value.html_safe : nil %>
+          <% end if item.send(type).any? %>
+        <% end %>
+      </div>
     </li>
-  </ul>
-<% end %>
+  <% end %>
+</ul>
 
 <% @array = object.organizations %>
 <% @array = Kaminari.paginate_array(@array, :total_count => object.pagination.total_count).page(object.pagination.current_page).per(object.pagination.per_page)%>

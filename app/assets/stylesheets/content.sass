@@ -349,6 +349,58 @@ $content_nav_padding: 12px
               background: transparent image_url('clock_gray.png') no-repeat left
               margin-left: 5px
 
+    .innovation_organizations_list
+      li
+        border-bottom: 1px solid #ccc
+        margin-bottom: 20px
+        padding-bottom: 20px
+        &:last-child
+          border-bottom: none
+          padding-bottom: 0
+
+      h2
+        font-family: 'header_normal'
+        font-size: 19px
+        margin-bottom: 5px
+
+      .name_with_logo
+        img
+          float: left
+          margin-right: 20px
+        h2
+          margin-left: 120px
+          padding-top: 5px
+      .dossier
+        margin-bottom: 10px
+        p
+          margin-bottom: 5px
+      .tags
+        font-size: 11px
+        span
+          +inline-block
+          cursor: default
+          margin-right: 10px
+        .status
+          width: 30px
+          height: 20px
+          +clearfix
+          text-indent: -9999em
+          background-position: left top
+          background-repeat: no-repeat
+          background-image: image_url('barley_break/organizations_tag_status.png')
+          &.sez
+            background-position: left top
+          &.skolkovo
+            background-position: left -20px
+          &.business-incubator
+            background-position: left -40px
+          &.innovation_company
+            background-position: left -60px
+        .sphere
+          +border-radius
+          background-color: #dbd9ff
+          padding: 2px 6px 3px
+
   .entry_show
     font-size: 1.15em
     .date
@@ -917,14 +969,15 @@ $content_nav_padding: 12px
           padding-left: 45px
           background-repeat: no-repeat
           background-position: left top
+          background-image: image_url('barley_break/organizations_search_status.png')
           &.sez
-            background-image: image_url('barley_break/organizations_search_status_sez.png')
+            background-position: left 0
           &.skolkovo
-            background-image: image_url('barley_break/organizations_search_status_skolkovo.png')
+            background-position: left -100px
           &.business-incubator
-            background-image: image_url('barley_break/organizations_search_status_incubator.png')
+            background-position: left -200px
           &.innovation_company
-            background-image: image_url('barley_break/organizations_search_status_innovation_company.png')
+            background-position: left -300px
 
       .search_submit
         margin: 10px 10px 15px

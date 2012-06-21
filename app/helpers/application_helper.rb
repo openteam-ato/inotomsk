@@ -107,4 +107,10 @@ module ApplicationHelper
     image_tag_for(image_dup)
   end
 
+  def inoorganization_logo(image_url)
+    original_width, original_height = image_url[/\d+-\d+/].split("-")
+    height = 100 * original_height.to_f / original_width.to_f
+    image_tag image_url.gsub(/\d+-\d+/, "100-#{height.to_i}"), :size => "100x#{height.to_i}"
+  end
+
 end
