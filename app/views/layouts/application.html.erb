@@ -16,6 +16,9 @@
     <%= stylesheet_link_tag    'ie_6' %>
     <![endif]-->
     <%= csrf_meta_tags %>
+    <% if entry_date %>
+      <meta name="entry_date" content="<%= entry_date %>">
+    <% end %>
   </head>
   <body>
 

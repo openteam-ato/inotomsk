@@ -24,6 +24,15 @@ module ApplicationHelper
     content_tag :ul, res.html_safe
   end
 
+  def entry_date
+    @entry_date ||= begin
+                      @page.regions.to_hash.each do |region_name, region|
+                        return region.try(:[], 'content').try(:[], 'since') if region.try(:[], 'template') == 'news_item_part'
+                      end
+                      nil
+                    end
+  end
+
   def belief_color
     case rand(3)
     when 0
