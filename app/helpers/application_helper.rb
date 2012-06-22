@@ -132,7 +132,6 @@ module ApplicationHelper
 
   def inoorganization_emails(emails)
     res = []
-    p emails
     emails.each do |email|
       res << mail_to(email)
     end
