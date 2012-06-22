@@ -1,25 +1,57 @@
-<p>
-  <%= object.title %>
-</p>
-
-<p>
-  <%= simple_format object.dossier %>
-</p>
-
-<p>
-  <%= object.production %>
-</p>
-
-<ul>
-  <% object.sphere.each do |sphere| %>
-    <li><%= sphere %></li>
+<div class="innovation_organization">
+  <% unless object.organization.image_url.blank? %>
+    <div class="logo">
+      <%= inoorganization_logo(object.organization.image_url, 200)  %>
+    </div>
   <% end %>
-</ul>
 
-<ul>
-  <% object.status.each do |status| %>
-    <li><%= status %></li>
+  <h1><%= object.organization.title %></h1>
+
+  <div class="tags">
+    <% %w[status sphere].each do |type| %>
+      <% object.organization.send(type).each do |st| %>
+        <%= content_tag :span, object.filters[type][st].value.html_safe, :class => "#{type} #{st}", :title => type.eql?("status") ? object.filters[type][st].value.html_safe : nil %>
+      <% end if object.organization.send(type).any? %>
+    <% end %>
+  </div>
+
+  <h2>Направления деятельности</h2>
+  <div class="dossier">
+    <%= object.organization.dossier.html_safe %>
+  </div>
+
+  <h2>Продукция</h2>
+  <div class="production">
+    <%= object.organization.production %>
+  </div>
+
+  <% unless object.organization.address.blank? %>
+    <div class="address">
+      <strong>Адрес:</strong>
+      <%= object.organization.address %>
+    </div>
   <% end %>
-</ul>
+  <% unless object.organization.phones.blank? %>
+    <div class="phones">
+      <%= inoorganization_phones object.organization.phones %>
+    </div>
+  <% end %>
+  <% unless object.organization.emails.blank? %>
+    <div class="emails">
+      <%= inoorganization_emails object.organization.emails %>
+    </div>
+  <% end %>
+  <% unless object.organization.url.blank? %>
+    <div class="site">
+      <strong>Сайт:</strong>
+      <%= inoorganization_url(object.organization.url) %>
+    </div>
+  <% end %>
+  <% unless object.organization.items.blank? %>
+    <div class="chief">
+      <strong><%= object.organization.items.first.title %>:</strong>
+      <%= object.organization.items.first.person %>
+    </div>
+  <% end %>
 
-
+</div>

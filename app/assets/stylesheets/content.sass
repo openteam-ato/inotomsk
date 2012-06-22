@@ -297,8 +297,8 @@ $content_nav_padding: 12px
               width: 10px
               height: 20px
               background-color: transparent
-              background-repeat: no-repeat
               background-position: center center
+              background-repeat: no-repeat
           .description
             margin: 10px
             .person
@@ -375,6 +375,53 @@ $content_nav_padding: 12px
         margin-bottom: 10px
         p
           margin-bottom: 5px
+
+    .innovation_organization
+      font-size: 14px
+      .logo
+        margin-bottom: 20px
+      h2
+        color: #a41162
+        font-size: 16px
+        font-weight: bold
+        margin-bottom: 10px
+      .tags
+        margin-bottom: 15px
+      .dossier
+        margin-bottom: 15px
+        p
+          margin-bottom: 5px
+      .production
+        border-bottom: 1px solid #ccc
+        padding-bottom: 15px
+        margin-bottom: 15px
+      .address,
+      .phones,
+      .emails,
+      .site
+        margin-bottom: 10px
+      .address,
+      .phones,
+      .emails,
+      .site,
+      .chief
+        padding-left: 24px
+        background-color: transparent
+        background-position: left 3px
+        background-repeat: no-repeat
+      .address
+        background-image: image_url('barley_break/icon_address.png')
+      .phones
+        background-image: image_url('barley_break/icon_phones.png')
+      .emails
+        background-image: image_url('barley_break/icon_emails.png')
+      .site
+        background-image: image_url('barley_break/icon_site.png')
+      .chief
+        background-image: image_url('barley_break/icon_chief.png')
+
+    .innovation_organizations_list,
+    .innovation_organization
       .tags
         font-size: 11px
         span
@@ -386,6 +433,7 @@ $content_nav_padding: 12px
           height: 20px
           +clearfix
           text-indent: -9999em
+          background-color: transparent
           background-position: left top
           background-repeat: no-repeat
           background-image: image_url('barley_break/organizations_tag_status.png')
@@ -531,8 +579,8 @@ $content_nav_padding: 12px
           width: 10px
           height: 20px
           background-color: transparent
-          background-repeat: no-repeat
           background-position: center center
+          background-repeat: no-repeat
       .annotation
         +clearfix
         .person
@@ -657,10 +705,10 @@ $content_nav_padding: 12px
         li
           p
             padding: 5px 5px 5px 20px
-            background-repeat: no-repeat
             background-color: transparent
-            background-image: image_url('content_nav_markers.png')
             background-position: 10px 12px
+            background-repeat: no-repeat
+            background-image: image_url('content_nav_markers.png')
           a
             color: #252535
             text-decoration: none
@@ -968,8 +1016,9 @@ $content_nav_padding: 12px
         label
           width: 123px
           padding-left: 45px
-          background-repeat: no-repeat
+          background-color: transparent
           background-position: left top
+          background-repeat: no-repeat
           background-image: image_url('barley_break/organizations_search_status.png')
           &.sez
             background-position: left 0

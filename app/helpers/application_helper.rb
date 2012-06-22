@@ -116,10 +116,32 @@ module ApplicationHelper
     image_tag_for(image_dup)
   end
 
-  def inoorganization_logo(image_url)
+  def inoorganization_logo(image_url, width = 100)
     original_width, original_height = image_url[/\d+-\d+/].split("-")
-    height = 100 * original_height.to_f / original_width.to_f
-    image_tag image_url.gsub(/\d+-\d+/, "100-#{height.to_i}"), :size => "100x#{height.to_i}"
+    height = width * original_height.to_f / original_width.to_f
+    image_tag image_url.gsub(/\d+-\d+/, "#{width}-#{height.to_i}"), :size => "#{width}x#{height.to_i}"
+  end
+
+  def inoorganization_phones(phones)
+    res = []
+    phones.split(";").each do |phone|
+      res << "#{content_tag(:strong, "#{phone.split(":")[0]}:")} #{phone.split(":")[1]}"
+    end
+    res.join("; ").html_safe
+  end
+
+  def inoorganization_emails(emails)
+    res = []
+    p emails
+    emails.each do |email|
+      res << mail_to(email)
+    end
+    "#{content_tag :strong, "Email:"} #{res.join(", ")}".html_safe
+  end
+
+  def inoorganization_url(url)
+    site = /^http/.match(url) ? url : "http://#{url}"
+    link_to site, site, :rel => 'nofollow', :target => '_blank'
   end
 
 end
