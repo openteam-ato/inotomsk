@@ -1,7 +1,7 @@
 <% content_for :content do %>
   <div class='content_wrapper index'>
 
-    <div class="content_side">
+    <div class="content_side barley_break_inner">
 
       <%= content_tag :div, render("regions/#{@breadcrumbs.type.underscore}", :object => @breadcrumbs.content), :class => 'breadcrumbs noindex' if @breadcrumbs %>
 
