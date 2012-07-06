@@ -53,7 +53,7 @@
         <h2><%= link_to item.title, item.link %></h2>
       <% end %>
       <div class="dossier">
-        <%= item.dossier.html_safe %>
+        <%= raw item.dossier %>
       </div>
       <div class="tags">
         <% %w[status sphere].each do |type| %>
