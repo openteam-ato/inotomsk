@@ -140,7 +140,6 @@
           <div class='description first'>
             <% unless first.blank? %>
               <p class='annotation'><%= link_to raw(truncate(first.title, :length => 120, :separator => ' ')), first.link, :title => raw(first.title) %></p>
-              <p class='date'><%= l Date.parse(first.since), :format => :custom %></p>
             <% end %>
           </div>
           <div class='photo second'>
@@ -150,7 +149,6 @@
           <div class='description second'>
             <% unless third.blank? %>
               <p class='annotation'><%= link_to raw(truncate(third.title, :length => 120, :separator => ' ')), third.link, :title => raw(third.title) %></p>
-              <p class='date'><%= l Date.parse(third.since), :format => :custom %></p>
             <% end %>
           </div>
           <div class='photo third'>
@@ -160,7 +158,6 @@
           <div class='description third'>
             <% unless second.blank? %>
               <p class='annotation'><%= link_to raw(truncate(second.title, :length => 120, :separator => ' ')), second.link, :title => raw(second.title) %></p>
-              <p class='date'><%= l Date.parse(second.since), :format => :custom %></p>
             <% end %>
           </div>
         </div>

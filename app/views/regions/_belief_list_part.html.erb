@@ -11,12 +11,6 @@
       <div class='description'>
         <%= raw belief.annotation %>
         <p class='title'><%= link_to raw(truncate(strip_tags(belief.title), :length => 80, :separator => ' ')), belief.link %></p>
-        <p class='date'>
-          <%= l Date.parse(belief.since), :format => :custom %>
-          <span class='time'>
-            <%= l Time.parse(belief.since), :format => :custom %>
-          </span>
-        </p>
       </div>
     </li>
   <% end %>

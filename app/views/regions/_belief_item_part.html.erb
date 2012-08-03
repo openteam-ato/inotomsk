@@ -8,12 +8,6 @@
     <% end %>
     <div class="annotation">
       <%= raw object.annotation %>
-      <p class='date'>
-        <%= l DateTime.parse(object.since), :format => '%d %B %Y' %>
-        <span class='time'>
-          <%= l DateTime.parse(object.since), :format => '%H:%M' %>
-        </span>
-      </p>
     </div>
   </div>
   <div class='content'>
@@ -37,9 +31,6 @@
           <% end %>
           <div class="name">
             <%= raw interview.annotation %>
-            <p class='date'>
-              <%= l DateTime.parse(interview.since), :format => '%d %B %Y' %>
-            </p>
           </div>
         </div>
         <div class="title">
