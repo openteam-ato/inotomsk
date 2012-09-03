@@ -1,10 +1,11 @@
 <!DOCTYPE HTML>
 <html lang="<%= I18n.locale %>">
   <head>
-	  <meta charset="UTF-8">
+    <meta charset="UTF-8">
     <title><%= strip_tags(@page_title) %> | <%= strip_tags(@site_name.content.body) %></title>
     <%= yield :head_rss_link %>
     <%= favicon_link_tag %>
+    <meta name='yandex-verification' content='6e7c8aa47cfa8b4f' />
     <%= stylesheet_link_tag    'application' %>
     <%= javascript_include_tag 'application' %>
     <!--[if lt IE 8]>
