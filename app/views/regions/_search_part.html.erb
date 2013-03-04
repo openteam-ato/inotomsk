@@ -10,7 +10,7 @@
     </ul>
   <% else %>
     <p>По запросу</p>
-    <p class='empty'><strong><%= params[:parts_params].try(:[], "search").try(:[], "q") %></strong></p>
+    <p class='empty'><strong><%= params[:parts_params].present? && params[:parts_params][:search].present? ? params[:parts_params][:search][:q] : nil %></strong></p>
     <p>ничего не найдено.</p>
   <% end %>
 </div>

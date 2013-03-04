@@ -48,7 +48,7 @@
         <form action="/<%= I18n.locale %>/search">
           <ul class="inputs">
             <li>
-              <input type="text" name="parts_params[search][q]" value='<%= params[:parts_params].try(:[], "search").try(:[], "q") %>'>
+              <input type="text" name="parts_params[search][q]" value='<%= params[:parts_params].present? && params[:parts_params][:search].present? ? params[:parts_params][:search][:q] : nil %>'>
             </li>
           </ul>
           <ul class="buttons">

@@ -6,6 +6,10 @@ group :assets do
   gem 'uglifier'
 end
 
+group :development do
+  gem 'brakeman'
+end
+
 group :default do
   gem 'compass-rails'
   gem 'curb'
@@ -14,7 +18,7 @@ group :default do
   gem 'jquery-rails'
   gem 'kaminari'
   gem 'openteam-commons'
-  gem 'rails'
+  gem 'rails',                '~>3.2.11'
   gem 'russian'
   gem 'sass-rails'
   gem 'stop_ie'
