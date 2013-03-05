@@ -2,12 +2,13 @@ source :rubygems
 
 group :assets do
   gem 'coffee-rails'
-  gem 'therubyracer'   unless RUBY_PLATFORM =~ /freebsd/
   gem 'uglifier'
 end
 
 group :development do
   gem 'brakeman'
+  gem 'rvm-capistrano'
+  gem 'therubyracer'
 end
 
 group :default do

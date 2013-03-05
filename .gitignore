@@ -17,5 +17,6 @@
 /tmp
 
 /bin
+/config/deploy.yml
 /config/settings.yml
 /public/assets
