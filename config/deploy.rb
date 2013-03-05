@@ -11,6 +11,7 @@ namespace :deploy do
 
   desc "Copy unicorn.rb file"
   task :copy_unicorn_config do
+    run "mv #{deploy_to}/current/config/unicorn.rb #{deploy_to}/current/config/unicorn.rb.example"
     run "ln -s #{deploy_to}/shared/config/unicorn.rb #{deploy_to}/current/config/unicorn.rb"
   end
 
