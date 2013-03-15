@@ -1,4 +1,4 @@
-source :rubygems
+source 'http://rubygems.org'
 
 group :assets do
   gem 'coffee-rails'
@@ -8,7 +8,6 @@ end
 group :development do
   gem 'brakeman'
   gem 'rvm-capistrano'
-  gem 'therubyracer'
 end
 
 group :default do
