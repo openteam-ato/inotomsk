@@ -58,8 +58,19 @@ class MainController < ApplicationController
       @request_body ||= curl_request.body_str
     end
 
+    def is_json?(str)
+      begin
+        !!JSON.parse(str)
+      rescue
+        false
+      end
+    end
+
     def request_json
-      @request_body ||= ActiveSupport::JSON.decode(request_body)
+      @request_json ||= begin
+                          raise ActionController::RoutingError.new('Not Found') unless is_json?(request_body)
+                          ActiveSupport::JSON.decode(request_body)
+                        end
     end
 
     def page_regions

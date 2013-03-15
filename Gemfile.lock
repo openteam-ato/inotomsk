@@ -195,6 +195,9 @@ GEM
     treetop (1.4.12)
       polyglot
       polyglot (>= 0.3.1)
+    turbo-sprockets-rails3 (0.3.6)
+      railties (> 3.2.8, < 4.0.0)
+      sprockets (>= 2.0.0)
     tzinfo (0.3.36)
     uglifier (1.2.6)
       execjs (>= 0.3.0)
@@ -225,4 +228,5 @@ DEPENDENCIES
   rvm-capistrano
   sass-rails
   stop_ie
+  turbo-sprockets-rails3
   uglifier
