@@ -68,7 +68,7 @@ class MainController < ApplicationController
 
     def request_json
       @request_json ||= begin
-                          raise ActionController::RoutingError.new('Not Found') unless is_json?(request_body)
+                          raise 'Response is not a JSON' unless is_json?(request_body)
                           ActiveSupport::JSON.decode(request_body)
                         end
     end
