@@ -7,7 +7,7 @@ group :assets do
 end
 
 group :development do
-  gem 'brakeman'
+  gem 'brakeman', :require => false
   gem 'rvm-capistrano'
 end
 
@@ -19,7 +19,7 @@ group :default do
   gem 'jquery-rails'
   gem 'kaminari'
   gem 'openteam-commons'
-  gem 'rails',                '~>3.2.11'
+  gem 'rails', '~> 3.2.11'
   gem 'russian'
   gem 'sass-rails'
   gem 'stop_ie'
