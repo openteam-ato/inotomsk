@@ -1,26 +1,27 @@
-source 'http://rubygems.org'
+source 'https://rubygems.org'
 
 group :assets do
   gem 'coffee-rails'
+  gem 'compass-rails'
+  gem 'jquery-rails', '~> 2.1.4'
+  gem 'sass-rails'
   gem 'turbo-sprockets-rails3'
   gem 'uglifier'
 end
 
-group :development do
-  gem 'brakeman', :require => false
-  gem 'rvm-capistrano'
-end
-
 group :default do
-  gem 'compass-rails'
   gem 'curb'
   gem 'esp-commons'
   gem 'hashie'
-  gem 'jquery-rails'
   gem 'kaminari'
   gem 'openteam-commons'
   gem 'rails', '~> 3.2.11'
   gem 'russian'
-  gem 'sass-rails'
   gem 'stop_ie'
+end
+
+group :development do
+  gem 'brakeman', :require => false
+  gem 'quiet_assets'
+  gem 'rvm-capistrano'
 end
