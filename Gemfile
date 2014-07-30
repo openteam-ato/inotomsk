@@ -23,5 +23,12 @@ end
 group :development do
   gem 'brakeman', :require => false
   gem 'quiet_assets'
-  gem 'rvm-capistrano'
+  gem 'capistrano-unicorn', '~> 0.1.10', :require => false
+  gem 'openteam-capistrano', :require => false
+  gem 'capistrano',  '~> 2.15.5'
+end
+
+group :production do
+  gem 'unicorn'
+  gem 'pg'
 end
