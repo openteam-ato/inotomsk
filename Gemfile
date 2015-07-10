@@ -15,7 +15,7 @@ group :default do
   gem 'hashie'
   gem 'kaminari'
   gem 'openteam-commons'
-  gem 'rails', '~> 3.2.11'
+  gem 'rails', '~> 3.2'
   gem 'russian'
   gem 'stop_ie'
 end
