@@ -69,6 +69,10 @@ GEM
       capistrano
     chronic (0.6.7)
     chunky_png (1.3.1)
+    climate_control (0.0.3)
+      activesupport (>= 3.0)
+    cocaine (0.5.3)
+      climate_control (>= 0.0.3, < 1.0)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -143,6 +147,14 @@ GEM
       rails
       unicorn
       whenever
+    paperclip (3.5.2)
+      activemodel (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      cocaine (~> 0.5.3)
+      mime-types
+    paperclip-elvfs (0.0.5.2)
+      curb
+      paperclip
     pg (0.17.1)
     polyglot (0.3.5)
     quiet_assets (1.0.2)
@@ -188,6 +200,9 @@ GEM
       sass (>= 3.1.10)
       tilt (~> 1.3)
     sexp_processor (4.4.3)
+    simple_form (2.1.2)
+      actionpack (~> 3.0)
+      activemodel (~> 3.0)
     slim (2.0.3)
       temple (~> 0.6.6)
       tilt (>= 1.3.3, < 2.1)
@@ -238,11 +253,14 @@ DEPENDENCIES
   kaminari
   openteam-capistrano
   openteam-commons
+  paperclip
+  paperclip-elvfs
   pg
   quiet_assets
   rails (~> 3.2)
   russian
   sass-rails
+  simple_form
   stop_ie
   turbo-sprockets-rails3
   uglifier

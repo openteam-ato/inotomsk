@@ -1,0 +1,11 @@
+<%= link_to "Новый слой", new_manage_map_layer_path %>
+<ul>
+  <% @map_layers.each do |map_layer| %>
+    <li>
+      <%= link_to map_layer.title, manage_map_layer_path(map_layer)%>
+      (<%= link_to "Изменить", edit_manage_map_layer_path(map_layer) %>
+      <%= link_to "Удалить", manage_map_layer_path(map_layer), :method => :delete, confirm: 'Вы уверены?' %>)
+    </li>
+  <% end %>
+</ul>
+<%= link_to "Новая метка", new_manage_placemarks_path %>

@@ -1,0 +1,6 @@
+<%= simple_form_for [:manage, @map_layer] do |f| %>
+  <%= f.input :title %>
+  <%= f.input :icon, :as => :file %>
+  <%= f.input :hover_icon, :as => :file %>
+  <%= f.submit %>
+<% end %>

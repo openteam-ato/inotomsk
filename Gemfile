@@ -18,6 +18,10 @@ group :default do
   gem 'rails', '~> 3.2'
   gem 'russian'
   gem 'stop_ie'
+  gem 'pg'
+  gem 'paperclip'
+  gem 'paperclip-elvfs'
+  gem 'simple_form'
 end
 
 group :development do
@@ -30,5 +34,4 @@ end
 
 group :production do
   gem 'unicorn'
-  gem 'pg'
 end

@@ -12,6 +12,7 @@
  *
  * = require jquery
  * = require jquery-ui
+ * = require jquery_ujs
  * = require scroll_to
  * = require cookie
  * = require shuffle
