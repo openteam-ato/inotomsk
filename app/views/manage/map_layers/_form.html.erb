@@ -1,4 +1,4 @@
-<%= simple_form_for [:manage, @map_layer] do |f| %>
+<%= simple_form_for [:manage, @map_layer], html: {class: '.form-vertical' } do |f| %>
   <%= f.input :title %>
   <%= f.input :icon, :as => :file %>
   <%= f.input :hover_icon, :as => :file %>

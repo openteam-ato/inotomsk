@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(:version => 20150710083836) do
 
   create_table "map_layers", :force => true do |t|
     t.string   "title"
+    t.string   "slug"
     t.string   "icon_file_name"
     t.string   "icon_content_type"
     t.integer  "icon_file_size"

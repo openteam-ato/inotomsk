@@ -3,18 +3,43 @@
 <head>
   <title>INOTOMSK</title>
   <%= stylesheet_link_tag    'manage/application', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
+  <%= javascript_include_tag 'manage/application' %>
+  <%= javascript_include_tag('http://api-maps.yandex.ru/2.1/?lang=ru_RU') %>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div class="container manage_wrapper">
-    <div class="col-lg-3">
-      <ul class="nav nav-pills nav-stacked">
-      </ul>
-    </div>
-    <div class="col-lg-9">
-      <%= yield %>
+  <div class="manage-wrapper">
+    <!--navigation-->
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="container">
+          <div class="navbar-header">
+            <a class="navbar-brand brand" href="#">
+              <%= image_tag 'symbol.png', size: '56x40' %>
+            </a>
+            <p class="navbar-text"><a href="#" class="navbar-link text">ИНОТОМСК</a></p>
+          </div>
+          <p class="navbar-text navbar-right">Signed in as <a href="#" class="navbar-link">Mark Otto</a></p>
+        </div>
+      </div>
+    </nav>
+    <!--/navigation-->
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <ul class="nav nav-tabs">
+            <%= content_tag :li, link_to('Интерактивная карта', manage_map_layers_path), role: :presentation,
+              class: controller_name == 'map_layers' || controller_name == 'placemarks' ? :active : '' %>
+          </ul>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <%= yield %>
+        </div>
+      </div>
     </div>
   </div>
 </body>

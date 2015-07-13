@@ -3,14 +3,16 @@ source 'https://rubygems.org'
 group :assets do
   gem 'coffee-rails'
   gem 'compass-rails'
+  gem 'bootstrap-sass', '= 3.1.1.0'
   gem 'jquery-rails', '~> 2.1.4'
-  gem 'sass-rails'
   gem 'turbo-sprockets-rails3'
   gem 'uglifier'
+  gem 'sass-rails', '>= 3.2'
 end
 
 group :default do
   gem 'curb'
+  gem 'friendly_id'
   gem 'esp-commons'
   gem 'hashie'
   gem 'kaminari'

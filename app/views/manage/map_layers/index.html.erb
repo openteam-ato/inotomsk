@@ -1,11 +1,24 @@
-<%= link_to "Новый слой", new_manage_map_layer_path %>
-<ul>
-  <% @map_layers.each do |map_layer| %>
-    <li>
-      <%= link_to map_layer.title, manage_map_layer_path(map_layer)%>
-      (<%= link_to "Изменить", edit_manage_map_layer_path(map_layer) %>
-      <%= link_to "Удалить", manage_map_layer_path(map_layer), :method => :delete, confirm: 'Вы уверены?' %>)
-    </li>
-  <% end %>
-</ul>
-<%= link_to "Новая метка", new_manage_placemarks_path %>
+<div class="row">
+  <div class="col-lg-3 col-md-3 col-xs-3 col-sm-3">
+    <ul class="nav nav-pills nav-stacked">
+      <li class="layer"><%= link_to "Новый слой", new_manage_map_layer_path %></li>
+      <% @map_layers.each do |map_layer| %>
+        <li class="layer">
+          <%= link_to map_layer.title, manage_map_layer_path(map_layer)%>
+          <a class="dropdown-toggle" data-toggle="dropdown" href="" role="button" aria-haspopup="true" aria-expanded="false">
+            Выберите действие <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><%= link_to "Изменить", edit_manage_map_layer_path(map_layer) %></li>
+            <li><%= link_to "Удалить", manage_map_layer_path(map_layer), :method => :delete, confirm: 'Вы уверены?' %></li>
+          </ul>
+        </li>
+    <% end %>
+  </ul>
+  </div>
+  <div class="col-lg-9 col-md-9 col-xs-9 col-sm-9">
+    <div class="map_wrapper" data-latitude='56.488611121111' data-longitude='84.952222232222'>
+      <div class="map"></div>
+    </div>
+  </div>
+</div>
