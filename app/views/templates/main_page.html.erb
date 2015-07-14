@@ -210,15 +210,6 @@
     <div class='calendar'>
       <%= render_partial_for_region(@event_list) %>
     </div>
-    <div class='voting noindex'>
-      <% if locale.eql?(:ru) %>
-        <h1>Опрос</h1>
-        <script type="text/javascript">var WebAnketaParams = ["64wkae9k5xhk4e9s6xh3gc0/ru", "Что вы ожидаете от реализации проекта «ИНОТомск`2020»?"];
-          document.write(unescape("%3Cscript src='http"+(/^https:\/\//.test(document.URL) ? "s" : "")+"://webanketa.com/direct/js/embed.js' type='text/javascript'>%3C/script>"));
-          </script><noscript><a href="http://webanketa.com/forms/64wkae9k5xhk4e9s6xh3gc0/ru/" target="_blank">Что вы ожидаете от реализации проекта «ИНОТомск`2020»?</a></noscript>
-          <p><%= link_to "Результаты голосования", poll_path(:code => '64wkae9k5xhk4e9s6xh3gc0') %></a></p>
-      <% end %>
-    </div>
   </div>
 
 <% end %>
