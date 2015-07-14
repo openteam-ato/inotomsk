@@ -1,10 +1,14 @@
-<div class="row">
+<div class="row index_wrapper">
   <div class="col-lg-3 col-md-3 col-xs-3 col-sm-3">
     <ul class="nav nav-pills nav-stacked">
-      <li class="layer"><%= link_to "Новый слой", new_manage_map_layer_path %></li>
+      <%= content_tag :li, link_to('Все слои', manage_map_layers_path), class: highlight_layer %>
       <% @map_layers.each do |map_layer| %>
-        <li class="layer">
-          <%= link_to map_layer.title, manage_map_layer_path(map_layer)%>
+        <%= content_tag :li, class: highlight_layer(map_layer) do%>
+          <%= link_to  manage_map_layers_path(map_layer: map_layer.slug) do %>
+            <%= map_layer.title %>
+            <span><%= image_tag map_layer.icon_url %></span>
+            <span><%= image_tag map_layer.hover_icon_url %></span>
+          <% end %>
           <a class="dropdown-toggle" data-toggle="dropdown" href="" role="button" aria-haspopup="true" aria-expanded="false">
             Выберите действие <span class="caret"></span>
           </a>
@@ -12,8 +16,14 @@
             <li><%= link_to "Изменить", edit_manage_map_layer_path(map_layer) %></li>
             <li><%= link_to "Удалить", manage_map_layer_path(map_layer), :method => :delete, confirm: 'Вы уверены?' %></li>
           </ul>
-        </li>
+        <% end %>
     <% end %>
+    <li class="layer">
+      <%= link_to new_manage_map_layer_path do %>
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+        <span>Новый слой</span>
+      <% end %>
+    </li>
   </ul>
   </div>
   <div class="col-lg-9 col-md-9 col-xs-9 col-sm-9">

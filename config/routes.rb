@@ -1,6 +1,6 @@
 Inotomsk::Application.routes.draw do
   namespace :manage do
-    resources :map_layers
+    resources :map_layers, :except => [:show]
     resource :placemarks, :except => [:show]
   end
 

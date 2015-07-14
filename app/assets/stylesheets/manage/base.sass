@@ -1,4 +1,5 @@
 .manage-wrapper
+
   nav
     .brand
       padding: 5px
@@ -9,16 +10,36 @@
       &:hover
         text-decoration: none
 
-  .layer
-    border-bottom: 2px solid grey
+  .index_wrapper
+    padding-top: 15px
 
-    &:last-child
-      border-bottom: 0px
+    .layer
+      border-bottom: 2px solid grey
+      padding: 5px 0
 
-    &:first-child
-      font-weight: bold
-      font-size: 16px
+      a
+        margin-bottom: 2px
 
-  .map
+      &:last-child
+        border-bottom: 0px
+        font-weight: bold
+        font-size: 16px
+
+    .map
+      height: 450px
+
+  .form_wrapper
     margin-top: 15px
-    height: 450px
+
+    .form-group
+
+      label
+        width: 200px
+
+      div
+        display: inline-block
+
+      .help-inline
+        color: red
+        margin-left: 10px
+        font-size: 12px

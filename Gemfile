@@ -11,6 +11,7 @@ group :assets do
 end
 
 group :default do
+  gem "breadcrumbs_on_rails"
   gem 'curb'
   gem 'friendly_id'
   gem 'esp-commons'
