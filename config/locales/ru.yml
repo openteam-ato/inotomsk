@@ -39,3 +39,7 @@ ru:
   time:
     formats:
       custom: "%H:%M"
+
+  role:
+    manager: Менеджер
+    operator: Не менеджер

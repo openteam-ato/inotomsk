@@ -16,4 +16,8 @@ module Manage::ManageHelper
     return placemark.address if placemark.address
     "Координаты: #{placemark.latitude.round(4)}/#{placemark.longitude.round(4)}"
   end
+
+  def permissions_role
+    [["Менеджер", :manager], ["Не менеджер", :operator]]
+  end
 end

@@ -1,0 +1,9 @@
+<div class="form_wrapper">
+  <%= simple_form_for [:manage, @permission], html: {class: 'form-vertical' } do |f| %>
+    <div class="form-group">
+      <%= f.input :role, collection: permissions_role%>
+    </div>
+    <%= f.input :user_id, as: :hidden, input_html: {value: params[:user_id]} %>
+    <%= f.submit "Сохранить" %>
+  <% end %>
+</div>

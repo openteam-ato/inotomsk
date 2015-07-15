@@ -9,10 +9,11 @@ Inotomsk::Application.routes.draw do
   end
 
   namespace :manage do
-    resources :map_layers, :except => [:show]
-    resources :placemarks, :except => [:index, :show]
+    resources :map_layers,  :except => [:show]
+    resources :placemarks,  :except => [:index, :show]
+    resources :permissions, :only => [:index, :create, :new, :destroy]
 
-    root :to => redirect('/manage/map_layers')
+    root :to => 'map_layers#index'
   end
 
   match "poll" => "poll#show", :via => :get
