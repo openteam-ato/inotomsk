@@ -1,5 +1,30 @@
-<%= simple_form_for [:manage, @placemark] do |f| %>
-  <%= f.input :title %>
-  <%= f.input :logotype, :as => :file %>
-  <%= f.submit %>
-<% end %>
+<div class="form_wrapper">
+  <ol class="breadcrumb">
+    <%= render_breadcrumbs tag: :li, separator: '' %>
+  </ol>
+  <%= simple_form_for [:manage, @placemark], html: {class: 'form-vertical' } do |f| %>
+    <div class="form-group">
+      <%= f.input :title %>
+    </div>
+    <div class="form-group">
+      <%= f.association :map_layer %>
+    </div>
+    <div class="form-group">
+      <%= f.input :logotype, :as => :file %>
+      <%= image_tag placemark_logotype(@placemark), class: 'preview_image' %>
+    </div>
+    <div class="form-group">
+      <%= f.input :address %>
+      <%= button_tag 'Найти карте', class: "direct_geocode", type: 'button' %>
+      <%= f.error :latitude %>
+    </div>
+
+    <div class="map_wrapper" data-latitude='56.488611121111' data-longitude='84.952222232222'>
+      <div class="map"></div>
+    </div>
+    <%= f.input :latitude, as: :hidden %>
+    <%= f.input :longitude, as: :hidden %>
+
+    <%= f.submit 'Сохранить', class: "pull-right" %>
+  <% end %>
+</div>

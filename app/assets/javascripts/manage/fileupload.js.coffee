@@ -10,6 +10,6 @@
       reader.readAsDataURL input.files[0]
     return
 
-  $('#map_layer_icon, #map_layer_hover_icon').change ->
+  $('#map_layer_icon, #map_layer_hover_icon, #placemark_logotype').change ->
     readURL this
     return

@@ -1,6 +1,7 @@
 class Manage::MapLayersController < Manage::ApplicationController
   def index
     @map_layers = MapLayer.all
+    @placemarks = placemarks
   end
 
   def new
@@ -11,10 +12,10 @@ class Manage::MapLayersController < Manage::ApplicationController
   end
 
   def create
-    @map_layer = MapLayer.new(params[:map_layer])
-
     add_breadcrumb "Карта", manage_map_layers_path
     add_breadcrumb "Новый слой", new_manage_map_layer_path
+
+    @map_layer = MapLayer.new(params[:map_layer])
 
     if @map_layer.save
       redirect_to manage_map_layers_path
@@ -45,5 +46,12 @@ class Manage::MapLayersController < Manage::ApplicationController
   def destroy
     MapLayer.find(params[:id]).destroy
     redirect_to manage_map_layers_path
+  end
+
+  private
+
+  def placemarks
+    return @map_layers.flat_map(&:placemarks) unless params[:map_layer]
+    MapLayer.find(params[:map_layer]).placemarks
   end
 end

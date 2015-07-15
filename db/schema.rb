@@ -32,6 +32,8 @@ ActiveRecord::Schema.define(:version => 20150710083836) do
 
   create_table "placemarks", :force => true do |t|
     t.string   "title"
+    t.string   "slug"
+    t.string   "address"
     t.float    "latitude"
     t.float    "longitude"
     t.string   "logotype_file_name"

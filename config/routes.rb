@@ -1,7 +1,7 @@
 Inotomsk::Application.routes.draw do
   namespace :manage do
     resources :map_layers, :except => [:show]
-    resource :placemarks, :except => [:show]
+    resources :placemarks, :except => [:index, :show]
   end
 
   match "poll" => "poll#show", :via => :get

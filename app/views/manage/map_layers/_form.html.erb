@@ -8,11 +8,11 @@
     </div>
     <div class="form-group">
       <%= f.input :icon, :as => :file %>
-      <%= image_tag @map_layer.icon_url, class: 'preview_image' %>
+      <%= image_tag layer_icon(@map_layer), class: 'preview_image' %>
     </div>
     <div class="form-group">
       <%= f.input :hover_icon, :as => :file %>
-      <%= image_tag @map_layer.hover_icon_url, class: 'preview_image' %>
+      <%= image_tag layer_icon(@map_layer,'hover_'), class: 'preview_image' %>
     </div>
     <%= f.submit 'Сохранить', class: "pull-right" %>
   <% end %>

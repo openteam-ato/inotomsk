@@ -7,7 +7,15 @@ ru:
         title: Название
         icon: Иконка для карты
         hover_icon: Иконка для карты(при наведении)
+      placemark:
+        title: Название
+        map_layer: Слой
+        logotype: Логотип
+        address: Адрес
     placeholders:
       map_layer:
         title: Название слоя
+      placemark:
+        title: Название метки
+        address: Адрес
 
