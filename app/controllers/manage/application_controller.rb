@@ -1,5 +1,5 @@
-class Manage::ApplicationController < ActionController::Base
-  protect_from_forgery
+class Manage::ApplicationController < ApplicationController
+  sso_load_and_authorize_resource
 
   layout 'manage'
 end

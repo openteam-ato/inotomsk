@@ -25,6 +25,9 @@ group :default do
   gem 'paperclip'
   gem 'paperclip-elvfs'
   gem 'simple_form'
+  gem 'sso-auth', '0.0.6'
+  gem 'inherited_resources'
+  gem 'devise', '2.2.3'
 end
 
 group :development do

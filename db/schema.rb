@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150710083836) do
+ActiveRecord::Schema.define(:version => 20150715060839) do
 
   create_table "map_layers", :force => true do |t|
     t.string   "title"
@@ -30,6 +30,15 @@ ActiveRecord::Schema.define(:version => 20150710083836) do
     t.datetime "updated_at",              :null => false
   end
 
+  create_table "permissions", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "role"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "permissions", ["user_id", "role"], :name => "by_user_and_role"
+
   create_table "placemarks", :force => true do |t|
     t.string   "title"
     t.string   "slug"
@@ -45,5 +54,29 @@ ActiveRecord::Schema.define(:version => 20150710083836) do
     t.datetime "created_at",            :null => false
     t.datetime "updated_at",            :null => false
   end
+
+  create_table "users", :force => true do |t|
+    t.string   "uid"
+    t.text     "name"
+    t.text     "email"
+    t.text     "nickname"
+    t.text     "first_name"
+    t.text     "last_name"
+    t.text     "location"
+    t.text     "description"
+    t.text     "image"
+    t.text     "phone"
+    t.text     "urls"
+    t.text     "raw_info"
+    t.integer  "sign_in_count"
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
+
+  add_index "users", ["uid"], :name => "index_users_on_uid"
 
 end
