@@ -7,7 +7,18 @@
       <%= f.input :title %>
     </div>
     <div class="form-group">
-      <%= f.association :map_layer %>
+      <label class="select required control-label" for="placemark_map_layer_id"> <abbr title="Обязательное для заполнения поле">*</abbr> Слой </label>
+      <div class="controls">
+        <select class="select required custom_select" id="placemark_map_layer_id" name="placemark[map_layer_id]">
+          <option></option>
+           <% @map_layers.each do |root| %>
+             <option class="root_option" disabled><%= root.title %></option>
+             <% root.children.each do |child| %>
+               <option value="<%= child.id %>" <%= selected_option(@placemark, child) %> ><%= child.title %></option>
+             <% end %>
+           <% end %>
+        </select>
+      </div>
     </div>
     <div class="form-group">
       <%= f.input :logotype, :as => :file %>

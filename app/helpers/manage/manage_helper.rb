@@ -18,6 +18,10 @@ module Manage::ManageHelper
   end
 
   def permissions_role
-    [["Менеджер", :manager], ["Не менеджер", :operator]]
+    Permission.available_roles.map{ |role| [I18n.t("role.#{role}"), role] }
+  end
+
+  def selected_option(placemark, map_layer)
+    map_layer == placemark.map_layer ? 'selected' : ''
   end
 end

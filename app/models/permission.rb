@@ -1,5 +1,5 @@
 class Permission < ActiveRecord::Base
-  sso_auth_permission :roles => [:manager, :operator]
+  sso_auth_permission :roles => [:admin, :map_manager]
 
   attr_accessible :role, :user_id
   belongs_to :user

@@ -1,6 +1,6 @@
 class Manage::MapLayersController < Manage::ApplicationController
   def index
-    @map_layers = MapLayer.all
+    @map_layers = MapLayer.roots
     @placemarks = placemarks
   end
 
@@ -51,7 +51,13 @@ class Manage::MapLayersController < Manage::ApplicationController
   private
 
   def placemarks
-    return @map_layers.flat_map(&:placemarks) unless params[:map_layer]
-    MapLayer.find(params[:map_layer]).placemarks
+    return @map_layers.flat_map(&:children).flat_map(&:placemarks) unless params[:map_layer]
+    map_layer = MapLayer.find(params[:map_layer])
+    placemarks = if map_layer.is_root?
+                   map_layer.children.flat_map(&:placemarks)
+                 else
+                   map_layer.placemarks
+                 end
+    placemarks
   end
 end

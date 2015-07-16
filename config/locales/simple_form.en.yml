@@ -5,6 +5,7 @@ ru:
     labels:
       map_layer:
         title: Название
+        ancestry: Родитеский элемент
         icon: Иконка для карты
         hover_icon: Иконка для карты(при наведении)
       placemark:
@@ -17,5 +18,8 @@ ru:
         title: Название слоя
       placemark:
         title: Название метки
-        address: Адрес
+        address: Адрес, например
+    hints:
+      map_layer:
+        ancestry: Выберите родительский слой или оставьте поле пустым для создания родительского слоя
 

@@ -8,7 +8,8 @@ class Ability
       user.permissions.any?
     end
 
-    can :manage, Permission if user.manager?
+    can :manage, :all if user.admin?
+    can :manage, [MapLayer, Placemark] if user.map_manager?
 
   end
 end

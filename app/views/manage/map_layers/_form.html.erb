@@ -7,6 +7,9 @@
       <%= f.input :title %>
     </div>
     <div class="form-group">
+      <%= f.input :ancestry, collection: MapLayer.roots, label_method: :title, value_method: :id %>
+    </div>
+    <div class="form-group">
       <%= f.input :icon, :as => :file %>
       <%= image_tag layer_icon(@map_layer), class: 'preview_image' %>
     </div>

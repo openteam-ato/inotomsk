@@ -2,29 +2,49 @@
   <div class="col-lg-3 col-md-3 col-xs-3 col-sm-3">
     <ul class="nav nav-pills nav-stacked">
       <%= content_tag :li, link_to('Все слои', manage_map_layers_path), class: highlight_layer %>
-      <% @map_layers.each do |map_layer| %>
-        <%= content_tag :li, class: highlight_layer(map_layer) do%>
-          <%= link_to  manage_map_layers_path(map_layer: map_layer.slug) do %>
-            <%= map_layer.title %>
-            <span><%= image_tag layer_icon(map_layer) %></span>
-            <span><%= image_tag layer_icon(map_layer,'hover_') %></span>
+      <% @map_layers.each do |root| %>
+        <%= content_tag :li, class: highlight_layer(root) do%>
+          <%= button_tag "", class: "glyphicon glyphicon-plus show_children", type: :button, title: "Показать вложенные элементы"  if root.children.present?%>
+          <%= link_to  manage_map_layers_path(map_layer: root.slug), class: "layer_link" do %>
+            <%= root.title %>
+            <span><%= image_tag layer_icon(root) %></span>
+            <span><%= image_tag layer_icon(root,'hover_') %></span>
           <% end %>
           <a class="dropdown-toggle" data-toggle="dropdown" href="" role="button" aria-haspopup="true" aria-expanded="false">
             Выберите действие <span class="caret"></span>
           </a>
           <ul class="dropdown-menu">
-            <li><%= link_to "Изменить", edit_manage_map_layer_path(map_layer) %></li>
-            <li><%= link_to "Удалить", manage_map_layer_path(map_layer), :method => :delete, confirm: 'Вы уверены?' %></li>
+            <li><%= link_to "Изменить", edit_manage_map_layer_path(root) %></li>
+            <li><%= link_to "Удалить", manage_map_layer_path(root), :method => :delete, confirm: 'Вы уверены?' %></li>
+          </ul>
+
+          <ul class="nav nav-pills nav-stacked children_list hidden">
+            <% root.children.each do |child| %>
+              <%= content_tag :li, class: highlight_layer(child) do%>
+                <%= link_to  manage_map_layers_path(map_layer: child.slug) do %>
+                  <%= child.title %>
+                  <span><%= image_tag layer_icon(child) %></span>
+                  <span><%= image_tag layer_icon(child,'hover_') %></span>
+                <% end %>
+                <a class="dropdown-toggle" data-toggle="dropdown" href="" role="button" aria-haspopup="true" aria-expanded="false">
+                  Выберите действие <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu children_dropdown">
+                  <li><%= link_to "Изменить", edit_manage_map_layer_path(child) %></li>
+                  <li><%= link_to "Удалить", manage_map_layer_path(child), :method => :delete, confirm: 'Вы уверены?' %></li>
+                </ul>
+              <% end %>
+            <% end %>
           </ul>
         <% end %>
-    <% end %>
-    <li class="layer">
-      <%= link_to new_manage_map_layer_path do %>
-        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-        <span>Новый слой</span>
       <% end %>
-    </li>
-  </ul>
+      <li class="layer">
+        <%= link_to new_manage_map_layer_path do %>
+          <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+          <span>Новый слой</span>
+        <% end %>
+      </li>
+    </ul>
   </div>
   <div class="col-lg-9 col-md-9 col-xs-9 col-sm-9">
     <div class="map_wrapper" data-latitude='56.488611121111' data-longitude='84.952222232222'>

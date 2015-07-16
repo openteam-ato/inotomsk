@@ -41,5 +41,5 @@ ru:
       custom: "%H:%M"
 
   role:
-    manager: Менеджер
-    operator: Не менеджер
+    admin: Администратор
+    map_manager: Редактор карт
