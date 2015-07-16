@@ -18,6 +18,6 @@
 
 /bin
 /config/deploy.yml
-/config/databese.yml
+/config/database.yml
 /config/settings.yml
 /public/assets
