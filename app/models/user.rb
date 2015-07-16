@@ -2,6 +2,12 @@ class User < ActiveRecord::Base
   sso_auth_user
   attr_accessible :description, :email, :first_name, :last_name, :location, :name, :nickname, :phone
   has_many :permissions, :dependent => :destroy
+
+  Permission.available_roles.each do |role|
+    define_method "#{role}?" do
+      permissions.map(&:role).include?(role)
+    end
+  end
 end
 
 # == Schema Information

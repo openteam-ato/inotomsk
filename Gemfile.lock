@@ -62,7 +62,7 @@ GEM
     breadcrumbs_on_rails (2.3.0)
     builder (3.0.4)
     bunny (0.8.0)
-    cancan (1.6.10)
+    cancan (1.6.9)
     capistrano (2.15.5)
       highline
       net-scp (>= 1.0.0)
