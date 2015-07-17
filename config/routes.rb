@@ -11,7 +11,8 @@ Inotomsk::Application.routes.draw do
   namespace :manage do
     resources :map_layers,  :except => [:show]
     resources :placemarks,  :except => [:index, :show]
-    resources :permissions, :only => [:index, :create, :new, :destroy]
+    resources :permissions, :except => [:show, :edit, :update]
+    resources :events,      :except => [:show]
 
     root :to => 'map_layers#index'
   end

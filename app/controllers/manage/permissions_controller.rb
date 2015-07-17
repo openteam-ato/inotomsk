@@ -4,10 +4,16 @@ class Manage::PermissionsController < Manage::ApplicationController
   end
 
   def new
+    add_breadcrumb "Все пользователи",manage_permissions_path
+    add_breadcrumb "Добавить право доступа",new_manage_permission_path
+
     @permission = Permission.new
   end
 
   def create
+    add_breadcrumb "Все пользователи", manage_permissions_path
+    add_breadcrumb "Добавить право доступа", new_manage_permission_path
+
     @permission = Permission.new(params[:permission])
 
     if @permission.save

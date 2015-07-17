@@ -11,7 +11,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150716052024) do
+ActiveRecord::Schema.define(:version => 20150717040703) do
+
+  create_table "events", :force => true do |t|
+    t.text     "title"
+    t.text     "document_type"
+    t.text     "performer"
+    t.string   "term_type"
+    t.integer  "start_year"
+    t.integer  "end_year"
+    t.string   "quarter"
+    t.string   "state"
+    t.integer  "map_layer_id"
+    t.integer  "placemark_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
 
   create_table "map_layers", :force => true do |t|
     t.string   "title"

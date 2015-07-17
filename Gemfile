@@ -15,6 +15,7 @@ group :default do
   gem 'breadcrumbs_on_rails'
   gem 'curb'
   gem 'devise', '2.2.3'
+  gem 'enumerize'
   gem 'esp-commons'
   gem 'friendly_id'
   gem 'hashie'

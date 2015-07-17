@@ -1,0 +1,9 @@
+ru:
+  enumerize:
+    state:
+      implemented: Реализованное мероприятие
+      now: Реализуется в данный момент
+      postponed: Реализация мероприятий отложена по времени
+    term_type:
+      quarter: Квартал
+      period: Ежегодно

@@ -2,7 +2,9 @@ class MapLayer < ActiveRecord::Base
   attr_accessible :title, :icon, :hover_icon, :ancestry
 
   validates_presence_of :title
+
   has_many :placemarks, dependent: :destroy
+  has_many :events, dependent: :destroy
 
   has_attached_file :icon, :storage => :elvfs, :elvfs_url => Settings['storage.url']
   has_attached_file :hover_icon, :storage => :elvfs, :elvfs_url => Settings['storage.url']

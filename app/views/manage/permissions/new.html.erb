@@ -1,4 +1,7 @@
 <div class="form_wrapper">
+  <ol class="breadcrumb">
+    <%= render_breadcrumbs tag: :li, separator: '' %>
+  </ol>
   <%= simple_form_for [:manage, @permission], html: {class: 'form-vertical' } do |f| %>
     <div class="form-group">
       <%= f.input :role, collection: permissions_role%>

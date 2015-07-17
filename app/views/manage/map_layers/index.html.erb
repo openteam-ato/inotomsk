@@ -4,7 +4,8 @@
       <%= content_tag :li, link_to('Все слои', manage_map_layers_path), class: highlight_layer %>
       <% @map_layers.each do |root| %>
         <%= content_tag :li, class: highlight_layer(root) do%>
-          <%= button_tag "", class: "glyphicon glyphicon-plus show_children", type: :button, title: "Показать вложенные элементы"  if root.children.present?%>
+          <%= button_tag "", class: opened_children_list?(root) ? "glyphicon glyphicon-minus show_children" : "glyphicon glyphicon-plus show_children",
+            type: :button, title: "Показать вложенные элементы"  if root.children.present?%>
           <%= link_to  manage_map_layers_path(map_layer: root.slug), class: "layer_link" do %>
             <%= root.title %>
             <span><%= image_tag layer_icon(root) %></span>
@@ -18,7 +19,7 @@
             <li><%= link_to "Удалить", manage_map_layer_path(root), :method => :delete, confirm: 'Вы уверены?' %></li>
           </ul>
 
-          <ul class="nav nav-pills nav-stacked children_list hidden">
+          <ul class="nav nav-pills nav-stacked children_list <%= opened_children_list?(root) ? "" : "hidden" %>">
             <% root.children.each do |child| %>
               <%= content_tag :li, class: highlight_layer(child) do%>
                 <%= link_to  manage_map_layers_path(map_layer: child.slug) do %>
@@ -69,7 +70,8 @@
           </thead>
           <tbody>
             <% @placemarks.each do |placemark| %>
-              <tr>
+              <tr class="placemark_list_item" data-latitude=<%= placemark.latitude %> data-longitude=<%= placemark.longitude %>
+              data-icon=<%= layer_icon(placemark.map_layer) %> data-title=<%= placemark.title %> data-logotype=<%= placemark_logotype(placemark) %>>
                 <td>
                   <%= link_to edit_manage_placemark_path(placemark) do %>
                     <%= image_tag placemark_logotype(placemark), size: "50x50" %>

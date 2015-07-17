@@ -9,7 +9,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div class="manage-wrapper">
+  <div class="manage_wrapper">
     <!--navigation-->
     <nav class="navbar navbar-default">
       <div class="container-fluid">
@@ -33,6 +33,8 @@
               class: controller_name == 'permissions' ? :active : ''  if can? :manage, Permission %>
             <%= content_tag :li, link_to('Интерактивная карта', manage_map_layers_path), role: :presentation,
               class: controller_name == 'map_layers' || controller_name == 'placemarks' ? :active : '' if can? :manage, MapLayer %>
+            <%= content_tag :li, link_to('Дорожная карта', manage_events_path), role: :presentation,
+              class: controller_name == 'events' ? :active : '' if can? :manage, Event %>
           </ul>
         </div>
       </div>

@@ -45,4 +45,44 @@
             $('#placemark_address').parent().parent().parent().find(".help-inline").remove()
             $('#placemark_address').parent().parent().parent().append('<span class="help-inline">не найден адрес</span>')
 
+    if $('.index_wrapper').length
+      clusterer = new ymaps.Clusterer
+      preset: 'islands#grayClusterIcons'
+      clusterDisableClickZoom: true
+      showInAlphabeticalOrder: true
+      hideIconOnBalloonOpen: false
+      groupByCoordinates: true
+      clusterBalloonContentLayout: 'cluster#balloonCarousel'
+      clusterBalloonPagerType: 'marker'
+      clusterBalloonContentLayoutWidth: 210
+      clusterBalloonContentLayoutHeight: 240
+
+      $('.placemark_list_item').each (index, item) ->
+        coords = [$(item).attr('data-latitude'), $(item).attr('data-longitude')]
+        title = [$(item).attr('data-title')]
+        contentBody = "<div>
+                        <img width='190' height='190' src='#{$(item).attr('data-logotype')}' />
+                        <div class='balloon_content_header' style='margin:5px 0;padding-bottom:5px;width:190px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;'>
+                          #{title}
+                        </div>
+                      </div>"
+
+        point = new ymaps.GeoObject
+          geometry:
+            type: 'Point'
+            coordinates: coords
+          properties:
+            balloonContentBody: contentBody
+            hintContent: title
+        ,
+          iconLayout: 'default#image'
+          iconImageHref: $(item).attr('data-icon')
+          hideIconOnBalloonOpen: false
+          iconImageOffset: [-18, -18]
+
+        clusterer.add point
+        true
+
+      map.geoObjects.add clusterer
+
   true

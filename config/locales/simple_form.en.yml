@@ -13,13 +13,24 @@ ru:
         map_layer: Слой
         logotype: Логотип
         address: Адрес
+      event:
+        title: Наименование мероприятия
+        document_type: Вид документа
+        performer: Ответственный исполнитель
+        term_type: Срок
+        state: Статус
+        map_layer: Категория
+        placemark: Объект карты
     placeholders:
       map_layer:
         title: Название слоя
       placemark:
         title: Название метки
         address: Адрес, например
+      event:
+        title: Наименование мероприятия
+        document_type: Вид документа
+        performer: Ответственный исполнитель
     hints:
       map_layer:
         ancestry: Выберите родительский слой или оставьте поле пустым для создания родительского слоя
-

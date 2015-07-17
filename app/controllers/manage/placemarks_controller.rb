@@ -4,7 +4,6 @@ class Manage::PlacemarksController < Manage::ApplicationController
     add_breadcrumb "Новая метка", new_manage_placemark_path
 
     @placemark = Placemark.new
-    @map_layers = MapLayer.roots
   end
 
   def create
@@ -12,7 +11,6 @@ class Manage::PlacemarksController < Manage::ApplicationController
     add_breadcrumb "Новая метка", new_manage_placemark_path
 
     @placemark = Placemark.new(params[:placemark])
-    @map_layers = MapLayer.roots
 
     if @placemark.save
       redirect_to manage_map_layers_path
@@ -23,7 +21,6 @@ class Manage::PlacemarksController < Manage::ApplicationController
 
   def edit
     @placemark = Placemark.find(params[:id])
-    @map_layers = MapLayer.roots
 
     add_breadcrumb "Карта", manage_map_layers_path
     add_breadcrumb "Редактировать", edit_manage_placemark_path(@placemark)
@@ -31,7 +28,6 @@ class Manage::PlacemarksController < Manage::ApplicationController
 
   def update
     @placemark = Placemark.find(params[:id])
-    @map_layers = MapLayer.roots
 
     add_breadcrumb "Карта", manage_map_layers_path
     add_breadcrumb "Редактировать", edit_manage_placemark_path(@placemark)
@@ -39,7 +35,7 @@ class Manage::PlacemarksController < Manage::ApplicationController
     if @placemark.update_attributes(params[:placemark])
       redirect_to manage_map_layers_path
     else
-      render :new
+      render :edit
     end
   end
 

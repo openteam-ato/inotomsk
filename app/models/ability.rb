@@ -9,7 +9,7 @@ class Ability
     end
 
     can :manage, :all if user.admin?
-    can :manage, [MapLayer, Placemark] if user.map_manager?
+    can :manage, [MapLayer, Placemark, Event] if user.map_manager?
 
   end
 end

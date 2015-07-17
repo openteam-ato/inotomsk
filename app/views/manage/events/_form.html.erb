@@ -1,0 +1,41 @@
+<div class="form_wrapper">
+  <ol class="breadcrumb">
+    <%= render_breadcrumbs tag: :li, separator: '' %>
+  </ol>
+  <%= simple_form_for [:manage, @event], html: {class: 'form-vertical' } do |f| %>
+    <div class="form-group">
+      <%= f.input :title, input_html: {rows: 5} %>
+    </div>
+    <div class="form-group">
+      <%= f.input :document_type, input_html: {rows: 5} %>
+    </div>
+    <div class="form-group">
+      <%= f.input :performer, input_html: {rows: 5} %>
+    </div>
+    <div class="form-group term_wrapper">
+      <%= f.input :term_type, include_blank: false %>
+      <div class="term_period">
+        <%= f.input_field :start_year, collection: 2015..2020 %>
+        <%= f.input_field :quarter, collection: %w(I II III IV) %>
+        <%= f.input_field :end_year, collection: 2015..2020 %>
+        <%= f.error :end_year %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.input :state %>
+    </div>
+
+    <div class="form-group">
+      <label class="select optional control-label" for="event_map_layer_id"><%= I18n.t('simple_form.labels.event.map_layer') %></label>
+      <div class="controls">
+        <select class="select optional" id="event_map_layer_id" name="event[map_layer_id]">
+          <%= custom_map_layer_select_options(@event) %>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.association :placemark, collection: Placemark.all %>
+    </div>
+    <%= f.submit 'Сохранить', class: "pull-right" %>
+  <% end %>
+</div>
