@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 group :assets do
   gem 'bootstrap-sass', '= 3.1.1.0'
