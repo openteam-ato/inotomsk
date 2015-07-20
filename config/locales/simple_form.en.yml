@@ -26,7 +26,7 @@ ru:
         title: Название слоя
       placemark:
         title: Название метки
-        address: Адрес, например
+        address: Адрес, например, Мира 19
       event:
         title: Наименование мероприятия
         document_type: Вид документа

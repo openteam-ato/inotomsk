@@ -28,7 +28,7 @@
     <div class="form-group">
       <label class="select optional control-label" for="event_map_layer_id"><%= I18n.t('simple_form.labels.event.map_layer') %></label>
       <div class="controls">
-        <select class="select optional" id="event_map_layer_id" name="event[map_layer_id]">
+        <select class="select optional custom_select" id="event_map_layer_id" name="event[map_layer_id]">
           <%= custom_map_layer_select_options(@event) %>
         </select>
       </div>
