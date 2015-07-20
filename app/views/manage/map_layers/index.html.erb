@@ -9,7 +9,6 @@
           <%= link_to  manage_map_layers_path(map_layer: root.slug), class: "layer_link" do %>
             <%= root.title %>
             <span><%= image_tag layer_icon(root) %></span>
-            <span><%= image_tag layer_icon(root,'hover_') %></span>
           <% end %>
           <a class="dropdown-toggle" data-toggle="dropdown" href="" role="button" aria-haspopup="true" aria-expanded="false">
             Выберите действие <span class="caret"></span>
