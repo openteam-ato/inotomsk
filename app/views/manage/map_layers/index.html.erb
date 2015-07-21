@@ -70,7 +70,7 @@
             <% @placemarks.each do |placemark| %>
               <% placemark.addresses.each_with_index do |address, index| %>
                 <tr class="placemark_list_item <%= index !=0 ? 'hidden' : '' %>" data-latitude=<%= address.latitude %> data-longitude=<%= address.longitude %>
-                  data-icon=<%= layer_icon(placemark.map_layer) %> data-title=<%= placemark.title %> data-logotype=<%= placemark_logotype(placemark) %>>
+                  data-icon=<%= layer_icon(placemark.map_layer) %> data-title="<%= placemark.title %>" data-logotype=<%= placemark_logotype(placemark) %>>
                   <td>
                     <%= link_to edit_manage_placemark_path(placemark) do %>
                       <%= image_tag placemark_logotype(placemark), size: "50x50" %>

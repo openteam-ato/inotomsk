@@ -16,6 +16,10 @@ class Placemark < ActiveRecord::Base
 
   delegate :icon_url, to: :map_layer
 
+  normalize :title do |value|
+    value.gsub("\"","\'")
+  end
+
   extend FriendlyId
   friendly_id :title, use: :slugged
 end
