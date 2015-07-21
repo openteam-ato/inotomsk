@@ -12,6 +12,7 @@
         <select class="select required custom_select" id="placemark_map_layer_id" name="placemark[map_layer_id]">
           <%= custom_map_layer_select_options(@placemark) %>
         </select>
+        <%= f.error :map_layer_id %>
       </div>
     </div>
     <div class="form-group">
@@ -19,17 +20,23 @@
       <%= image_tag placemark_logotype(@placemark), class: 'preview_image' %>
     </div>
     <div class="form-group">
-      <%= f.input :address %>
+      <%= label_tag "Адрес" %>
+      <%= text_field_tag :placemark_address, nil, placeholder: "Адрес" %>
       <%= button_tag 'Найти карте', class: "direct_geocode", type: 'button' %>
-      <%= f.error :latitude %>
+      <%= f.error :address %>
     </div>
 
-    <div class="map_wrapper" data-latitude='56.488611121111' data-longitude='84.952222232222'>
+    <div class="map_wrapper" data-latitude='58.62889684478054' data-longitude='82.06246307966687'>
       <div class="map"></div>
     </div>
-    <%= f.input :latitude, as: :hidden %>
-    <%= f.input :longitude, as: :hidden %>
-
+    <div class="addresses_wrapper">
+      <% @placemark.addresses.each do |address|  %>
+        <div class="coords">
+          <%= hidden_field_tag 'placemark[address][latitude][]', address.latitude, class: "latitude" %>
+          <%= hidden_field_tag 'placemark[address][longitude][]', address.longitude, class: "longitude" %>
+        </div>
+      <% end %>
+    </div>
     <%= f.submit 'Сохранить', class: "pull-right" %>
   <% end %>
 </div>

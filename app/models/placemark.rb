@@ -1,12 +1,16 @@
 class Placemark < ActiveRecord::Base
-  attr_accessible :title, :latitude, :longitude, :logotype, :address, :map_layer_id
+  attr_accessible :title, :logotype, :map_layer_id, :address
+  attr_accessor :address
 
-  has_many :events, dependent: :destroy
+  has_many :events,    dependent: :destroy
+  has_many :addresses, dependent: :destroy
 
   belongs_to :map_layer
 
-  validates_presence_of :title, :map_layer
-  validates_presence_of :latitude, :longitude, message: 'Укажите местоположение объекта на карте или введите его адрес'
+  accepts_nested_attributes_for :addresses
+
+  validates_presence_of :title, :map_layer_id
+  validates_presence_of :address, message: 'Укажите местоположение объекта на карте или введите его адрес'
 
   has_attached_file :logotype, :storage => :elvfs, :elvfs_url => Settings['storage.url']
 

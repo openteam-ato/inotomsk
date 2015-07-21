@@ -3,12 +3,12 @@
     $map = $('.map_wrapper .map')
     map = new ymaps.Map $map[0],
       center: [parseFloat($('.map_wrapper').attr('data-latitude')), parseFloat($('.map_wrapper').attr('data-longitude'))]
-      zoom: 12
+      zoom: 6
       behaviors: ['drag', 'scrollZoom']
       controls: []
     ,
       maxZoom: 23
-      minZoom: 11
+      minZoom: 5
 
     map.controls.add 'zoomControl',
       float: 'none'
@@ -16,31 +16,48 @@
         top: 10
         left: 20
 
+    update_address_wrapper = ->
+      $('.addresses_wrapper').empty()
+      map.geoObjects.each (geoObject) ->
+        coords = geoObject.geometry.getCoordinates()
+        $('.addresses_wrapper').append("<input class='hidden' id='placemark_address_latitude' name='placemark[address][latitude][]' type='hidden' value='#{coords[0]}'>")
+        $('.addresses_wrapper').append("<input class='hidden' id='placemark_address_longitude' name='placemark[address][longitude][]' type='hidden' value='#{coords[1]}'>")
+
+    create_new_placemark = (coords) ->
+      placemark = new ymaps.Placemark coords
+      map.geoObjects.add placemark
+      placemark.events.add 'click', (e) ->
+        map.geoObjects.remove e.get('target')
+        update_address_wrapper()
+
+
     if $('.form_wrapper').length
-      map.geoObjects.add new ymaps.Placemark [$('#placemark_latitude').val(), $('#placemark_longitude').val()]
+      $('.coords').each (index, item) ->
+        coords = [$(item).find('.latitude').val(), $(item).find('.longitude').val()]
+        create_new_placemark(coords)
 
       map.events.add 'click', (e) ->
-        map.geoObjects.removeAll()
+        update_address_wrapper()
         $('#placemark_address').parent().parent().parent().find(".help-inline").remove()
         coords = e.get('coords')
-        map.geoObjects.add new ymaps.Placemark coords
-        $('#placemark_latitude').val(coords[0])
-        $('#placemark_longitude').val(coords[1])
+        create_new_placemark(coords)
+        $('.addresses_wrapper').append("<input class='hidden' id='placemark_address_latitude' name='placemark[address][latitude][]' type='hidden' value='#{coords[0]}'>")
+        $('.addresses_wrapper').append("<input class='hidden' id='placemark_address_longitude' name='placemark[address][longitude][]' type='hidden' value='#{coords[1]}'>")
 
         ymaps.geocode(coords).then (res) ->
           address = res.geoObjects.get(0)
           $('#placemark_address').val(address.properties.get('name'))
 
       $('.direct_geocode').click ->
-        map.geoObjects.removeAll()
-        ymaps.geocode('Томск'+$('#placemark_address').val(), results: 1).then (res) ->
+        update_address_wrapper()
+        ymaps.geocode($('#placemark_address').val(), results: 1).then (res) ->
           result = res.geoObjects.get(0)
           if result
             coords = result.geometry.getCoordinates()
             $('#placemark_address').parent().parent().parent().find(".help-inline").remove()
-            map.geoObjects.add new ymaps.Placemark coords
-            $('#placemark_latitude').val(coords[0])
-            $('#placemark_longitude').val(coords[1])
+            create_new_placemark(coords)
+            $('.addresses_wrapper').append("<input class='hidden' id='placemark_address_latitude' name='placemark[address][latitude][]' type='hidden' value='#{coords[0]}'>")
+            $('.addresses_wrapper').append("<input class='hidden' id='placemark_address_longitude' name='placemark[address][longitude][]' type='hidden' value='#{coords[1]}'>")
           else
             $('#placemark_address').parent().parent().parent().find(".help-inline").remove()
             $('#placemark_address').parent().parent().parent().append('<span class="help-inline">не найден адрес</span>')

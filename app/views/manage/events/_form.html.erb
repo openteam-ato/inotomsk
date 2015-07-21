@@ -31,6 +31,7 @@
         <select class="select optional custom_select" id="event_map_layer_id" name="event[map_layer_id]">
           <%= custom_map_layer_select_options(@event) %>
         </select>
+        <%= f.error :map_layer_id %>
       </div>
     </div>
     <div class="form-group">

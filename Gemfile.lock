@@ -159,6 +159,7 @@ GEM
     multi_json (1.11.2)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
+    nested_form (0.3.1)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-sftp (2.1.2)
@@ -314,6 +315,7 @@ DEPENDENCIES
   inherited_resources
   jquery-rails (~> 2.1.4)
   kaminari
+  nested_form
   normalize_attributes
   openteam-capistrano
   openteam-commons
@@ -330,6 +332,3 @@ DEPENDENCIES
   turbo-sprockets-rails3
   uglifier
   unicorn
-
-BUNDLED WITH
-   1.10.5

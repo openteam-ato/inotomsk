@@ -12,11 +12,6 @@ module Manage::ManageHelper
     placemark.logotype_url || asset_path("symbol.png")
   end
 
-  def address(placemark)
-    return placemark.address if placemark.address
-    "Координаты: #{placemark.latitude.round(4)}/#{placemark.longitude.round(4)}"
-  end
-
   def permissions_role
     Permission.available_roles.map{ |role| [I18n.t("role.#{role}"), role] }
   end
