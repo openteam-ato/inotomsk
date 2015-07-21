@@ -59,20 +59,20 @@
             $('.addresses_wrapper').append("<input class='hidden' id='placemark_address_latitude' name='placemark[address][latitude][]' type='hidden' value='#{coords[0]}'>")
             $('.addresses_wrapper').append("<input class='hidden' id='placemark_address_longitude' name='placemark[address][longitude][]' type='hidden' value='#{coords[1]}'>")
           else
-            $('#placemark_address').parent().parent().parent().find(".help-inline").remove()
-            $('#placemark_address').parent().parent().parent().append('<span class="help-inline">не найден адрес</span>')
+            $('#placemark_address').parent().find(".help-inline").remove()
+            $('#placemark_address').parent().append('<span class="help-inline">не найден адрес</span>')
 
     if $('.index_wrapper').length
       clusterer = new ymaps.Clusterer
-      preset: 'islands#grayClusterIcons'
-      clusterDisableClickZoom: true
-      showInAlphabeticalOrder: true
-      hideIconOnBalloonOpen: false
-      groupByCoordinates: true
-      clusterBalloonContentLayout: 'cluster#balloonCarousel'
-      clusterBalloonPagerType: 'marker'
-      clusterBalloonContentLayoutWidth: 210
-      clusterBalloonContentLayoutHeight: 240
+        preset: 'islands#grayClusterIcons'
+        clusterDisableClickZoom: true
+        showInAlphabeticalOrder: true
+        hideIconOnBalloonOpen: false
+        groupByCoordinates: true
+        clusterBalloonContentLayout: 'cluster#balloonCarousel'
+        clusterBalloonPagerType: 'marker'
+        clusterBalloonContentLayoutWidth: 210
+        clusterBalloonContentLayoutHeight: 240
 
       $('.placemark_list_item').each (index, item) ->
         coords = [$(item).attr('data-latitude'), $(item).attr('data-longitude')]
