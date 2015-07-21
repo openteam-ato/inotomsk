@@ -135,6 +135,7 @@ GEM
     hashie (1.2.0)
     highline (1.6.21)
     hike (1.2.3)
+    hirb (0.7.3)
     i18n (0.7.0)
     inherited_resources (1.6.0)
       actionpack (>= 3.2, < 5)
@@ -311,6 +312,7 @@ DEPENDENCIES
   esp-commons
   friendly_id
   hashie
+  hirb
   inherited_resources
   jquery-rails (~> 2.1.4)
   kaminari

@@ -39,6 +39,7 @@ group :development do
   gem 'capistrano-unicorn', '~> 0.1.10', :require => false
   gem 'openteam-capistrano', :require => false
   gem 'quiet_assets'
+  gem 'hirb'
 end
 
 group :production do
