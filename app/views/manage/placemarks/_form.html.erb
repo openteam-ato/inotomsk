@@ -4,7 +4,7 @@
   </ol>
   <%= simple_form_for [:manage, @placemark], html: {class: 'form-vertical' } do |f| %>
     <div class="form-group">
-      <%= f.input :title %>
+      <%= f.input :title, input_html: {rows: 3} %>
     </div>
     <div class="form-group">
       <label class="select required control-label" for="placemark_map_layer_id"> <abbr title="Обязательное для заполнения поле">*</abbr><%= I18n.t('simple_form.labels.placemark.map_layer') %></label>
@@ -24,6 +24,7 @@
       <%= text_field_tag :placemark_address, nil, placeholder: "Адрес" %>
       <%= button_tag 'Найти карте', class: "direct_geocode", type: 'button' %>
       <%= f.error :address %>
+      <%= f.hint :address %>
     </div>
 
     <div class="map_wrapper" data-latitude='58.62889684478054' data-longitude='82.06246307966687'>

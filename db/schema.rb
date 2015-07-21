@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150721035539) do
+ActiveRecord::Schema.define(:version => 20150721084549) do
 
   create_table "addresses", :force => true do |t|
     t.float   "latitude"
@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(:version => 20150721035539) do
   add_index "permissions", ["user_id", "role"], :name => "by_user_and_role"
 
   create_table "placemarks", :force => true do |t|
-    t.string   "title"
+    t.text     "title"
     t.string   "slug"
     t.string   "logotype_file_name"
     t.string   "logotype_content_type"
