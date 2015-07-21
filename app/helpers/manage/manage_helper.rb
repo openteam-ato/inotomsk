@@ -27,7 +27,7 @@ module Manage::ManageHelper
   def custom_map_layer_select_options(context)
     options = "<option></option>"
     MapLayer.roots.each do |root|
-      options << "<option class='root_option'>#{root.title}</option>"
+      options << "<option class='root_option' value='#{root.id}' #{selected_option(context, root)} >#{root.title}</option>"
       root.children.each do |child|
         options << "<option value='#{child.id}' #{selected_option(context, child)} >#{child.title}</option>"
       end

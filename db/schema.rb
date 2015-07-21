@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150721084549) do
+ActiveRecord::Schema.define(:version => 20150721092317) do
 
   create_table "addresses", :force => true do |t|
     t.float   "latitude"
@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(:version => 20150721084549) do
 
   create_table "placemarks", :force => true do |t|
     t.text     "title"
-    t.string   "slug"
+    t.text     "slug"
     t.string   "logotype_file_name"
     t.string   "logotype_content_type"
     t.integer  "logotype_file_size"
