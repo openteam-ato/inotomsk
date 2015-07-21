@@ -24,7 +24,6 @@
                 <%= link_to  manage_map_layers_path(map_layer: child.slug) do %>
                   <%= child.title %>
                   <span><%= image_tag layer_icon(child) %></span>
-                  <span><%= image_tag layer_icon(child,'hover_') %></span>
                 <% end %>
                 <a class="dropdown-toggle" data-toggle="dropdown" href="" role="button" aria-haspopup="true" aria-expanded="false">
                   Выберите действие <span class="caret"></span>
