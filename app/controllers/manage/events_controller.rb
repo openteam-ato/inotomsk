@@ -1,6 +1,6 @@
 class Manage::EventsController < Manage::ApplicationController
   def index
-    @events = Event.all
+    @events = events
   end
 
   def new
@@ -46,5 +46,12 @@ class Manage::EventsController < Manage::ApplicationController
   def destroy
     Event.find(params[:id]).destroy
     redirect_to manage_events_path
+  end
+
+  private
+
+  def events
+    return Event.all unless params[:state]
+    Event.where(state: params[:state])
   end
 end

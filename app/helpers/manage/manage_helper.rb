@@ -44,4 +44,20 @@ module Manage::ManageHelper
       "#{event.start_year} г."
     end
   end
+
+  def event_row_color(event)
+    case event.state
+    when "implemented"
+      "success"
+    when "now"
+      "info"
+    when "postponed"
+      "warning"
+    end
+  end
+
+  def selected_filter(filter)
+    return 'active' if filter == "all" && !params[:state]
+    'active' if params[:state] == filter
+  end
 end

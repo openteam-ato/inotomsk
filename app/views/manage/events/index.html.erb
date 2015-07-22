@@ -6,6 +6,12 @@
         <span>Новое событие</span>
       <% end %>
     </h4>
+    <div class="filter">
+      <%= link_to "Все мероприятия", manage_events_path, class: selected_filter("all") %>
+      <%= link_to "Реализованные", manage_events_path(state: "implemented"), class: selected_filter("implemented") %>
+      <%= link_to "Реализуемые", manage_events_path(state: "now"), class: selected_filter("now") %>
+      <%= link_to "Отложено", manage_events_path(state: "postponed"), class: selected_filter("postponed") %>
+    </div>
     <% if @events.present? %>
       <table class="table table-striped table-hover">
         <thead>
@@ -17,7 +23,7 @@
         </thead>
         <tbody>
           <% @events.each do |event| %>
-            <tr>
+            <tr class=<%= event_row_color(event)%>>
               <td><%= link_to event.title, edit_manage_event_path(event) %></td>
               <td><%= event.document_type %></td>
               <td><%= human_term(event) %></td>
