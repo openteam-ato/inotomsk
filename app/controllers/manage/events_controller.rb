@@ -1,6 +1,6 @@
 class Manage::EventsController < Manage::ApplicationController
   def index
-    @events = events
+    @events = events.page(params[:page])
   end
 
   def new
@@ -51,7 +51,7 @@ class Manage::EventsController < Manage::ApplicationController
   private
 
   def events
-    return Event.all unless params[:state]
+    return Event unless params[:state]
     Event.where(state: params[:state])
   end
 end

@@ -1,5 +1,13 @@
 <% if current_page.first? %>
-  <%= content_tag :span, raw(t 'views.pagination.previous'), :class => 'prev' %>
+  <%= content_tag :li, :class => 'prev disabled' do %>
+    <a href="#" aria-label="Previous">
+      <span aria-hidden="true">&laquo;</span>
+    </a>
+  <% end %>
 <% else %>
-  <%= link_to raw(t 'views.pagination.previous'), url, :rel => 'prev', :remote => remote, :class => 'prev' %>
+  <%= content_tag :li, :class => 'prev' do %>
+    <%= link_to url, :rel => 'prev', :remote => remote, :class => 'prev' do %>
+      <span aria-hidden="true">&laquo;</span>
+    <% end %>
+  <% end %>
 <% end %>

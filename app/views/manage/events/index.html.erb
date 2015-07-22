@@ -8,9 +8,9 @@
     </h4>
     <div class="filter">
       <%= link_to "Все мероприятия", manage_events_path, class: "all #{selected_filter('all')}" %>
-      <%= link_to "Реализованные", manage_events_path(state: "implemented"), class: "implemented #{selected_filter('implemented')}" %>
-      <%= link_to "Реализуемые", manage_events_path(state: "now"), class: "now #{selected_filter('now')}" %>
-      <%= link_to "Отложено", manage_events_path(state: "postponed"), class: "postponed #{selected_filter('postponed')}" %>
+      <%= link_to "Реализованные", manage_events_path(state: "implemented"), class: "bg-success #{selected_filter('implemented')}" %>
+      <%= link_to "Реализуемые", manage_events_path(state: "now"), class: "bg-info #{selected_filter('now')}" %>
+      <%= link_to "Отложено", manage_events_path(state: "postponed"), class: "bg-warning #{selected_filter('postponed')}" %>
     </div>
     <% if @events.present? %>
       <table class="table table-striped table-hover">
@@ -33,6 +33,9 @@
           <% end %>
         </tbody>
       </table>
+      <div class="event_pagination">
+        <%= paginate @events %>
+      </div>
     <% else %>
       <h4 class="center-block no_events">Вы еще не добавили ни одного события</h4>
     <% end %>
