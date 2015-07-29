@@ -1,13 +1,11 @@
 <% if current_page.first? %>
   <%= content_tag :li, :class => 'prev disabled' do %>
     <a href="#" aria-label="Previous">
-      <span aria-hidden="true">&laquo;</span>
     </a>
   <% end %>
 <% else %>
   <%= content_tag :li, :class => 'prev' do %>
     <%= link_to url, :rel => 'prev', :remote => remote, :class => 'prev' do %>
-      <span aria-hidden="true">&laquo;</span>
     <% end %>
   <% end %>
 <% end %>

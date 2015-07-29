@@ -1,13 +1,11 @@
 <% if current_page.last? %>
   <%= content_tag :li, :class => 'next disabled' do %>
     <a href="#" aria-label="Next">
-      <span aria-hidden="true">&raquo;</span>
     </a>
   <% end %>
 <% else %>
   <%= content_tag :li, :class => 'next' do %>
     <%= link_to url, :rel => 'next', :remote => remote, :class => 'next' do %>
-      <span aria-hidden="true">&raquo;</span>
     <% end %>
   <% end %>
 <% end %>
