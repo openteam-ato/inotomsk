@@ -1,62 +1,50 @@
-@import 'compass/utilities'
-@import 'compass/css3'
-
 $shadow_color: #dfdfdf
 
-.news_section
-  +single-box-shadow($shadow_color, 3px, 3px, 3px)
-  position: relative
-  .nav
-    position: absolute
-    top: 0
-    right: 0
-    +clearfix
-    li
-      float: left
-      font-size: 0.9em
-      a
-        display: block
-        color: lighten(#dba0c0, 10%)
-        background-color: #a41162
-        border: 1px solid #a41162
-        border-bottom: 1px solid #a41162
-        margin: 4px 0 0 1px
-        padding: 8px 12px 7px
-        text-decoration: none
-        &:hover
-          color: #fff
-          background-color: #d8277f
-          border: 1px solid #d8277f
-          border-bottom: 1px solid #a41162
-      &.selected a
-        color: #32001d
-        border: 1px solid #a41162
-        border-bottom: 1px solid #fff
-        background-color: #fff
-        padding: 9px 12px 10px
-        margin-top: 0
-        &:hover
-          color: lighten(#32001d, 10%)
-          background-color: #fff
-          border-bottom: 1px solid #fff
+.news_list_wrapper
+  margin-top: 30px
+
   h1
-    font-family: 'header_normal'
-    font-size: 1.5em
-    line-height: 1.9
-    margin-bottom: 1px
+    font-size: 20px
+    font-style: italic
+    margin-top: -10px
+
+  .news_navigation
+    li
+      a
+        background-color: $active_color
+        color: #fff
+        text-decoration: none
+        +border-radius(0)
+        padding-top: 5px
+        padding-bottom: 5px
+
+        &:hover, &:focus, &:active
+          background-color: #d8277f
+          border-color: transparent
+
+      &.active
+        a
+          background-color: #fff
+          color: #000
+          cursor: pointer
+          border-left: 1px solid $active_color
+          border-top: 1px solid $active_color
+          border-right: 1px solid $active_color
+          margin: 0
+
   .news_container
-    border: 1px solid #a41162
+    border: 1px solid $active_color
+    clear: both
     background-color: #fff
-    +single-box-shadow($shadow_color, -3px, 3px, 3px)
+
     .inner_wrapper
       +clearfix
-      .picture,
-      .news_list
-        width: 50%
-        float: left
+
       .picture
-        height: 347px
         position: relative
+        padding-left: 0
+        padding-right: 0
+
         .description
           color: #fff
           position: absolute
@@ -75,7 +63,7 @@ $shadow_color: #dfdfdf
             font-size: 0.9em
             color: #ffa3d6
       .news_list
-        height: 347px
+        height: 438px
         +clearfix
         overflow-y: scroll
         ul
@@ -101,3 +89,22 @@ $shadow_color: #dfdfdf
           font-size: 0.9em
           text-align: right
           padding: 10px 20px 15px
+
+@media (max-width: $screen-md-max)
+  .news_list_wrapper
+    .news_container
+      .inner_wrapper
+        .news_list
+          height: 363px
+
+@media (max-width: $screen-sm-max)
+  .news_list_wrapper
+    .news_container
+      .inner_wrapper
+        .news_list
+          height: 280px
+
+@media (max-width: $screen-xs-max)
+  .news_list_wrapper
+    h1
+      margin-bottom: 10px

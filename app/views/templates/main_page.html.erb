@@ -1,40 +1,32 @@
 <% content_for :content do %>
 
   <% if @news_list && (@news_list.response_status == 200 || !@news_list.response_status?) %>
-    <div class='news_section index'>
-      <ul class='nav noindex'>
+    <div class='row news_list_wrapper'>
+
+      <% if locale.eql?(:ru) %>
+        <h1 class='pull-left'><a href='/ru/press-tsentr/novosti'><%= @news_list.part_title %></a></h1>
+      <% end %>
+
+      <% if locale.eql?(:en) %>
+        <h1 class='pull-left'><a href='/en/press-centre/news'><%= @news_list.part_title %></a></h1>
+      <% end %>
+
+      <ul class='nav nav-tabs pull-right news_navigation'>
         <% if locale.eql?(:ru) %>
-          <li><a href='/ru/press-tsentr/novosti-innovatsiy/v-mire/'>В мире</a></li>
-          <li><a href='/ru/press-tsentr/novosti-innovatsiy/v-rossii/'>В России</a></li>
-          <li class='selected'><a href='/ru/press-tsentr/novosti-innovatsiy/v-tomske/'>В Томске</a></li>
+          <li><a href='/ru/press-tsentr/novosti/v-mire'>В мире</a></li>
+          <li><a href='/ru/press-tsentr/novosti/v-rossii'>В России</a></li>
+          <li class='active'><a href='/ru/press-tsentr/novosti/v-tomske'>В Томске</a></li>
         <% end %>
         <% if locale.eql?(:en) %>
-          <li class='selected'><a href='/en/press-centre/news/'><%= @news_list.part_title %></a></li>
-        <% end %>
-        <% if locale.eql?(:de) %>
-          <li class='selected'><a href='/de/pressezentrum/nachrichten/'><%= @news_list.part_title %></a></li>
-        <% end %>
-        <% if locale.eql?(:fr) %>
-          <li class='selected'><a href='/fr/centre-de-presse/nouvelles/'><%= @news_list.part_title %></a></li>
+          <li class='active'><a href='/en/press-centre/news'><%= @news_list.part_title %></a></li>
         <% end %>
       </ul>
-      <% if locale.eql?(:ru) %>
-        <h1><a href='/ru/press-tsentr/novosti-innovatsiy/v-tomske/'><%= @news_list.part_title %></a></h1>
-      <% end %>
-      <% if locale.eql?(:en) %>
-        <h1><a href='/en/press-centre/news/'><%= @news_list.part_title %></a></h1>
-      <% end %>
-      <% if locale.eql?(:de) %>
-        <h1><a href='/de/pressezentrum/nachrichten/'><%= @news_list.part_title %></a></h1>
-      <% end %>
-      <% if locale.eql?(:fr) %>
-        <h1><a href='/fr/centre-de-presse/nouvelles/'><%= @news_list.part_title %></a></h1>
-      <% end %>
-      <div class='news_container'>
-        <div class='inner_wrapper'>
-          <div class='picture'>
+
+      <div class='news_container col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+        <div class='inner_wrapper row'>
+          <div class='picture col-lg-6 col-md-6 col-sm-6 col-xs-12'>
             <% first_news = @news_list.content.items.first %>
-            <div class='img'><%= image_tag_for(first_news.images.first.thumbnail) %></div>
+            <div class='img'><%= image_tag first_news.images.first.thumbnail.url, :alt => first_news.images.first.thumbnail.description, :class => 'img-responsive' %></div>
             <div class='description'>
               <p class='text'><%= link_to main_news_annotation(first_news.annotation), first_news.link %></p>
               <p class='date'>
@@ -45,7 +37,7 @@
               </p>
             </div>
           </div>
-          <div class='news_list'>
+          <div class='news_list col-lg-6 col-md-6 col-sm-6 col-xs-12'>
             <% if @news_list.content.items.many? %>
               <ul>
                 <% @news_list.content.items.each do | news | %>
@@ -64,13 +56,10 @@
               </ul>
             <% end %>
             <% if locale.eql?(:ru) %>
-              <p class='all_news'><a href='/ru/press-tsentr/novosti-innovatsiy/v-tomske/'>Все новости</a></p>
+              <p class='all_news'><a href='/ru/press-tsentr/novosti/v-tomske'>Все новости</a></p>
             <% end %>
             <% if locale.eql?(:en) %>
-              <p class='all_news'><a href='/en/press-centre/news/'>All news</a></p>
-            <% end %>
-            <% if locale.eql?(:de) %>
-              <p class='all_news'><a href='/de/pressezentrum/nachrichten/'>Alle nachrichten</a></p>
+              <p class='all_news'><a href='/en/press-centre/news'>All news</a></p>
             <% end %>
           </div>
         </div>
@@ -81,14 +70,12 @@
   <% if @interview_list && (@interview_list.response_status == 200 || !@interview_list.response_status?) %>
     <div class='interviews_section index'>
       <% if locale.eql?(:ru) %>
-        <%= content_tag(:h1, link_to(@interview_list.part_title, "/ru/analiticheskie-materialy/intervyu-s-ekspertami/")) unless @interview_list.blank? %>
+        <%= content_tag(:h1, link_to(@interview_list.part_title, "/ru/analiticheskie-materialy/intervyu-s-ekspertami")) unless @interview_list.blank? %>
       <% end %>
       <% if locale.eql?(:en) %>
-        <%= content_tag(:h1, link_to(@interview_list.part_title, "/en/analytic/interview-with-experts/")) unless @interview_list.blank? %>
+        <%= content_tag(:h1, link_to(@interview_list.part_title, "/en/analytic/interview-with-experts")) unless @interview_list.blank? %>
       <% end %>
-      <% if locale.eql?(:de) %>
-        <%= content_tag(:h1, link_to(@interview_list.part_title, "/de/analysen/interviews-mit-experten/")) unless @interview_list.blank? %>
-      <% end %>
+
       <ul>
         <% @interview_list.content.items.each do | interview | %>
           <li>
