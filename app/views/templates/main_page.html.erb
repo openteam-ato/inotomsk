@@ -68,36 +68,40 @@
   <% end %>
 
   <% if @interview_list && (@interview_list.response_status == 200 || !@interview_list.response_status?) %>
-    <div class='interviews_section index'>
-      <% if locale.eql?(:ru) %>
-        <%= content_tag(:h1, link_to(@interview_list.part_title, "/ru/analiticheskie-materialy/intervyu-s-ekspertami")) unless @interview_list.blank? %>
-      <% end %>
-      <% if locale.eql?(:en) %>
-        <%= content_tag(:h1, link_to(@interview_list.part_title, "/en/analytic/interview-with-experts")) unless @interview_list.blank? %>
-      <% end %>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
-      <ul>
-        <% @interview_list.content.items.each do | interview | %>
-          <li>
-            <% if interview.images.any? %>
-              <div class="image">
-                <%= link_to image_tag_for(interview.images.first.thumbnail), interview.link %>
-                <div class="stub"></div>
-              </div>
-            <% end %>
-            <div class='description'>
-              <%= raw interview.annotation %>
-              <p class='title'><%= link_to interview.title, interview.link %></p>
-              <p class='date'>
-                <%= l Date.parse(interview.since), :format => :custom %>
-                <span class='time'>
-                  <%= l Time.parse(interview.since), :format => :custom %>
-                </span>
-              </p>
-            </div>
-          </li>
+      <div class='interviews_section index row'>
+        <% if locale.eql?(:ru) %>
+          <%= content_tag(:h1, link_to(@interview_list.part_title, "/ru/interview")) unless @interview_list.blank? %>
         <% end %>
-      </ul>
+
+        <% if locale.eql?(:en) %>
+          <%= content_tag(:h1, link_to(@interview_list.part_title, "/en/analytic/interview-with-experts")) unless @interview_list.blank? %>
+        <% end %>
+
+        <div class='row interview_list'>
+          <% @interview_list.content.items.each do | interview | %>
+            <div class='col-lg-3  col-md-3  col-sm-6  col-xs-12 interview'>
+              <% if interview.images.any? %>
+                <div class="image">
+                  <%= link_to image_tag(interview.images.first.thumbnail.url, :alt => interview.images.first.thumbnail.description, :class => 'img-responsive'), interview.link %>
+                  <div class="stub"></div>
+                </div>
+              <% end %>
+              <div class='description'>
+                <%= raw interview.annotation %>
+                <p class='title'><%= link_to interview.title, interview.link %></p>
+                <p class='date'>
+                  <%= l Date.parse(interview.since), :format => :custom %>
+                  <span class='time'>
+                    <%= l Time.parse(interview.since), :format => :custom %>
+                  </span>
+                </p>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
     </div>
   <% end %>
 

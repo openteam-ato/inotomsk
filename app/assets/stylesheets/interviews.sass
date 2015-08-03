@@ -1,38 +1,43 @@
-@import 'compass/utilities'
-
 .interviews_section
+  padding-top: 20px
+
   h1
     font-family: 'header_normal'
     font-size: 18px
     margin-bottom: 5px
-  ul
+
+  .interview_list
     +clearfix
-    li
-      float: left
-      width: 230px
+    .interview
+
       .image
         float: left
         +clearfix
         position: relative
         margin-bottom: 10px
+
         img
           border: 1px solid #ccc
           border-bottom: none
+
         .stub
           position: absolute
           width: 500px
           height: 15px
           background: transparent image_url("interview_image_stub.png") no-repeat left center
           left: 0
-          bottom: 3px
+          bottom: 0
+
       .description
         clear: left
+
         .author
           font-weight: bold
           font-style: italic
           margin:
             right: 20px
             bottom: 5px
+
         .post
           font-style: italic
           margin:
@@ -42,10 +47,29 @@
           margin:
             right: 20px
             bottom: 5px
+
         .date
           font-size: 10px
           color: #94948c
+
           .time
             padding-left: 15px
             background: transparent image_url('clock_gray.png') no-repeat left
             margin-left: 5px
+
+@media (max-width: $screen-sm-max)
+  .interviews_section
+    .interview_list
+      .interview
+        height: 370px
+
+@media (max-width: $screen-xs-max)
+  .interviews_section
+    .interview_list
+      .interview
+        height: auto
+        margin-top: 10px
+        border-bottom: 1px solid #ccc
+
+        &:last-child
+          border-bottom: 0
