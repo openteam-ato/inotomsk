@@ -8,6 +8,10 @@ class Event < ActiveRecord::Base
   belongs_to :map_layer
   belongs_to :placemark
 
+  scope :implemented, -> {where(state: :implemented)}
+  scope :now, -> {where(state: :now)}
+  scope :postponed, -> {where(state: :postponed)}
+
   extend Enumerize
   enumerize :state,
     in: [:implemented, :now, :postponed],

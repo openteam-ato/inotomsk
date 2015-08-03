@@ -160,7 +160,7 @@
                   </span>
                 </p>
               <% end %>
-              <p class='more'><a href='/ru/press-tsentr/videobank/'>Всё видео</a></p>
+              <p class='more'><a href='/ru/press-tsentr/videobank'>Всё видео</a></p>
             </div>
             <div class='photo col-lg-6 col-md-6 col-sm-6 col-xs-12'>
               <% if !@last_photo.blank? && @last_photo.response_status == 200 %>
@@ -178,7 +178,7 @@
                   </p>
                 <% end %>
               <% end %>
-              <p class='more'><a href='/ru/press-tsentr/fotobank/'>Всё фото</a></p>
+              <p class='more'><a href='/ru/press-tsentr/fotobank'>Всё фото</a></p>
             </div>
           <% end %>
         </div>
@@ -186,12 +186,12 @@
     </div>
   </div>
 
-  <div class='calendar_section index'>
-    <div class='calendar'>
+  <div class='calendar_section index col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+    <div class='calendar row'>
       <%= render_partial_for_region(@event_list) %>
     </div>
   </div>
 
 <% end %>
 
-<%= render :template => 'layouts/application' %>
+<%#= render :template => 'layouts/application' %>

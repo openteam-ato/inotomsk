@@ -7,9 +7,9 @@ class MainController < ApplicationController
 
   def index
     render :file => "#{Rails.root}/public/404.html", :layout => false and return if request_status == 404
-    @implemented = Event.where(:state => 'implemented').first
-    @postponed = Event.where(:state => 'postponed').first
-    @now = Event.where(:state => 'now').first
+    @implemented = Event.implemented.first
+    @postponed = Event.postponed.first
+    @now = Event.now.first
 
     if request.xhr?
       render_partial_for_region(request_hashie)

@@ -92,28 +92,30 @@
       <%= yield(:content) %>
     </div>
 
-    <div class='footer_wrapper noindex'>
-      <div class='footer'>
-        <div class='column logotype_<%= I18n.locale %>'>
-          <p><%= t "ino_tomsk_2020" %></p>
-        </div>
-        <div class='column address'>
-          <p>&laquo;<%= t "ino_tomsk_2020" %>&raquo;</p>
-          <p><%= raw t("ino_tomsk_address") %></p>
-        </div>
-        <div class='column contacts'>
-          <p><%= t "tel" %> (3822) <span class='bolder'>46 47 48</span></p>
-          <p>email: <a href='mailto:'>inso@inotomsk.ru</a></p>
-          <div class='social_links'>
-            <a class='twitter' href='https://twitter.com/INOTomsk2020' target='_blank'>Twitter</a>
-            <a class='vkontakte' href='https://vk.com/inotomsk2020' target='_blank'>В Контакте</a>
-            <a class='facebook' href='https://www.facebook.com/INOTomsk2020' target='_blank'>Facebook</a>
-            <a class='youtube' href='https://www.youtube.com/user/INOTomsk' target='_blank'>You tube</a>
+    <div class='footer_wrapper noindex container-fluid'>
+      <div class='footer container'>
+        <div class="row">
+          <div class='column logotype_<%= I18n.locale %> col-lg-3 col-md-3 col-sm-4 hidden-xs'>
+            <%= link_to image_tag("footer_logotype_ru.png", class: "img-responsive"), "/" %>
           </div>
-        </div>
-        <div class='column developers'>
-          <p><%= t "development" %>: <a href='http://openteam.ru/'>OpenTeam</a></p>
-          <p><%= t "design" %>: <a href='http://rosbd.com/'>РосБизнесДизайн</a></p>
+          <div class='column address col-lg-3 col-md-3 col-sm-4 col-xs-12'>
+            <p>&laquo;<%= t "ino_tomsk_2020" %>&raquo;</p>
+            <p><%= raw t("ino_tomsk_address") %></p>
+          </div>
+          <div class='column contacts col-lg-3 col-md-3 col-sm-4 col-xs-12'>
+            <p><%= t "tel" %> (3822) <span class='bolder'>46 47 48</span></p>
+            <p>email: <a href='mailto:'>inso@inotomsk.ru</a></p>
+            <div class='social_links'>
+              <a class='twitter' href='https://twitter.com/INOTomsk2020' target='_blank'>Twitter</a>
+              <a class='vkontakte' href='https://vk.com/inotomsk2020' target='_blank'>В Контакте</a>
+              <a class='facebook' href='https://www.facebook.com/INOTomsk2020' target='_blank'>Facebook</a>
+              <a class='youtube' href='https://www.youtube.com/user/INOTomsk' target='_blank'>You tube</a>
+            </div>
+          </div>
+          <div class='column developers col-lg-3 col-md-3 col-sm-12 col-xs-12'>
+            <p><%= t "development" %>: <a href='http://openteam.ru'>OpenTeam</a></p>
+            <p><%= t "design" %>: <a href='http://rosbd.com/'>РосБизнесДизайн</a></p>
+          </div>
         </div>
       </div>
     </div>

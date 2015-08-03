@@ -1,36 +1,7 @@
-@import 'compass/utilities'
-
-$container_width: 920px
-$column_right_margin: 20px
-
 .footer
   +clearfix
   line-height: 1.7
   .column
-    float: left
-    width: $container_width / 4 - $column_right_margin
-    margin-right: $column_right_margin
-    &.logotype,
-    &.logotype_ru,
-    &.logotype_en,
-    &.logotype_de,
-    &.logotype_fr
-      p
-        width: 200px
-        height: 51px
-        +clearfix
-        text-indent: -9999em
-        background-color: #fff
-        background-repeat: no-repeat
-    &.logotype p,
-    &.logotype_ru p
-      background-image: image_url('footer_logotype_ru.png')
-    &.logotype_en p
-      background-image: image_url('footer_logotype_en.png')
-    &.logotype_de p
-      background-image: image_url('footer_logotype_de.png')
-    &.logotype_fr p
-      background-image: image_url('footer_logotype_fr.png')
     &.contacts
       .bolder
         font-size: 1.8em
@@ -58,3 +29,5 @@ $column_right_margin: 20px
             background-image: image_url('social_twitter.png')
           &.facebook
             background-image: image_url('social_facebook.png')
+    &.developers
+      text-align: center
