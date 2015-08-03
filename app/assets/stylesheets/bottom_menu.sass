@@ -34,7 +34,7 @@
     $arrow_width: 14px
     $arrow_height: 19px
     float: right
-    margin-top: 40px
+    margin-top: 20px
     +clearfix
 
     .left, .right
@@ -64,7 +64,7 @@
         background-position: -14px -19px
 
     $container_margin: 10px
-    $container_height: 95px
+    $container_height: 120px
 
     .targets_content
       float: left
@@ -81,7 +81,7 @@
       width: $main_width - $arrow_width * 2 - $container_margin * 2
 
       li
-        $counter_width: 40px
+        $counter_width: 55px
         $counter_margin_right: 10px
         +clearfix
         float: left
@@ -109,23 +109,40 @@
 @media (max-width: $screen-md-max)
   .header
     .targets
+      margin-top: 0
+
       .targets_content
-        width: 360px
+        width: 340px
+        height: 170px
+
+        .content
+
+          ul
+            height: 170px
+
+            li
+              height: 170px
+
+              .text
+                width: 270px
+
+@media (max-width: $screen-sm-max)
+  .header
+    .targets
+      width: 570px
+      float: none
+      margin: 0 auto
+      padding-top: 20px
+      clear: both
+
+      .targets_content
+        width: 490px
 
         .content
           ul
             li
               .text
-                width: 315px
-
-@media (max-width: $screen-sm-max)
-  .header
-    .targets
-      width: 490px
-      float: none
-      margin: 0 auto
-      padding-top: 20px
-      clear: both
+                width: 420px
 
 @media (max-width: $screen-xs-max)
   .header
