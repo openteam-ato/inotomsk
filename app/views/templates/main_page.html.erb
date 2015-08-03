@@ -105,59 +105,48 @@
     </div>
   <% end %>
 
-  <div class='belief_section index'>
-    <% if locale.eql?(:ru) %>
-      <%= content_tag(:h1, link_to(@belief_list.part_title, "/ru/tochka-zreniya/mneniya-o-proekte/")) unless @belief_list.blank? %>
-    <% end %>
-    <% if locale.eql?(:en) %>
-      <%= content_tag(:h1, link_to(@belief_list.part_title, "/en/viewpoint/opinions-of-the-project/")) unless @belief_list.blank? %>
-    <% end %>
-    <% if locale.eql?(:de) %>
-      <%= content_tag(:h1, link_to(@belief_list.part_title, "/de/standpunkt/meinungen-zum-projekt/")) unless @belief_list.blank? %>
-    <% end %>
-    <% if locale.eql?(:fr) %>
-      <%= content_tag(:h1, link_to(@belief_list.part_title, "/fr/point-de-vue/avis-sur-le-projet/")) unless @belief_list.blank? %>
-    <% end %>
-    <div class='two_column'>
-      <% if @belief_list && (@belief_list.response_status == 200 || !@belief_list.response_status?) %>
-        <% first = @belief_list.content.items.first %>
-        <% second = @belief_list.content.items.second %>
-        <% third = @belief_list.content.items.third %>
-        <div class='belief'>
-          <div class='photo first'>
-            <%= link_to image_tag_for(first.images.first.thumbnail), first.link unless first.blank? %>
-            <span class='triangle'></span>
-          </div>
-          <div class='description first'>
-            <% unless first.blank? %>
-              <p class='annotation'><%= link_to raw(truncate(first.title, :length => 120, :separator => ' ')), first.link, :title => raw(first.title) %></p>
-            <% end %>
-          </div>
-          <div class='photo second'>
-            <%= link_to image_tag_for(second.images.first.thumbnail), second.link unless second.blank? %>
-            <span class='triangle'></span>
-          </div>
-          <div class='description second'>
-            <% unless third.blank? %>
-              <p class='annotation'><%= link_to raw(truncate(third.title, :length => 120, :separator => ' ')), third.link, :title => raw(third.title) %></p>
-            <% end %>
-          </div>
-          <div class='photo third'>
-            <%= link_to image_tag_for(third.images.first.thumbnail), third.link unless third.blank? %>
-            <span class='triangle'></span>
-          </div>
-          <div class='description third'>
-            <% unless second.blank? %>
-              <p class='annotation'><%= link_to raw(truncate(second.title, :length => 120, :separator => ' ')), second.link, :title => raw(second.title) %></p>
-            <% end %>
+  <div class='col-lg-12'>
+    <div class="row">
+      <% if locale.eql?(:ru) %>
+        <%= content_tag(:h1, link_to('Дорожная карта', '/ru/dorozhnaya-karta'), :class => 'road_map_header') %>
+        <div class="col-lg-6 road_map col-md-6 col-sm-12 col-xs-12">
+          <div class="row">
+            <div class="col-lg-4 map_item col-md-4 col-sm-12 col-xs-12">
+              <div class="implemented">
+                <h1>Реализованное мероприятие</h1>
+                <h1>Срок:</h1>
+                <span> <%= human_term(@implemented)  %> </span>
+                <%= @implemented.title.truncate(200) %>
+                <p><%= link_to 'Подробнее', '#' %></p>
+              </div>
+            </div>
+            <div class="col-lg-4 map_item col-md-4 col-sm-12 col-xs-12">
+              <div class="now">
+                <h1>Выполняемое мероприятие</h1>
+                <h1>Срок:</h1>
+                <span> <%= human_term(@now)  %> </span>
+                <%= @now.title.truncate(200) %>
+                <p><%= link_to 'Подробнее', '#' %></p>
+              </div>
+            </div>
+            <div class="col-lg-4 map_item col-md-4 col-sm-12 col-xs-12">
+              <div class="postponed">
+                <h1>Запланированное мероприятие</h1>
+                <h1>Срок:</h1>
+                <span> <%= human_term(@postponed)  %> </span>
+                <%= @postponed.title.truncate(200) %>
+                <p><%= link_to 'Подробнее', '#' %></p>
+              </div>
+            </div>
           </div>
         </div>
       <% end %>
-      <div class='mediateka noindex'>
-        <% if locale.eql?(:ru) %>
-          <h2>Медиатека</h2>
-          <div class='two_column'>
-            <div class='video'>
+
+      <div class='col-lg-6 col-md-6 col-sm-12 col-xs-12'>
+        <div class='mediateka noindex row'>
+          <% if locale.eql?(:ru) %>
+            <h2>Медиатека</h2>
+            <div class='video col-lg-6 col-md-6 col-sm-6 col-xs-12'>
               <% unless @last_video.blank? %>
                 <% video = @last_video.content.items.first %>
                 <div class='thumbnail'>
@@ -173,7 +162,7 @@
               <% end %>
               <p class='more'><a href='/ru/press-tsentr/videobank/'>Всё видео</a></p>
             </div>
-            <div class='photo'>
+            <div class='photo col-lg-6 col-md-6 col-sm-6 col-xs-12'>
               <% if !@last_photo.blank? && @last_photo.response_status == 200 %>
                 <% photo = @last_photo.content.items.first %>
                 <% if photo %>
@@ -191,8 +180,8 @@
               <% end %>
               <p class='more'><a href='/ru/press-tsentr/fotobank/'>Всё фото</a></p>
             </div>
-          </div>
-        <% end %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>

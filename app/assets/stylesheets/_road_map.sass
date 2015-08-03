@@ -1,0 +1,58 @@
+.road_map_header
+  font-size: 18px
+  margin-bottom: 5px
+  font-family: "header_normal"
+  margin-top: 10px
+
+.road_map
+  .map_item
+    padding-left: 0
+    padding-right: 5px
+
+    .implemented, .now, .postponed
+      padding: 10px
+      height: 310px
+
+      h1
+        font-weight: bold
+
+        &:first-child
+          margin-bottom: 10px
+
+      span
+        margin-bottom: 10px
+        display: block
+
+      p
+        margin-top: 10px
+
+    .implemented
+      background-color: #b9c726
+
+    .now
+      background-color: #e9b431
+
+    .postponed
+      background-color: #e3833e
+
+@media (max-width: $screen-md-max)
+  .road_map
+    .map_item
+      margin-bottom: 10px
+
+      .implemented, .now, .postponed
+        height: 340px
+
+@media (max-width: $screen-sm-max)
+  .road_map
+    .map_item
+      margin-bottom: 10px
+
+      .implemented, .now, .postponed
+        height: 160px
+
+@media (max-width: $screen-xs-max)
+  .road_map
+    .map_item
+      .implemented, .now, .postponed
+        height: 210px
