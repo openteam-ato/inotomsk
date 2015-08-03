@@ -6,6 +6,7 @@
     <%= yield :head_rss_link %>
     <%= favicon_link_tag %>
     <meta name='yandex-verification' content='6e7c8aa47cfa8b4f' />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= stylesheet_link_tag    'application' %>
     <%= javascript_include_tag 'application' %>
     <!--[if lt IE 8]>
@@ -23,12 +24,40 @@
   </head>
   <body>
 
-    <div class='top_menu_wrapper noindex'>
-      <div class='top_menu <%= I18n.locale %>'>
-        <%= render :partial => "regions/main_navigation", :locals => { :object => @main_top_navigation.content, :klass => 'first' } if @main_top_navigation %>
-        <%= render :partial => "regions/main_navigation", :locals => { :object => @main_bottom_navigation.content, :klass => 'second' } if @main_bottom_navigation %>
+    <nav class="navbar navbar-default">
+      <div class='top_menu_wrapper noindex container-fluid'>
+        <div class='top_menu container <%= I18n.locale %>'>
+
+          <form action="/<%= I18n.locale %>/search" class='navbar-form navbar-right search-form visible-xs' role='search'>
+            <div class="form-group">
+              <input type="text" class='input-field' name="parts_params[search][q]" value='<%= params[:parts_params].present? && params[:parts_params][:search].present? ? params[:parts_params][:search][:q] : nil %>'>
+            </div>
+            <input type="submit" value="искать" class='search-button'>
+          </form>
+
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <%= render :partial => "regions/main_navigation", :locals => { :object => @main_top_navigation.content, :klass => 'first' } if @main_top_navigation %>
+
+            <form action="/<%= I18n.locale %>/search" class='navbar-form navbar-right search-form hidden-xs' role='search'>
+              <div class="form-group">
+                <input type="text" class='input-field' name="parts_params[search][q]" value='<%= params[:parts_params].present? && params[:parts_params][:search].present? ? params[:parts_params][:search][:q] : nil %>'>
+              </div>
+              <input type="submit" value="искать" class='search-button'>
+            </form>
+
+            <%= languages %>
+          </div>
+        </div>
       </div>
-    </div>
+    </nav>
+    <%= render :partial => "regions/main_navigation", :locals => { :object => @main_bottom_navigation.content, :klass => 'second'  } if @main_bottom_navigation %>
 
     <div class='header noindex'>
       <div class='logotype'>
@@ -40,23 +69,6 @@
           <p class='shift'><%= t "federal_centre_education" %></p>
           <p><%= t "research_and_development" %></p>
         </div>
-      </div>
-      <div class="languages">
-        <%= languages %>
-      </div>
-      <div class="search_form">
-        <form action="/<%= I18n.locale %>/search">
-          <ul class="inputs">
-            <li>
-              <input type="text" name="parts_params[search][q]" value='<%= params[:parts_params].present? && params[:parts_params][:search].present? ? params[:parts_params][:search][:q] : nil %>'>
-            </li>
-          </ul>
-          <ul class="buttons">
-            <li>
-              <input type="submit" value="искать">
-            </li>
-          </ul>
-        </form>
       </div>
       <div class='targets'>
         <% unless @targets.blank? %>

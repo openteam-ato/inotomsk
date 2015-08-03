@@ -15,13 +15,12 @@ module ApplicationHelper
     res = ''
     I18n.available_locales.each_with_index do |lang, index|
       if I18n.locale == lang
-        res += content_tag :li, I18n.t("locale.#{lang}")
+        res += content_tag :li, link_to(I18n.t("locale.#{lang}"), "/#{lang}"), :class => 'active'
       else
-        res += content_tag :li, link_to(I18n.t("locale.#{lang}"), "/#{lang}/")
+        res += content_tag :li, link_to(I18n.t("locale.#{lang}"), "/#{lang}")
       end
-      res += content_tag :li, '|', :class => 'separator' if index < I18n.available_locales.size - 1
     end
-    content_tag :ul, res.html_safe
+    content_tag :ul, res.html_safe, :class => ['languages', 'navbar-right', 'navbar-nav', 'nav']
   end
 
   def entry_date

@@ -3,16 +3,16 @@ module NavigationHelper
   def render_navigation_with_separator(hash, klass = nil)
     return '' if hash.nil? || hash.empty?
 
-    content_tag :ul, :class => klass do
+    content_tag :ul, :class => [klass, 'nav', 'navbar-nav'] do
       index = 0
 
       hash.map do |key, value|
         index += 1
 
-        content_tag :li, :class => value['selected'] ? :selected : nil do
+        content_tag :li, :class => value['selected'] ? :active : nil do
           link_to(value['title'], value['path'], :class => key) +
             render_navigation(value['children'] || {})
-        end.concat(separator(hash.size, index))
+        end
       end.join(' ').html_safe
     end
   end
