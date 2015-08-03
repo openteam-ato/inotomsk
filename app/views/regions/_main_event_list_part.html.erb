@@ -1,5 +1,5 @@
 <% unless object.blank? %>
-  <h1><a href='/ru/press-tsentr/kalendar-meropriyatiy/'>Календарь мероприятий</a></h1>
+  <h1><a href='/ru/press-tsentr/kalendar-meropriyatiy'>Календарь мероприятий</a></h1>
   <% if object.pagination %>
     <% @array = object.items %>
     <% @array = Kaminari.paginate_array(@array, :total_count => object.pagination.total_count).page(object.pagination.current_page).per(object.pagination.per_page) %>
