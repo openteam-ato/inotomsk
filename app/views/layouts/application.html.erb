@@ -57,35 +57,40 @@
         </div>
       </div>
     </nav>
-    <%= render :partial => "regions/main_navigation", :locals => { :object => @main_bottom_navigation.content, :klass => 'second'  } if @main_bottom_navigation %>
 
-    <div class='header noindex'>
-      <div class='logotype'>
-        <div class='symbol'>
-          <a href='/<%= I18n.locale %>/'><%= t "ino_tomsk_2020" %></a>
+    <div class="container">
+
+      <div class='header noindex row'>
+        <div class='logotype col-lg-2 col-md-2 col-sm-4 col-xs-12'>
+          <%= link_to '/ru' do %>
+            <%= image_tag 'logotype.png', :class => 'img-responsive' %>
+            <h4>
+              Инновационный территориальный центр
+            </h4>
+          <% end %>
         </div>
-        <div class='site_name'>
-          <h1><a href='/<%= I18n.locale %>/'><%= t "ino" %><span class='medium'><%= t "tomsk_2020" %></span></a></h1>
-          <p class='shift'><%= t "federal_centre_education" %></p>
-          <p><%= t "research_and_development" %></p>
+
+        <div class="col-lg-4 bottom-navigation col-md-4 col-sm-8 col-xs-12">
+          <%= render :partial => "regions/main_navigation", :locals => { :object => @main_bottom_navigation.content, :klass => 'second'  } if @main_bottom_navigation %>
+        </div>
+
+        <div class='targets col-lg-6 col-md-6 col-sm-12 col-xs-12'>
+          <% unless @targets.blank? %>
+            <div class='left'>
+              <a href='#'><%= t('views.pagination.previous') %></a>
+            </div>
+            <div class='targets_content'>
+              <%= render_partial_for_region(@targets) %>
+            </div>
+            <div class='right'>
+              <a href='#'><%= t('views.pagination.next') %></a>
+            </div>
+          <% end %>
         </div>
       </div>
-      <div class='targets'>
-        <% unless @targets.blank? %>
-          <div class='left'>
-            <a href='#'><%= t('views.pagination.previous') %></a>
-          </div>
-          <div class="container">
-            <%= render_partial_for_region(@targets) %>
-          </div>
-          <div class='right'>
-            <a href='#'><%= t('views.pagination.next') %></a>
-          </div>
-        <% end %>
-      </div>
+
+      <%= yield(:content) %>
     </div>
-
-    <%= yield(:content) %>
 
     <div class='footer_wrapper noindex'>
       <div class='footer'>
@@ -116,24 +121,24 @@
     <% if Rails.env.production? && request.host.eql?("inotomsk.openteam.ru") %>
       <!-- Yandex.Metrika counter -->
       <script type="text/javascript">
-      (function (d, w, c) {
-        (w[c] = w[c] || []).push(function() {
-          try {
-            w.yaCounter14929507 = new Ya.Metrika({id:14929507, enableAll: true, webvisor:true});
-          } catch(e) {}
-        });
+        (function (d, w, c) {
+          (w[c] = w[c] || []).push(function() {
+            try {
+              w.yaCounter14929507 = new Ya.Metrika({id:14929507, enableAll: true, webvisor:true});
+            } catch(e) {}
+          });
 
-        var n = d.getElementsByTagName("script")[0],
+          var n = d.getElementsByTagName("script")[0],
             s = d.createElement("script"),
             f = function () { n.parentNode.insertBefore(s, n); };
-        s.type = "text/javascript";
-        s.async = true;
-        s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+          s.type = "text/javascript";
+          s.async = true;
+          s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
 
-        if (w.opera == "[object Opera]") {
-          d.addEventListener("DOMContentLoaded", f);
-        } else { f(); }
-      })(document, window, "yandex_metrika_callbacks");
+          if (w.opera == "[object Opera]") {
+            d.addEventListener("DOMContentLoaded", f);
+          } else { f(); }
+        })(document, window, "yandex_metrika_callbacks");
       </script>
       <noscript><div><img src="//mc.yandex.ru/watch/14929507" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
       <!-- /Yandex.Metrika counter -->

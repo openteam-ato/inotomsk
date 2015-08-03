@@ -1,0 +1,150 @@
+.header
+  .logotype
+    a
+      text-decoration: none
+
+      h4
+        color: #000
+        padding-left: 13px
+        font-style: italic
+
+  .bottom-navigation
+    .second
+      border-left: 3px solid $active_color
+
+      li
+        float: none
+
+        &.active
+          a
+            background-color: $active_color
+            color: #fff
+
+        a
+          padding: 5px 5px 5px 10px
+          text-decoration: none
+          font-style: italic
+
+          &:hover
+            background-color: $active_color
+            color: #fff
+
+  .targets
+    $main_width: 460px
+    $arrow_width: 14px
+    $arrow_height: 19px
+    float: right
+    margin-top: 40px
+    +clearfix
+
+    .left, .right
+      float: left
+      width: $arrow_width
+      height: $arrow_height
+      margin-top: 33px
+
+      a
+        display: block
+        width: $arrow_width
+        height: $arrow_height
+        text-indent: -9999em
+        outline: none
+        background: transparent image_url('targets_arrows.png') no-repeat
+
+    .left a
+      background-position: 0 0
+
+      &:hover
+        background-position: 0 -19px
+
+    .right a
+      background-position: -14px 0
+
+      &:hover
+        background-position: -14px -19px
+
+    $container_margin: 10px
+    $container_height: 95px
+
+    .targets_content
+      float: left
+      +clearfix
+      position: relative
+      height: $container_height
+      width: $main_width - $arrow_width * 2 - $container_margin * 2
+      margin: 0 $container_margin
+
+    ul
+      +clearfix
+      position: relative
+      height: $container_height
+      width: $main_width - $arrow_width * 2 - $container_margin * 2
+
+      li
+        $counter_width: 40px
+        $counter_margin_right: 10px
+        +clearfix
+        float: left
+        height: $container_height
+
+        .counter
+          float: left
+          width: $counter_width
+          text-align: center
+          color: #dad8ff
+          font-family: 'header_medium'
+          font-size: 4em
+          margin-top: 22px
+          margin-right: $counter_margin_right
+
+        .text
+          float: left
+          width: $main_width - $arrow_width * 2 - $container_margin * 2 - $counter_width - $counter_margin_right
+
+          h1
+            color: #a51263
+            font-family: 'header_medium'
+            font-size: 1.4em
+
+@media (max-width: $screen-md-max)
+  .header
+    .targets
+      .targets_content
+        width: 360px
+
+        .content
+          ul
+            li
+              .text
+                width: 315px
+
+@media (max-width: $screen-sm-max)
+  .header
+    .targets
+      width: 490px
+      float: none
+      margin: 0 auto
+      padding-top: 20px
+      clear: both
+
+@media (max-width: $screen-xs-max)
+  .header
+    .bottom-navigation
+      padding-left: 20px
+
+    .targets
+      width: 320px
+
+      .targets_content
+        width: 230px
+        height: 150px
+
+        .content
+          ul
+            height: 150px
+
+            li
+              height: 150px
+
+              .text
+                width: 180px
