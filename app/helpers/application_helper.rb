@@ -11,7 +11,7 @@ module ApplicationHelper
     end
   end
 
-  def languages
+  def languages(pull = 'pull-right')
     res = ''
     I18n.available_locales.each_with_index do |lang, index|
       if I18n.locale == lang
@@ -20,7 +20,7 @@ module ApplicationHelper
         res += content_tag :li, link_to(I18n.t("locale.#{lang}"), "/#{lang}")
       end
     end
-    content_tag :ul, res.html_safe, :class => ['languages', 'navbar-right', 'navbar-nav', 'nav']
+    content_tag :ul, res.html_safe, :class => ['languages', pull]
   end
 
   def entry_date

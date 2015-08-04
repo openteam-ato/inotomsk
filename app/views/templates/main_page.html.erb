@@ -2,65 +2,67 @@
 
   <% if @news_list && (@news_list.response_status == 200 || !@news_list.response_status?) %>
     <div class='row news_list_wrapper'>
-
-      <% if locale.eql?(:ru) %>
-        <h1 class='pull-left'><a href='/ru/press-tsentr/novosti'><%= @news_list.part_title %></a></h1>
-      <% end %>
-
-      <% if locale.eql?(:en) %>
-        <h1 class='pull-left'><a href='/en/press-centre/news'><%= @news_list.part_title %></a></h1>
-      <% end %>
-
-      <ul class='nav nav-tabs pull-right news_navigation'>
-        <% if locale.eql?(:ru) %>
-          <li><a href='/ru/press-tsentr/novosti/v-mire'>В мире</a></li>
-          <li><a href='/ru/press-tsentr/novosti/v-rossii'>В России</a></li>
-          <li class='active'><a href='/ru/press-tsentr/novosti/v-tomske'>В Томске</a></li>
-        <% end %>
-        <% if locale.eql?(:en) %>
-          <li class='active'><a href='/en/press-centre/news'><%= @news_list.part_title %></a></li>
-        <% end %>
-      </ul>
-
       <div class='news_container col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+        <% if locale.eql?(:ru) %>
+          <h1 class='pull-left section_header'><a href='/ru/press-tsentr/novosti'><%= @news_list.part_title %></a></h1>
+        <% end %>
+
+        <% if locale.eql?(:en) %>
+          <h1 class='pull-left'><a href='/en/press-centre/news'><%= @news_list.part_title %></a></h1>
+        <% end %>
+
+        <ul class='nav nav-tabs pull-right news_navigation'>
+          <% if locale.eql?(:ru) %>
+            <li><a href='/ru/press-tsentr/novosti/v-mire'>В мире</a></li>
+            <li><a href='/ru/press-tsentr/novosti/v-rossii'>В России</a></li>
+            <li class='active'><a href='/ru/press-tsentr/novosti/v-tomske'>В Томске</a></li>
+          <% end %>
+          <% if locale.eql?(:en) %>
+            <li class='active'><a href='/en/press-centre/news'><%= @news_list.part_title %></a></li>
+          <% end %>
+        </ul>
+
         <div class='inner_wrapper row'>
-          <div class='picture col-lg-6 col-md-6 col-sm-6 col-xs-12'>
-            <% first_news = @news_list.content.items.first %>
-            <div class='img'><%= image_tag first_news.images.first.thumbnail.url, :alt => first_news.images.first.thumbnail.description, :class => 'img-responsive' %></div>
-            <div class='description'>
-              <p class='text'><%= link_to main_news_annotation(first_news.annotation), first_news.link %></p>
-              <p class='date'>
-                <%= l Date.parse(first_news.since), :format => :custom %>
-                <span class='time'>
-                  <%= l Time.parse(first_news.since), :format => :custom %>
-                </span>
-              </p>
+          <div class='picture-news-wrapper'>
+            <div class='picture col-lg-6 col-md-6 col-sm-6 col-xs-12'>
+              <% first_news = @news_list.content.items.first %>
+              <div class='img'><%= image_tag first_news.images.first.thumbnail.url, :alt => first_news.images.first.thumbnail.description, :class => 'img-responsive', :size => "#{first_news.images.first.thumbnail.width}x#{first_news.images.first.thumbnail.height}" %></div>
+              <div class='description'>
+                <p class='text hidden-xs'><%= link_to main_news_annotation(first_news.annotation), first_news.link %></p>
+                <p class='text visible-xs'><%= link_to main_news_annotation(first_news.annotation.truncate(150)), first_news.link %></p>
+                <p class='date'>
+                  <%= l Date.parse(first_news.since), :format => :custom %>
+                  <span class='time'>
+                    <%= l Time.parse(first_news.since), :format => :custom %>
+                  </span>
+                </p>
+              </div>
             </div>
-          </div>
-          <div class='news_list col-lg-6 col-md-6 col-sm-6 col-xs-12'>
-            <% if @news_list.content.items.many? %>
-              <ul>
-                <% @news_list.content.items.each do | news | %>
-                  <li>
-                    <p class='title'><%= link_to news.title, news.link %></p>
-                    <p class='image'><%= image_tag_for(news.images.first.thumbnail) %></p>
-                    <p class='annotation'><%= link_to main_news_annotation(news.annotation), news.link %></p>
-                    <p class='date'>
-                      <%= l Date.parse(news.since), :format => :custom %>
-                      <span class='time'>
-                        <%= l Time.parse(news.since), :format => :custom %>
-                      </span>
-                    </p>
-                  </li>
-                <% end %>
-              </ul>
-            <% end %>
-            <% if locale.eql?(:ru) %>
-              <p class='all_news'><a href='/ru/press-tsentr/novosti/v-tomske'>Все новости</a></p>
-            <% end %>
-            <% if locale.eql?(:en) %>
-              <p class='all_news'><a href='/en/press-centre/news'>All news</a></p>
-            <% end %>
+            <div class='news_list col-lg-6 col-md-6 col-sm-6 col-xs-12'>
+              <% if @news_list.content.items.many? %>
+                <ul>
+                  <% @news_list.content.items.each do | news | %>
+                    <li>
+                      <p class='title'><%= link_to news.title, news.link %></p>
+                      <p class='image'><%= image_tag_for(news.images.first.thumbnail) %></p>
+                      <p class='annotation'><%= link_to main_news_annotation(news.annotation), news.link %></p>
+                      <p class='date'>
+                        <%= l Date.parse(news.since), :format => :custom %>
+                        <span class='time'>
+                          <%= l Time.parse(news.since), :format => :custom %>
+                        </span>
+                      </p>
+                    </li>
+                  <% end %>
+                </ul>
+              <% end %>
+              <% if locale.eql?(:ru) %>
+                <p class='all_news'><a href='/ru/press-tsentr/novosti/v-tomske'>Все новости</a></p>
+              <% end %>
+              <% if locale.eql?(:en) %>
+                <p class='all_news'><a href='/en/press-centre/news'>All news</a></p>
+              <% end %>
+            </div>
           </div>
         </div>
       </div>
@@ -68,11 +70,11 @@
   <% end %>
 
   <% if @interview_list && (@interview_list.response_status == 200 || !@interview_list.response_status?) %>
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="row">
 
-      <div class='interviews_section index row'>
+      <div class='interviews_section index col-lg-12 col-md-12 col-sm-12 col-xs-12'>
         <% if locale.eql?(:ru) %>
-          <%= content_tag(:h1, link_to(@interview_list.part_title, "/ru/interview")) unless @interview_list.blank? %>
+          <%= content_tag(:h1, link_to(@interview_list.part_title, "/ru/interview"), :class => 'section_header') unless @interview_list.blank? %>
         <% end %>
 
         <% if locale.eql?(:en) %>
@@ -81,7 +83,7 @@
 
         <div class='row interview_list'>
           <% @interview_list.content.items.each do | interview | %>
-            <div class='col-lg-3  col-md-3  col-sm-6  col-xs-12 interview'>
+            <div class='col-lg-2  col-md-2  col-sm-3  col-xs-12 interview'>
               <% if interview.images.any? %>
                 <div class="image">
                   <%= link_to image_tag(interview.images.first.thumbnail.url, :alt => interview.images.first.thumbnail.description, :class => 'img-responsive'), interview.link %>
@@ -90,7 +92,7 @@
               <% end %>
               <div class='description'>
                 <%= raw interview.annotation %>
-                <p class='title'><%= link_to interview.title, interview.link %></p>
+                <p class='title'><%= link_to interview.title.truncate(150), interview.link %></p>
                 <p class='date'>
                   <%= l Date.parse(interview.since), :format => :custom %>
                   <span class='time'>
@@ -105,89 +107,93 @@
     </div>
   <% end %>
 
-  <div class='col-lg-12'>
-    <div class="row">
-      <% if locale.eql?(:ru) %>
-        <%= content_tag(:h1, link_to('Дорожная карта', '/ru/dorozhnaya-karta'), :class => 'road_map_header') %>
-        <div class="col-lg-6 road_map col-md-6 col-sm-12 col-xs-12">
-          <div class="row">
-            <div class="col-lg-4 map_item col-md-4 col-sm-12 col-xs-12">
-              <div class="implemented">
-                <h1>Реализованное мероприятие</h1>
-                <h1>Срок:</h1>
-                <span> <%= human_term(@implemented)  %> </span>
-                <%= @implemented.title.truncate(200) %>
-                <p><%= link_to 'Подробнее', '#' %></p>
-              </div>
-            </div>
-            <div class="col-lg-4 map_item col-md-4 col-sm-12 col-xs-12">
-              <div class="now">
-                <h1>Выполняемое мероприятие</h1>
-                <h1>Срок:</h1>
-                <span> <%= human_term(@now)  %> </span>
-                <%= @now.title.truncate(200) %>
-                <p><%= link_to 'Подробнее', '#' %></p>
-              </div>
-            </div>
-            <div class="col-lg-4 map_item col-md-4 col-sm-12 col-xs-12">
-              <div class="postponed">
-                <h1>Запланированное мероприятие</h1>
-                <h1>Срок:</h1>
-                <span> <%= human_term(@postponed)  %> </span>
-                <%= @postponed.title.truncate(200) %>
-                <p><%= link_to 'Подробнее', '#' %></p>
+  <div class="row">
+    <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+      <div class='row'>
+        <% if locale.eql?(:ru) %>
+          <div class="col-lg-6 road_map col-md-6 col-sm-12 col-xs-12">
+            <%= content_tag(:h1, link_to('Дорожная карта', '/ru/dorozhnaya-karta'), :class => ['road_map_header', 'section_header']) %>
+            <div class="road_map_wrapper">
+              <div class="row">
+                <div class="col-lg-4 map_item col-md-4 col-sm-12 col-xs-12">
+                  <div class="implemented">
+                    <h1>Реализованное мероприятие</h1>
+                    <h1>Срок:</h1>
+                    <span> <%= human_term(@implemented)  %> </span>
+                    <%= @implemented.title.truncate(130) %>
+                    <p><%= link_to 'Подробнее', '#' %></p>
+                  </div>
+                </div>
+                <div class="col-lg-4 map_item col-md-4 col-sm-12 col-xs-12">
+                  <div class="now">
+                    <h1>Выполняемое мероприятие</h1>
+                    <h1>Срок:</h1>
+                    <span> <%= human_term(@now)  %> </span>
+                    <%= @now.title.truncate(130) %>
+                    <p><%= link_to 'Подробнее', '#' %></p>
+                  </div>
+                </div>
+                <div class="col-lg-4 map_item col-md-4 col-sm-12 col-xs-12">
+                  <div class="postponed">
+                    <h1>Запланированное мероприятие</h1>
+                    <h1>Срок:</h1>
+                    <span> <%= human_term(@postponed)  %> </span>
+                    <%= @postponed.title.truncate(130) %>
+                    <p><%= link_to 'Подробнее', '#' %></p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      <% end %>
+        <% end %>
 
-      <div class='col-lg-6 col-md-6 col-sm-12 col-xs-12'>
-        <div class='mediateka noindex row'>
-          <% if locale.eql?(:ru) %>
-            <h2>Медиатека</h2>
-            <div class='video col-lg-6 col-md-6 col-sm-6 col-xs-12'>
-              <% unless @last_video.blank? %>
-                <% video = @last_video.content.items.first %>
-                <div class='thumbnail'>
-                  <%= link_to image_tag(video.video.thumb_normal, :size => '160x120', :alt => video.video.description), video.link %>
-                </div>
-                <p class='title'><%= link_to video.video.title, video.link %></p>
-                <p class='date'>
-                  <%= l Date.parse(video.video.date), :format => :custom %>
-                  <span class='time'>
-                    <%= l Time.parse(video.video.date), :format => :custom %>
-                  </span>
-                </p>
-              <% end %>
-              <p class='more'><a href='/ru/press-tsentr/videobank'>Всё видео</a></p>
-            </div>
-            <div class='photo col-lg-6 col-md-6 col-sm-6 col-xs-12'>
-              <% if !@last_photo.blank? && @last_photo.response_status == 200 %>
-                <% photo = @last_photo.content.items.first %>
-                <% if photo %>
+        <div class='col-lg-6 col-md-6 col-sm-12 col-xs-12 media_wrapper'>
+          <div class='mediateka noindex row'>
+            <% if locale.eql?(:ru) %>
+              <h2>Медиатека</h2>
+              <div class='video col-lg-6 col-md-6 col-sm-6 col-xs-12'>
+                <% unless @last_video.blank? %>
+                  <% video = @last_video.content.items.first %>
                   <div class='thumbnail'>
-                    <%= link_to album_thumbnail(photo.images.first.thumbnail), photo.link %>
+                    <%= link_to image_tag(video.video.thumb_normal, :size => '160x120', :alt => video.video.description), video.link %>
                   </div>
-                  <p class='title'><%= link_to photo.title, photo.link %></p>
+                  <p class='title'><%= link_to video.video.title, video.link %></p>
                   <p class='date'>
-                    <%= l Date.parse(photo.since), :format => :custom %>
+                    <%= l Date.parse(video.video.date), :format => :custom %>
                     <span class='time'>
-                      <%= l Time.parse(photo.since), :format => :custom %>
+                      <%= l Time.parse(video.video.date), :format => :custom %>
                     </span>
                   </p>
                 <% end %>
-              <% end %>
-              <p class='more'><a href='/ru/press-tsentr/fotobank'>Всё фото</a></p>
-            </div>
-          <% end %>
+                <p class='more'><a href='/ru/press-tsentr/videobank'>Всё видео</a></p>
+              </div>
+              <div class='photo col-lg-6 col-md-6 col-sm-6 col-xs-12'>
+                <% if !@last_photo.blank? && @last_photo.response_status == 200 %>
+                  <% photo = @last_photo.content.items.first %>
+                  <% if photo %>
+                    <div class='thumbnail'>
+                      <%= link_to album_thumbnail(photo.images.first.thumbnail), photo.link %>
+                    </div>
+                    <p class='title'><%= link_to photo.title, photo.link %></p>
+                    <p class='date'>
+                      <%= l Date.parse(photo.since), :format => :custom %>
+                      <span class='time'>
+                        <%= l Time.parse(photo.since), :format => :custom %>
+                      </span>
+                    </p>
+                  <% end %>
+                <% end %>
+                <p class='more'><a href='/ru/press-tsentr/fotobank'>Всё фото</a></p>
+              </div>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
-  <div class='calendar_section index col-lg-12 col-md-12 col-sm-12 col-xs-12'>
-    <div class='calendar row'>
+  <div class='calendar_section index row'>
+    <div class='calendar col-lg-12 col-md-12 col-sm-12 col-xs-12'>
       <%= render_partial_for_region(@event_list) %>
     </div>
   </div>

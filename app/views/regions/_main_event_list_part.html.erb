@@ -1,23 +1,25 @@
 <% unless object.blank? %>
-  <h1><a href='/ru/press-tsentr/kalendar-meropriyatiy'>Календарь мероприятий</a></h1>
+  <h1 class='section_header'><a href='/ru/press-tsentr/kalendar-meropriyatiy'>Календарь мероприятий</a></h1>
   <% if object.pagination %>
     <% @array = object.items %>
     <% @array = Kaminari.paginate_array(@array, :total_count => object.pagination.total_count).page(object.pagination.current_page).per(object.pagination.per_page) %>
     <%= paginate @array, :theme => 'main_event_list'  %>
   <% end %>
-  <div class='timeline col-lg-8 col-md-8 col-sm-12 col-xs-12'>
-    <% if object.items.any? %>
-      <% object.items.each do |event| %>
-        <div class='event'>
-          <p class='day'><%= interval_for(event.event_entry_properties.first) %></p>
-          <p class='separator'>&nbsp;</p>
-          <p class='title'>
-            <%= link_to strip_tags(event.title), event.link %>
-          </p>
-        </div>
+  <div class='timeline_wrapper'>
+    <div class='timeline col-lg-8 col-md-8 col-sm-12 col-xs-12'>
+      <% if object.items.any? %>
+        <% object.items.each do |event| %>
+          <div class='event'>
+            <p class='day'><%= interval_for(event.event_entry_properties.first) %></p>
+            <p class='separator'>&nbsp;</p>
+            <p class='title'>
+              <%= link_to strip_tags(event.title), event.link %>
+            </p>
+          </div>
+        <% end %>
+      <% else %>
+        <h2>Список мероприятий пуст</h2>
       <% end %>
-    <% else %>
-      <h2>Список мероприятий пуст</h2>
-    <% end %>
+    </div>
   </div>
 <% end %>

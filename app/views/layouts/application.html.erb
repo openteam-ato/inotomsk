@@ -28,31 +28,21 @@
       <div class='top_menu_wrapper noindex container-fluid'>
         <div class='top_menu container <%= I18n.locale %>'>
 
-          <form action="/<%= I18n.locale %>/search" class='navbar-form navbar-right search-form visible-xs' role='search'>
-            <div class="form-group">
-              <input type="text" class='input-field' name="parts_params[search][q]" value='<%= params[:parts_params].present? && params[:parts_params][:search].present? ? params[:parts_params][:search][:q] : nil %>'>
-            </div>
-            <input type="submit" value="искать" class='search-button'>
-          </form>
-
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
+          <div class="navbar-header visible-xs">
+            <a class="navbar-brand" href="/">
+              <%= image_tag 'brand-img.png', :alt => 'Инотомск', :size => '135x45' %>
+            </a>
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div>
 
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <%= render :partial => "regions/main_navigation", :locals => { :object => @main_top_navigation.content, :klass => 'first' } if @main_top_navigation %>
-
-            <form action="/<%= I18n.locale %>/search" class='navbar-form navbar-right search-form hidden-xs' role='search'>
-              <div class="form-group">
-                <input type="text" class='input-field' name="parts_params[search][q]" value='<%= params[:parts_params].present? && params[:parts_params][:search].present? ? params[:parts_params][:search][:q] : nil %>'>
-              </div>
-              <input type="submit" value="искать" class='search-button'>
-            </form>
-
-            <%= languages %>
           </div>
         </div>
       </div>
@@ -61,7 +51,7 @@
     <div class="container">
 
       <div class='header noindex row'>
-        <div class='logotype col-lg-2 col-md-2 col-sm-4 col-xs-12'>
+        <div class='logotype col-lg-2 col-md-2 col-sm-4 col-xs-12 hidden-xs'>
           <%= link_to '/ru' do %>
             <%= image_tag 'logotype.png', :class => 'img-responsive' %>
             <h4>
@@ -71,19 +61,42 @@
         </div>
 
         <div class="col-lg-4 bottom-navigation col-md-4 col-sm-8 col-xs-12">
+          <div class="search-languages-wrapper visible-sm">
+            <%= languages('pull-left') %>
+
+            <form action="/<%= I18n.locale %>/search" class='search-form pull-left' role='search'>
+              <div class="form-group">
+                <input type="text" class='input-field' name="parts_params[search][q]" value='<%= params[:parts_params].present? && params[:parts_params][:search].present? ? params[:parts_params][:search][:q] : nil %>'>
+              </div>
+              <input type="submit" value="искать" class='search-button'>
+            </form>
+          </div>
           <%= render :partial => "regions/main_navigation", :locals => { :object => @main_bottom_navigation.content, :klass => 'second'  } if @main_bottom_navigation %>
         </div>
 
-        <div class='targets col-lg-6 col-md-6 col-sm-12 col-xs-12'>
+        <div class='col-lg-6 col-md-6 col-sm-12 col-xs-12'>
+          <div class="search-languages-wrapper hidden-sm">
+            <form action="/<%= I18n.locale %>/search" class='search-form pull-right' role='search'>
+              <div class="form-group">
+                <input type="text" class='input-field' name="parts_params[search][q]" value='<%= params[:parts_params].present? && params[:parts_params][:search].present? ? params[:parts_params][:search][:q] : nil %>'>
+              </div>
+              <input type="submit" value="искать" class='search-button'>
+            </form>
+
+            <%= languages %>
+          </div>
+
           <% unless @targets.blank? %>
-            <div class='left'>
-              <a href='#'><%= t('views.pagination.previous') %></a>
-            </div>
-            <div class='targets_content'>
-              <%= render_partial_for_region(@targets) %>
-            </div>
-            <div class='right'>
-              <a href='#'><%= t('views.pagination.next') %></a>
+            <div class="targets pull-right">
+              <div class='left'>
+                <a href='#'><%= t('views.pagination.previous') %></a>
+              </div>
+              <div class='targets_content'>
+                <%= render_partial_for_region(@targets) %>
+              </div>
+              <div class='right'>
+                <a href='#'><%= t('views.pagination.next') %></a>
+              </div>
             </div>
           <% end %>
         </div>

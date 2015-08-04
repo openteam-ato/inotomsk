@@ -62,42 +62,46 @@ $voting_width: 220px
         &:hover
           background-position: -36px -72px
 
-    .timeline
-      $timeline_padding: 20px
-      $timeline_width: $container_width - $calendar_margin_right - $calendar_margin_left - $voting_width - $timeline_padding * 2
+    .timeline_wrapper
+      padding-left: 12px
       +clearfix
-      +border-radius(10px)
-      +single-box-shadow(#aaa, 0, 1px, 3px)
-      background: #fff image_url('timeline_bg.png') repeat-x top
-      margin-bottom: 10px
-      padding: 0 $timeline_padding
 
-      h2
-        font-size: 14px
-        font-weight: bold
-        margin: 20px 0 80px 10px
+      .timeline
+        $timeline_padding: 20px
+        $timeline_width: $container_width - $calendar_margin_right - $calendar_margin_left - $voting_width - $timeline_padding * 2
+        +clearfix
+        +border-radius(10px)
+        +single-box-shadow(#aaa, 0, 1px, 3px)
+        background: #fff image_url('timeline_bg.png') repeat-x top
+        margin-bottom: 10px
+        padding: 0 $timeline_padding
 
-      .event
-        $event_margin: 5px
-        float: left
-        width: $timeline_width / 4 - $event_margin * 2
-        margin: 0 $event_margin
-        .day, .year
-          color: #7e7874
-          font-size: 11px
+        h2
+          font-size: 14px
+          font-weight: bold
+          margin: 20px 0 80px 10px
 
-        .day
-          height: 30px
-          margin: 20px 0 11px
-
-          .year
+        .event
+          $event_margin: 5px
+          float: left
+          width: $timeline_width / 4 - $event_margin * 2
+          margin: 0 $event_margin
+          .day, .year
+            color: #7e7874
             font-size: 11px
 
-        .separator
-          font-size: 0.5em
-          border-left: 1px solid #ccc
+          .day
+            height: 30px
+            margin: 20px 0 11px
 
-        .title
-          font-family: 'header_normal'
-          margin-top: 10px
-          margin-bottom: 15px
+            .year
+              font-size: 11px
+
+          .separator
+            font-size: 0.5em
+            border-left: 1px solid #ccc
+
+          .title
+            font-family: 'header_normal'
+            margin-top: 10px
+            margin-bottom: 15px

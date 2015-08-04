@@ -1,14 +1,19 @@
 .interviews_section
   padding-top: 20px
 
-  h1
-    font-family: 'header_normal'
-    font-size: 18px
-    margin-bottom: 5px
-
   .interview_list
     +clearfix
+    margin: 0
+
     .interview
+      padding: 0
+      margin: 0 22px
+
+      &:first-child
+        margin-left: 12px
+
+      &:last-child
+        margin-right: 0
 
       .image
         float: left
@@ -57,11 +62,24 @@
             background: transparent image_url('clock_gray.png') no-repeat left
             margin-left: 5px
 
+@media (max-width: $screen-md-max)
+  .interviews_section
+    .interview_list
+      .interview
+        margin: 0 18px
+
 @media (max-width: $screen-sm-max)
   .interviews_section
     .interview_list
       .interview
-        height: 370px
+        height: 400px
+        margin: 0 42px
+
+        &:nth-child(3n)
+          margin-right: 0
+
+        &:nth-child(4n)
+          margin-left: 150px
 
 @media (max-width: $screen-xs-max)
   .interviews_section
@@ -70,6 +88,10 @@
         height: auto
         margin-top: 10px
         border-bottom: 1px solid #ccc
+        margin-left: 12px
+
+        &:nth-child(4n)
+          margin-left: 12px
 
         &:last-child
           border-bottom: 0

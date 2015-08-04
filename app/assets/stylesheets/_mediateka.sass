@@ -1,3 +1,9 @@
+.media_wrapper
+  margin-top: 33px
+
+  .row
+    margin: 0
+
 .mediateka
   background-color: #e8ebfc
   padding-bottom: 10px
@@ -19,7 +25,7 @@
   $container_padding: 15px
 
   .video
-    margin-top: 10px
+    margin-top: 25px
 
     .thumbnail
       padding: 7px 15px 9px 14px
@@ -38,7 +44,7 @@
         text-decoration: underline
 
   .photo
-    margin-top: 10px
+    margin-top: 25px
 
     .thumbnail
       padding: 17px 7px 11px 21px
@@ -69,3 +75,9 @@
 
   .more
     font-size: 0.9em
+
+@media (max-width: $screen-sm-max)
+  .media_wrapper
+    margin-top: 10px
+    padding: 0 20px 0 27px
+
