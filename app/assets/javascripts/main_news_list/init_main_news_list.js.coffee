@@ -25,7 +25,7 @@ main_news_list_manipulate = ->
       $(this).closest("li").addClass "selected"
 
 main_news_scroll = ->
-  if $.fn.jScrollPane
-    $(".news_section .news_container .news_list").jScrollPane
-      showArrows: true
-      verticalGutter: 0
+  $(".js-news-list").jScrollPane
+    showArrows: true
+    verticalGutter: 0
+    width: 'auto'

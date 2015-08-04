@@ -26,7 +26,7 @@
           <div class='picture-news-wrapper'>
             <div class='picture col-lg-6 col-md-6 col-sm-6 col-xs-12'>
               <% first_news = @news_list.content.items.first %>
-              <div class='img'><%= image_tag first_news.images.first.thumbnail.url, :alt => first_news.images.first.thumbnail.description, :class => 'img-responsive', :size => "#{first_news.images.first.thumbnail.width}x#{first_news.images.first.thumbnail.height}" %></div>
+              <div class='img'><%= image_tag first_news.images.first.thumbnail.url.sub(/\d+-\d+/,"563-422!"), :alt => first_news.images.first.thumbnail.description, :class => 'img-responsive', :size => "563x422" %></div>
               <div class='description'>
                 <p class='text hidden-xs'><%= link_to main_news_annotation(first_news.annotation), first_news.link %></p>
                 <p class='text visible-xs'><%= link_to main_news_annotation(first_news.annotation.truncate(150)), first_news.link %></p>
@@ -38,13 +38,13 @@
                 </p>
               </div>
             </div>
-            <div class='news_list col-lg-6 col-md-6 col-sm-6 col-xs-12'>
+            <div class='news_list col-lg-6 col-md-6 col-sm-6 col-xs-12 js-news-list'>
               <% if @news_list.content.items.many? %>
                 <ul>
                   <% @news_list.content.items.each do | news | %>
                     <li>
                       <p class='title'><%= link_to news.title, news.link %></p>
-                      <p class='image'><%= image_tag_for(news.images.first.thumbnail) %></p>
+                      <p class='image'><%= image_tag news.images.first.thumbnail.url.sub(/\d+-\d+/,"563-422!"), :alt => news.images.first.thumbnail.description, :class => 'img-responsive'%></p>
                       <p class='annotation'><%= link_to main_news_annotation(news.annotation), news.link %></p>
                       <p class='date'>
                         <%= l Date.parse(news.since), :format => :custom %>
@@ -71,7 +71,6 @@
 
   <% if @interview_list && (@interview_list.response_status == 200 || !@interview_list.response_status?) %>
     <div class="row">
-
       <div class='interviews_section index col-lg-12 col-md-12 col-sm-12 col-xs-12'>
         <% if locale.eql?(:ru) %>
           <%= content_tag(:h1, link_to(@interview_list.part_title, "/ru/interview"), :class => 'section_header') unless @interview_list.blank? %>
@@ -82,8 +81,8 @@
         <% end %>
 
         <div class='row interview_list'>
-          <% @interview_list.content.items.each do | interview | %>
-            <div class='col-lg-2  col-md-2  col-sm-3  col-xs-12 interview'>
+          <% @interview_list.content.items.each_with_index do | interview, index | %>
+            <div class='col-lg-2  col-md-2  col-sm-3  col-xs-12 interview <%= [3,4].include?(index) ? "hidden-sm" : "" %>'>
               <% if interview.images.any? %>
                 <div class="image">
                   <%= link_to image_tag(interview.images.first.thumbnail.url, :alt => interview.images.first.thumbnail.description, :class => 'img-responsive'), interview.link %>

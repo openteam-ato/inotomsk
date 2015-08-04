@@ -27,7 +27,7 @@
           border-top: 1px solid $active_color
           border-right: 1px solid $active_color
           margin: 0
-          padding-top: 7px
+          padding-top: 8px
           padding-bottom: 7px
 
   .news_container
@@ -47,6 +47,7 @@
         position: relative
         padding-left: 0
         padding-right: 0
+        height: 422px
 
         .description
           color: #fff
@@ -67,9 +68,15 @@
             color: #ffa3d6
 
       .news_list
-        height: 421px
+        width: 50% !important
+        height: 422px
         +clearfix
         overflow-y: scroll
+        padding-left: 0
+        background-color: #fff
+
+        .jspContainer
+          width: auto !important
 
         ul
           li
@@ -97,19 +104,25 @@
 
 @media (max-width: $screen-md-max)
   .news_list_wrapper
+
     .news_container
       .inner_wrapper
-        .news_list
+        .news_list, .picture
           height: 347px
 
 @media (max-width: $screen-sm-max)
   .news_list_wrapper
     .news_container
       .inner_wrapper
-        .news_list
+        .news_list, .picture
           height: 265px
 
 @media (max-width: $screen-xs-max)
   .news_list_wrapper
     h1
       margin-bottom: 10px
+
+    .news_container
+      .inner_wrapper
+        .news_list, .picture
+          width: 100% !important
