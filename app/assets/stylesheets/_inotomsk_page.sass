@@ -1,0 +1,131 @@
+.inotomsk_wrapper
+  a
+
+    &.download_link
+      background: image_url('pdf_icon.png') no-repeat left center
+      padding-left: 25px
+
+  p
+    font-size: 14px
+
+  h1
+    font-size: 32px
+
+  .conception_wrapper
+    ul
+      list-style: disc
+      margin: 0 0 15px 40px
+
+      li
+        background: none
+        text-indent: 0
+        margin: 0
+
+    .conception
+      position: relative
+      padding-top: 1px
+      margin-bottom: 20px
+
+      .description
+        background-color: #e7ebfc
+        padding: 20px 20px 15px 155px
+        margin: 10px 0 0 10px
+
+        p
+          font-size: 12px
+
+        h4
+          font-size: 24px
+          font-weight: bold
+          font-family: 'header_light'
+          line-height: 24px
+
+        .state
+          color: #82817f
+          font-style: italic
+
+        .when
+          color: #82817f
+          font-size: 11px
+          margin: 0
+
+      .img
+        position: absolute
+
+  .participants_wrapper
+    +clearfix
+    padding-bottom: 15px
+
+    .participants
+      z-index: 1000
+
+      img
+        z-index: 1000
+
+    .ministery, .corp, .university, .business
+      background-color: #fff
+      border-radius: 5px
+      padding: 30px 10px 10px 10px
+      border: 1px solid #c7c7c9
+      +box-shadow(-1px 3px 5px -3px rgba(0,0,0,0.75))
+      float: left
+      width: 145px
+      font-style: italic
+      margin-top: -32px
+      margin-left: 5px
+
+      &:after
+        clear: both
+
+    .ministery
+      margin-left: 0
+
+    .business
+      width: 426px
+
+  .participants_wrapper_mobile
+    .ministery, .corp, .university, .business
+      padding: 20px 20px 30px 70px
+
+    .ministery
+      background: image_url('participants_1_m.png') no-repeat left top
+
+    .university
+      background: image_url('participants_2_m.png') no-repeat left top
+
+    .corp
+      background: image_url('participants_3_m.png') no-repeat left top
+
+    .business
+      background: image_url('participants_4_m.png') no-repeat left top
+      width: 300px
+      padding-top: 10px
+
+@media (min-width: $screen-lg-min)
+  .inotomsk_wrapper
+    .conception_wrapper
+      .conception
+        .description
+          padding: 20px 20px 15px 155px
+
+@media (max-width: $screen-md-max)
+  .inotomsk_wrapper
+    .participants_wrapper
+      .business
+        width: 232px
+
+@media (max-width: $screen-sm-max)
+  .inotomsk_wrapper
+    h1
+      font-size: 24px
+
+@media (max-width: $screen-xs-max)
+  .inotomsk_wrapper
+    h1
+      font-size: 24px
+
+    .conception_wrapper
+      .conception
+        .description
+          padding: 20px 20px 15px 20px
+          margin: 0
