@@ -109,11 +109,26 @@
         text-indent: 20px
 
   .table_wrapper
+    h1
+      margin-bottom: -15px
+      margin-top: 25px
+
     table
+      thead
+        th
+          font-size: 12px
+          padding-left: 50px
+
+          &:last-child
+            border-left: 1px solid #ddd
+
       td
         font-size: 24px
-        text-align: center
+        padding-left: 50px
         vertical-align: middle
+
+        &:nth-child(2n)
+          border-right: 1px solid #ddd
 
         &.first_column
           width: 500px
@@ -148,6 +163,10 @@
 
             &.table_row8
               background: image_url('table_row8.png') no-repeat 15px center #e8ebfc
+
+      sub
+        bottom: 0
+        font-size: 12px
 
 @media (min-width: $screen-lg-min)
   .inotomsk_wrapper
