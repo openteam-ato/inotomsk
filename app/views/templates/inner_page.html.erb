@@ -7,6 +7,13 @@
 <% content_for :content do %>
   <div class='content_wrapper index row'>
 
+    <div class='content_nav noindex col-xs-12 visible-xs'>
+
+      <%= content_tag :div, render("regions/#{@content_navigation.type.underscore}", :object => @content_navigation.content), :class => 'navigation' if @content_navigation %>
+      <%= content_tag :div, yield(:more_like_this), :class => 'more_like_this' if content_for?(:more_like_this) %>
+
+    </div>
+
     <div class="content_side col-lg-10 col-md-9 col-sm-8  col-xs-12">
 
       <%= content_tag :div, render("regions/#{@breadcrumbs.type.underscore}", :object => @breadcrumbs.content), :class => 'breadcrumbs noindex' if @breadcrumbs %>
@@ -37,7 +44,7 @@
 
     </div>
 
-    <div class='content_nav noindex col-lg-2 col-md-3 col-sm-4 col-xs-12'>
+    <div class='content_nav noindex col-lg-2 col-md-3 col-sm-4 hidden-xs'>
 
       <%= content_tag :div, render("regions/#{@content_navigation.type.underscore}", :object => @content_navigation.content), :class => 'navigation' if @content_navigation %>
       <%= content_tag :div, yield(:more_like_this), :class => 'more_like_this' if content_for?(:more_like_this) %>
