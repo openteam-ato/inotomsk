@@ -1,0 +1,148 @@
+.history_wrapper
+  background: image-url('timeline.png') no-repeat center top
+
+  .item
+    width: 420px
+    font-size: 12px
+    clear: both
+
+    .img
+      float: left
+      height: 80px
+      background-color: #fff
+      padding: 4px 0 0 4px
+
+      &:hover, &:focus
+        +box-shadow(inset 0px 4px 10px -5px rgba(0, 0, 0, .5))
+
+      &.first_img
+        margin-right: 10px
+
+      &.third_img
+        margin-top: 10px
+
+    &.first_item
+      margin-top: 48px
+
+    &.pull-left
+      text-align: right
+
+    &.second_item
+      margin-top: -17px
+
+    &.third_item
+      margin-top: -35px
+      position: relative
+
+      .first_img
+        &:hover
+          .first
+            display: block
+
+      .second_img
+        &:hover
+          .second
+            display: block
+
+      .third_img
+        &:hover
+          .third
+            display: block
+
+      .description
+        position: absolute
+        z-index: 100
+        background-color: #fff
+        padding: 10px
+        top: 145px
+        border: 1px solid #ccc
+        +border-radius(5px)
+        display: none
+        left: 0
+        +box-shadow(0px 2px 4px 0px rgba(0, 0, 0, .5))
+
+        p
+          margin: 0 !important
+
+        &.first
+          &:after, &:before
+            left: 15%
+
+        &.second
+          &:after, &:before
+            left: 70%
+
+        &.third
+          top: 235px
+
+          &:after, &:before
+            left: 15%
+
+        &:after, &:before
+          bottom: 100%
+          left: 50%
+          border: solid transparent
+          content: " "
+          height: 0
+          width: 0
+          position: absolute
+          pointer-events: none
+
+        &:after
+          border-color: rgba(0, 0, 0, 0)
+          border-bottom-color: #fff
+          border-width: 15px
+          margin-left: -15px
+
+        &:before
+          border-color: rgba(204, 204, 204, 0)
+          border-bottom-color: #cccccc
+          border-width: 16px
+          margin-left: -16px
+
+    &.fourth_item
+
+    &.fifth_item
+      margin-top: -69px
+
+    &.sixth_item
+      margin-top: -30px
+
+    &.seventh_item
+      margin-top: -68px
+
+      p
+        &:first-child
+          margin-bottom: 0 !important
+
+      ul
+        li
+          background: transparent image_url('ul_bullet.png') no-repeat left 4px
+          text-indent: 0
+
+          p
+            margin-left: 15px !important
+
+    &.eighth_item
+      margin-top: 53px
+
+    &.ninth_item
+      margin-top: -52px
+
+    &.tenth_item
+      margin-top: -5px
+
+    &.eleventh_item
+      margin-top: -32px
+
+      sup
+        top: -22px
+
+    &.twelfth_item
+      margin-top: -58px
+
+    &.thirteenth_item
+
+    img
+      &:first-child
+        margin-right: 10px
