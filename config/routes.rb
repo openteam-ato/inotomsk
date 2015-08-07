@@ -17,6 +17,8 @@ Inotomsk::Application.routes.draw do
     root :to => 'map_layers#index'
   end
 
+  get "ru/inotomsk/ob-ekty" => "map_layers#index", :as => 'map_layers'
+
   match "poll" => "poll#show", :via => :get
   get '/(*path)', :to => 'main#index'
   root :to => 'main#index'

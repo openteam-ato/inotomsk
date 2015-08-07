@@ -32,4 +32,5 @@
  * = require barley_break_filter
  * = require bootstrap
  * = require init
+ * = require map
  */

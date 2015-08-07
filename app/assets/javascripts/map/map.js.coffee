@@ -30,7 +30,6 @@
         map.geoObjects.remove e.get('target')
         update_address_wrapper()
 
-
     if $('.form_wrapper').length
       $('.coords').each (index, item) ->
         coords = [$(item).find('.latitude').val(), $(item).find('.longitude').val()]
@@ -62,7 +61,7 @@
             $('#placemark_address').parent().find(".help-inline").remove()
             $('#placemark_address').parent().append('<span class="help-inline">не найден адрес</span>')
 
-    if $('.index_wrapper').length
+    if $('.placemark_list').length
       clusterer = new ymaps.Clusterer
         preset: 'islands#grayClusterIcons'
         clusterDisableClickZoom: true
@@ -77,8 +76,7 @@
         coords = [$(item).attr('data-latitude'), $(item).attr('data-longitude')]
         title = [$(item).attr('data-title')]
         contentBody = "<div>
-                        <img width='190' height='190' src='#{$(item).attr('data-logotype')}' />
-                        <div class='balloon_content_header' style='margin:5px 0;padding-bottom:5px;width:190px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;'>
+                        <div class='balloon_content_header' style='margin:5px 0;padding-bottom:5px;'>
                           #{title}
                         </div>
                       </div>"
@@ -94,7 +92,9 @@
           iconLayout: 'default#image'
           iconImageHref: $(item).attr('data-icon')
           hideIconOnBalloonOpen: false
+          iconImageSize: [42, 56]
           iconImageOffset: [-18, -18]
+          hasHint: false
 
         clusterer.add point
         true

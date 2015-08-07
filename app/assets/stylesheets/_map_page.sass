@@ -1,0 +1,190 @@
+.map_page_wrapper
+  h1
+    font-size: 32px
+
+  .layers
+    padding: 0
+
+    .layers_list //ul
+      li
+        margin: 3px 0
+        padding-right: 20px
+        position: relative
+
+        .glyphicon
+          position: absolute
+          top: 10px
+          right: 30px
+          font-size: 20px
+          color: #fff
+          cursor: pointer
+          padding: 0 10px 5px 15px
+
+          &:hover
+            color: #ccc
+
+        &.show_children
+          ul
+            display: block
+
+        a
+          color: #fff
+          background-color: #ccc
+          padding: 10px 20px 10px 50px
+          display: block
+          width: 100%
+          height: 100%
+          font-size: 14px
+          text-decoration: none
+          font-style: italic
+
+        &.peredovoe-proizvodstvo
+          a
+            background: #f6c700 image-url('peredovoe-proizvodstvo.png') no-repeat 10px center
+
+          ul // переназначение стилей рамок
+            li
+              &:after
+                border-left: 3px solid #f6c700
+
+              &:before
+                border-top: 3px solid #f6c700
+
+        &.nauka-i-obrazovanie
+          a
+            background: #f5491d image-url('nauka-i-obrazovanie.png') no-repeat 10px center
+
+        &.tehnologicheskie-innovatsii-novyy-biznes
+          a
+            background: #d20033 image-url('tehnologicheskie-innovatsii-novyy-biznes.png') no-repeat 10px center
+
+        &.umnyy-i-udobnyy-gorod
+          a
+            background: #f60081 image-url('umnyy-i-udobnyy-gorod.png') no-repeat 10px center
+
+          ul
+            li
+              &:after
+                border-left: 3px solid #f60081
+
+              &:before
+                border-top: 3px solid #f60081
+
+        ul // вложенные штуки
+          display: none
+
+          li
+            margin: 0
+            position: relative
+            padding-right: 0
+
+            &.klaster-yadernyh-tehnologiy
+              a
+                background: transparent image-url('klaster-yadernyh-tehnologiy.png') no-repeat 25px center
+                padding-left: 65px
+
+            &.neftehimicheskiy-klaster
+              a
+                background: transparent image-url('neftehimicheskiy-klaster.png') no-repeat 25px center
+                padding-left: 65px
+
+            &.innovatsionnyy-territorialnyy-klaster-farmatsevtiki-meditsinskoy-tehniki-i-informatsionnyh-tehnologiy-tomskoy-oblasti
+              a
+                background: transparent image-url('innovatsionnyy-territorialnyy-klaster-farmatsevtiki-meditsinskoy-tehniki-i-informatsionnyh-tehnologiy-tomskoy-oblasti.png') no-repeat 25px center
+                padding-left: 65px
+
+            &.industrialnyy-park
+              a
+                background: transparent image-url('industrialnyy-park.png') no-repeat 25px center
+                padding-left: 65px
+
+            &.lesopromyshlennyy-klaster
+              a
+                background: transparent image-url('lesopromyshlennyy-klaster.png') no-repeat 25px center
+                padding-left: 65px
+
+            &.klaster-vozobnovlyaemyh-prirodnyh-resursov
+              a
+                background: transparent image-url('klaster-vozobnovlyaemyh-prirodnyh-resursov.png') no-repeat 25px center
+                padding-left: 65px
+
+            &.klaster-trudnoizvlekaemyh-prirodnyh-resursov
+              a
+                background: transparent image-url('klaster-trudnoizvlekaemyh-prirodnyh-resursov.png') no-repeat 25px center
+                padding-left: 65px
+
+            &.proekty
+              a
+                background: transparent image-url('proekty.png') no-repeat 25px center
+                padding-left: 65px
+
+            &.meditsinskiy-park
+              a
+                background: transparent image-url('meditsinskiy-park.png') no-repeat 25px center
+                padding-left: 65px
+
+            &.proekt-tomskie-naberezhnye
+              a
+                background: transparent image-url('proekt-tomskie-naberezhnye.png') no-repeat 25px center
+                padding-left: 65px
+
+            &.istoriko-kulturnyy-park
+              a
+                background: transparent image-url('istoriko-kulturnyy-park.png') no-repeat 25px center
+                padding-left: 65px
+
+            &.sportivnyy-park
+              a
+                background: transparent image-url('sportivnyy-park.png') no-repeat 25px center
+                padding-left: 65px
+
+            &.transportnaya-dostupnost-aglomeratsii
+              a
+                background: transparent image-url('transportnaya-dostupnost-aglomeratsii.png') no-repeat 25px center
+                padding-left: 65px
+
+            &:hover, &.active
+              a
+                background-color: #e8ebfc !important
+
+            &:after, &:before
+              position: absolute
+              content: ''
+              left: 0
+
+            &:after
+              width: 0
+              height: 100%
+              top: 0
+
+            &:last-child
+              &:after
+                height: 55%
+
+            &:before
+              top: 50%
+              width: 20px
+              height: 0
+
+            a
+              color: #000
+
+  .map_wrapper
+    padding: 0
+
+    .map
+      height: 460px
+
+  .map_layer_title
+    color: #ccc
+
+    &:before
+      clear: both
+
+@media (max-width: $screen-md-max)
+  .map_page_wrapper
+    .layers
+      .layers_list
+        li
+          .glyphicon
+            top: 20px

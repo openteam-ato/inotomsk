@@ -1,34 +1,38 @@
 class MainController < ApplicationController
   helper_method :cms_address
   before_filter :prepare_locale
+  before_filter :prepare_cms
 
   include ApplicationHelper
   include Manage::ManageHelper
 
   def index
-    render :file => "#{Rails.root}/public/404.html", :layout => false and return if request_status == 404
     @implemented = Event.implemented.first
     @postponed = Event.postponed.first
     @now = Event.now.first
 
-    if request.xhr?
-      render_partial_for_region(request_hashie)
-
-      return
-    end
-
-    page_regions.each do |region|
-      eval "@#{region} = page.regions.#{region}"
-    end
-
-    @page_title = page.title
-
-    render "templates/#{page.template}"
+      render "templates/#{page.template}" unless page.template == 'on_client'
   end
 
   private
     def prepare_locale
       I18n.locale = request.fullpath.gsub(/\?.*$/, '').split('/').map(&:presence).compact.first || 'ru'
+    end
+
+    def prepare_cms
+      render :file => "#{Rails.root}/public/404.html", :layout => false and return if request_status == 404
+
+      if request.xhr?
+        render_partial_for_region(request_hashie)
+
+        return
+      end
+
+      page_regions.each do |region|
+        eval "@#{region} = page.regions.#{region}"
+      end
+
+      @page_title = page.title
     end
 
     def cms_address
