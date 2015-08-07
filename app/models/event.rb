@@ -2,6 +2,8 @@ class Event < ActiveRecord::Base
   attr_accessible :title, :document_type, :performer, :term_type, :start_year, :end_year,
                   :quarter, :state, :map_layer_id, :placemark_id
 
+  delegate :title, to: :map_layer, prefix: true
+
   validate :correct_years
   validates_presence_of :title, :document_type, :performer, :state
 

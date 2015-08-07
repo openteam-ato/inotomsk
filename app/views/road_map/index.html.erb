@@ -22,7 +22,10 @@
               <% @entries.each do |type, events| %>
                 <% events.each do |event| %>
                   <tr class="<%= type %>">
-                    <td><p><%= event.title %></p></td>
+                    <td class="<%= event.map_layer.try(:slug) %>">
+                      <p><%= event.title %></p>
+                      <p class='map_layer_title'><%= event.map_layer.try(:title) %></p>
+                    </td>
                     <td><p><%= event.document_type %></p></td>
                     <td><p><%= human_term(event) %></p></td>
                     <td><p><%= event.performer %></p></td>
