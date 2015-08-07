@@ -40,6 +40,7 @@ group :development do
   gem 'openteam-capistrano', :require => false
   gem 'quiet_assets'
   gem 'hirb'
+  gem 'annotate'
 end
 
 group :production do

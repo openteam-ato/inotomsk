@@ -26,3 +26,22 @@ class Event < ActiveRecord::Base
     end
   end
 end
+
+# == Schema Information
+#
+# Table name: events
+#
+#  id            :integer          not null, primary key
+#  title         :text
+#  document_type :text
+#  performer     :text
+#  term_type     :string(255)
+#  start_year    :integer
+#  end_year      :integer
+#  quarter       :string(255)
+#  state         :string(255)
+#  map_layer_id  :integer
+#  placemark_id  :integer
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#

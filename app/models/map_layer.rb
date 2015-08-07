@@ -18,3 +18,25 @@ class MapLayer < ActiveRecord::Base
   extend FriendlyId
   friendly_id :title, use: :slugged
 end
+
+# == Schema Information
+#
+# Table name: map_layers
+#
+#  id                      :integer          not null, primary key
+#  title                   :string(255)
+#  slug                    :string(255)
+#  icon_file_name          :string(255)
+#  icon_content_type       :string(255)
+#  icon_file_size          :integer
+#  icon_updated_at         :datetime
+#  icon_url                :text
+#  hover_icon_file_name    :string(255)
+#  hover_icon_content_type :string(255)
+#  hover_icon_file_size    :integer
+#  hover_icon_updated_at   :datetime
+#  hover_icon_url          :text
+#  created_at              :datetime         not null
+#  updated_at              :datetime         not null
+#  ancestry                :string(255)
+#

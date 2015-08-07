@@ -24,3 +24,20 @@ class Placemark < ActiveRecord::Base
   extend FriendlyId
   friendly_id :title, use: :slugged
 end
+
+# == Schema Information
+#
+# Table name: placemarks
+#
+#  id                    :integer          not null, primary key
+#  title                 :text
+#  slug                  :text
+#  logotype_file_name    :string(255)
+#  logotype_content_type :string(255)
+#  logotype_file_size    :integer
+#  logotype_updated_at   :datetime
+#  logotype_url          :text
+#  map_layer_id          :integer
+#  created_at            :datetime         not null
+#  updated_at            :datetime         not null
+#

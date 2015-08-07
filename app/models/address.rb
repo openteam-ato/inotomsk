@@ -3,3 +3,13 @@ class Address < ActiveRecord::Base
 
    belongs_to :placemark
 end
+
+# == Schema Information
+#
+# Table name: addresses
+#
+#  id           :integer          not null, primary key
+#  latitude     :float
+#  longitude    :float
+#  placemark_id :integer
+#
