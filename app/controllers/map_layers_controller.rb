@@ -1,7 +1,7 @@
 class MapLayersController < MainController
   def index
     @map_layers = MapLayer.roots
-    @placemarks = placemarks
+    @placemarks = placemarks.group_by(&:map_layer_title)
   end
 
   private

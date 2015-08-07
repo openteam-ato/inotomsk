@@ -42,21 +42,24 @@
 
       <div class="row placemark_list">
         <table class="table table-striped table-hover visible-xs visible-sm">
-          <% @placemarks.each do |placemark| %>
-            <% placemark.addresses.each_with_index do |address, index| %>
-              <tr class="placemark_list_item <%= index !=0 ? 'hidden' : '' %>" data-latitude=<%= address.latitude %> data-longitude=<%= address.longitude %>
-              data-icon=<%= layer_icon(placemark.map_layer) %> data-title="<%= placemark.title %>" data-logotype=<%= placemark_logotype(placemark) %>>
-              <td>
-                <%= image_tag layer_icon(placemark.map_layer) %>
-              </td>
-              <td>
-                <%= placemark.title %>
-                <p class='pull-right map_layer_title'><%= placemark.map_layer.title %></p>
-              </td>
+          <% @placemarks.each do |key, value| %>
+            <tr>
+              <td colspan="2" class="layer_header"><%= key %></td>
             </tr>
+            <% value.each do |placemark| %>
+              <% placemark.addresses.each_with_index do |address, index| %>
+                <tr class="placemark_list_item <%= index !=0 ? 'hidden' : '' %>" data-latitude=<%= address.latitude %> data-longitude=<%= address.longitude %> data-icon=<%= layer_icon(placemark.map_layer) %> data-title="<%= placemark.title %>" data-logotype=<%= placemark_logotype(placemark) %>>
+                  <td>
+                    <%= image_tag layer_icon(placemark.map_layer) %>
+                  </td>
+                  <td>
+                    <%= placemark.title %>
+                  </td>
+                </tr>
+              <% end %>
+            <% end %>
           <% end %>
-        <% end %>
-      </tbody>
+        </tbody>
     </table>
   </div>
 

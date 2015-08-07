@@ -15,6 +15,7 @@ class Placemark < ActiveRecord::Base
   has_attached_file :logotype, :storage => :elvfs, :elvfs_url => Settings['storage.url']
 
   delegate :icon_url, to: :map_layer
+  delegate :title, to: :map_layer, prefix: true
 
   normalize :title do |value|
     value.gsub("\"","\'")
