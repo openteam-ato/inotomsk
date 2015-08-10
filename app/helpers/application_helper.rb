@@ -149,7 +149,7 @@ module ApplicationHelper
       "all" => {"title" => "Все", "path" => "/ru/dorozhnaya-karta", "selected" => params[:state].nil? ? true : false },
       "implemented" => {"title" => "Реализованные", "path" => "/ru/dorozhnaya-karta?state=implemented", "selected" => params[:state] == "implemented" ? true : false },
       "now" => {"title" => "Выполняемые", "path" => "/ru/dorozhnaya-karta?state=now ", "selected" => params[:state] == "now" ? true : false },
-      "postponed" => {"title" => "Отложенные", "path" => "/ru/dorozhnaya-karta?state=postponed", "selected" => params[:state] == "postponed" ? true : false }
+      "postponed" => {"title" => "Запланированные", "path" => "/ru/dorozhnaya-karta?state=postponed", "selected" => params[:state] == "postponed" ? true : false }
     }
   end
 
