@@ -10,7 +10,7 @@
   </div>
   <% if object.images.any? %>
     <div class='image'>
-      <%= image_tag_for(object.images.first.thumbnail) %>
+      <%= image_tag_for(object.images.first.thumbnail, :class => 'img-responsive') %>
       <%= content_tag :p, object.images.first.thumbnail.description if object.images.first.thumbnail.description %>
     </div>
   <% end %>

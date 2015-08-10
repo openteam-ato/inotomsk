@@ -117,6 +117,10 @@ module ApplicationHelper
     image_tag_for(image_dup)
   end
 
+  def image_tag_for(image, options = {})
+    image_tag(image.url, :width => image.width, :height => image.height, :alt => image.description, :class => options[:class])
+  end
+
   def inoorganization_logo(image_url, width = 100)
     original_width, original_height = image_url[/\d+-\d+/].split("-")
     height = width * original_height.to_f / original_width.to_f

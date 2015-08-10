@@ -173,27 +173,30 @@ $content_nav_padding: 12px
               margin-left: 5px
 
     .interviews
-      ul
+      .interviews_list
         +clearfix
         margin-bottom: 20px
-        li
-          float: left
-          width: $content_width / 3
+
+        .item
+
           .image
             +clearfix
             float: left
             margin-bottom: 10px
             position: relative
+
             img
               border: 1px solid #ccc
               border-bottom: none
+
             .stub
               width: 500px
               height: 15px
               background: transparent image_url('interview_image_stub.png') no-repeat left center
               position: absolute
-              bottom: 3px
+              bottom: 0
               left: 0
+
           .description
             clear: left
             .author
@@ -1006,3 +1009,14 @@ $content_nav_padding: 12px
             border: 1px solid #a5a4c4
             border-top-color: #a4a3c5
             border-bottom-color: #b7b5da
+
+@media (max-width: $screen-sm-max)
+  .content_wrapper
+    .content_side
+      .interviews
+        .interviews_list
+          +clearfix
+          margin-bottom: 20px
+
+          .item
+            height: 450px

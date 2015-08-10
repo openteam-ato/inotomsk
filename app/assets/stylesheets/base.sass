@@ -26,6 +26,9 @@ i, em
 span.nobr
   white-space: nowrap
 
+.part_header
+  font-size: 32px
+
 h1.section_header
   font-family: "header_normal"
   font-size: 20px
@@ -43,7 +46,6 @@ h1.section_header
       font-size: 0.9em
       border: 1px solid #ccc
       margin-left: 1px
-      margin-top: 10px
 
       p
         margin-bottom: 0
@@ -96,3 +98,11 @@ h1.section_header
         &.selected
           a
             background: transparent image_url('content_news_list_selected_postponed.png') no-repeat center -17px
+
+@media (max-width: $screen-xs-max)
+  .part_header
+    font-size: 20px
+
+@media (max-width: $screen-sm-max)
+  .part_header
+    font-size: 20px
