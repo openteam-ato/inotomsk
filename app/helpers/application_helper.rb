@@ -144,4 +144,21 @@ module ApplicationHelper
     link_to site, site, :rel => 'nofollow', :target => '_blank'
   end
 
+  def road_map_navigation
+    {
+      "all" => {"title" => "Все", "path" => "/ru/dorozhnaya-karta", "selected" => params[:state].nil? ? true : false },
+      "implemented" => {"title" => "Реализованные", "path" => "/ru/dorozhnaya-karta?state=implemented", "selected" => params[:state] == "implemented" ? true : false },
+      "now" => {"title" => "Выполняемые", "path" => "/ru/dorozhnaya-karta?state=now ", "selected" => params[:state] == "now" ? true : false },
+      "postponed" => {"title" => "Отложенные", "path" => "/ru/dorozhnaya-karta?state=postponed", "selected" => params[:state] == "postponed" ? true : false }
+    }
+  end
+
+  def map_layer_nav
+    {
+     "peredovoe-proizvodstvo" => "Передовое производство",
+     "nauka-i-obrazovanie" => "Наука и образование",
+     "umnyy-i-udobnyy-gorod" => "Умный и удобный город",
+     "tehnologicheskie-innovatsii-novyy-biznes" => "Технологические инновации и новый бизнес"
+    }
+  end
 end

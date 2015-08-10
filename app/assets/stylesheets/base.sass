@@ -31,3 +31,68 @@ h1.section_header
   font-size: 20px
   margin-bottom: 5px
   padding-left: 12px
+
+.nav
+  +clearfix
+
+  ul
+    +clearfix
+
+    li
+      float: left
+      font-size: 0.9em
+      border: 1px solid #ccc
+      margin-left: 1px
+      margin-top: 10px
+
+      p
+        margin-bottom: 0
+
+      a
+        color: #929292
+        +inline-block
+        text-decoration: none
+        background-color: #f7f7fa
+        padding: 5px 10px
+
+        &:hover
+          color: #d8287d
+
+      &.selected
+        border: none
+
+        a
+          color: #fff
+          background: transparent image_url('content_news_list_selected.png') no-repeat center -17px
+          padding: 6px 11px 12px
+
+          &:hover
+            color: #fff
+            background-position: center bottom !important
+
+      &.implemented
+        a
+          &:hover
+            color: #CEDD2A
+
+        &.selected
+          a
+            background: transparent image_url('content_news_list_selected_implemented.png') no-repeat center -17px
+
+      &.now
+        a
+          &:hover
+            color: #FFC536
+
+        &.selected
+          a
+            background: transparent image_url('content_news_list_selected_now.png') no-repeat center -17px
+
+      &.postponed
+        a
+          &:hover
+            color: #FE9345
+
+        &.selected
+          a
+            background: transparent image_url('content_news_list_selected_postponed.png') no-repeat center -17px

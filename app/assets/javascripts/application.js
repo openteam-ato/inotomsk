@@ -33,4 +33,5 @@
  * = require bootstrap
  * = require init
  * = require map
+ * = require road_map
  */

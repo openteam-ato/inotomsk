@@ -8,6 +8,30 @@
   h1
     font-size: 32px
 
+  .map_layer_nav
+    background-color: #fff
+    border-radius: 5px
+    padding: 10px 15px
+    margin-bottom: 10px
+    box-shadow: 0px 3px 2px -1px rgba(205,205,207,1)
+    border: 1px solid #cdcdcf
+
+    .map_layer_nav_option
+      display: inline-block
+      margin-right: 25px
+
+      &:last-child
+        margin-right: 0
+
+      input
+        margin-right: 5px
+
+      input, label
+        float: left
+
+      label
+        margin-top: 3px
+
   .table
     th, td
       padding-left: 0
@@ -18,14 +42,7 @@
       padding-left: 20px
 
     tr
-      &.implemented
-        border-left: 15px solid #cae31b
-
-      &.now
-        border-left: 15px solid #f7c834
-
-      &.postponed
-        border-left: 15px solid #f69248
+      position: relative
 
       td
         border-right: 1px solid #ddd
@@ -37,6 +54,28 @@
         &:first-child, &:last-child
           width: 35%
 
+        &:first-child
+
+          &:after
+            position: absolute
+            content: ''
+            left: 0
+            width: 0
+            height: 98%
+            top: 1%
+
+        &.implemented
+          &:after
+            border-left: 15px solid #cae31b
+
+        &.now
+          &:after
+            border-left: 15px solid #f7c834
+
+        &.postponed
+          &:after
+            border-left: 15px solid #f69248
+
         p.map_layer_title
           position: absolute
           bottom: 5%
@@ -47,13 +86,13 @@
           width: 80%
 
         &.neftehimicheskiy-klaster
-          background: transparent image-url('neftehimicheskiy-klaster_road_map.png') no-repeat right 95%
+          background: transparent image-url('neftehimicheskiy-klaster_road_map.png') no-repeat 95% 95%
 
         &.klaster-vozobnovlyaemyh-prirodnyh-resursov
-          background: transparent image-url('klaster-vozobnovlyaemyh-prirodnyh-resursov_road_map.png') no-repeat right 95%
+          background: transparent image-url('klaster-vozobnovlyaemyh-prirodnyh-resursov_road_map.png') no-repeat 95% 95%
 
         &.nauka-i-obrazovanie
-          background: transparent image-url('nauka-i-obrazovanie_road_map.png') no-repeat right 95%
+          background: transparent image-url('nauka-i-obrazovanie_road_map.png') no-repeat 95% 95%
 
         &.peredovoe-proizvodstvo
           background: transparent image-url('peredovoe-proizvodstvo_road_map.png') no-repeat 95% 95%
@@ -65,16 +104,16 @@
           background: transparent image-url('farma_road_map.png') no-repeat 95% 95%
 
         &.lesopromyshlennyy-klaster
-          background: transparent image-url('lesopromyshlennyy-klaster_road_map.png') no-repeat right 95%
+          background: transparent image-url('lesopromyshlennyy-klaster_road_map.png') no-repeat 95% 95%
 
         &.umnyy-i-udobnyy-gorod
-          background: transparent image-url('umnyy-i-udobnyy-gorod_road_map.png') no-repeat right 95%
+          background: transparent image-url('umnyy-i-udobnyy-gorod_road_map.png') no-repeat 95% 95%
 
         &.klaster-trudnoizvlekaemyh-prirodnyh-resursov
-          background: transparent image-url('klaster-trudnoizvlekaemyh-prirodnyh-resursov_road_map.png') no-repeat right 95%
+          background: transparent image-url('klaster-trudnoizvlekaemyh-prirodnyh-resursov_road_map.png') no-repeat 95% 95%
 
         &.tehnologicheskie-innovatsii-novyy-biznes
-          background: transparent image-url('tehnologicheskie-innovatsii-novyy-biznes_road_map.png') no-repeat right 95%
+          background: transparent image-url('tehnologicheskie-innovatsii-novyy-biznes_road_map.png') no-repeat 95% 95%
 
 .road_map
 
@@ -132,3 +171,19 @@
     .map_item
       .implemented, .now, .postponed
         height: 210px
+
+  .road_map_page_wrapper
+    .map_layer_nav
+      .map_layer_nav_option
+        label
+          width: 200px
+    .nav
+      ul
+        li
+          &:last-child
+            margin-bottom: 5px
+            clear: both
+
+    table
+      th, td
+        white-space: normal !important
