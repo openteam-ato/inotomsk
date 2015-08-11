@@ -6,7 +6,7 @@ class RoadMapController < MainController
   private
 
   def events
-    return Event.all unless params[:state]
-    Event.where(state: params[:state])
+    return Event.send(locale) unless params[:state]
+    Event.send(locale).send(params[:state])
   end
 end

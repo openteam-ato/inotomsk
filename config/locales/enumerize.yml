@@ -7,3 +7,6 @@ ru:
     term_type:
       quarter: Квартал
       period: Ежегодно
+    language:
+      ru: Рус
+      en: Eng

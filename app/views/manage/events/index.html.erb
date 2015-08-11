@@ -7,10 +7,14 @@
       <% end %>
     </h4>
     <div class="filter">
-      <%= link_to "Все мероприятия", manage_events_path, class: "all #{selected_filter('all')}" %>
-      <%= link_to "Реализованные", manage_events_path(state: "implemented"), class: "bg-success #{selected_filter('implemented')}" %>
-      <%= link_to "Реализуемые", manage_events_path(state: "now"), class: "bg-info #{selected_filter('now')}" %>
-      <%= link_to "Отложено", manage_events_path(state: "postponed"), class: "bg-warning #{selected_filter('postponed')}" %>
+      <div class="lang">
+        <%= link_to "Рус", manage_events_path(params.merge(lang: "ru")), class: "#{selected_filter('ru', 'lang')} #{'active' unless params[:lang]}" %>/
+        <%= link_to "Eng", manage_events_path(params.merge(lang: "en")), class: selected_filter('en', 'lang') %>
+      </div>
+      <%= link_to "Все мероприятия", manage_events_path(params.except(:state)), class: "all #{selected_filter('all', 'state')}" %>
+      <%= link_to "Реализованные", manage_events_path(params.merge(state: "implemented")), class: "bg-success #{selected_filter('implemented', 'state')}" %>
+      <%= link_to "Реализуемые", manage_events_path(params.merge(state: "now")), class: "bg-info #{selected_filter('now', 'state')}" %>
+      <%= link_to "Отложено", manage_events_path(params.merge(state: "postponed")), class: "bg-warning #{selected_filter('postponed', 'state')}" %>
     </div>
     <% if @events.present? %>
       <table class="table table-striped table-hover">

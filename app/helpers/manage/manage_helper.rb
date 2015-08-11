@@ -37,11 +37,11 @@ module Manage::ManageHelper
 
   def human_term(event)
     if event.term_type == 'quarter'
-      "#{event.quarter} квартал #{event.end_year} г."
+      "#{event.quarter} #{I18n.t('time_period.quarter')} #{event.end_year}"
     elsif event.term_type == 'period' && event.start_year != event.end_year
-      "ежегодно (#{event.start_year} - #{event.end_year} годы)"
+      "#{I18n.t('time_period.annually')} (#{event.start_year} - #{event.end_year})"
     else
-      "#{event.start_year} г."
+      "#{event.start_year}"
     end
   end
 
@@ -56,8 +56,8 @@ module Manage::ManageHelper
     end
   end
 
-  def selected_filter(filter)
-    return 'active' if filter == "all" && !params[:state]
-    'active' if params[:state] == filter
+  def selected_filter(filter, param_name)
+    return 'active' if filter == "all" && !params[param_name]
+    'active' if params[param_name] == filter
   end
 end

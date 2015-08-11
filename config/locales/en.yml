@@ -5,6 +5,19 @@ en:
     de: "Deu"
     fr: "Fra"
 
+  time_period:
+    quarter: "quarter"
+    annually: "annually"
+
+  #road map
+  road_map: "Road map"
+  implemented: "Completed actions"
+  now: "Running actions"
+  postponed: "Planed actions"
+  period: "Period"
+  more_info: "More info"
+  road_map_slug: "road-map"
+
   ino_tomsk_2020: "INO Tomsk`2020"
   ino: "INO"
   tomsk_2020: "Tomsk`2020"

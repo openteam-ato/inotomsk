@@ -51,7 +51,11 @@ class Manage::EventsController < Manage::ApplicationController
   private
 
   def events
-    return Event unless params[:state]
-    Event.where(state: params[:state])
+    return Event.send(lang) unless params[:state]
+    Event.send(lang).send(params[:state])
+  end
+
+  def lang
+    params[:lang] || 'ru'
   end
 end

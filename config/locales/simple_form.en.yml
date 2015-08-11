@@ -20,6 +20,7 @@ ru:
         term_type: Срок
         state: Статус
         map_layer: Категория
+        language: Язык
         placemark: Объект карты
     placeholders:
       map_layer:

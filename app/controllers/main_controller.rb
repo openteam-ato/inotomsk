@@ -7,11 +7,11 @@ class MainController < ApplicationController
   include Manage::ManageHelper
 
   def index
-    @implemented = Event.implemented.first
-    @postponed = Event.postponed.first
-    @now = Event.now.first
+    @implemented = Event.send(locale).implemented.first
+    @postponed = Event.send(locale).postponed.first
+    @now = Event.send(locale).now.first
 
-      render "templates/#{page.template}" unless page.template == 'on_client'
+    render "templates/#{page.template}" unless page.template == 'on_client'
   end
 
   private

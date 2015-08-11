@@ -4,6 +4,9 @@
   </ol>
   <%= simple_form_for [:manage, @event], html: {class: 'form-vertical' } do |f| %>
     <div class="form-group">
+      <%= f.input :language %>
+    </div>
+    <div class="form-group">
       <%= f.input :title, input_html: {rows: 5} %>
     </div>
     <div class="form-group">

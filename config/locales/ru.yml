@@ -5,6 +5,19 @@ ru:
     de: "Deu"
     fr: "Fra"
 
+  time_period:
+    quarter: "квартал"
+    annually: "ежегодно"
+
+  #road map
+  road_map: "Дорожная карта"
+  implemented: "Реализованное мероприятие"
+  now: "Выполняемое мероприятие"
+  postponed: "Запланированное мероприятие"
+  period: "Срок"
+  more_info: "Подробнее"
+  road_map_slug: "dorozhnaya-karta"
+
   ino_tomsk_2020: "ИНО Томск`2020"
   ino: "ИНО"
   tomsk_2020: "Томск`2020"

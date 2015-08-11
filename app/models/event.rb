@@ -1,11 +1,11 @@
 class Event < ActiveRecord::Base
   attr_accessible :title, :document_type, :performer, :term_type, :start_year, :end_year,
-                  :quarter, :state, :map_layer_id, :placemark_id
+                  :quarter, :state, :map_layer_id, :placemark_id, :language
 
   delegate :title, to: :map_layer, prefix: true
 
   validate :correct_years
-  validates_presence_of :title, :document_type, :performer, :state
+  validates_presence_of :title, :document_type, :performer, :state, :language
 
   belongs_to :map_layer
   belongs_to :placemark
@@ -14,6 +14,9 @@ class Event < ActiveRecord::Base
   scope :now, -> {where(state: :now)}
   scope :postponed, -> {where(state: :postponed)}
 
+  scope :ru, -> {where(language: :ru)}
+  scope :en, -> {where(language: :en)}
+
   extend Enumerize
   enumerize :state,
     in: [:implemented, :now, :postponed],
@@ -21,6 +24,9 @@ class Event < ActiveRecord::Base
 
   enumerize :term_type,
     in: [:quarter, :period]
+
+  enumerize :language,
+    in: [:ru, :en]
 
   def correct_years
     if term_type == 'period' && (start_year > end_year)
