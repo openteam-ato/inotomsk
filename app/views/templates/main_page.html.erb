@@ -77,7 +77,7 @@
         <% end %>
 
         <% if locale.eql?(:en) %>
-          <%= content_tag(:h1, link_to(@interview_list.part_title, "/en/interviews/interview-with-experts"), :class => 'section_header') unless @interview_list.blank? %>
+          <%= content_tag(:h1, link_to(@interview_list.part_title, "/en/interviews"), :class => 'section_header') unless @interview_list.blank? %>
         <% end %>
 
         <div class='row interview_list'>
