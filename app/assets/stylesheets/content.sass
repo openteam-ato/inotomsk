@@ -52,6 +52,8 @@ $content_nav_padding: 12px
 
 
       .months
+        clear: both
+
         li
           color: #93948c
           display: inline
@@ -102,12 +104,14 @@ $content_nav_padding: 12px
         line-height: 1.3
         margin-top: 20px
         margin-bottom: 5px
+
       .event
         +clearfix
         +border-radius(7px)
         +single-box-shadow(#aaa, 0, 0, 1px)
         border: 1px solid transparent
         background: #fff image_url('event_item_bg.png') repeat-y center top
+
         &:hover
           border: 1px solid #a41162
         margin-bottom: 3px

@@ -3,9 +3,9 @@
 <% end %>
 
 <% content_for :content do %>
-  <div class='content_wrapper index'>
+  <div class='content_wrapper index row'>
 
-    <div class="content_side">
+    <div class="content_side col-lg-10">
 
       <%= content_tag :div, render("regions/#{@breadcrumbs.type.underscore}", :object => @breadcrumbs.content), :class => 'breadcrumbs noindex' if @breadcrumbs %>
 
@@ -13,11 +13,11 @@
         <% unless %w(belief_item_part).include?(@content_first.template) && @content_first %>
           <div class='header'>
             <% if @content_first.try(:content).try(:rss_link) %>
-              <div class="rss noindex">
+              <div class="rss noindex pull-right">
                 <%= link_to 'RSS', @content_first.content.rss_link %>
               </div>
             <% end %>
-            <div class='nav noindex'>
+            <div class='nav noindex pull-right'>
               <% all_events_path = params[:path].split('/').uniq.delete_if{|x| x=='monthly'}.join('/') %>
               <ul>
                 <li<%= " class='selected'" if !params[:parts_params] %>>
@@ -25,7 +25,9 @@
                 </li>
               </ul>
             </div>
-            <%= content_tag :h1, @page.title if @content_first %>
+
+            <%= content_tag :h1, @page.title, :class => 'pull-left part_header'  if @content_first %>
+
             <ul class='months noindex'>
               <% (1..12).each do |month| %>
                 <li<%= " class='selected'" if params[:parts_params] && params[:parts_params].try(:[], 'events_list').try(:[], 'interval_year') == Date.today.year.to_s && params[:parts_params].try(:[], 'events_list').try(:[], 'interval_month') == month.to_s %>>
@@ -44,7 +46,7 @@
 
     </div>
 
-    <div class='content_nav noindex'>
+    <div class='content_nav noindex col-lg-2'>
 
       <%= content_tag :div, render("regions/#{@content_navigation.type.underscore}", :object => @content_navigation.content), :class => 'navigation' if @content_navigation %>
       <%= content_tag :div, yield(:more_like_this), :class => 'more_like_this' if content_for?(:more_like_this) %>
