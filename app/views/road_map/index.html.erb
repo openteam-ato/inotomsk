@@ -5,20 +5,22 @@
 
       <div class='header row'>
         <div class="header_wrapper col-lg-12 col-md-12 col-sm-12 col-xs-12">
-          <%= content_tag :h1, 'Дорожная карта', :class => 'pull-left' %>
+          <%= content_tag :h1, I18n.t('road_map'), :class => 'pull-left' %>
         </div>
       </div>
 
       <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-          <div class="map_layer_nav">
-            <% map_layer_nav.each do |key,value| %>
-              <div class="map_layer_nav_option">
-                <%= check_box_tag key,value, false, class: "js-road-map-nav" %>
-                <%= label_tag key, value %>
-              </div>
-            <% end %>
-          </div>
+          <% if locale.eql?(:ru) %>
+            <div class="map_layer_nav">
+              <% map_layer_nav.each do |key,value| %>
+                <div class="map_layer_nav_option">
+                  <%= check_box_tag key,value, false, class: "js-road-map-nav" %>
+                  <%= label_tag key, value %>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
           <div class='nav noindex'>
             <%= render_navigation(road_map_navigation) %>
           </div>
@@ -26,10 +28,10 @@
 
             <table class='table table-hover js-table'>
               <thead>
-                <th>Наименование мероприятия</th>
-                <th>Вид документа</th>
-                <th>Срок</th>
-                <th>Ответственный исполнитель</th>
+                <th><%= I18n.t('table_title') %></th>
+                <th><%= I18n.t('table_doc') %></th>
+                <th><%= I18n.t('table_period') %></th>
+                <th><%= I18n.t('table_performer') %></th>
               </thead>
               <tbody>
                 <% @entries.each do |type, events| %>

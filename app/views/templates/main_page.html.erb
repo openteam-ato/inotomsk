@@ -8,7 +8,7 @@
         <% end %>
 
         <% if locale.eql?(:en) %>
-          <h1 class='pull-left'><a href='/en/press-centre/news'><%= @news_list.part_title %></a></h1>
+          <h1 class='pull-left section_header'><a href='/en/press-centre/news'><%= @news_list.part_title %></a></h1>
         <% end %>
 
         <ul class='nav nav-tabs pull-right news_navigation'>
@@ -77,7 +77,7 @@
         <% end %>
 
         <% if locale.eql?(:en) %>
-          <%= content_tag(:h1, link_to(@interview_list.part_title, "/en/analytic/interview-with-experts")) unless @interview_list.blank? %>
+          <%= content_tag(:h1, link_to(@interview_list.part_title, "/en/interviews/interview-with-experts"), :class => 'section_header') unless @interview_list.blank? %>
         <% end %>
 
         <div class='row interview_list'>
@@ -145,8 +145,8 @@
           </div>
 
         <div class='col-lg-6 col-md-6 col-sm-12 col-xs-12 media_wrapper'>
-          <div class='mediateka noindex row'>
-            <% if locale.eql?(:ru) %>
+          <% if locale.eql?(:ru) %>
+            <div class='mediateka noindex row'>
               <h2>Медиатека</h2>
               <div class='video col-lg-6 col-md-6 col-sm-6 col-xs-12'>
                 <% unless @last_video.blank? %>

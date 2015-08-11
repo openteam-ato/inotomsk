@@ -31,7 +31,7 @@
 
           <div class="navbar-header visible-xs">
             <a class="navbar-brand" href="/">
-              <%= image_tag 'brand-img.png', :alt => 'Инотомск', :size => '135x45' %>
+              <%= image_tag "brand_img_#{locale}.png", :alt => 'Инотомск', :size => '135x45' %>
             </a>
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
               <span class="sr-only">Toggle navigation</span>
@@ -53,11 +53,9 @@
 
       <div class='header noindex row'>
         <div class='logotype col-lg-2 col-md-2 col-sm-4 col-xs-12 hidden-xs'>
-          <%= link_to '/ru' do %>
-            <%= image_tag 'logotype.png', :class => 'img-responsive' %>
-            <h4>
-              Инновационный территориальный центр
-            </h4>
+          <%= link_to "/#{locale}" do %>
+            <%= image_tag "logotype_#{locale}.png", :class => 'img-responsive' %>
+            <h4><%= I18n.t('innovative_center') %></h4>
           <% end %>
         </div>
 
@@ -110,7 +108,7 @@
       <div class='footer container'>
         <div class="row">
           <div class='column logotype_<%= I18n.locale %> col-lg-4 col-md-4 col-sm-4 hidden-xs'>
-            <%= link_to image_tag("brand-img.png", class: "img-responsive"), "/" %>
+            <%= link_to image_tag("brand_img_#{locale}.png", class: "img-responsive"), "/" %>
           </div>
           <div class='column contacts col-lg-4 col-md-4 col-sm-4 col-xs-12'>
             <p>email: <%= mail_to 'inotomsk-office@yandex.ru' %></p>
@@ -118,7 +116,7 @@
               <a class='twitter' href='https://twitter.com/INOTomsk2020' target='_blank'>Twitter</a>
               <a class='vkontakte' href='https://vk.com/inotomsk2020' target='_blank'>В Контакте</a>
               <a class='facebook' href='https://www.facebook.com/INOTomsk2020' target='_blank'>Facebook</a>
-              <a class='youtube' href='https://www.youtube.com/user/INOTomsk' target='_blank'>You tube</a>
+              <a class='youtube' href='https://www.youtube.com/user/INOTomsk' target='_blank'>Youtube</a>
             </div>
           </div>
           <div class='column developers col-lg-4 col-md-4 col-sm-12 col-xs-12'>

@@ -150,10 +150,10 @@ module ApplicationHelper
 
   def road_map_navigation
     {
-      "all" => {"title" => "Все", "path" => "/ru/dorozhnaya-karta", "selected" => params[:state].nil? ? true : false },
-      "implemented" => {"title" => "Реализованные", "path" => "/ru/dorozhnaya-karta?state=implemented", "selected" => params[:state] == "implemented" ? true : false },
-      "now" => {"title" => "Выполняемые", "path" => "/ru/dorozhnaya-karta?state=now ", "selected" => params[:state] == "now" ? true : false },
-      "postponed" => {"title" => "Запланированные", "path" => "/ru/dorozhnaya-karta?state=postponed", "selected" => params[:state] == "postponed" ? true : false }
+      "all" => {"title" => I18n.t('all_nav'), "path" => "/#{locale}/#{I18n.t('road_map_slug')}", "selected" => params[:state].nil? ? true : false },
+      "implemented" => {"title" => I18n.t('implemented_nav'), "path" => "/#{locale}/#{I18n.t('road_map_slug')}?state=implemented", "selected" => params[:state] == "implemented" ? true : false },
+      "now" => {"title" => I18n.t('now_nav'), "path" => "/#{locale}/#{I18n.t('road_map_slug')}?state=now ", "selected" => params[:state] == "now" ? true : false },
+      "postponed" => {"title" => I18n.t('postponed_nav'), "path" => "/#{locale}/#{I18n.t('road_map_slug')}?state=postponed", "selected" => params[:state] == "postponed" ? true : false }
     }
   end
 
