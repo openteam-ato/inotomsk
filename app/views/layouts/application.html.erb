@@ -110,15 +110,10 @@
       <div class='footer container'>
         <div class="row">
           <div class='column logotype_<%= I18n.locale %> col-lg-3 col-md-3 col-sm-4 hidden-xs'>
-            <%= link_to image_tag("footer_logotype_ru.png", class: "img-responsive"), "/" %>
-          </div>
-          <div class='column address col-lg-3 col-md-3 col-sm-4 col-xs-12'>
-            <p>&laquo;<%= t "ino_tomsk_2020" %>&raquo;</p>
-            <p><%= raw t("ino_tomsk_address") %></p>
+            <%= link_to image_tag("brand-img.png", class: "img-responsive"), "/" %>
           </div>
           <div class='column contacts col-lg-3 col-md-3 col-sm-4 col-xs-12'>
-            <p><%= t "tel" %> (3822) <span class='bolder'>46 47 48</span></p>
-            <p>email: <a href='mailto:'>inso@inotomsk.ru</a></p>
+            <p>email: <%= mail_to 'inotomsk-office@yandex.ru' %></p>
             <div class='social_links'>
               <a class='twitter' href='https://twitter.com/INOTomsk2020' target='_blank'>Twitter</a>
               <a class='vkontakte' href='https://vk.com/inotomsk2020' target='_blank'>В Контакте</a>
@@ -127,38 +122,14 @@
             </div>
           </div>
           <div class='column developers col-lg-3 col-md-3 col-sm-12 col-xs-12'>
-            <p><%= t "development" %>: <a href='http://openteam.ru'>OpenTeam</a></p>
-            <p><%= t "design" %>: <a href='http://rosbd.com/'>РосБизнесДизайн</a></p>
+            <p><%= t "development" %>: <%= link_to 'OpenTeam', 'http://openteam.ru' %></p>
+          </div>
+          <div class="column col-lg-3 col-md-3 col-sm-12 col-xs-12">
+            <%= render :partial => 'commons/yandex_metrika' if Rails.env.production? %>
           </div>
         </div>
       </div>
     </div>
-
-    <% if Rails.env.production? && request.host.eql?("inotomsk.openteam.ru") %>
-      <!-- Yandex.Metrika counter -->
-      <script type="text/javascript">
-        (function (d, w, c) {
-          (w[c] = w[c] || []).push(function() {
-            try {
-              w.yaCounter14929507 = new Ya.Metrika({id:14929507, enableAll: true, webvisor:true});
-            } catch(e) {}
-          });
-
-          var n = d.getElementsByTagName("script")[0],
-            s = d.createElement("script"),
-            f = function () { n.parentNode.insertBefore(s, n); };
-          s.type = "text/javascript";
-          s.async = true;
-          s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
-
-          if (w.opera == "[object Opera]") {
-            d.addEventListener("DOMContentLoaded", f);
-          } else { f(); }
-        })(document, window, "yandex_metrika_callbacks");
-      </script>
-      <noscript><div><img src="//mc.yandex.ru/watch/14929507" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-      <!-- /Yandex.Metrika counter -->
-    <% end %>
 
   </body>
 </html>

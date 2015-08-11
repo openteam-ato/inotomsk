@@ -1,33 +1,51 @@
 .footer
   +clearfix
   line-height: 1.7
+
   .column
     &.contacts
       .bolder
         font-size: 1.8em
         font-weight: bold
+
       .social_links
         +clearfix
         margin-top: 10px
+
         a
+          +clearfix
           display: block
           float: left
           width: 24px
           height: 24px
           margin-right: 10px
-          +clearfix
           text-indent: -9999em
           background-color: #fff
           background-repeat: no-repeat
+
           &.youtube
             background-image: image_url('social_youtube.png')
+
           &.livejournal
             background-image: image_url('social_livejournal.png')
+
           &.vkontakte
             background-image: image_url('social_vkontakte.png')
+
           &.twitter
             background-image: image_url('social_twitter.png')
+
           &.facebook
             background-image: image_url('social_facebook.png')
-    &.developers
-      text-align: center
+
+@media (max-width: $screen-sm-max)
+  .footer
+    .column
+      &.developers
+        margin: 10px 0
+
+@media (max-width: $screen-xs-max)
+  .footer
+    .column
+      &.developers
+        margin: 10px 0
