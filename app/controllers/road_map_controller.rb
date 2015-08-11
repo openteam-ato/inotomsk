@@ -1,6 +1,6 @@
 class RoadMapController < MainController
   def index
-    @events = events.page(params[:page])
+    @events = events.page(params[:page]).per(15)
     @entries = @events.group_by(&:state).sort
   end
 
