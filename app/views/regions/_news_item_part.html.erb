@@ -10,7 +10,7 @@
   </div>
   <% if object.images.any? %>
     <div class='image'>
-      <%= image_tag_for(object.images.first.thumbnail, :class => 'img-responsive') %>
+      <%= image_tag object.images.first.thumbnail.url.sub(/\d+-\d+/,"370-370!m"), :alt => object.images.first.thumbnail.description, :class => 'img-responsive', :size => "370x370" %>
       <%= content_tag :p, object.images.first.thumbnail.description if object.images.first.thumbnail.description %>
     </div>
   <% end %>

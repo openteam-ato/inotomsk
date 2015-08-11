@@ -120,7 +120,7 @@
             </div>
           </div>
           <div class='column developers col-lg-4 col-md-4 col-sm-12 col-xs-12'>
-            <p class='pull-right'><%= t "development" %>: <%= link_to 'OpenTeam', 'http://openteam.ru' %></p>
+            <p class='pull-right'><%= t "development" %>: <%= mail_to 'developers@openteam.ru' %></p>
             <%= render :partial => 'commons/yandex_metrika' if Rails.env.production? %>
           </div>
         </div>
