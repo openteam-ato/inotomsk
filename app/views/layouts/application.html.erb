@@ -107,11 +107,11 @@
     <div class='footer_wrapper noindex container-fluid'>
       <div class='footer container'>
         <div class="row">
-          <div class='column logotype_<%= I18n.locale %> col-lg-4 col-md-4 col-sm-4 hidden-xs'>
+          <div class='column logotype_<%= I18n.locale %> col-sm-4 hidden-xs'>
             <%= link_to image_tag("brand_img_#{locale}.png", class: "img-responsive"), "/" %>
           </div>
-          <div class='column contacts col-lg-4 col-md-4 col-sm-4 col-xs-12'>
-            <p>email: <%= mail_to 'mail@ino-tomsk.ru' %></p>
+          <div class='column contacts col-sm-4 col-xs-7'>
+            <p>email: <span class='nobr'><%= mail_to 'mail@ino-tomsk.ru' %></span></p>
             <div class='social_links'>
               <a class='twitter' href='https://twitter.com/INOTomsk2020' target='_blank'>Twitter</a>
               <a class='vkontakte' href='https://vk.com/inotomsk2020' target='_blank'>В Контакте</a>
@@ -119,7 +119,7 @@
               <a class='youtube' href='https://www.youtube.com/user/INOTomsk' target='_blank'>Youtube</a>
             </div>
           </div>
-          <div class='column developers col-lg-4 col-md-4 col-sm-12 col-xs-12'>
+          <div class='column developers col-sm-4 col-xs-5'>
             <p class='pull-right'><%= t "development" %>: <%= mail_to 'developers@openteam.ru' %></p>
             <%= render :partial => 'commons/yandex_metrika' if Rails.env.production? %>
           </div>
