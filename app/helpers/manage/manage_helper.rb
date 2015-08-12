@@ -1,7 +1,7 @@
 module Manage::ManageHelper
   def highlight_layer(map_layer = nil)
     'active' if map_layer.nil? && params[:map_layer].nil?
-    map_layer.try(:slug) == params[:map_layer] ? 'active layer' : 'layer'
+    map_layer.try(:slug) == params[:map_layer] ? 'active layer show_children' : 'layer'
   end
 
   def layer_icon(map_layer, icon_type = '')

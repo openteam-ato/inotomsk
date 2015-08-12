@@ -8,7 +8,7 @@ class MainController < ApplicationController
 
   def index
     @implemented = Event.send(locale).implemented.first
-    @postponed = Event.send(locale).postponed.first
+    @postponed = Event.send(locale).postponed.last
     @now = Event.send(locale).now.first
 
     render "templates/#{page.template}" unless page.template == 'on_client'

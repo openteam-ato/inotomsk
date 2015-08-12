@@ -12,6 +12,7 @@ end
 
 group :default do
   gem 'ancestry'
+  gem 'awesome_print'
   gem 'breadcrumbs_on_rails'
   gem 'curb'
   gem 'devise', '2.2.3'
