@@ -13,42 +13,53 @@
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <% if locale.eql?(:ru) %>
             <div class="map_layer_nav">
-              <% map_layer_nav.each do |key,value| %>
-                <div class="map_layer_nav_option">
-                  <%= check_box_tag key,value, false, class: "js-road-map-nav" %>
-                  <%= label_tag key, value %>
-                </div>
+              <%= form_tag '', :method => :get do %>
+                <% map_layer_nav.each do |key,value| %>
+                  <div class="map_layer_nav_option">
+                    <%= check_box_tag 'filters[]', key, params[:filters].try(:include?, key) ? true : false, id: key, class: "js-road-map-nav" %>
+                    <%= hidden_field_tag 'state', params[:state] if params[:state] %>
+                    <%= label_tag key, value %>
+                  </div>
+                <% end %>
               <% end %>
             </div>
           <% end %>
           <div class='nav noindex'>
             <%= render_navigation(road_map_navigation) %>
           </div>
-          <div class="table-responsive">
 
-            <table class='table table-hover js-table'>
-              <thead>
-                <th><%= I18n.t('table_title') %></th>
-                <th><%= I18n.t('table_doc') %></th>
-                <th><%= I18n.t('table_period') %></th>
-                <th><%= I18n.t('table_performer') %></th>
-              </thead>
-              <tbody>
-                <% @entries.each do |type, events| %>
-                  <% events.each do |event| %>
-                    <tr class="<%= "js-#{event.map_layer.try(:root).try(:slug)}" if event.map_layer %>">
-                      <td class="<%= event.map_layer.try(:slug) %> <%= type %>">
-                        <p><%= event.title %></p>
-                        <p class='map_layer_title hidden-xs'><%= event.map_layer.try(:title) %></p>
-                      </td>
-                      <td><p><%= event.document_type %></p></td>
-                      <td><p><%= human_term(event) %></p></td>
-                      <td><p><%= event.performer %></p></td>
-                    </tr>
+          <div class="table-responsive">
+            <% if @entries.any? %>
+
+              <table class='table table-hover js-table'>
+                <thead>
+                  <th><%= I18n.t('table_title') %></th>
+                  <th><%= I18n.t('table_doc') %></th>
+                  <th><%= I18n.t('table_period') %></th>
+                  <th><%= I18n.t('table_performer') %></th>
+                </thead>
+
+                <tbody>
+                  <% @entries.each do |type, events| %>
+                    <% events.each do |event| %>
+                      <tr class="<%= "js-#{event.map_layer.try(:root).try(:slug)}" if event.map_layer %>">
+                        <td class="<%= event.map_layer.try(:slug) %> <%= type %>">
+                          <p><%= event.title %></p>
+                          <p class='map_layer_title hidden-xs'><%= event.map_layer.try(:title) %></p>
+                        </td>
+                        <td><p><%= event.document_type %></p></td>
+                        <td><p><%= human_term(event) %></p></td>
+                        <td><p><%= event.performer %></p></td>
+                      </tr>
+                    <% end %>
                   <% end %>
-                <% end %>
-              </tbody>
-            </table>
+                </tbody>
+              </table>
+            <% else %>
+              <p style='margin-top: 10px'>
+                Ничего не найдено
+              </p>
+            <% end %>
             <div class="event_pagination">
               <%= paginate @events %>
             </div>

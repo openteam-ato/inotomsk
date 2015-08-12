@@ -24,8 +24,7 @@ module NavigationHelper
       index = 0
       hash.map do |key, value|
         index += 1
-
-        content_tag :li, :class => [value['selected'] ? :selected : nil, key] do
+        content_tag :li, :class => [value['selected'] ? :selected : nil, key].compact.join(' ') do
           content_tag(:p, link_to(value['title'].html_safe, value['path'], :class => key)) + render_navigation(value['children'] || {})
         end
       end.join(' ').html_safe

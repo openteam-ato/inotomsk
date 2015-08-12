@@ -18,7 +18,7 @@ Inotomsk::Application.routes.draw do
   end
 
   get "ru/inotomsk/ob-ekty"          => "map_layers#index", :as => 'map_layers'
-  get "ru/dorozhnaya-karta" => "road_map#index",   :as => 'road_map'
+  get "ru/dorozhnaya-karta"          => "road_map#index",   :as => 'road_map'
   get "en/road-map" => "road_map#index"
 
   match "poll" => "poll#show", :via => :get

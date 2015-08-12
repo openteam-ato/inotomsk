@@ -10,9 +10,9 @@ class Event < ActiveRecord::Base
   belongs_to :map_layer
   belongs_to :placemark
 
-  scope :implemented, -> {where(state: :implemented)}
-  scope :now, -> {where(state: :now)}
-  scope :postponed, -> {where(state: :postponed)}
+  scope :implemented, -> { where(state: :implemented) }
+  scope :now,         -> { where(state: :now) }
+  scope :postponed,   -> { where(state: :postponed) }
 
   scope :ru, -> {where(language: :ru)}
   scope :en, -> {where(language: :en)}
