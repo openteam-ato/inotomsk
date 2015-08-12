@@ -149,26 +149,26 @@ module ApplicationHelper
   end
 
   def road_map_navigation
-    clear_params = params.reject { |key, value| ['state', 'action', 'controller'].include?(key) }
+    clear_params = params.reject { |key, value| ['state', 'action', 'controller', 'slug'].include?(key) }
     {
       "all" => {
         "title" => I18n.t('all_nav'),
-        "path" => "/#{locale}/#{I18n.t('road_map_slug')}?#{clear_params.to_param}",
+        "path" => [@current_path, clear_params.to_param].delete_if(&:blank?).join('?'),
         "selected" => params[:state].nil? ? true : false
       },
       "implemented" => {
         "title" => I18n.t('implemented_nav'),
-        "path" => "/#{locale}/#{I18n.t('road_map_slug')}?#{ ({:state => 'implemented'}.merge(clear_params)).to_param}",
+        "path" => [@current_path, ({:state => 'implemented'}.merge(clear_params)).to_param].delete_if(&:blank?).join('?'),
         "selected" => params["state"] == "implemented"
       },
       "now" => {
         "title" => I18n.t('now_nav'),
-        "path" => "/#{locale}/#{I18n.t('road_map_slug')}?#{ ({:state => 'now'}.merge(clear_params)).to_param}",
+        "path" => [@current_path, ({:state => 'now'}.merge(clear_params)).to_param].delete_if(&:blank?).join('?'),
         "selected" => params[:state] == "now"
       },
       "postponed" => {
         "title" => I18n.t('postponed_nav'),
-        "path" => "/#{locale}/#{I18n.t('road_map_slug')}?#{ ({:state => 'postponed'}.merge(clear_params)).to_param}",
+        "path" => [@current_path, ({:state => 'postponed'}.merge(clear_params)).to_param].delete_if(&:blank?).join('?'),
         "selected" => params[:state] == "postponed"
       }
     }

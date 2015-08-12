@@ -17,6 +17,10 @@ class MapLayer < ActiveRecord::Base
 
   extend FriendlyId
   friendly_id :title, use: :slugged
+
+  def ru_events
+    children.events.where(:language => 'ru') rescue []
+  end
 end
 
 # == Schema Information

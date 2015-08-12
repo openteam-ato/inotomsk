@@ -32,6 +32,8 @@ class MainController < ApplicationController
         eval "@#{region} = page.regions.#{region}"
       end
 
+      @current_path = request.fullpath.gsub(/\?.*$/, '')
+
       @page_title = page.title
     end
 
