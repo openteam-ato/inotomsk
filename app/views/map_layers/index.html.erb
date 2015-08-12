@@ -62,18 +62,17 @@
               <% end %>
             <% end %>
           <% end %>
-        </tbody>
-    </table>
-  </div>
+        </table>
+      </div>
 
-</div>
+    </div>
 
-<div class='content_nav noindex col-lg-2 col-md-3 col-sm-4 hidden-xs'>
+    <div class='content_nav noindex col-lg-2 col-md-3 col-sm-4 hidden-xs'>
 
-  <%= content_tag :div, render("regions/#{@content_navigation.type.underscore}", :object => @content_navigation.content), :class => 'navigation' if @content_navigation %>
-  <%= content_tag :div, yield(:more_like_this), :class => 'more_like_this' if content_for?(:more_like_this) %>
+      <%= content_tag :div, render("regions/#{@content_navigation.type.underscore}", :object => @content_navigation.content), :class => 'navigation' if @content_navigation %>
+      <%= content_tag :div, yield(:more_like_this), :class => 'more_like_this' if content_for?(:more_like_this) %>
 
-</div>
+    </div>
 
   </div>
 <% end %>
