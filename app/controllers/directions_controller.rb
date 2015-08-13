@@ -1,7 +1,7 @@
 class DirectionsController < MainController
   def show
     map_layer = MapLayer.find(params[:slug])
-    @placemarks = map_layer.children.flat_map(&:placemarks)
+    @placemarks = map_layer.children.flat_map(&:placemarks) + map_layer.placemarks
 
     @events = map_layer.events.send(locale)
 
