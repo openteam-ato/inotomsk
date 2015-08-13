@@ -20,7 +20,8 @@ Inotomsk::Application.routes.draw do
   get "ru/inotomsk/ob-ekty"          => "map_layers#index", :as => 'map_layers'
   get "ru/dorozhnaya-karta"          => "road_map#index",   :as => 'road_map'
 
-  %w[peredovoe-proizvodstvo nauka-i-obrazovanie umnyy-i-udobnyy-gorod innovatsii-i-noviy-biznes delovaya-sreda].each do |item|
+  #%w[peredovoe-proizvodstvo nauka-i-obrazovanie umnyy-i-udobnyy-gorod innovatsii-i-noviy-biznes delovaya-sreda].
+  %w[peredovoe-proizvodstvo nauka-i-obrazovanie].each do |item|
     get "ru/#{item}" => 'directions#show', :defaults => { :slug => item }
   end
 
