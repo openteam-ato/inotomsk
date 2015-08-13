@@ -1,6 +1,6 @@
 class MapLayersController < MainController
   def index
-    @map_layers = MapLayer.roots.order(:position)
+    @map_layers = MapLayer.roots.visible.order(:position)
     @placemarks = placemarks.group_by(&:map_layer_title)
   end
 

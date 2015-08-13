@@ -1,5 +1,5 @@
 class MapLayer < ActiveRecord::Base
-  attr_accessible :title, :icon, :hover_icon, :ancestry
+  attr_accessible :title, :icon, :hover_icon, :ancestry, :visible
 
   validates_presence_of :title
 
@@ -17,6 +17,8 @@ class MapLayer < ActiveRecord::Base
 
   extend FriendlyId
   friendly_id :title, use: :slugged
+
+  scope :visible, -> { where(visible: true) }
 
   def should_generate_new_friendly_id?
     return true if !self.slug?

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150812092850) do
+ActiveRecord::Schema.define(:version => 20150813091538) do
 
   create_table "addresses", :force => true do |t|
     t.float   "latitude"
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(:version => 20150812092850) do
     t.datetime "updated_at",              :null => false
     t.string   "ancestry"
     t.integer  "position"
+    t.boolean  "visible"
   end
 
   add_index "map_layers", ["ancestry"], :name => "index_map_layers_on_ancestry"

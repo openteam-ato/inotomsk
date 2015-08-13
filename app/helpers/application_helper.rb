@@ -180,7 +180,8 @@ module ApplicationHelper
      "peredovoe-proizvodstvo" => "Передовое производство",
      "nauka-i-obrazovanie" => "Наука и образование",
      "umnyy-i-udobnyy-gorod" => "Умный и удобный город",
-     "tehnologicheskie-innovatsii-novyy-biznes" => "Технологические инновации и новый бизнес"
+     "innovatsii-i-noviy-biznes" => "Технологические инновации и новый бизнес",
+     "delovaya-sreda" => "Деловая среда"
     }
   end
 end

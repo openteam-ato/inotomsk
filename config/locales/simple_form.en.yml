@@ -8,6 +8,7 @@ ru:
         ancestry: Родитеский элемент
         icon: Иконка для карты
         hover_icon: Иконка для карты(при наведении)
+        visible: Показывать в легенде карты
       placemark:
         title: Название
         map_layer: Слой
