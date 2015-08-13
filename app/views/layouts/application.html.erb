@@ -25,84 +25,88 @@
   </head>
   <body>
 
-    <nav class="navbar navbar-default">
-      <div class='top_menu_wrapper noindex container-fluid'>
-        <div class='top_menu container <%= I18n.locale %>'>
+    <div class='page_wrapper'>
 
-          <div class="navbar-header visible-xs">
-            <a class="navbar-brand" href="/">
-              <%= image_tag "brand_img_#{locale}.png", :alt => 'Инотомск', :size => '135x45' %>
-            </a>
+      <nav class="navbar navbar-default">
+        <div class='top_menu_wrapper noindex container-fluid'>
+          <div class='top_menu container <%= I18n.locale %>'>
 
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-          </div>
+            <div class="navbar-header visible-xs">
+              <a class="navbar-brand" href="/">
+                <%= image_tag "brand_img_#{locale}.png", :alt => 'Инотомск', :size => '135x45' %>
+              </a>
 
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <%= render :partial => "regions/main_navigation", :locals => { :object => @main_top_navigation.content, :klass => 'first' } if @main_top_navigation %>
-          </div>
-        </div>
-      </div>
-    </nav>
-
-    <div class="container  main_wrapper">
-
-      <div class='header noindex row'>
-        <div class='logotype col-lg-2 col-md-2 col-sm-4 col-xs-12 hidden-xs'>
-          <%= link_to "/#{locale}" do %>
-            <%= image_tag "logotype_#{locale}.png", :class => 'img-responsive', :alt => 'ИНОТомск', :title => I18n.t('to_main_page') %>
-            <h4><%= I18n.t('innovative_center') %></h4>
-          <% end %>
-        </div>
-
-        <div class="col-lg-4 bottom-navigation col-md-4 col-sm-8 col-xs-12">
-          <div class="search-languages-wrapper visible-sm">
-            <%= languages('pull-left') %>
-
-            <form action="/<%= I18n.locale %>/search" class='search-form pull-left' role='search'>
-              <div class="form-group">
-                <input type="text" class='input-field' name="parts_params[search][q]" placeholder="<%= I18n.t('search_placeholder') %>" value='<%= params[:parts_params].present? && params[:parts_params][:search].present? ? params[:parts_params][:search][:q] : nil %>'>
-              </div>
-              <input type="submit" value="искать" class='search-button' title='<%= I18n.t('search_button_title') %>'>
-            </form>
-          </div>
-          <%= render :partial => "regions/main_navigation", :locals => { :object => @main_bottom_navigation.content, :klass => 'second'  } if @main_bottom_navigation %>
-        </div>
-
-        <div class='col-lg-6 col-md-6 col-sm-12 col-xs-12'>
-          <div class="search-languages-wrapper hidden-sm">
-            <form action="/<%= I18n.locale %>/search" class='search-form pull-right' role='search'>
-              <div class="form-group">
-                <input placeholder='<%= I18n.t('search_placeholder') %>' type="text" class='input-field' name="parts_params[search][q]" value='<%= params[:parts_params].present? && params[:parts_params][:search].present? ? params[:parts_params][:search][:q] : nil %>'>
-              </div>
-              <input type="submit" value="искать" class='search-button' title='<%= I18n.t('search_button_title') %>'>
-            </form>
-
-            <%= languages %>
-          </div>
-
-          <% unless @targets.blank? %>
-            <div class="targets pull-right">
-              <div class='left'>
-                <a href='#' title="<%= I18n.t('slider.prev_title') %>"><%= t('views.pagination.previous') %></a>
-              </div>
-              <div class='targets_content'>
-                <%= render_partial_for_region(@targets) %>
-              </div>
-              <div class='right'>
-                <a href='#' title="<%= I18n.t('slider.next_title') %>"><%= t('views.pagination.next') %></a>
-              </div>
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
             </div>
-          <% end %>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <%= render :partial => "regions/main_navigation", :locals => { :object => @main_top_navigation.content, :klass => 'first' } if @main_top_navigation %>
+            </div>
+          </div>
         </div>
+      </nav>
+
+      <div class="container main_wrapper">
+
+        <div class='header noindex row'>
+          <div class='logotype col-lg-2 col-md-2 col-sm-4 col-xs-12 hidden-xs'>
+            <%= link_to "/#{locale}" do %>
+              <%= image_tag "logotype_#{locale}.png", :class => 'img-responsive', :alt => 'ИНОТомск', :title => I18n.t('to_main_page') %>
+              <h4><%= I18n.t('innovative_center') %></h4>
+            <% end %>
+          </div>
+
+          <div class="col-lg-4 bottom-navigation col-md-4 col-sm-8 col-xs-12">
+            <div class="search-languages-wrapper visible-sm">
+              <%= languages('pull-left') %>
+
+              <form action="/<%= I18n.locale %>/search" class='search-form pull-left' role='search'>
+                <div class="form-group">
+                  <input type="text" class='input-field' name="parts_params[search][q]" placeholder="<%= I18n.t('search_placeholder') %>" value='<%= params[:parts_params].present? && params[:parts_params][:search].present? ? params[:parts_params][:search][:q] : nil %>'>
+                </div>
+                <input type="submit" value="искать" class='search-button' title='<%= I18n.t('search_button_title') %>'>
+              </form>
+            </div>
+            <%= render :partial => "regions/main_navigation", :locals => { :object => @main_bottom_navigation.content, :klass => 'second'  } if @main_bottom_navigation %>
+          </div>
+
+          <div class='col-lg-6 col-md-6 col-sm-12 col-xs-12'>
+            <div class="search-languages-wrapper hidden-sm">
+              <form action="/<%= I18n.locale %>/search" class='search-form pull-right' role='search'>
+                <div class="form-group">
+                  <input placeholder='<%= I18n.t('search_placeholder') %>' type="text" class='input-field' name="parts_params[search][q]" value='<%= params[:parts_params].present? && params[:parts_params][:search].present? ? params[:parts_params][:search][:q] : nil %>'>
+                </div>
+                <input type="submit" value="искать" class='search-button' title='<%= I18n.t('search_button_title') %>'>
+              </form>
+
+              <%= languages %>
+            </div>
+
+            <% unless @targets.blank? %>
+              <div class="targets pull-right">
+                <div class='left'>
+                  <a href='#' title="<%= I18n.t('slider.prev_title') %>"><%= t('views.pagination.previous') %></a>
+                </div>
+                <div class='targets_content'>
+                  <%= render_partial_for_region(@targets) %>
+                </div>
+                <div class='right'>
+                  <a href='#' title="<%= I18n.t('slider.next_title') %>"><%= t('views.pagination.next') %></a>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+
+        <%= yield(:content) %>
       </div>
 
-      <%= yield(:content) %>
     </div>
 
     <div class='footer_wrapper noindex container-fluid'>
