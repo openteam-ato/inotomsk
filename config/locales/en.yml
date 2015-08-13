@@ -5,11 +5,38 @@ en:
     de: "Deu"
     fr: "Fra"
 
+    en_title: 'English version'
+    ru_title: 'Перейти к версии сайта на русском языке'
+
+  to_main_page: 'Main page'
+
+  views:
+    pagination:
+      first: "First page"
+      last: "Last page"
+      previous: "Previous page"
+      next: "Next page"
+      truncate: '&hellip;'
+
+  slider:
+    next_title: 'Next'
+    prev_title: 'Back'
+
+  twitter_title: 'Our Twitter'
+  vk_title: 'Our VK page'
+  fb_title: 'Our Facebook page'
+  youtube_title: 'Our YouTube channel'
+
+  logotype_link_title: 'Main page'
+  search_placeholder: 'Search...'
+  search_button_title: 'Find'
+  rss_title: 'RSS feed'
+
   time_period:
     quarter: "quarter"
     annually: "annually"
 
-  #road map
+  # road map
   road_map: "Road map"
   implemented: "Completed actions"
   now: "Running actions"
@@ -34,6 +61,7 @@ en:
   research_and_development: "research and development"
   events_list_is_empty: "List of events is empty"
   search_total_count: "Found"
+
   # footer
   ino_tomsk_address: "Russia, 634011, Tomsk, Pervomayskaya str., 15, 201 office"
   tel: "Phone"
@@ -49,12 +77,6 @@ en:
 
     news_list_part:
       '500': '<h1>Internal server error (500 error)</h1>'
-
-  views:
-    pagination:
-      next: 'next'
-      previous: 'prev'
-      truncate: '&hellip;'
 
   date:
     formats:

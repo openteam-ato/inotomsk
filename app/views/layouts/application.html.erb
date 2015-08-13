@@ -33,6 +33,7 @@
             <a class="navbar-brand" href="/">
               <%= image_tag "brand_img_#{locale}.png", :alt => 'Инотомск', :size => '135x45' %>
             </a>
+
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
               <span class="sr-only">Toggle navigation</span>
               <span class="icon-bar"></span>
@@ -54,7 +55,7 @@
       <div class='header noindex row'>
         <div class='logotype col-lg-2 col-md-2 col-sm-4 col-xs-12 hidden-xs'>
           <%= link_to "/#{locale}" do %>
-            <%= image_tag "logotype_#{locale}.png", :class => 'img-responsive' %>
+            <%= image_tag "logotype_#{locale}.png", :class => 'img-responsive', :alt => 'ИНОТомск', :title => I18n.t('to_main_page') %>
             <h4><%= I18n.t('innovative_center') %></h4>
           <% end %>
         </div>
@@ -65,9 +66,9 @@
 
             <form action="/<%= I18n.locale %>/search" class='search-form pull-left' role='search'>
               <div class="form-group">
-                <input type="text" class='input-field' name="parts_params[search][q]" value='<%= params[:parts_params].present? && params[:parts_params][:search].present? ? params[:parts_params][:search][:q] : nil %>'>
+                <input type="text" class='input-field' name="parts_params[search][q]" placeholder="<%= I18n.t('search_placeholder') %>" value='<%= params[:parts_params].present? && params[:parts_params][:search].present? ? params[:parts_params][:search][:q] : nil %>'>
               </div>
-              <input type="submit" value="искать" class='search-button'>
+              <input type="submit" value="искать" class='search-button' title='<%= I18n.t('search_button_title') %>'>
             </form>
           </div>
           <%= render :partial => "regions/main_navigation", :locals => { :object => @main_bottom_navigation.content, :klass => 'second'  } if @main_bottom_navigation %>
@@ -77,9 +78,9 @@
           <div class="search-languages-wrapper hidden-sm">
             <form action="/<%= I18n.locale %>/search" class='search-form pull-right' role='search'>
               <div class="form-group">
-                <input type="text" class='input-field' name="parts_params[search][q]" value='<%= params[:parts_params].present? && params[:parts_params][:search].present? ? params[:parts_params][:search][:q] : nil %>'>
+                <input placeholder='<%= I18n.t('search_placeholder') %>' type="text" class='input-field' name="parts_params[search][q]" value='<%= params[:parts_params].present? && params[:parts_params][:search].present? ? params[:parts_params][:search][:q] : nil %>'>
               </div>
-              <input type="submit" value="искать" class='search-button'>
+              <input type="submit" value="искать" class='search-button' title='<%= I18n.t('search_button_title') %>'>
             </form>
 
             <%= languages %>
@@ -88,13 +89,13 @@
           <% unless @targets.blank? %>
             <div class="targets pull-right">
               <div class='left'>
-                <a href='#'><%= t('views.pagination.previous') %></a>
+                <a href='#' title="<%= I18n.t('slider.prev_title') %>"><%= t('views.pagination.previous') %></a>
               </div>
               <div class='targets_content'>
                 <%= render_partial_for_region(@targets) %>
               </div>
               <div class='right'>
-                <a href='#'><%= t('views.pagination.next') %></a>
+                <a href='#' title="<%= I18n.t('slider.next_title') %>"><%= t('views.pagination.next') %></a>
               </div>
             </div>
           <% end %>
@@ -108,15 +109,14 @@
       <div class='footer container'>
         <div class="row">
           <div class='column logotype_<%= I18n.locale %> col-sm-4 hidden-xs'>
-            <%= link_to image_tag("brand_img_#{locale}.png", class: "img-responsive"), "/" %>
+            <%= link_to image_tag("brand_img_#{locale}.png", class: "img-responsive"), "/", :title => I18n.t('to_main_page') %>
           </div>
           <div class='column contacts col-sm-4 col-xs-7'>
             <p>email: <span class='nobr'><%= mail_to 'mail@ino-tomsk.ru' %></span></p>
             <div class='social_links'>
-              <a class='twitter' href='https://twitter.com/INOTomsk2020' target='_blank'>Twitter</a>
-              <a class='vkontakte' href='https://vk.com/inotomsk2020' target='_blank'>В Контакте</a>
-              <a class='facebook' href='https://www.facebook.com/INOTomsk2020' target='_blank'>Facebook</a>
-              <a class='youtube' href='https://www.youtube.com/user/INOTomsk' target='_blank'>Youtube</a>
+              <a class='twitter' href='https://twitter.com/INOTomsk2020' target='_blank' title="<%= I18n.t('twitter_title') %>">Twitter</a>
+              <a class='vkontakte' href='https://vk.com/inotomsk' target='_blank' title="<%= I18n.t('vk_title') %>">В Контакте</a>
+              <a class='facebook' href='https://www.facebook.com/INOTomsk2020' target='_blank' title="<%= I18n.t('fb_title') %>">Facebook</a>
             </div>
           </div>
           <div class='column developers col-sm-4 col-xs-5'>

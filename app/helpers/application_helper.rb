@@ -13,11 +13,12 @@ module ApplicationHelper
 
   def languages(pull = 'pull-right')
     res = ''
+
     I18n.available_locales.each_with_index do |lang, index|
       if I18n.locale == lang
-        res += content_tag :li, link_to(I18n.t("locale.#{lang}"), "/#{lang}"), :class => 'active'
+        res += content_tag :li, link_to(I18n.t("locale.#{lang}"), "/#{lang}", :title => I18n.t("locale.#{lang}_title")), :class => 'active'
       else
-        res += content_tag :li, link_to(I18n.t("locale.#{lang}"), "/#{lang}")
+        res += content_tag :li, link_to(I18n.t("locale.#{lang}"), "/#{lang}", :title => I18n.t("locale.#{lang}_title"))
       end
     end
     content_tag :ul, res.html_safe, :class => ['languages', pull]

@@ -33,7 +33,7 @@
               <div class="nav_wrapper col-lg-6 col-md-6 col-sm-7 col-xs-12">
                 <% if !@content_first.content.blank? && !%w(photo_album_list_part organization_list_part).include?(@content_first.template) && @content_first.try(:content).try(:rss_link) %>
                   <div class="rss noindex pull-right hidden-xs">
-                    <%= link_to 'RSS', @content_first.content.rss_link %>
+                    <%= link_to 'RSS', @content_first.content.rss_link, :title => I18n.t('rss_title') %>
                   </div>
                 <% end %>
 
@@ -54,7 +54,7 @@
               <div class="nav_wrapper col-lg-2 col-md-2 col-sm-2 col-xs-12">
                 <% if !@content_first.content.blank? && !%w(photo_album_list_part organization_list_part).include?(@content_first.template) && @content_first.try(:content).try(:rss_link) %>
                   <div class="rss noindex pull-right hidden-xs">
-                    <%= link_to 'RSS', @content_first.content.rss_link %>
+                    <%= link_to 'RSS', @content_first.content.rss_link, :title => I18n.t('rss_title') %>
                   </div>
                 <% end %>
               </div>

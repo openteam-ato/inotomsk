@@ -5,7 +5,7 @@
   <% end %>
 <% else %>
   <%= content_tag :li, :class => 'prev' do %>
-    <%= link_to url, :rel => 'prev', :remote => remote, :class => 'prev' do %>
+    <%= link_to url, :rel => 'prev', :remote => remote, :class => 'prev', :title => I18n.t('views.pagination.previous') do %>
     <% end %>
   <% end %>
 <% end %>

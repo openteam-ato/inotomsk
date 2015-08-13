@@ -5,6 +5,33 @@ ru:
     de: "Deu"
     fr: "Fra"
 
+    ru_title: 'Перейти к версии сайта на русском языке'
+    en_title: 'English version'
+
+  to_main_page: 'На главную'
+
+  views:
+    pagination:
+      first: "Первая страница"
+      last: "Последняя страница"
+      previous: "Предыдущая страница"
+      next: "Следующая страница"
+      truncate: '&hellip;'
+
+  slider:
+    next_title: 'Далее'
+    prev_title: 'Назад'
+
+  twitter_title: 'Наш Твиттер'
+  vk_title: 'Наша страница ВКонтакте'
+  fb_title: 'Наша страница в Фейсбуке'
+  youtube_title: 'Наш канал на YouTube'
+
+  logotype_link_title: 'На главную'
+  search_placeholder: 'Поиск по сайту'
+  search_button_title: 'Найти'
+  rss_title: 'Лента RSS'
+
   time_period:
     quarter: "квартал"
     annually: "ежегодно"
@@ -34,6 +61,7 @@ ru:
   research_and_development: "исследований и разработок"
   events_list_is_empty: "Список мероприятий пуст"
   search_total_count: "Найдено"
+
   # footer
   ino_tomsk_address: "Россия, 634011, Томск, ул.&nbsp;Первомайская, 15, офис 201"
   tel: "Тел."
@@ -50,11 +78,6 @@ ru:
     news_list_part:
       '500': '<h1>Внутренняя ошибка сервера (500 ошибка)</h1>'
 
-  views:
-    pagination:
-      next: 'вперёд'
-      previous: 'назад'
-      truncate: '&hellip;'
   date:
     formats:
       custom: "%d %B %Y"
