@@ -34,38 +34,6 @@
 
       <%= render_partial_for_region(@content_second) %>
 
-      <div class='nav noindex'>
-        <%= render_navigation(road_map_navigation) %>
-      </div>
-
-      <div class="table-responsive second-table-wrapper">
-
-        <table class='table table-hover js-table'>
-          <thead>
-            <th><%= I18n.t('table_title') %></th>
-            <th><%= I18n.t('table_doc') %></th>
-            <th><%= I18n.t('table_period') %></th>
-            <th><%= I18n.t('table_performer') %></th>
-          </thead>
-
-          <tbody>
-            <% @entries.each do |type, events| %>
-              <% events.each do |event| %>
-                <tr class="<%= "js-#{event.map_layer.try(:root).try(:slug)}" if event.map_layer %>">
-                  <td class="<%= event.map_layer.try(:slug) %> <%= type %>">
-                    <p><%= event.title %></p>
-                    <p class='map_layer_title hidden-xs'><%= event.map_layer.try(:title) %></p>
-                  </td>
-                  <td><p><%= event.document_type %></p></td>
-                  <td><p><%= human_term(event) %></p></td>
-                  <td><p><%= event.performer %></p></td>
-                </tr>
-              <% end %>
-            <% end %>
-          </tbody>
-        </table>
-      </div>
-
       <%= render_partial_for_region(@content_third) %>
 
       <%= render_partial_for_region(@content_fourth) %>
