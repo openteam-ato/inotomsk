@@ -1,6 +1,6 @@
 <% content_for :content do %>
   <div class='content_wrapper index row directions_wrapper'>
-    <div class="content_side col-lg-10 col-md-9 col-sm-8 col-xs-12 map_page_wrapper">
+    <div class="content_side col-lg-9 col-md-9 col-sm-8 col-xs-12 map_page_wrapper">
 
       <div class='header row'>
         <div class="header_wrapper col-lg-6 col-md-6 col-sm-5 col-xs-12">
@@ -12,9 +12,7 @@
 
       <div class="map_wrapper col-lg-12 col-md-12" data-latitude='58.62889684478054' data-longitude='82.06246307966687'>
         <div class="map"></div>
-        <p>
-          Для уточнения места расположения объекта увеличьте масштаб карты
-        </p>
+        <p> Для уточнения места расположения объекта увеличьте масштаб карты </p>
       </div>
 
       <div class="row placemark_list">
@@ -33,7 +31,6 @@
           <% end %>
         </table>
       </div>
-
 
       <%= render_partial_for_region(@content_second) %>
 
@@ -72,5 +69,12 @@
       <%= render_partial_for_region(@content_third) %>
 
     </div>
+
+    <% if @content_navigation %>
+      <div class='content_nav noindex col-lg-3 col-md-3 col-sm-4 hidden-xs'>
+        <%= content_tag :div, render("regions/#{@content_navigation.type.underscore}", :object => @content_navigation.content), :class => 'navigation' if @content_navigation %>
+      </div>
+    <% end %>
+
   </div>
 <% end %>

@@ -7,12 +7,13 @@ class DirectionsController < MainController
 
     @events = @events.send(params[:state]) if params[:state]
 
+    # Склеивание событий дорожной карты от родителя и от детей (ancestry)
     map_layer.children.each do |child|
       @events += child.events.send(locale) unless params[:state]
 
       @events += child.events.send(locale).send(params[:state]) if params[:state]
     end
 
-    @entries = @events.group_by(&:state).sort
+    @entries = @events.group_by(&:state).sort # сгрупированные сущности
   end
 end
