@@ -24,6 +24,10 @@ Inotomsk::Application.routes.draw do
     get "ru/#{item}" => 'directions#show', :defaults => { :slug => item }
   end
 
+  %w[peredovoe-proizvodstvo/klaster-vozobnovlyaemyh-prirodnyh-resursov].each do |item|
+    get "ru/#{item}" => 'subdirections#show', :defaults => { :slug => item.split('/').last }
+  end
+
   get "en/road-map" => "road_map#index"
 
   match "poll" => "poll#show", :via => :get
