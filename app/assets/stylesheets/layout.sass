@@ -11,11 +11,24 @@
   margin: 0 auto 20px
   padding-right: 30px
 
+html, body
+  height: 100%
+
+.main_wrapper
+  min-height: 100%
+
+  &:after
+    content: ""
+    display: block
+    height: 92px
+
+.footer_wrapper
+  background: #fff image_url('footer_bg.png') no-repeat top center
+  margin-top: -72px
+  padding: 18px 0 20px
+
+
 body
   .top_menu_wrapper
     background: #ce243e image_url('top_menu_bg.jpg') no-repeat top center
 
-  .footer_wrapper
-    background: #fff image_url('footer_bg.png') no-repeat top center // height = 3px
-    padding: 18px 0 20px
-    margin-top: 20px
