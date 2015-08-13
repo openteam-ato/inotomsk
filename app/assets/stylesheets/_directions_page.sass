@@ -1,172 +1,222 @@
 .directions_wrapper
-  .table-wrapper
-    margin-top: 30px
+  .content_side
+    ul
+      margin-left: 35px
+      list-style: disc
 
-    h1
-      margin-bottom: -15px
-      margin-top: 25px
-      line-height: 30px
+      li
+        text-indent: 0 !important
+        background: transparent !important
+        margin: 0 !important
 
-    table
-      thead
-        th
-          font-size: 12px
+    h2
+      font-style: italic
+      font-family: 'Verdana', sans, sans-serif !important
+      font-size: 18px !important
+      margin: 10px 0 !important
+
+      &.more_margin
+        margin: 0 0 15px 0 !important
+
+    .table-wrapper // first table
+      margin-top: -10px
+
+      h1
+        margin-bottom: -15px
+        margin-top: 25px
+        line-height: 30px
+
+      table
+        thead
+          th
+            font-size: 12px
+            padding-left: 50px
+            border-bottom: 1px solid #ddd !important
+
+            &:last-child
+              border-left: 1px solid #ddd
+
+        td
+          font-size: 14px
           padding-left: 50px
-          border-bottom: 1px solid #ddd !important
+          vertical-align: middle
+
+          &:nth-child(2n)
+            border-right: 1px solid #ddd
+
+          &.first_column
+            width: 500px
+            padding: 0
+            text-align: left
+
+            p
+              margin: 2px 0
+              padding: 15px 10px 20px 100px
+              background-color: #e8ebfc
+
+              &.table_row1
+                background: image_url('table_row1.png') no-repeat 15px center #e8ebfc
+
+              &.table_row2
+                background: image_url('table_row2.png') no-repeat 15px center #e8ebfc
+
+              &.table_row3
+                background: image_url('table_row3.png') no-repeat 15px center #e8ebfc
+
+              &.table_row4
+                background: image_url('table_row4.png') no-repeat 15px center #e8ebfc
+
+              &.table_row5
+                background: image_url('table_row5.png') no-repeat 15px center #e8ebfc
+
+              &.table_row6
+                background: image_url('table_row6.png') no-repeat 15px center #e8ebfc
+
+              &.table_row7
+                background: image_url('table_row7.png') no-repeat 15px center #e8ebfc
+
+              &.table_row8
+                background: image_url('table_row8.png') no-repeat 15px center #e8ebfc
+
+        sub
+          bottom: 0
+          font-size: 12px
+
+    .nav // nav for second table
+      ul
+        margin: 0
+        list-style: none
+
+    .second-table-wrapper // second table
+      .table
+        th, td
+          padding-left: 0
+
+        th
+          font-weight: bold
+          border-bottom: 1px solid #ddd
+          padding-left: 20px
+
+        tr
+          position: relative
 
           &:last-child
-            border-left: 1px solid #ddd
+            border-bottom: 1px solid #ddd
 
-      td
-        font-size: 14px
-        padding-left: 50px
-        vertical-align: middle
+          td
+            border-right: 1px solid #ddd
+            padding-left: 20px
+            position: relative
+            padding-bottom: 70px
+            width: 15%
 
-        &:nth-child(2n)
-          border-right: 1px solid #ddd
+            &:first-child, &:last-child
+              width: 35%
 
-        &.first_column
-          width: 500px
-          padding: 0
-          text-align: left
+            &:first-child
+              &:after
+                position: absolute
+                content: ''
+                left: 0
+                width: 0
+                height: 98%
+                top: 1%
 
-          p
-            margin: 2px 0
-            padding: 15px 10px 20px 100px
-            background-color: #e8ebfc
+            &.implemented
+              &:after
+                border-left: 15px solid #cae31b
 
-            &.table_row1
-              background: image_url('table_row1.png') no-repeat 15px center #e8ebfc
+            &.now
+              &:after
+                border-left: 15px solid #f7c834
 
-            &.table_row2
-              background: image_url('table_row2.png') no-repeat 15px center #e8ebfc
+            &.postponed
+              &:after
+                border-left: 15px solid #f69248
 
-            &.table_row3
-              background: image_url('table_row3.png') no-repeat 15px center #e8ebfc
+            p.map_layer_title
+              position: absolute
+              bottom: 2%
+              left: 20px
+              color: #949496
+              font-style: italic
+              font-size: 10px
+              width: 80%
 
-            &.table_row4
-              background: image_url('table_row4.png') no-repeat 15px center #e8ebfc
+            &.neftehimicheskiy-klaster
+              background: transparent image-url('neftehimicheskiy-klaster_road_map.png') no-repeat 95% 95%
 
-            &.table_row5
-              background: image_url('table_row5.png') no-repeat 15px center #e8ebfc
+            &.klaster-vozobnovlyaemyh-prirodnyh-resursov
+              background: transparent image-url('klaster-vozobnovlyaemyh-prirodnyh-resursov_road_map.png') no-repeat 95% 95%
 
-            &.table_row6
-              background: image_url('table_row6.png') no-repeat 15px center #e8ebfc
+            &.nauka-i-obrazovanie
+              background: transparent image-url('nauka-i-obrazovanie_road_map.png') no-repeat 95% 95%
 
-            &.table_row7
-              background: image_url('table_row7.png') no-repeat 15px center #e8ebfc
+            &.peredovoe-proizvodstvo
+              background: transparent image-url('peredovoe-proizvodstvo_road_map.png') no-repeat 95% 95%
 
-            &.table_row8
-              background: image_url('table_row8.png') no-repeat 15px center #e8ebfc
+            &.klaster-yadernyh-tehnologiy
+              background: transparent image-url('klaster-yadernyh-tehnologiy_road_map.png') no-repeat 95% 95%
 
-      sub
-        bottom: 0
-        font-size: 12px
+            &.innovatsionnyy-territorialnyy-klaster-farmatsevtiki-meditsinskoy-tehniki-i-informatsionnyh-tehnologiy-tomskoy-oblasti
+              background: transparent image-url('farma_road_map.png') no-repeat 95% 95%
 
-  .table
-    th, td
-      padding-left: 0
+            &.lesopromyshlennyy-klaster
+              background: transparent image-url('lesopromyshlennyy-klaster_road_map.png') no-repeat 95% 95%
 
-    th
-      font-weight: bold
-      border-bottom: 1px solid #ddd
-      padding-left: 20px
+            &.umnyy-i-udobnyy-gorod
+              background: transparent image-url('umnyy-i-udobnyy-gorod_road_map.png') no-repeat 95% 95%
 
-    tr
-      position: relative
+            &.klaster-trudnoizvlekaemyh-prirodnyh-resursov
+              background: transparent image-url('klaster-trudnoizvlekaemyh-prirodnyh-resursov_road_map.png') no-repeat 95% 95%
 
-      td
-        border-right: 1px solid #ddd
-        padding-left: 20px
-        position: relative
-        padding-bottom: 70px
-        width: 15%
+            &.tehnologicheskie-innovatsii-novyy-biznes
+              background: transparent image-url('tehnologicheskie-innovatsii-novyy-biznes_road_map.png') no-repeat 95% 95%
 
-        &:first-child, &:last-child
-          width: 35%
+    .participants_wrapper
+      +clearfix
+      margin-bottom: 10px
 
-        &:first-child
+      .item
+        background-color: #fff
+        border: 1px solid #e0e0e2
+        +border-radius(5px)
+        padding: 9px 18px
+        float: left
+        width: 130px
+        margin: 0 10px 10px 0
+        height: 180px
 
-          &:after
-            position: absolute
-            content: ''
-            left: 0
-            width: 0
-            height: 98%
-            top: 1%
+        &:nth-child(6n)
+          margin-right: 0
 
-        &.implemented
-          &:after
-            border-left: 15px solid #cae31b
+        .image
+          text-align: center
 
-        &.now
-          &:after
-            border-left: 15px solid #f7c834
+        .text
+          font-size: 11px
+          margin-top: 5px
+          text-align: center
 
-        &.postponed
-          &:after
-            border-left: 15px solid #f69248
+        &:after
+          clear: both
 
-        p.map_layer_title
-          position: absolute
-          bottom: 5%
-          left: 20px
-          color: #949496
-          font-style: italic
-          font-size: 10px
-          width: 80%
+    .fourth_part
+      table
+        tr
+          border-top: 1px solid #dbdbdb
+          border-bottom: 1px solid #dbdbdb
 
-        &.neftehimicheskiy-klaster
-          background: transparent image-url('neftehimicheskiy-klaster_road_map.png') no-repeat 95% 95%
+          td
+            &:first-child
+              text-align: center
+              padding: 10px 0
 
-        &.klaster-vozobnovlyaemyh-prirodnyh-resursov
-          background: transparent image-url('klaster-vozobnovlyaemyh-prirodnyh-resursov_road_map.png') no-repeat 95% 95%
+              p
+                font-size: 11px
 
-        &.nauka-i-obrazovanie
-          background: transparent image-url('nauka-i-obrazovanie_road_map.png') no-repeat 95% 95%
+            &:last-child
+              padding: 10px 0 10px 20px
 
-        &.peredovoe-proizvodstvo
-          background: transparent image-url('peredovoe-proizvodstvo_road_map.png') no-repeat 95% 95%
-
-        &.klaster-yadernyh-tehnologiy
-          background: transparent image-url('klaster-yadernyh-tehnologiy_road_map.png') no-repeat 95% 95%
-
-        &.innovatsionnyy-territorialnyy-klaster-farmatsevtiki-meditsinskoy-tehniki-i-informatsionnyh-tehnologiy-tomskoy-oblasti
-          background: transparent image-url('farma_road_map.png') no-repeat 95% 95%
-
-        &.lesopromyshlennyy-klaster
-          background: transparent image-url('lesopromyshlennyy-klaster_road_map.png') no-repeat 95% 95%
-
-        &.umnyy-i-udobnyy-gorod
-          background: transparent image-url('umnyy-i-udobnyy-gorod_road_map.png') no-repeat 95% 95%
-
-        &.klaster-trudnoizvlekaemyh-prirodnyh-resursov
-          background: transparent image-url('klaster-trudnoizvlekaemyh-prirodnyh-resursov_road_map.png') no-repeat 95% 95%
-
-        &.tehnologicheskie-innovatsii-novyy-biznes
-          background: transparent image-url('tehnologicheskie-innovatsii-novyy-biznes_road_map.png') no-repeat 95% 95%
-
-  .participants_wrapper
-    .item
-      background-color: #fff
-      border: 1px solid #e0e0e2
-      +border-radius(5px)
-      padding: 9px 18px
-      float: left
-      width: 130px
-      margin: 0 10px 10px 0
-      height: 180px
-
-      &:nth-child(6n)
-        margin-right: 0
-
-      .image
-        text-align: center
-
-      .text
-        font-size: 11px
-        margin-top: 5px
-        text-align: center
-
-      &:after
-        clear: both
+          &:last-child
+            border-bottom: 0
