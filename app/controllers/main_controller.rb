@@ -35,6 +35,7 @@ class MainController < ApplicationController
       @current_path = request.fullpath.gsub(/\?.*$/, '')
 
       @page_title = page.title
+      @page_meta = page.meta
     end
 
     def cms_address
