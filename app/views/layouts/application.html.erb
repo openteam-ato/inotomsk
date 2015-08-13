@@ -22,8 +22,8 @@
     <% if entry_date %>
       <meta name="entry_date" content="<%= entry_date %>">
     <% end %>
-    <meta name='keywords' content='<%= @page_meta.keywords %>' />
-    <meta name='description' content='<%= @page_meta.description %>' />
+    <meta name='keywords' content='<%= @page_meta.try(:keywords) %>' />
+    <meta name='description' content='<%= @page_meta.try(:description) %>' />
   </head>
   <body>
 
