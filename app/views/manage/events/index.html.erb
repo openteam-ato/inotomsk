@@ -13,8 +13,8 @@
       </div>
       <%= link_to "Все мероприятия", manage_events_path(params.except(:state)), class: "all #{selected_filter('all', 'state')}" %>
       <%= link_to "Реализованные", manage_events_path(params.merge(state: "implemented")), class: "bg-success #{selected_filter('implemented', 'state')}" %>
-      <%= link_to "Реализуемые", manage_events_path(params.merge(state: "now")), class: "bg-info #{selected_filter('now', 'state')}" %>
-      <%= link_to "Отложено", manage_events_path(params.merge(state: "postponed")), class: "bg-warning #{selected_filter('postponed', 'state')}" %>
+      <%= link_to "Выполняемые", manage_events_path(params.merge(state: "now")), class: "bg-info #{selected_filter('now', 'state')}" %>
+      <%= link_to "Запланированные", manage_events_path(params.merge(state: "postponed")), class: "bg-warning #{selected_filter('postponed', 'state')}" %>
     </div>
     <% if @events.present? %>
       <table class="table table-striped table-hover">
