@@ -614,18 +614,22 @@ $content_nav_padding: 12px
             height: $thumb_heidht
             outline: none
             position: relative
+
             span
               display: none
               position: absolute
               top: 0
               left: 0
-              width: $thumb_width - $hover_border * 2
-              height: $thumb_heidht - $hover_border * 2
+              width: 82px
+              height: 55px
               border: $hover_border solid #d8287d
+
             &:hover span
               display: block
+
           &.selected
             background-color: #a41162
+
             img
               +opacity(0.5)
 
