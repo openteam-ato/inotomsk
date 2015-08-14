@@ -19,6 +19,7 @@ group :default do
   gem 'enumerize'
   gem 'esp-commons'
   gem 'friendly_id'
+  gem 'geoip'
   gem 'hashie'
   gem 'inherited_resources'
   gem 'kaminari'

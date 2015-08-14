@@ -2,6 +2,7 @@ class MainController < ApplicationController
   helper_method :cms_address
   before_filter :prepare_locale
   before_filter :prepare_cms
+  before_filter :check_country
 
   include ApplicationHelper
   include Manage::ManageHelper
@@ -36,6 +37,15 @@ class MainController < ApplicationController
 
       @page_title = page.title
       @page_meta = page.meta
+    end
+
+    def check_country
+      country = GeoIP.new(Rails.root.join('GeoLiteCity.dat')).city(remote_ip).try(:country_name)
+      redirect_to '/en' if country != 'Russian Federation' && I18n.locale != :en
+    end
+
+    def remote_ip
+      request.remote_ip || nil
     end
 
     def cms_address
