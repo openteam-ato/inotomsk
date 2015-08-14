@@ -24,7 +24,15 @@ Inotomsk::Application.routes.draw do
     get "ru/#{item}" => 'directions#show', :defaults => { :slug => item }
   end
 
-  %w[peredovoe-proizvodstvo/klaster-vozobnovlyaemyh-prirodnyh-resursov].each do |item|
+  %w[
+    peredovoe-proizvodstvo/neftehimicheskiy-klaster
+    peredovoe-proizvodstvo/klaster_yadernyh_tekhnologiy
+    peredovoe-proizvodstvo/industrialnyy-park
+    peredovoe-proizvodstvo/klaster-farmatsevtiki-medtehniki-i-it
+    peredovoe-proizvodstvo/lesopromyshlennyy-klaster
+    peredovoe-proizvodstvo/klaster-vozobnovlyaemyh-prirodnyh-resursov
+    peredovoe-proizvodstvo/klaster-trudnoizvlekaemyh-prirod-resursov
+   ].each do |item|
     get "ru/#{item}" => 'subdirections#show', :defaults => { :slug => item.split('/').last }
   end
 
