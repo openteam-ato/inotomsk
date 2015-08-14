@@ -1,37 +1,36 @@
-<div class="row">
+<div class="row interviews_list_part">
 
   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 interviews">
 
-      <% object.items.each_slice(4) do |slice| %>
-        <div class='row interviews_list'>
-          <% slice.each do |interview| %>
-            <div class='col-xs-12 col-sm-6 col-md-3 col-lg-3 item'>
-              <% if interview.images.any? %>
-                <div class='image'>
-                  <%= link_to image_tag(interview.images.first.thumbnail.url.sub(/\d+-\d+/,"250-250!m"), :class => 'img-responsive', :alt => interview.images.first.thumbnail.description), interview.link %>
-                  <div class="stub"></div>
-                </div>
-              <% end %>
-              <div class='description'>
-                <%= raw interview.annotation %>
-                <p class='title'><%= link_to strip_tags(interview.title), interview.link %></p>
-                <p class='date'>
-                  <%= l Date.parse(interview.since), :format => :custom %>
-                  <span class='time'>
-                    <%= l Time.parse(interview.since), :format => :custom %>
-                  </span>
-                </p>
+    <% object.items.each_slice(4) do |slice| %>
+      <div class='row interviews_list'>
+        <% slice.each do |interview| %>
+          <div class='col-xs-12 col-sm-6 col-md-3 col-lg-3 item'>
+            <% if interview.images.any? %>
+              <div class='image'>
+                <%= link_to image_tag(interview.images.first.thumbnail.url.sub(/\d+-\d+/,"250-250!m"), :class => 'img-responsive', :alt => interview.images.first.thumbnail.description), interview.link %>
+                <div class="stub"></div>
               </div>
+            <% end %>
+            <div class='description'>
+              <%= raw interview.annotation %>
+              <p class='title'><%= link_to strip_tags(interview.title), interview.link %></p>
+              <p class='date'>
+                <%= l Date.parse(interview.since), :format => :custom %>
+                <span class='time'>
+                  <%= l Time.parse(interview.since), :format => :custom %>
+                </span>
+              </p>
             </div>
-          <% end %>
-        </div>
-      <% end %>
-    </div>
-
-    <% if object.pagination %>
-      <% @array = object.items %>
-      <% @array = Kaminari.paginate_array(@array, :total_count => object.pagination.total_count).page(object.pagination.current_page).per(object.pagination.per_page) %>
-      <%= paginate @array, :outer_window => 3 %>
+          </div>
+        <% end %>
+      </div>
     <% end %>
   </div>
+
+  <% if object.pagination %>
+    <% @array = object.items %>
+    <% @array = Kaminari.paginate_array(@array, :total_count => object.pagination.total_count).page(object.pagination.current_page).per(object.pagination.per_page) %>
+    <%= paginate @array, :outer_window => 3 %>
+  <% end %>
 </div>

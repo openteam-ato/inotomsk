@@ -63,6 +63,12 @@
         <% end %>
 
         <%= render_partial_for_region(@content_first) %>
+
+        <% if @content_second && @content_second.template == 'interview_list_part' %>
+          <%= content_tag :h1, @content_second.part_title, :class => 'pull-left part_header' %>
+          <%= render_partial_for_region(@content_second) %>
+        <% end %>
+
       <% end %>
 
     </div>
