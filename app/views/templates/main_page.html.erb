@@ -92,12 +92,6 @@
               <div class='description'>
                 <%= raw interview.annotation %>
                 <p class='title'><%= link_to interview.title.truncate(150), interview.link %></p>
-                <p class='date'>
-                  <%= l Date.parse(interview.since), :format => :custom %>
-                  <span class='time'>
-                    <%= l Time.parse(interview.since), :format => :custom %>
-                  </span>
-                </p>
               </div>
             </div>
           <% end %>
