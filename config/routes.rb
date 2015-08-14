@@ -24,6 +24,7 @@ Inotomsk::Application.routes.draw do
     get "ru/#{item}" => 'directions#show', :defaults => { :slug => item }
   end
 
+  # peredovoe proizvodsto
   %w[
     peredovoe-proizvodstvo/neftehimicheskiy-klaster
     peredovoe-proizvodstvo/klaster_yadernyh_tekhnologiy

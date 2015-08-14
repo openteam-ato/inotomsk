@@ -7,9 +7,11 @@ class RoadMapController < MainController
   private
 
   def events
-    return Event.where(:map_layer_id => MapLayer.where(:slug => params[:filters]).flat_map(&:id)).send(locale) if params[:filters] && !params[:state]
+    layer_ids = MapLayer.where(:slug => params[:filters]).map(&:id) + MapLayer.where(:slug => params[:filters]).flat_map(&:children).flat_map(&:id)
 
-    return Event.where(:map_layer_id => MapLayer.where(:slug => params[:filters]).flat_map(&:id)).send(locale).send(params[:state]) if params[:filters] && params[:state]
+    return Event.where(:map_layer_id => layer_ids).send(locale) if params[:filters] && !params[:state]
+
+    return Event.where(:map_layer_id => layer_ids).send(locale).send(params[:state]) if params[:filters] && params[:state]
 
     return Event.send(locale) unless params[:state]
 
