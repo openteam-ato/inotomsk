@@ -343,3 +343,4 @@ DEPENDENCIES
   turbo-sprockets-rails3
   uglifier
   unicorn
+  whenever

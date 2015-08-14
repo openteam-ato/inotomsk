@@ -48,4 +48,5 @@ end
 
 group :production do
   gem 'unicorn'
+  gem 'whenever'
 end
