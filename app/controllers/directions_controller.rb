@@ -1,19 +1,20 @@
 class DirectionsController < MainController
   def show
-    map_layer = MapLayer.find(params[:slug])
-    @placemarks = map_layer.children.flat_map(&:placemarks) + map_layer.placemarks
+    @map_layer = MapLayer.find(params[:slug])
 
-    @events = map_layer.events.send(locale)
+    @placemarks = placemarks
+  end
 
-    @events = @events.send(params[:state]) if params[:state]
+  private
+  def placemarks
+    return (@map_layer.children.flat_map(&:placemarks) + @map_layer.placemarks) unless params[:map_layer]
 
-    # Склеивание событий дорожной карты от родителя и от детей (ancestry)
-    map_layer.children.each do |child|
-      @events += child.events.send(locale) unless params[:state]
-
-      @events += child.events.send(locale).send(params[:state]) if params[:state]
-    end
-
-    @entries = @events.group_by(&:state).sort # сгрупированные сущности
+    map_layer = MapLayer.find(params[:map_layer])
+    placemarks = if map_layer.is_root?
+                   map_layer.children.flat_map(&:placemarks) + map_layer.placemarks
+                 else
+                   map_layer.placemarks
+                 end
+    placemarks
   end
 end
