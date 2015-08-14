@@ -60,7 +60,7 @@ SitemapGenerator::Sitemap.create do
 
 end
 
-Kernel.system "gunzip -c #{Rails.root.join('public')}/sitemap.xml.gz > #{Rails.root.join('public')}/sitemap.xml" if Rails.env.development?
+Kernel.system "gunzip -c #{SitemapGenerator::Sitemap.sitemaps_path}/sitemap.xml.gz > #{Rails.root.join('public')}/sitemap.xml"
 
 SitemapGenerator::Sitemap.ping_search_engines(
   "#{Settings['app.url']}/sitemap.xml.gz",
