@@ -31,6 +31,7 @@ group :default do
   gem 'rails', '~> 3.2'
   gem 'russian'
   gem 'simple_form'
+  gem 'sitemap_generator'
   gem 'sso-auth', '0.0.6'
   gem 'stop_ie'
 end
