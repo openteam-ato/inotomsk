@@ -27,7 +27,7 @@
           <div class='header row'>
             <% if @content_header_navigation %>
               <div class="header_wrapper col-lg-6 col-md-6 col-sm-5 col-xs-12">
-                <%= content_tag :h1, @content_first.part_title, :class => 'pull-left part_header' if @content_first %>
+                <%= content_tag :h1, @content_first.part_title, :class => 'pull-left part_header' if @content_first && !@content_first.content.items.blank? %>
               </div>
 
               <div class="nav_wrapper col-lg-6 col-md-6 col-sm-7 col-xs-12">
@@ -48,7 +48,7 @@
               <% else %>
                 <div class="header_wrapper col-lg-12 col-md-12 col-sm-12 col-xs-12">
               <% end %>
-                <%= content_tag :h1, @content_first.part_title, :class => 'pull-left part_header' if @content_first %>
+                <%= content_tag :h1, @content_first.part_title, :class => 'pull-left part_header' if @content_first && !@content_first.content.items.blank? %>
               </div>
 
               <div class="nav_wrapper col-lg-2 col-md-2 col-sm-2 col-xs-12">
