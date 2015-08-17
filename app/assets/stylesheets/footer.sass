@@ -2,8 +2,20 @@
   +clearfix
   line-height: 1.7
 
+  .logotype_ru
+    a
+      text-decoration: none
+
+      h4
+        color: #000
+        padding-left: 7px
+        font-style: italic
+        margin-top: 3px
+
   .column
-    &.contacts
+    .contacts
+      float: left
+
       .bolder
         font-size: 1.8em
         font-weight: bold
@@ -41,7 +53,9 @@
     &.logotype_ru
       padding-left: 30px
 
-    &.developers
+    .developers
+      float: right
+
       .metrika
         clear: both
         margin-top: 10px
