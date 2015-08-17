@@ -30,6 +30,16 @@ Inotomsk::Application.routes.draw do
     get "ru/#{item}" => 'directions#show', :defaults => { :slug => item }, :as => item.underscore
   end
 
+  %w[
+    advanced-industry
+    science-and-education
+    technological-innovations-new-businesses
+    smart-and-handy-city
+    business-environment
+  ].each do |item|
+    get "en/#{item}" => 'directions#show', :defaults => { :slug => item }, :as => item.underscore
+  end
+
   # peredovoe proizvodsto
   %w[
     peredovoe-proizvodstvo/neftehimicheskiy-klaster
