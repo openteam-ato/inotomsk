@@ -11,6 +11,7 @@
       <%= render_partial_for_region(@content_first) %>
 
       <% if @placemarks.present? %>
+        <h2 class='more_margin objects'>Объекты по направлению</h2>
         <div class='map_page_wrapper'>
           <div class="col-lg-4 layers col-md-4">
             <ul class='layers_list'>
@@ -26,6 +27,7 @@
               </li>
             </ul>
           </div>
+
           <div class="map_wrapper col-lg-8" data-latitude='58.62889684478054' data-longitude='82.06246307966687'>
             <div class="map"></div>
             <p> Для уточнения места расположения объекта увеличьте масштаб карты </p>
