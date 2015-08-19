@@ -49,6 +49,17 @@ Inotomsk::Application.routes.draw do
     peredovoe-proizvodstvo/lesopromyshlennyy-klaster
     peredovoe-proizvodstvo/klaster-vozobnovlyaemyh-prirodnyh-resursov
     peredovoe-proizvodstvo/klaster-trudnoizvlekaemyh-prirod-resursov
+
+    nauka-i-obrazovanie/nauchno-obrazovatelnyy-park
+    nauka-i-obrazovanie/uchastie-v-federalnyh-initsiativah
+
+    umnyy-i-udobnyy-gorod/tomskaya-aglomeratsiya
+    umnyy-i-udobnyy-gorod/tomskie-naberezhnye
+    umnyy-i-udobnyy-gorod/meditsinskiy-park
+    umnyy-i-udobnyy-gorod/istoriko-kulturnyy-park
+    umnyy-i-udobnyy-gorod/sportivnyy-park
+    umnyy-i-udobnyy-gorod/transportnaya-infrastruktura
+
    ].each do |item|
     get "ru/#{item}" => 'subdirections#show', :defaults => { :slug => item.split('/').last }
   end
