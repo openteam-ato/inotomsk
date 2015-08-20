@@ -16,4 +16,6 @@ $ ->
   init_layers() if $('.js-toggle-layers').length
   init_road_map_nav() if $('.map_layer_nav').length
 
+  init_colorbox()
+
   false

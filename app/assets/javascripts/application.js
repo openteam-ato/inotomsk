@@ -34,4 +34,5 @@
  * = require init
  * = require map
  * = require road_map
+ * = require colorbox
  */
