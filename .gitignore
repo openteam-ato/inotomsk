@@ -22,3 +22,4 @@
 /config/settings.yml
 /public/assets
 /public/sitemap*
+.vagrant

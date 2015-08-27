@@ -11,26 +11,40 @@
       <%= render_partial_for_region(@content_first) %>
 
       <% if @placemarks.present? %>
-        <div class="map_wrapper col-lg-12 col-md-12" data-latitude='58.62889684478054' data-longitude='82.06246307966687'>
-          <div class="map"></div>
-          <p> Для уточнения места расположения объекта увеличьте масштаб карты </p>
-        </div>
+        <div class='map_page_wrapper'>
+          <div class="col-lg-4 layers col-md-4">
+            <ul class='layers_list'>
+              <li class='<%= @map_layer.slug %>'>
+                <ul>
+                  <li class="<%= @map_layer.slug %>">
+                    <%= link_to @map_layer.title, send("#{@map_layer.slug.underscore}_path", :map_layer => @map_layer.slug) %>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
 
-        <div class="row placemark_list">
-          <table class="table table-striped table-hover visible-xs visible-sm">
-            <% @placemarks.each do |placemark| %>
-              <% placemark.addresses.each_with_index do |address, index| %>
-                <tr class="placemark_list_item <%= index !=0 ? 'hidden' : '' %>" data-latitude=<%= address.latitude %> data-longitude=<%= address.longitude %> data-icon=<%= layer_icon(placemark.map_layer) %> data-title="<%= placemark.title %>" data-logotype=<%= placemark_logotype(placemark) %>>
-                  <td>
-                    <%= image_tag layer_icon(placemark.map_layer) %>
-                  </td>
-                  <td>
-                    <%= placemark.title %>
-                  </td>
-                </tr>
+          <div class="map_wrapper col-lg-8" data-latitude='58.62889684478054' data-longitude='82.06246307966687'>
+            <div class="map"></div>
+            <p> Для уточнения места расположения объекта увеличьте масштаб карты </p>
+          </div>
+
+          <div class="row placemark_list">
+            <table class="table table-striped table-hover visible-xs visible-sm">
+              <% @placemarks.each do |placemark| %>
+                <% placemark.addresses.each_with_index do |address, index| %>
+                  <tr class="placemark_list_item <%= index !=0 ? 'hidden' : '' %>" data-latitude=<%= address.latitude %> data-longitude=<%= address.longitude %> data-icon=<%= layer_icon(placemark.map_layer) %> data-title="<%= placemark.title %>" data-logotype=<%= placemark_logotype(placemark) %>>
+                    <td>
+                      <%= image_tag layer_icon(placemark.map_layer) %>
+                    </td>
+                    <td>
+                      <%= placemark.title %>
+                    </td>
+                  </tr>
+                <% end %>
               <% end %>
-            <% end %>
-          </table>
+            </table>
+          </div>
         </div>
       <% end %>
 
