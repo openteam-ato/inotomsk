@@ -55,9 +55,7 @@ module ApplicationHelper
     until_date, until_time = l(event.until.to_datetime, :format => '%d.%B.%Y %H:%M').split(' ')
 
     since_date.gsub!(".", " ")
-    since_date.gsub!(" #{Date.today.year}", "")
     until_date.gsub!('.', ' ')
-    until_date.gsub!(" #{Date.today.year}", "")
 
     since_arr = []
     until_arr = []
