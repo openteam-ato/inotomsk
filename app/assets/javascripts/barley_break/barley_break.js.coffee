@@ -92,7 +92,7 @@ show_solved_message = (count) ->
         'data_track_addressbar': true
       };
     </script>
-    <script type='text/javascript' src='http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4fa1e20b23c1cc76'></script>
+    <script type='text/javascript' src='//s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4fa1e20b23c1cc76'></script>
   ").dialog
     title: "Поздравляем!"
     modal: true
