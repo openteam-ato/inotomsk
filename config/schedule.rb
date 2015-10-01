@@ -9,5 +9,5 @@ else
 end
 
 every 3.hours do
-  rake 'sitemap:refresh'
+  rake 'sitemap:create'
 end
