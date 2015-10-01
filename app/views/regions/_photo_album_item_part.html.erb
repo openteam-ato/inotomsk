@@ -1,3 +1,5 @@
+<% raise ActionController::RoutingError.new('Not Found') if object.blank? %>
+
 <% unless object.blank? %>
   <div class="photo_album_show">
     <p class='date'>

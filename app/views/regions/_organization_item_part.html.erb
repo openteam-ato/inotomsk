@@ -1,3 +1,5 @@
+<% raise ActionController::RoutingError.new('Not Found') if object.blank? %>
+
 <div class="innovation_organization">
   <% unless object.organization.image_url.blank? %>
     <div class="logo">

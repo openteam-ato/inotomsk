@@ -1,3 +1,5 @@
+<% raise ActionController::RoutingError.new('Not Found') if object.blank? %>
+
 <div class='interview_show'>
   <div class="header">
     <% if object.images.any? %>

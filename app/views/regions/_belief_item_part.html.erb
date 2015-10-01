@@ -1,3 +1,5 @@
+<% raise ActionController::RoutingError.new('Not Found') if object.blank? %>
+
 <div class='belief_show'>
   <div class="header <%= belief_color %>">
     <% if object.images.any? %>
