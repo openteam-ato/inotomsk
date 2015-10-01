@@ -22,8 +22,8 @@
     <% if entry_date %>
       <meta name="entry_date" content="<%= entry_date %>">
     <% end %>
-    <meta name='keywords' content='<%= @page_meta.try(:keywords) %>' />
-    <meta name='description' content='<%= @page_meta.try(:description) %>' />
+    <meta name='keywords' content='<%= @page_meta.try(:keywords).presence || yield(:meta_keywords) %>' />
+    <meta name='description' content='<%= @page_meta.try(:description).presence || yield(:meta_description) %>' />
   </head>
   <body>
 
@@ -137,6 +137,7 @@
             <div class="developers">
               <p class='pull-right'><%= t "development" %>: <%= mail_to 'developers@openteam.ru', 'OpenTeam' %></p>
               <%= render :partial => 'commons/yandex_metrika' %>
+              <%= content_tag :p, link_to('JSON from CMS', @link_to_json, :target => '_blank') if Rails.env.development? %>
             </div>
           </div>
         </div>
