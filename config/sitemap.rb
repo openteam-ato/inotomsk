@@ -79,7 +79,7 @@ class CmsData
     I18n.available_locales.each do |locale|
       paths += find_all_values_for(response_locale(locale))
     end
-    paths = paths.delete_if{ |hash| hash[:path].scan(/#|\Ahttps.+|\A\/ru\/form\z/).any? }
+    paths = paths.delete_if{ |hash| hash[:path].scan(/\Ahttps?/).any? }
     paths = paths.reverse.uniq{ |hash| hash[:path] }.reverse
     paths += news_urls_for(paths)
     paths = paths.uniq{ |hash| hash[:path] }.sort{ |a, b| a[:path] <=> b[:path] }
