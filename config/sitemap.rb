@@ -49,6 +49,7 @@ class CmsData
       url = "#{cms_address}#{path[:path]}.json"
       response_json = response(url)
 
+      puts "\nregions is nil for: #{url}" if response_json.try(:[], 'page').try(:[], 'regions').blank?
       response_json.try(:[], 'page').try(:[], 'regions').each do |region_name, region_content|
         next if region_content.blank? || allow_part_types.exclude?(region_content.try(:[], 'type'))
         news_list_part = region_content.try(:[], 'content')
@@ -59,6 +60,7 @@ class CmsData
           pages = (total_count / per_page).ceil if per_page != 0
           (2..pages.to_i).each do |page|
             response_json = response("#{url}?page=#{page}")
+            puts "\nregions is nil for: #{url}" if response_json.try(:[], 'page').try(:[], 'regions').blank?
             response_json.try(:[], 'page').try(:[], 'regions').each do |region_name, region_content|
               next if region_content.blank? || allow_part_types.exclude?(region_content.try(:[], 'type'))
               news_list_part = region_content.try(:[], 'content')
@@ -86,6 +88,7 @@ class CmsData
     end_time = Time.zone.now
     puts "\nFinish: #{I18n.l(end_time)}"
     puts "Diff: #{Time.diff(start_time, end_time)[:diff]}"
+    puts "Count of links: #{paths.count}"
 
     paths
   end
