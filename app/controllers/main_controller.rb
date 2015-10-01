@@ -21,7 +21,7 @@ class MainController < ApplicationController
     end
 
     def prepare_cms
-      render :file => "#{Rails.root}/public/404.html", :layout => false and return if request_status == 404
+      render :file => "#{Rails.root}/public/404", :format => :html, :layout => false and return if request_status == 404
 
       if request.xhr?
         render_partial_for_region(request_hashie)
@@ -37,6 +37,7 @@ class MainController < ApplicationController
 
       @page_title = page.title
       @page_meta = page.meta
+      @link_to_json = remote_url
     end
 
     def check_country
