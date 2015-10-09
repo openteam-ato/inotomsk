@@ -2,8 +2,9 @@
   ymaps.ready ->
     $map = $('.map_wrapper .map')
     map = new ymaps.Map $map[0],
-      center: [parseFloat($('.map_wrapper').attr('data-latitude')), parseFloat($('.map_wrapper').attr('data-longitude'))]
-      zoom: 6
+      #center: [parseFloat($('.map_wrapper').attr('data-latitude')), parseFloat($('.map_wrapper').attr('data-longitude'))]
+      center: [56.457573, 84.954303]
+      zoom: 11
       behaviors: ['drag', 'scrollZoom']
       controls: []
     ,
