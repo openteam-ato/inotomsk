@@ -10,11 +10,14 @@
 
       <%= render_partial_for_region(@content_first) %>
 
+
       <% if @placemarks.present? %>
         <div class='map_page_wrapper'>
           <div class="col-lg-4 layers col-md-4">
             <ul class='layers_list'>
-              <li class='<%= @map_layer.slug %>'>
+              <li class='<%= @map_layer.parent.slug %>'>
+                <%= link_to @map_layer.parent.title, map_layers_path(:map_layer => @map_layer.parent.slug) %>
+
                 <ul>
                   <li class="<%= @map_layer.slug %>">
                     <%= link_to @map_layer.title, send("#{@map_layer.slug.underscore}_path", :map_layer => @map_layer.slug) %>
