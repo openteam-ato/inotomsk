@@ -1,5 +1,5 @@
 class Placemark < ActiveRecord::Base
-  attr_accessible :title, :logotype, :map_layer_id, :address
+  attr_accessible :title, :logotype, :map_layer_id, :address, :description
   attr_accessor :address
 
   has_many :events,    dependent: :destroy

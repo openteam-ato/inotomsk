@@ -11,6 +11,7 @@ ru:
         visible: Показывать в легенде карты
       placemark:
         title: Название
+        description: Описание
         map_layer: Слой
         logotype: Логотип
         address: Адрес

@@ -6,6 +6,9 @@
     <div class="form-group textarea_wrapper">
       <%= f.input :title, input_html: {rows: 8} %>
     </div>
+    <div class="form-group textarea_wrapper">
+      <%= f.input :description, as: :text, input_html: {rows: 20, cols: 143} %>
+    </div>
     <div class="form-group">
       <label class="select required control-label" for="placemark_map_layer_id"> <abbr title="Обязательное для заполнения поле">*</abbr><%= I18n.t('simple_form.labels.placemark.map_layer') %></label>
       <div class="controls">

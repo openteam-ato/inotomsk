@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150813091538) do
+ActiveRecord::Schema.define(:version => 20151020052713) do
 
   create_table "addresses", :force => true do |t|
     t.float   "latitude"
@@ -79,6 +79,7 @@ ActiveRecord::Schema.define(:version => 20150813091538) do
     t.integer  "map_layer_id"
     t.datetime "created_at",            :null => false
     t.datetime "updated_at",            :null => false
+    t.text     "description"
   end
 
   create_table "users", :force => true do |t|

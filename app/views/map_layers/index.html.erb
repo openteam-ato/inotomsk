@@ -51,7 +51,7 @@
             </tr>
             <% value.each do |placemark| %>
               <% placemark.addresses.each_with_index do |address, index| %>
-                <tr class="placemark_list_item <%= index !=0 ? 'hidden' : '' %>" data-latitude=<%= address.latitude %> data-longitude=<%= address.longitude %> data-icon=<%= layer_icon(placemark.map_layer) %> data-title="<%= placemark.title %>" data-logotype=<%= placemark_logotype(placemark) %>>
+                <tr class="placemark_list_item <%= index !=0 ? 'hidden' : '' %>" data-latitude=<%= address.latitude %> data-longitude=<%= address.longitude %> data-icon=<%= layer_icon(placemark.map_layer) %> data-title="<%= placemark.title %>" data-description="<%= placemark.description %>" data-logotype=<%= placemark_logotype(placemark) %>>
                   <td>
                     <%= image_tag layer_icon(placemark.map_layer) %>
                   </td>

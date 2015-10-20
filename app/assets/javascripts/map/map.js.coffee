@@ -71,14 +71,16 @@
         clusterBalloonContentLayout: 'cluster#balloonCarousel'
         clusterBalloonPagerType: 'marker'
         clusterBalloonContentLayoutWidth: 400
-        clusterBalloonContentLayoutHeight: 350
+        clusterBalloonContentLayoutHeight: 300
 
       $('.placemark_list_item').each (index, item) ->
         coords = [$(item).attr('data-latitude'), $(item).attr('data-longitude')]
         title = [$(item).attr('data-title')]
+        description = [$(item).attr('data-description')]
         contentBody = "<div>
                         <div class='balloon_content_header' style='margin:5px 0;padding-bottom:5px;'>
-                          #{title}
+                          <p>#{title}</p>
+                          <p>#{description}</p>
                         </div>
                       </div>"
 
