@@ -70,8 +70,8 @@
         hideIconOnBalloonOpen: false
         clusterBalloonContentLayout: 'cluster#balloonCarousel'
         clusterBalloonPagerType: 'marker'
-        clusterBalloonContentLayoutWidth: 210
-        clusterBalloonContentLayoutHeight: 240
+        clusterBalloonContentLayoutWidth: 400
+        clusterBalloonContentLayoutHeight: 350
 
       $('.placemark_list_item').each (index, item) ->
         coords = [$(item).attr('data-latitude'), $(item).attr('data-longitude')]
