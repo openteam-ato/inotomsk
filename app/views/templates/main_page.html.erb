@@ -187,9 +187,11 @@
     </div>
   </div>
 
-  <div class='description_part row'>
-    <div class='col-xs-12'>
-      <%= @description_part.content.body.html_safe %>
+  <% if @description_part.present? %>
+    <div class='description_part row'>
+      <div class='col-xs-12'>
+        <%= @description_part.content.body.html_safe %>
+      </div>
     </div>
-  </div>
+  <% end %>
 <% end %>
