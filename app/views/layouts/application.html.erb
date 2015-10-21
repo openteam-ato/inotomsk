@@ -5,6 +5,7 @@
     <title><%= strip_tags(@page_title) %> | <%= strip_tags(@site_name.content.body) %></title>
     <%= yield :head_rss_link %>
     <%= favicon_link_tag %>
+    <%= canonical_url.html_safe %>
     <meta name='yandex-verification' content='6e7c8aa47cfa8b4f' />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= stylesheet_link_tag    'application' %>

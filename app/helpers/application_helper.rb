@@ -2,6 +2,12 @@
 
 module ApplicationHelper
 
+  def canonical_url
+    return "<link rel='canonical' href='/' />" if request.path == '/ru'
+
+    ''
+  end
+
   def render_partial_for_region(region)
     if region && (region.response_status == 200 || !region.response_status?)
       render :partial => "regions/#{region.template}",
