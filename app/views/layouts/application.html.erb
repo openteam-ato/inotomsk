@@ -59,7 +59,7 @@
 
         <div class='header noindex row'>
           <div class='logotype col-lg-2 col-md-2 col-sm-4 col-xs-12 hidden-xs'>
-            <%= link_to "/#{locale}" do %>
+            <%= link_to locale == :ru ? '/' : "/#{locale}", :rel => :nofollow do %>
               <%= image_tag "logotype_#{locale}.png", :class => 'img-responsive', :alt => 'ИНОТомск', :title => I18n.t('to_main_page') %>
               <h4><%= I18n.t('innovative_center') %></h4>
             <% end %>
@@ -119,10 +119,7 @@
         <div class="row">
           <noindex>
           <div class='column logotype_<%= I18n.locale %> col-sm-2 hidden-xs'>
-            <%= link_to "/" do %>
-              <%= image_tag("logotype_#{locale}.png", :title => I18n.t('to_main_page'), :height => '80px') %>
-              <h4><%= I18n.t('innovative_center') %></h4>
-            <% end %>
+            <a href='/'>ИНО Томск</a>, <%= Date.today.year %>
           </div>
           <div class="col-sm-5 col-xs-7">
             <% if locale.eql?(:ru) %>
