@@ -91,7 +91,10 @@
               <% end %>
               <div class='description'>
                 <%= raw interview.annotation %>
-                <p class='title'><%= link_to interview.title.truncate(150), interview.link %></p>
+                <p class='title'>
+                  <% interview_title = interview.title.truncate(150).gsub(/(«ИНО Томск»)/, '<noindex>\1</noindex>').html_safe %>
+                  <%= link_to interview_title, interview.link %>
+                </p>
               </div>
             </div>
           <% end %>
