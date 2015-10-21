@@ -43,6 +43,7 @@ class MainController < ApplicationController
     def check_country
       return unless request.fullpath.match(/^\/$/)
       return if remote_ip == '127.0.0.1' || request.user_agent.to_s.match(/\(.*https?:\/\/.*\)/)
+      geo_data = GeoIP.new(Rails.root.join('GeoLiteCity.dat'))
       country = request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first.to_s.upcase.presence || geo_data.city(remote_ip).try(:country_code2)
       puts country
       redirect_to '/en' if country != 'RU' && I18n.locale != :en
