@@ -4,5 +4,7 @@ Allow: /
 Disallow: /manage
 Disallow: /auth
 
+Host: ino-tomsk.ru
+
 Sitemap: https://ino-tomsk.ru/sitemap.xml
 Sitemap: https://ino-tomsk.ru/sitemap.xml.gz
