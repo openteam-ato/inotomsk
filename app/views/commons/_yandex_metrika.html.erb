@@ -1,4 +1,4 @@
-<% if Rails.env.production? %>
+<% if Rails.env.production? && request.host == 'ino-tomsk.ru' %>
   <div class="pull-right metrika">
     <!-- Yandex.Metrika informer -->
     <a href="https://metrika.yandex.ru/stat/?id=31889446&amp;from=informer"
