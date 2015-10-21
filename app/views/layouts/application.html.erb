@@ -91,6 +91,7 @@
             </div>
 
             <% unless @targets.blank? %>
+              <noindex>
               <div class="targets pull-right">
                 <div class='left'>
                   <a href='#' title="<%= I18n.t('slider.prev_title') %>"><%= t('views.pagination.previous') %></a>
@@ -102,6 +103,7 @@
                   <a href='#' title="<%= I18n.t('slider.next_title') %>"><%= t('views.pagination.next') %></a>
                 </div>
               </div>
+              </noindex>
             <% end %>
           </div>
         </div>
@@ -114,6 +116,7 @@
     <div class='footer_wrapper noindex container-fluid'>
       <div class='footer container'>
         <div class="row">
+          <noindex>
           <div class='column logotype_<%= I18n.locale %> col-sm-2 hidden-xs'>
             <%= link_to "/" do %>
               <%= image_tag("logotype_#{locale}.png", :title => I18n.t('to_main_page'), :height => '80px') %>
@@ -122,18 +125,21 @@
           </div>
           <div class="col-sm-5 col-xs-7">
             <% if locale.eql?(:ru) %>
-          Сайт о Концепции создания в Томской области инновационного территориального центра "ИНО Томск", одобренной распоряжением Правительства Российской Федерации от 14 января 2015 года № 22-р
-        <% end %>
-          </div>
-          <div class='column col-sm-5 col-xs-5'>
+             Сайт о Концепции создания в Томской области инновационного территориального центра "ИНО Томск", одобренной распоряжением Правительства Российской Федерации от 14 января 2015 года № 22-р
+           <% end %>
+         </div>
+         </noindex>
+         <div class='column col-sm-5 col-xs-5'>
+            <noindex>
             <div class="contacts">
               <p>email: <span class='nobr'><%= mail_to 'mail@ino-tomsk.ru' %></span></p>
               <div class='social_links pull-left'>
-                <a class='twitter' href='https://twitter.com/INOTomsk2020' target='_blank' title="<%= I18n.t('twitter_title') %>">Twitter</a>
-                <a class='vkontakte' href='https://vk.com/inotomsk' target='_blank' title="<%= I18n.t('vk_title') %>">В Контакте</a>
-                <a class='facebook' href='https://www.facebook.com/INOTomsk2020' target='_blank' title="<%= I18n.t('fb_title') %>">Facebook</a>
+                <a class='twitter' href='https://twitter.com/INOTomsk2020' target='_blank' title="<%= I18n.t('twitter_title') %>" rel="nofollow">Twitter</a>
+                <a class='vkontakte' href='https://vk.com/inotomsk' target='_blank' title="<%= I18n.t('vk_title') %>" rel="nofollow">В Контакте</a>
+                <a class='facebook' href='https://www.facebook.com/INOTomsk2020' target='_blank' title="<%= I18n.t('fb_title') %>" rel="nofollow">Facebook</a>
               </div>
             </div>
+            </noindex>
             <div class="developers">
               <p class='pull-right'><%= t "development" %>: <%= mail_to 'developers@openteam.ru', 'OpenTeam' %></p>
               <%= render :partial => 'commons/yandex_metrika' %>

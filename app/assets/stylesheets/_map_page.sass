@@ -54,9 +54,25 @@
           a
             background: #f5491d image-url('nauka-i-obrazovanie.png') no-repeat 10px center
 
+          ul // переназначение стилей рамок
+            li
+              &:after
+                border-left: 3px solid #f5491d
+
+              &:before
+                border-top: 3px solid #f5491d
+
         &.innovatsii-i-noviy-biznes
           a
             background: #d20033 image-url('tehnologicheskie-innovatsii-novyy-biznes.png') no-repeat 10px center
+
+          ul // переназначение стилей рамок
+            li
+              &:after
+                border-left: 3px solid #d20033
+
+              &:before
+                border-top: 3px solid #d20033
 
         &.umnyy-i-udobnyy-gorod
           a
@@ -98,9 +114,19 @@
                 background: transparent image-url('industrialnyy-park.png') no-repeat 25px center
                 padding-left: 65px
 
+            &.vnedrencheskiy-park
+              a
+                background: transparent image-url('vpark.png') no-repeat 25px center
+                padding-left: 65px
+
             &.lesopromyshlennyy-klaster
               a
                 background: transparent image-url('lesopromyshlennyy-klaster.png') no-repeat 25px center
+                padding-left: 65px
+
+            &.nauchno-obrazovatelnyy-park
+              a
+                background: transparent image-url('nopark.png') no-repeat 25px center
                 padding-left: 65px
 
             &.klaster-vozobnovlyaemyh-prirodnyh-resursov
