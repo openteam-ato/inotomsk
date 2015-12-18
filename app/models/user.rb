@@ -6,7 +6,6 @@ class User < ActiveRecord::Base
          :confirmable,
          :invitable, :invite_for => 2.weeks
 
-
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
   attr_accessible :description, :email, :first_name, :last_name, :location, :name, :nickname, :phone
