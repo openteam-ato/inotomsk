@@ -407,3 +407,6 @@ DEPENDENCIES
   unicorn
   whenever
   yt
+
+BUNDLED WITH
+   1.11.2
