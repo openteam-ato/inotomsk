@@ -14,8 +14,9 @@ group :default do
   gem 'ancestry'
   gem 'awesome_print'
   gem 'breadcrumbs_on_rails'
+  gem 'cancan'
   gem 'curb'
-  gem 'devise', '2.2.3'
+  gem 'devise'
   gem 'enumerize'
   gem 'esp-commons'
   gem 'friendly_id'
@@ -35,7 +36,6 @@ group :default do
   gem 'russian'
   gem 'simple_form'
   gem 'sitemap_generator'
-  gem 'sso-auth', '0.0.6'
   gem 'stop_ie'
 end
 

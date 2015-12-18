@@ -10,6 +10,5 @@ class Ability
 
     can :manage, :all if user.admin?
     can :manage, [MapLayer, Placemark, Event] if user.map_manager?
-
   end
 end

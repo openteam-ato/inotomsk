@@ -51,4 +51,6 @@ end
 #  created_at              :datetime         not null
 #  updated_at              :datetime         not null
 #  ancestry                :string(255)
+#  position                :integer
+#  visible                 :boolean
 #
