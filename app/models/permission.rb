@@ -1,8 +1,15 @@
 class Permission < ActiveRecord::Base
-  sso_auth_permission :roles => [:admin, :map_manager]
-
   attr_accessible :role, :user_id
   belongs_to :user
+
+  extend Enumerize
+  enumerize :role,
+    in: [:admin, :map_manager],
+    predicates: true
+
+  def self.available_roles
+    role.values
+  end
 end
 
 # == Schema Information

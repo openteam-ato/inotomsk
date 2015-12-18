@@ -3,6 +3,11 @@ ru:
     required:
       text: 'Обязательное для заполнения поле'
     labels:
+      user:
+        email: 'E-mail'
+        password: 'Пароль'
+        password_confirmation: 'Подтвеждение пароля'
+        remember_me: 'Запомнить'
       map_layer:
         title: Название
         ancestry: Родитеский элемент
