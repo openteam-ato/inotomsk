@@ -184,11 +184,13 @@
     </div>
   </div>
 
-  <div class='calendar_section index row'>
-    <div class='calendar col-lg-12 col-md-12 col-sm-12 col-xs-12'>
-      <%= render_partial_for_region(@event_list) %>
+  <% if @event_list.present? && @event_list.content.try(:items).any? %>
+    <div class='calendar_section index row'>
+      <div class='calendar col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+        <%= render_partial_for_region(@event_list) %>
+      </div>
     </div>
-  </div>
+  <% end %>
 
   <% if @description_part.present? %>
     <div class='description_part row'>
