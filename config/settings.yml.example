@@ -1,25 +1,35 @@
 app:
-  url:          http://app.url
-  secret:       SECRET
+  url:
+  secret:
+  host:
 
 devise:
-  secret:       SECRET
+  secret:
 
 errors:
-  key:          KEY
-  url:          http://errors.openteam.ru
+  key:
+  url:
 
 cms:
-  url:          http://esp-cms.openteam.ru
-  site_slug:    inotomsk.openteam.ru
+  url:
+  site_slug:
 
 storage:
-  url:          http://storage.url
+  url:
 
 sso:
   url:          http://sso.url
   key:          KEY
   secret:       SECRET
+
+
+mail:
+  from:
+  address:
+  port:
+  domain:
+  login:
+  password:
 
 youtube:
   api_key:      KEY

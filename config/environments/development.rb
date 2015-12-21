@@ -33,4 +33,6 @@ Inotomsk::Application.configure do
   config.assets.paths << "#{Rails.root}/app/assets/fonts"
 
   config.eager_load = false
+
+  config.action_mailer.default_url_options = { :host => 'localhost'  }
 end
