@@ -9,81 +9,84 @@
 # from scratch. The latter is a flawed and unsustainable approach (the more migrations
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
-# It's strongly recommended to check this file into your version control system.
+# It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20151218034653) do
+ActiveRecord::Schema.define(version: 20151218034653) do
 
-  create_table "addresses", :force => true do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "addresses", force: :cascade do |t|
     t.float   "latitude"
     t.float   "longitude"
     t.integer "placemark_id"
   end
 
-  create_table "events", :force => true do |t|
+  create_table "events", force: :cascade do |t|
     t.text     "title"
     t.text     "document_type"
     t.text     "performer"
-    t.string   "term_type"
+    t.string   "term_type",     limit: 255
     t.integer  "start_year"
     t.integer  "end_year"
-    t.string   "quarter"
-    t.string   "state"
+    t.string   "quarter",       limit: 255
+    t.string   "state",         limit: 255
     t.integer  "map_layer_id"
     t.integer  "placemark_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-    t.string   "language"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.string   "language",      limit: 255
   end
 
-  create_table "map_layers", :force => true do |t|
-    t.string   "title"
-    t.string   "slug"
-    t.string   "icon_file_name"
-    t.string   "icon_content_type"
+  create_table "map_layers", force: :cascade do |t|
+    t.string   "title",                   limit: 255
+    t.string   "slug",                    limit: 255
+    t.string   "icon_file_name",          limit: 255
+    t.string   "icon_content_type",       limit: 255
     t.integer  "icon_file_size"
     t.datetime "icon_updated_at"
     t.text     "icon_url"
-    t.string   "hover_icon_file_name"
-    t.string   "hover_icon_content_type"
+    t.string   "hover_icon_file_name",    limit: 255
+    t.string   "hover_icon_content_type", limit: 255
     t.integer  "hover_icon_file_size"
     t.datetime "hover_icon_updated_at"
     t.text     "hover_icon_url"
-    t.datetime "created_at",              :null => false
-    t.datetime "updated_at",              :null => false
-    t.string   "ancestry"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.string   "ancestry",                limit: 255
     t.integer  "position"
     t.boolean  "visible"
   end
 
-  add_index "map_layers", ["ancestry"], :name => "index_map_layers_on_ancestry"
+  add_index "map_layers", ["ancestry"], name: "index_map_layers_on_ancestry", using: :btree
 
-  create_table "permissions", :force => true do |t|
+  create_table "permissions", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "context_id"
-    t.string   "context_type"
-    t.string   "role"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.string   "context_type", limit: 255
+    t.string   "role",         limit: 255
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
-  add_index "permissions", ["user_id", "role"], :name => "by_user_and_role"
+  add_index "permissions", ["user_id", "role"], name: "by_user_and_role", using: :btree
 
-  create_table "placemarks", :force => true do |t|
+  create_table "placemarks", force: :cascade do |t|
     t.text     "title"
     t.text     "slug"
-    t.string   "logotype_file_name"
-    t.string   "logotype_content_type"
+    t.string   "logotype_file_name",    limit: 255
+    t.string   "logotype_content_type", limit: 255
     t.integer  "logotype_file_size"
     t.datetime "logotype_updated_at"
     t.text     "logotype_url"
     t.integer  "map_layer_id"
-    t.datetime "created_at",            :null => false
-    t.datetime "updated_at",            :null => false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
     t.text     "description"
   end
 
-  create_table "users", :force => true do |t|
-    t.string   "uid"
+  create_table "users", force: :cascade do |t|
+    t.string   "uid",                    limit: 255
     t.text     "name"
     t.string   "email"
     t.text     "nickname"
@@ -98,11 +101,11 @@ ActiveRecord::Schema.define(:version => 20151218034653) do
     t.integer  "sign_in_count"
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
-    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "current_sign_in_ip",     limit: 255
+    t.string   "last_sign_in_ip",        limit: 255
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
+    t.string   "encrypted_password",                 default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -112,8 +115,8 @@ ActiveRecord::Schema.define(:version => 20151218034653) do
     t.string   "unconfirmed_email"
   end
 
-  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
-  add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
-  add_index "users", ["uid"], :name => "index_users_on_uid"
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["uid"], name: "index_users_on_uid", using: :btree
 
 end

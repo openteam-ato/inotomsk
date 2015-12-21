@@ -1,0 +1,5 @@
+<%= simple_form_for [:manage, current_user] do |f| %>
+  <%= f.input :first_name %>
+  <%= f.input :last_name %>
+  <%= f.submit "Сохранить" %>
+<% end %>

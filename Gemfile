@@ -15,7 +15,7 @@ group :default do
   gem 'ancestry'
   gem 'awesome_print'
   gem 'breadcrumbs_on_rails'
-  gem 'cancan'
+  gem 'cancancan'
   gem 'curb'
   gem 'devise'
   gem 'enumerize'

@@ -84,7 +84,3 @@ ru:
   time:
     formats:
       custom: "%H:%M"
-
-  role:
-    admin: Администратор
-    map_manager: Редактор карт

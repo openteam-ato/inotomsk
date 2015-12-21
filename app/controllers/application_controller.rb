@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
 
   def layout
     if devise_controller?
+      I18n.locale = :ru
       "manage"
     else
       "application"
