@@ -18,6 +18,7 @@ group :default do
   gem 'cancancan'
   gem 'curb'
   gem 'devise'
+  gem 'devise_invitable'
   gem 'enumerize'
   gem 'esp-commons'
   gem 'friendly_id'
