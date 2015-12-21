@@ -2,6 +2,7 @@ Inotomsk::Application.routes.draw do
   devise_for :users
 
   namespace :manage do
+    resource :user, :only => [:edit, :update]
     resources :map_layers,  :except => [:show]
     resources :placemarks,  :except => [:index, :show]
     resources :permissions, :except => [:show, :edit, :update]
