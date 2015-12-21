@@ -1,12 +1,13 @@
 source 'https://rubygems.org'
 
 group :assets do
-  gem 'bootstrap-sass', '= 3.1.1.0'
+  gem 'bootstrap-sass'
   gem 'coffee-rails'
-  gem 'compass-rails'
-  gem 'jquery-rails', '~> 2.1.4'
-  gem 'sass-rails', '>= 3.2'
-  gem 'turbo-sprockets-rails3'
+  gem 'compass-rails', '~> 2.0.4'
+  gem 'jquery-rails'
+  gem 'jquery-ui-rails'
+  gem 'sass'
+  gem 'sass-rails'
   gem 'uglifier'
 end
 
@@ -30,7 +31,8 @@ group :default do
   gem 'paperclip-elvfs'
   gem 'pg'
   gem 'progress_bar'
-  gem 'rails', '~> 3.2.0'
+  gem 'protected_attributes'
+  gem 'rails'
   gem 'rest-client'
   gem 'russian'
   gem 'simple_form'
@@ -41,13 +43,12 @@ group :default do
 end
 
 group :development do
-  gem 'brakeman', :require => false
-  gem 'capistrano',  '~> 2.15.5'
-  gem 'capistrano-unicorn', '~> 0.1.10', :require => false
-  gem 'openteam-capistrano', :require => false
-  gem 'quiet_assets'
-  gem 'hirb'
   gem 'annotate'
+  gem 'brakeman', :require => false
+  gem 'capistrano-unicorn', '~> 0.1.7', :require => false
+  gem 'hirb'
+  gem 'openteam-capistrano', '~> 1.0.7'
+  gem 'quiet_assets'
 end
 
 group :production do

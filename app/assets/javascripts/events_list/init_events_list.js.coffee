@@ -1,5 +1,5 @@
 @init_events_list = ->
-  $(".calendar .right a, .calendar .left a").live "click", ->
+  $(".calendar .right a, .calendar .left a").on "click", ->
     return false  if $(this).parent().hasClass("disabled")
     change_events_list this
     false

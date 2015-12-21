@@ -31,4 +31,6 @@ Inotomsk::Application.configure do
 
   # Add font asset path
   config.assets.paths << "#{Rails.root}/app/assets/fonts"
+
+  config.eager_load = false
 end
