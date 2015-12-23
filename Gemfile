@@ -14,7 +14,6 @@ group :default do
   gem 'ancestry'
   gem 'awesome_print'
   gem 'breadcrumbs_on_rails'
-  gem 'curb'
   gem 'devise', '2.2.3'
   gem 'enumerize'
   gem 'esp-commons'
@@ -27,9 +26,8 @@ group :default do
   gem 'openteam-commons'
   gem 'paperclip'
   gem 'paperclip-elvfs'
-  gem 'progress_bar'
-  gem 'time_diff'
   gem 'pg'
+  gem 'progress_bar'
   gem 'rails', '~> 3.2.0'
   gem 'rest-client'
   gem 'russian'
@@ -37,6 +35,7 @@ group :default do
   gem 'sitemap_generator'
   gem 'sso-auth', '0.0.6'
   gem 'stop_ie'
+  gem 'time_diff'
 end
 
 group :development do

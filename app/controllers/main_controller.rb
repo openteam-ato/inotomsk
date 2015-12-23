@@ -63,25 +63,28 @@ class MainController < ApplicationController
     end
 
     def page
-      @page ||= request_hashie.page
+      @page ||= Hashie::Mash.new(request_json).page
     end
 
-    def curl_request
-      @curl_request ||= Curl::Easy.perform(remote_url) do |curl|
-        curl.headers['Accept'] = 'application/json'
+    def rest_request
+      @rest_request ||= RestClient::Request.execute(
+        :method => :get,
+        :url => remote_url,
+        :timeout => nil,
+        :headers => {
+          :Accept => 'application/json',
+        }
+      ) do |response, request, result, &block|
+        response
       end
     end
 
-    def request_hashie
-      @request_hashie ||= Hashie::Mash.new(request_json)
-    end
-
     def request_status
-      @request_status ||= curl_request.response_code
+      @request_status ||= rest_request.code
     end
 
     def request_body
-      @request_body ||= curl_request.body_str
+      @request_body ||= rest_request.body
     end
 
     def is_json?(str)
