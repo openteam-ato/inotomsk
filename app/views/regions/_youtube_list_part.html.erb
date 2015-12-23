@@ -1,0 +1,26 @@
+<div class='video_list'>
+  <div class='row'>
+    <ul>
+      <% object.items.each do |item| %>
+        <li class='col-xs-12 col-sm-6 col-md-4 col-lg-3'>
+          <div class='video_thumbnail'>
+            <%= link_to image_tag(video_large_thumbnail(item.youtube_code), :size => '160x120', :alt => item.title), item.link %>
+          </div>
+          <div class='title'><%= link_to item.title, item.link %></div>
+          <div class='date'>
+            <%= l DateTime.parse(item.since), :format => '%d %B %Y' %>
+            <span class='time'>
+              <%= l DateTime.parse(item.since), :format => '%H:%M' %>
+            </span>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<% if object.pagination %>
+  <% @array = object.items %>
+  <% @array = Kaminari.paginate_array(@array, :total_count => object.pagination.total_count).page(object.pagination.current_page).per(object.pagination.per_page) %>
+  <%= paginate @array, :outer_window => 3 %>
+<% end %>

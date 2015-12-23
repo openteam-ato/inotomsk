@@ -142,12 +142,19 @@
             <div class="developers">
               <p class='pull-right'><%= t "development" %>: <%= mail_to 'developers@openteam.ru', 'OpenTeam' %></p>
               <%= render :partial => 'commons/yandex_metrika' %>
-              <%= content_tag :p, link_to('JSON from CMS', @link_to_json, :target => '_blank') if Rails.env.development? %>
             </div>
           </div>
         </div>
       </div>
     </div>
+
+    <% if Rails.env.development? %>
+      <div class='development-json'>
+        <%= link_to 'JSON', @link_to_json, :target => '_blank' %>
+      </div>
+      <div class='development-resolution'>
+      </div>
+    <% end %>
 
   </body>
 </html>

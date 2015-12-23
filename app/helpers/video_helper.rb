@@ -1,7 +1,7 @@
 module VideoHelper
 
   def video_object(code)
-    @video_object ||= Yt::Video.new :id => strip_tags(code).squish
+    Yt::Video.new :id => strip_tags(code).squish
   end
 
   def video_small_thumbnail(code)
