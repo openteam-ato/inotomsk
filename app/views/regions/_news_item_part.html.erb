@@ -2,10 +2,6 @@
 
 <% content_for :meta_description, strip_tags(object.annotation.html_safe) %>
 
-<div class="header_wrapper col-xs-col-xs-12">
-  <%= content_tag :h1, object.title, :class => 'part_header' %>
-</div>
-
 <div class="entry_show">
   <p class='date'>
     <%= l DateTime.parse(object.since), :format => '%d %B %Y' %>
