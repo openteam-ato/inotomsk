@@ -16,4 +16,8 @@ module VideoHelper
     video_small_thumbnail(code).gsub('default', 'hqdefault')
   end
 
+  def video_embed(code)
+    video_object(code).embed_html.html_safe
+  end
+
 end
