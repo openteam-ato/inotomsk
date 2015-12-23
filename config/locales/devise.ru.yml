@@ -2,6 +2,8 @@ ru:
   role:
     admin: 'Администратор'
     map_manager: 'Редактор карт'
+    inviter: "Менеджер приглашений"
+    workplace_user: "Участник рабочей группы"
   devise:
     confirmations:
       confirmed: "Ваш адрес электронной почты успешно подтвержден."
@@ -56,13 +58,22 @@ ru:
       edit_profile: "Редактирование учетной записи"
       new_password: "Забыли пароль?"
       destroy_user: "Удалить учетную запись"
+      back: "Назад"
       restore_password: "Восстановить пароль"
+      update_profile: "Сохранить"
+      new_confirmation: "Не получили письмо?"
+      send_invitation: "Выслать приглашение"
+      resend_confirmation: "Выслать новое подтверждающее письмо"
+      set_password: "Подтвердить пароль"
     signs:
       edit_profile: "Редактирование учетной записи"
       cancel_account: "Удаление учетной записи"
       sign_up: "Регистрация"
       sign_in: "Вход в систему"
       password_restore: "Восстановление пароля"
+      resend_confirmation: "Запрос нового письма"
+      new_invitation: "Новое приглашение"
+      set_password_after_invitation: "Выберите пароль для вашей учетной записи"
   errors:
     messages:
       already_confirmed: "уже подтверждена. Пожалуйста, попробуйте войти в систему"
