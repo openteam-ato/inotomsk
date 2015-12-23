@@ -1,0 +1,38 @@
+<% raise ActionController::RoutingError.new('Not Found') if object.blank? %>
+
+<div class='photo_album_show'>
+  <p class='date'>
+    <%= l DateTime.parse(object.since), :format => '%d %B %Y' %>
+    <span class='time'>
+      <%= l DateTime.parse(object.since), :format => '%H:%M' %>
+    </span>
+  </p>
+
+  <div class='image_container'>
+    <div class='image'>
+      <%= video_embed object.youtube_code %>
+    </div>
+  </div>
+
+</div>
+
+<%= render 'commons/social_links' %>
+
+<% content_for :more_like_this do %>
+  <ul class='videos'>
+    <% object.more_like_this.each do |item| %>
+      <li>
+        <div class='thumbnail'>
+          <%= link_to image_tag(video_large_thumbnail(item.youtube_code), :size => '160x120', :alt => item.title), item.link %>
+        </div>
+        <div class='title'><%= link_to item.title, item.link %></div>
+        <div class='date'>
+          <%= l DateTime.parse(item.since), :format => '%d %B %Y' %>
+          <span class='time'>
+            <%= l DateTime.parse(item.since), :format => '%H:%M' %>
+          </span>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+<% end unless object.more_like_this.blank? %>

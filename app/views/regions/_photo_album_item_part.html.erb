@@ -9,19 +9,19 @@
       </span>
     </p>
     <% if object.images.any? %>
-      <div class="content">
+      <div class='content'>
         <%= raw object.body %>
       </div>
-      <div class="image_container">
-        <div class="image">
+      <div class='image_container'>
+        <div class='image'>
           <%= image_tag_for(object.images.first.thumbnail) %>
         </div>
-        <div class="description">
+        <div class='description'>
           <%= object.images.first.description unless object.images.first.description.blank? %>
         </div>
       </div>
       <% if object.images.many? %>
-        <div class="thumbnails">
+        <div class='thumbnails'>
           <ul>
             <% object.images.each_with_index do | element, index | %>
               <li<%= " class='selected'" if index.eql?(0) %>>
@@ -32,7 +32,7 @@
         </div>
       <% end %>
     <% else %>
-      <div class="content">
+      <div class='content'>
         <p>Фотогалерея пуста</p>
       </div>
     <% end %>
