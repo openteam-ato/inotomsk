@@ -40,6 +40,7 @@ group :default do
   gem 'sitemap_generator'
   gem 'stop_ie'
   gem 'time_diff'
+  gem 'yt'
 end
 
 group :development do

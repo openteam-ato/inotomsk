@@ -24,3 +24,6 @@ mail:
   domain:
   login:
   password:
+
+youtube:
+  api_key:
