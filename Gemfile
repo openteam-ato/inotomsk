@@ -36,6 +36,7 @@ group :default do
   gem 'sso-auth', '0.0.6'
   gem 'stop_ie'
   gem 'time_diff'
+  gem 'yt'
 end
 
 group :development do

@@ -146,14 +146,14 @@
               <div class='video col-lg-6 col-md-6 col-sm-6 col-xs-12'>
                 <% unless @last_video.blank? %>
                   <% video = @last_video.content.items.first %>
-                  <div class='thumbnail'>
-                    <%= link_to image_tag(video.video.thumb_normal, :size => '160x120', :alt => video.video.description), video.link %>
+                  <div class='small_thumbnail'>
+                    <%= link_to image_tag(video_large_thumbnail(video.youtube_code), :size => '160x120', :alt => video.title), video.link %>
                   </div>
-                  <p class='title'><%= link_to video.video.title, video.link %></p>
+                  <p class='title'><%= link_to video.title, video.link %></p>
                   <p class='date'>
-                    <%= l Date.parse(video.video.date), :format => :custom %>
+                    <%= l Date.parse(video.since), :format => :custom %>
                     <span class='time'>
-                      <%= l Time.parse(video.video.date), :format => :custom %>
+                      <%= l Time.parse(video.since), :format => :custom %>
                     </span>
                   </p>
                 <% end %>

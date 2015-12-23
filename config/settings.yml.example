@@ -20,3 +20,6 @@ sso:
   url:          http://sso.url
   key:          KEY
   secret:       SECRET
+
+youtube:
+  api_key:      KEY
