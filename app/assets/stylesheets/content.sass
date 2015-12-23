@@ -144,16 +144,37 @@ $content_nav_padding: 12px
     .video_list
       ul
         +clearfix
-        margin-bottom: 20px
+
         li
-          float: left
-          width: $content_width / 3
-          .thumbnail
+          margin-bottom: 20px
+
+          @media (max-width: $screen-xs-max)
+
+            clear: left
+
+          @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max)
+
+            &:nth-child(2n + 1)
+              clear: left
+
+          @media (min-width: $screen-md-min) and (max-width: $screen-md-max)
+
+            &:nth-child(3n + 1)
+              clear: left
+
+          @media (min-width: $screen-lg-min)
+
+            &:nth-child(4n + 1)
+              clear: left
+
+          .video_thumbnail
             margin: 1px 0 5px 1px
+            padding: 7px 14px
+            background: transparent image_url('video_thumb_bg.png') no-repeat left top
+
             img
-              padding: 7px 14px
-              background: transparent image_url('video_thumb_bg.png') no-repeat center center
               +single-box-shadow(#aaa, 0, 0, 2px)
+
           .title
             font-size: 0.9em
             margin:
