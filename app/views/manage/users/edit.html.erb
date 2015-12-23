@@ -1,5 +1,27 @@
-<%= simple_form_for [:manage, current_user] do |f| %>
-  <%= f.input :first_name %>
-  <%= f.input :last_name %>
-  <%= f.submit "Сохранить" %>
-<% end %>
+<div class="col-xs-offset-2 col-xs-8 devise-form">
+  <div class='row'>
+    <h2><%= I18n.t("devise.signs.edit_profile") %></h2>
+
+    <%= simple_form_for(current_user, as: resource_name, url: manage_user_path(current_user), html: { method: :put, class: "form-horizontal" }, wrapper: :horizontal_form ) do |f| %>
+      <%= f.error_notification %>
+
+      <div class="form-inputs">
+        <%= f.input :email, required: true, autofocus: true %>
+        <%= f.input :first_name, :as => :string %>
+        <%= f.input :last_name, :as => :string %>
+
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+        <% end %>
+
+        <%= f.input :password, autocomplete: "off", hint: I18n.t("simple_form.hints.user.password_2"), required: false %>
+        <%= f.input :password_confirmation, required: false %>
+        <%= f.input :current_password, required: true %>
+      </div>
+
+      <div class="form-actions pull-right">
+        <%= f.button :submit, I18n.t("devise.buttons.update_profile")%>
+      </div>
+    <% end %>
+  </div>
+</div>

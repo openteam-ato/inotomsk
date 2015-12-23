@@ -1,5 +1,5 @@
 Inotomsk::Application.routes.draw do
-  devise_for :users
+  devise_for :users, :controllers => { :invitations => "manage/invitations" }
 
   namespace :manage do
     resource :user, :only => [:edit, :update]
@@ -10,6 +10,10 @@ Inotomsk::Application.routes.draw do
 
 
     root :to => 'map_layers#index'
+  end
+
+  namespace :workplace do
+    root :to => 'welcome#index'
   end
 
   get "ru/inotomsk/ob-ekty"          => "map_layers#index", :as => 'map_layers'

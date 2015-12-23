@@ -1,14 +1,14 @@
 class User < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :invitable, :database_authenticatable, :registerable,
+
+  devise :database_authenticatable, #:registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable,
          :invitable, :invite_for => 2.weeks
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
-  attr_accessible :description, :email, :first_name, :last_name, :location, :name, :nickname, :phone
+  attr_accessible :description, :email, :first_name, :last_name, :location, :name, :nickname, :phone, :current_password
+  attr_accessor :current_password
 
   has_many :permissions, :dependent => :destroy
 
@@ -16,6 +16,10 @@ class User < ActiveRecord::Base
     define_method "#{role}?" do
       permissions.map(&:role).include?(role)
     end
+  end
+
+  def full_name
+    name || [first_name, last_name, email].join(" ")
   end
 
 end

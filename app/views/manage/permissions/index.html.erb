@@ -8,7 +8,7 @@
       <tbody>
         <% @users.each do |user| %>
           <tr>
-            <td><%= user.name %></td>
+            <td><%= user.full_name %></td>
             <td>
               <% if user.permissions.any? %>
                 <div class="pull-right"><%= link_to "Добавить права", new_manage_permission_path(user_id: user.id) %></div>

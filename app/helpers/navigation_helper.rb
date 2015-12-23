@@ -31,6 +31,10 @@ module NavigationHelper
     end
   end
 
+  def current_back_link
+    current_user ? manage_root_path : root_path
+  end
+
   private
     def separator(size, index)
       (' ' + content_tag(:li, '&nbsp;'.html_safe, :class => css_class(size, index))).html_safe

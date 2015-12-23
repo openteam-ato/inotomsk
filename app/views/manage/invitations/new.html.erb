@@ -1,0 +1,13 @@
+<div class='col-xs-offset-2 col-xs-8 devise-form'>
+  <h2><%= I18n.t"devise.signs.new_invitation" %></h2>
+
+  <%= simple_form_for resource, as: resource_name, url: invitation_path(resource_name), html: { method: :post, class: "form-horizontal"}, wrapper: :horizontal_form do |f| %>
+    <%= devise_error_messages! %>
+
+    <% resource.class.invite_key_fields.each do |field| -%>
+      <%= f.input field %>
+    <% end -%>
+
+    <%= f.button :submit, t("devise.buttons.send_invitation"), class: "pull-right" %>
+  <% end %>
+</div>

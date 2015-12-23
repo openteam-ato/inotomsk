@@ -1,7 +1,7 @@
-<% if current_user  %>
+<% if current_user %>
   <%= current_user.email %>
-  <%= link_to I18n.t("devise.buttons.sign_out"), destroy_user_session_path, :method => :delete %>
   <%= link_to I18n.t("devise.buttons.edit_profile"), edit_manage_user_path %>
+  <%= link_to I18n.t("devise.buttons.sign_out"), destroy_user_session_path, :method => :delete %>
 <% else %>
   <%= link_to I18n.t("devise.buttons.log_in"), new_user_session_path %>
 <% end %>
