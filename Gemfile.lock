@@ -79,7 +79,7 @@ GEM
     breadcrumbs_on_rails (2.3.1)
     builder (3.2.2)
     bunny (0.8.0)
-    cancancan (1.10.1)
+    cancancan (1.13.1)
     capistrano (3.4.0)
       i18n
       rake (>= 10.0.0)
