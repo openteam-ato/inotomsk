@@ -39,7 +39,7 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
-    addressable (2.3.8)
+    addressable (2.4.0)
     airbrake (3.1.17)
       builder
       multi_json
@@ -57,7 +57,7 @@ GEM
       activerecord (>= 3.2, <= 4.3)
       rake (~> 10.4)
     arel (6.0.3)
-    autoprefixer-rails (6.1.2)
+    autoprefixer-rails (6.2.1)
       execjs
       json
     awesome_print (1.6.1)
@@ -65,7 +65,7 @@ GEM
     bootstrap-sass (3.3.6)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
-    brakeman (3.1.3)
+    brakeman (3.1.4)
       erubis (~> 2.6)
       fastercsv (~> 1.5)
       haml (>= 3.0, < 5.0)
@@ -80,7 +80,7 @@ GEM
     breadcrumbs_on_rails (2.3.1)
     builder (3.2.2)
     bunny (0.8.0)
-    cancancan (1.10.1)
+    cancancan (1.13.1)
     capistrano (3.4.0)
       i18n
       rake (>= 10.0.0)
@@ -109,9 +109,9 @@ GEM
       activesupport (>= 3.0)
     cocaine (0.5.8)
       climate_control (>= 0.0.3, < 1.0)
-    coffee-rails (4.1.0)
+    coffee-rails (4.1.1)
       coffee-script (>= 2.2.0)
-      railties (>= 4.0.0, < 5.0)
+      railties (>= 4.0.0, < 5.1.x)
     coffee-script (2.4.1)
       coffee-script-source
       execjs
@@ -318,9 +318,9 @@ GEM
       connection_pool (~> 2.2, >= 2.2.0)
       json (~> 1.0)
       redis (~> 3.2, >= 3.2.1)
-    simple_form (3.2.0)
-      actionpack (~> 4.0)
-      activemodel (~> 4.0)
+    simple_form (3.2.1)
+      actionpack (> 4, < 5.1)
+      activemodel (> 4, < 5.1)
     sitemap_generator (5.1.0)
       builder
     slim (3.0.6)
@@ -365,7 +365,7 @@ GEM
       rack (>= 1.0)
     whenever (0.9.4)
       chronic (>= 0.6.3)
-    yt (0.25.12)
+    yt (0.25.16)
       activesupport
 
 PLATFORMS
@@ -375,14 +375,13 @@ DEPENDENCIES
   ancestry
   annotate
   awesome_print
-  bootstrap-sass
+  bootstrap-sass (~> 3.3.6)
   brakeman
   breadcrumbs_on_rails
   cancancan
   capistrano-unicorn (~> 0.1.7)
-  coffee-rails
-  compass-rails (~> 2.0.4)
-  curb
+  coffee-rails (~> 4.1.0)
+  compass-rails (~> 2.0.5)
   devise
   devise_invitable
   enumerize
@@ -405,16 +404,15 @@ DEPENDENCIES
   progress_bar
   protected_attributes
   quiet_assets
-  rails
+  rails (~> 4.2.5)
   rest-client
   russian
-  sass
-  sass-rails
+  sass-rails (~> 5.0)
   simple_form
   sitemap_generator
   stop_ie
   time_diff
-  uglifier
+  uglifier (>= 1.3.0)
   unicorn
   whenever
   yt
