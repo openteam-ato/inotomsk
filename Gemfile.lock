@@ -39,6 +39,7 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    addressable (2.3.8)
     airbrake (3.1.17)
       builder
       multi_json
@@ -136,6 +137,8 @@ GEM
       highline (>= 1.5.2)
       multi_json (>= 1.1)
     connection_pool (2.2.0)
+    css_parser (1.3.7)
+      addressable
     curb (0.9.0)
     daemons (1.1.9)
     devise (3.5.3)
@@ -179,6 +182,7 @@ GEM
     highline (1.7.8)
     hike (1.2.3)
     hirb (0.7.3)
+    htmlentities (4.3.4)
     http-cookie (1.0.2)
       domain_name (~> 0.5)
     i18n (0.7.0)
@@ -241,6 +245,12 @@ GEM
       curb
       paperclip
     pg (0.18.4)
+    premailer (1.8.6)
+      css_parser (>= 1.3.6)
+      htmlentities (>= 4.0.0)
+    premailer-rails (1.8.2)
+      actionmailer (>= 3, < 5)
+      premailer (~> 1.7, >= 1.7.9)
     progress_bar (1.0.5)
       highline (~> 1.6)
       options (~> 2.3.0)
@@ -391,6 +401,7 @@ DEPENDENCIES
   paperclip
   paperclip-elvfs
   pg
+  premailer-rails
   progress_bar
   protected_attributes
   quiet_assets
