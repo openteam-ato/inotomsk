@@ -1,5 +1,5 @@
 class Manage::ApplicationController < ApplicationController
-  before_action :authenticate_user!, :set_locale
+  before_action :authenticate_user!
 
   load_and_authorize_resource
 
@@ -9,7 +9,4 @@ class Manage::ApplicationController < ApplicationController
     redirect_to root_url
   end
 
-  def set_locale
-    I18n.locale = :ru
-  end
 end
