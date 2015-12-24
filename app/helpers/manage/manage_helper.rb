@@ -60,4 +60,10 @@ module Manage::ManageHelper
     return 'active' if filter == "all" && !params[param_name]
     'active' if params[param_name] == filter
   end
+
+  def invitations_active_scope(filter)
+    return "primary" if filter == params[:scope]
+    return "primary" if params[:scope].blank? && filter == "created_by_invite"
+    "default"
+  end
 end
