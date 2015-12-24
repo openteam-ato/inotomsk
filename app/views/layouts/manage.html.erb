@@ -35,6 +35,8 @@
               class: controller_name == 'map_layers' || controller_name == 'placemarks' ? :active : '' if can? :manage, MapLayer %>
             <%= content_tag :li, link_to('Дорожная карта', manage_events_path), role: :presentation,
               class: controller_name == 'events' ? :active : '' if can? :manage, Event %>
+            <%= content_tag :li, link_to('Приглашения', manage_invitations_path), role: :presentation,
+              class: controller_name == 'invitations' ? :active : '' if can? :index, User %>
           </ul>
         </div>
       </div>

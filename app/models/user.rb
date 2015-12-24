@@ -2,7 +2,6 @@ class User < ActiveRecord::Base
 
   devise :database_authenticatable, #:registerable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :confirmable,
          :invitable, :invite_for => 2.weeks
 
   # Setup accessible (or protected) attributes for your model

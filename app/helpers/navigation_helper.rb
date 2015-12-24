@@ -32,7 +32,8 @@ module NavigationHelper
   end
 
   def current_back_link
-    current_user ? manage_root_path : root_path
+    #current_user ? manage_root_path : root_path
+    root_path
   end
 
   private

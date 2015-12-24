@@ -1,13 +1,16 @@
 Inotomsk::Application.routes.draw do
   devise_for :users, :controllers => { :invitations => "manage/invitations" }
 
+  devise_scope :user do
+    get "manage/invitations", to: "manage/invitations#index"
+  end
+
   namespace :manage do
     resource :user, :only => [:edit, :update]
     resources :map_layers,  :except => [:show]
     resources :placemarks,  :except => [:index, :show]
     resources :permissions, :except => [:show, :edit, :update]
     resources :events,      :except => [:show]
-
 
     root :to => 'map_layers#index'
   end

@@ -1,0 +1,50 @@
+<div class='container'>
+  <div class='row'>
+    <div class='col-xs-12'>
+      <h2>
+        <%=  t "devise.signs.sent_invitations" %>
+      </h2>
+    </div>
+    <div class='col-xs-12'>
+      <% available_scopes.each do |scope| %>
+        <%= link_to I18n.t("devise.invitations.scopes.#{scope}"), manage_invitations_path(scope: scope), class: "btn-#{invitations_active_scope(scope)} btn"  %>
+      <% end %>
+       <%= link_to I18n.t("devise.buttons.send_invitation"), new_user_invitation_path, class: "btn-default btn"  %>
+    </div>
+  </div>
+  <br />
+  <table class='table'>
+    <tr>
+      <th>
+        Пользователь
+      </th>
+      <th>
+        Статус приглашения
+      </th>
+      <th>
+        Приглашение выслано
+      </th>
+      <th>
+        Приглашение принято
+      </th>
+    </tr>
+    <tbody>
+      <% @invited_users.each do |user| %>
+        <tr>
+          <td>
+          <%= user.full_name %>
+          </td>
+          <td>
+            <%= !!user.invitation_accepted_at %>
+          </td>
+          <td>
+            <%=  l user.invitation_sent_at %>
+          </td>
+          <td>
+            <%= user.invitation_accepted_at.nil? ? t("devise.signs.yet_not_accepted") : l(user.invitation_accepted_at) %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

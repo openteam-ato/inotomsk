@@ -201,4 +201,8 @@ module ApplicationHelper
     @devise_mapping ||= Devise.mappings[:user]
   end
 
+  def active_layout
+    (controller.send :_layout).inspect.split("/").last.gsub(/.html.erb/,"")
+  end
+
 end

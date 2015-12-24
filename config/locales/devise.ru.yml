@@ -74,6 +74,15 @@ ru:
       resend_confirmation: "Запрос нового письма"
       new_invitation: "Новое приглашение"
       set_password_after_invitation: "Выберите пароль для вашей учетной записи"
+      sent_invitations: "Высланные приглашения"
+      yet_not_accepted: "Пока не принято"
+      destroy_invitation: "Удалить приглашение"
+    invitations:
+      scopes:
+        invitation_accepted:     "Принятые приглашения"
+        invitation_not_accepted: "Непринятые приглашения"
+        created_by_invite: "Все приглашения"
+
   errors:
     messages:
       already_confirmed: "уже подтверждена. Пожалуйста, попробуйте войти в систему"
