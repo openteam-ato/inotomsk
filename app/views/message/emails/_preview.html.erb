@@ -1,0 +1,30 @@
+<div class="row email">
+  <span class="text col-sm-12">
+
+    <div id="email-preview">
+      <div class="email-wrapper">
+
+        <div id="header">
+          <%= link_to @message.property.title, @message.property.url, :class => 'title' %>
+        </div>
+
+        <div id="content">
+          <h3><%= @message.subject %></h3>
+
+          <%= @message.body.html_safe %>
+        </div>
+
+        <div id="footer">
+          <div class="info">
+            Интересующие вас вопросы можно задать в <a href="http://profile.tusur.ru/">личном кабинете</a>
+          </div>
+
+          <div class="contacts">
+            <%= @message.property.footer.html_safe %>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </span>
+</div>

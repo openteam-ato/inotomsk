@@ -1,0 +1,36 @@
+<div class="tab-sidebar">
+  <ul class="nav">
+    <li role="presentation" class="active">
+      <%= link_to 'Сообщение', '#info', :data => { :toggle => :tab }, :role => :tab %>
+    </li>
+
+    <% Contact.status_kinds.each do |status, title| %>
+      <% contacts = @message.contacts.send(status) %>
+
+      <% if contacts.any? %>
+        <li role="presentation">
+          <%= link_to "##{status}", :data => { :toggle => :tab }, :role => :tab do %>
+            <%= title %>
+            <span class="badge badge-primary pull-right"><%= contacts.count %></span>
+          <% end %>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+</div>
+
+<div class="tab-content">
+  <div role="tabpanel" class="tab-pane fade in active" id="info">
+    <%= render 'message/smses/preview' %>
+  </div>
+
+  <% Contact.status.values.each do |status| %>
+    <% contacts = @message.contacts.send(status) %>
+
+    <% if contacts.any? %>
+      <div role="tabpanel" class="tab-pane fade in" id="<%= status %>">
+        <%= render :partial => 'contacts/list', :locals => {:contacts => contacts, :status => status} %>
+      </div>
+    <% end %>
+  <% end %>
+</div>

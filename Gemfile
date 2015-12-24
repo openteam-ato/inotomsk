@@ -31,6 +31,7 @@ group :default do
   gem 'paperclip'
   gem 'paperclip-elvfs'
   gem 'pg'
+  gem 'premailer-rails'
   gem 'progress_bar'
   gem 'protected_attributes'
   gem 'rails'
