@@ -1,7 +1,6 @@
 class Manage::InvitationsController <  Devise::InvitationsController
   helper_method :available_scopes
   load_and_authorize_resource :class => "User"
-  before_filter :set_locale
   layout "manage", only: [:index, :new]
 
 
@@ -30,9 +29,6 @@ class Manage::InvitationsController <  Devise::InvitationsController
   end
 
   private
-    def set_locale
-      I18n.locale = :ru
-    end
 
     def after_invite_path_for(resource)
       manage_invitations_path
