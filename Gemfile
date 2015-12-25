@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'acts-as-taggable-on'
 gem 'ancestry'
 gem 'awesome_print'
 gem 'bootstrap-sass', '~> 3.3.6'

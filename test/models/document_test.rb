@@ -14,7 +14,7 @@ end
 #  title             :string
 #  date_on           :date
 #  tags              :text
-#  document_type     :string
+#  kind              :string
 #  document_id       :integer
 #  file_file_name    :string
 #  file_content_type :string
@@ -23,4 +23,5 @@ end
 #  file_url          :text
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
+#  file_fingerprint  :string
 #
