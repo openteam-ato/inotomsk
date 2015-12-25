@@ -5,11 +5,11 @@ module Manage::ManageHelper
   end
 
   def layer_icon(map_layer, icon_type = '')
-    map_layer.send("#{icon_type}icon_url") || asset_path("#{icon_type}default.png")
+    map_layer.send("#{icon_type}icon_url").presence || "#{icon_type}default.png"
   end
 
   def placemark_logotype(placemark)
-    placemark.logotype_url || asset_path("symbol.png")
+    placemark.logotype_url || 'symbol.png'
   end
 
   def permissions_role
