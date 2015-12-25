@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :invitable, :invite_for => 2.weeks
 
+  acts_as_tagger
+
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
   attr_accessible :description, :email, :first_name, :last_name, :location, :name, :nickname, :phone, :current_password
@@ -30,7 +32,7 @@ end
 #  id                     :integer          not null, primary key
 #  uid                    :string(255)
 #  name                   :text
-#  email                  :string(255)
+#  email                  :string
 #  nickname               :text
 #  first_name             :text
 #  last_name              :text
@@ -47,14 +49,14 @@ end
 #  last_sign_in_ip        :string(255)
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
-#  encrypted_password     :string(255)      default(""), not null
-#  reset_password_token   :string(255)
+#  encrypted_password     :string           default(""), not null
+#  reset_password_token   :string
 #  reset_password_sent_at :datetime
 #  remember_created_at    :datetime
-#  confirmation_token     :string(255)
+#  confirmation_token     :string
 #  confirmed_at           :datetime
 #  confirmation_sent_at   :datetime
-#  unconfirmed_email      :string(255)
+#  unconfirmed_email      :string
 #  invitation_token       :string
 #  invitation_created_at  :datetime
 #  invitation_sent_at     :datetime
