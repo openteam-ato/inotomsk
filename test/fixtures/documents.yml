@@ -1,0 +1,30 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined.  If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+one: {}
+# column: value
+#
+two: {}
+#  column: value
+
+# == Schema Information
+#
+# Table name: documents
+#
+#  id                :integer          not null, primary key
+#  title             :string
+#  date_on           :date
+#  tags              :text
+#  document_type     :string
+#  document_id       :integer
+#  file_file_name    :string
+#  file_content_type :string
+#  file_file_size    :integer
+#  file_updated_at   :datetime
+#  file_url          :text
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#
