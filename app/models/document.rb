@@ -8,7 +8,7 @@ class Document < ActiveRecord::Base
 
   extend Enumerize
 
-  enumerize :kind, :in => [
+  enumerize :kind, in: [
     :disposal,    # распоряжение
     :assignment,  # поручение
     :order,       # приказ
@@ -17,9 +17,9 @@ class Document < ActiveRecord::Base
   ], :prefix => true
 
   has_attached_file :file, {
-    :url => '/files/:hash.:extension',
-    :hash_secret => Settings['app.secret'],
-    :preserve_files => 'true',
+    path: ':rails_root/files/:class/:id_partition/:filename',
+    url: '/files/:id/download',
+    preserve_files: 'true',
   }
   validates_attachment_presence :file
   do_not_validate_attachment_file_type :file
