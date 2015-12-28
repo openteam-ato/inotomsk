@@ -81,6 +81,46 @@ ru:
   date:
     formats:
       custom: "%d %B %Y"
+
   time:
     formats:
       custom: "%H:%M"
+
+  activerecord:
+    attributes:
+      user:
+        first_name: "Имя"
+        last_name: "Фамилия"
+        email: 'E-mail'
+        password: 'Пароль'
+        password_confirmation: 'Подтвеждение пароля'
+        current_password: "Текущий пароль"
+        remember_me: 'Запомнить'
+      map_layer:
+        title: Название
+        ancestry: Родитеский элемент
+        icon: Иконка для карты
+        hover_icon: Иконка для карты(при наведении)
+        visible: Показывать в легенде карты
+      placemark:
+        title: Название
+        description: Описание
+        map_layer: Слой
+        logotype: Логотип
+        address: Адрес
+      event:
+        title: Наименование мероприятия
+        document_type: Вид документа
+        performer: Ответственный исполнитель
+        term_type: Срок
+        state: Статус
+        map_layer: Категория
+        language: Язык
+        placemark: Объект карты
+      document:
+        title:      Название
+        date_on:    Дата
+        kind:       Тип документа
+        kind_text:  Тип документа
+        tag_list:   Тэги
+        file:       Документ

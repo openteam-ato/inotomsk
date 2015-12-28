@@ -1,8 +1,12 @@
 class Document < ActiveRecord::Base
 
-  attr_accessible :title, :date_on, :kind, :tags, :file, :tag_list
+  attr_accessor :delete_file
+
+  attr_accessible :title, :date_on, :kind, :tags, :file, :tag_list, :delete_file
 
   has_many :documents
+
+  validates_presence_of :title, :date_on, :kind, :file
 
   acts_as_taggable
 
@@ -19,7 +23,7 @@ class Document < ActiveRecord::Base
   has_attached_file :file, {
     path: ':rails_root/files/:class/:id_partition/:filename',
     url: '/files/:id/download',
-    preserve_files: 'true',
+    preserve_files: true,
   }
   validates_attachment_presence :file
   do_not_validate_attachment_file_type :file
