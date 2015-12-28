@@ -10,12 +10,15 @@
           <%= f.input :date_on %>
           <%= f.input :kind %>
           <%= f.input :tag_list, input_html: { value: @document.tag_list.sort.join(', '), class: 'js-tags' } %>
-          <% unless f.object.file.blank? %>
+          <% if f.object.file.present? %>
             <p><%= link_to f.object.file_file_name, f.object.file.url %></p>
           <% end %>
           <%= f.input :file %>
-
-          <%= f.submit 'Добавить документ' %>
+          <% if @document.errors[:file_fingerprint].any? %>
+            <p class='text-danger'><%= @document.errors[:file_fingerprint].join %></p>
+          <% end %>
+          <%= f.submit @document.new_record? ? 'Добавить' : 'Изменить', class: 'btn btn-primary' %>
+          <%= link_to 'Отмена', @document.new_record? ? workplace_documents_path : workplace_document_path(@document), class: 'btn btn-default' %>
         <% end %>
       </div>
     </div>
