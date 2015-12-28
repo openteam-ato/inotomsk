@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
 
-  devise_for :users, :controllers => { :invitations => "manage/invitations" }
+  devise_for :users, :controllers => { :invitations => 'manage/invitations' }
 
   devise_scope :user do
-    get "manage/invitations", to: "manage/invitations#index"
+    get 'manage/invitations', to: 'manage/invitations#index'
   end
 
   namespace :manage do
@@ -24,8 +24,8 @@ Rails.application.routes.draw do
     root :to => 'documents#index'
   end
 
-  get "ru/inotomsk/ob-ekty"          => "map_layers#index", :as => 'map_layers'
-  get "ru/dorozhnaya-karta"          => "road_map#index",   :as => 'road_map'
+  get 'ru/inotomsk/ob-ekty'          => 'map_layers#index', :as => 'map_layers'
+  get 'ru/dorozhnaya-karta'          => 'road_map#index',   :as => 'road_map'
 
   %w[
     peredovoe-proizvodstvo
@@ -68,12 +68,13 @@ Rails.application.routes.draw do
     umnyy-i-udobnyy-gorod/transportnaya-infrastruktura
 
    ].each do |item|
-     get "ru/#{item}" => 'subdirections#show', :defaults => { :slug => item.split('/').last }, :as => item.split('/').last.underscore
+     get 'ru/#{item}' => 'subdirections#show', :defaults => { :slug => item.split('/').last }, :as => item.split('/').last.underscore
   end
 
-  get "en/road-map" => "road_map#index"
+  get 'en/road-map' => 'road_map#index'
 
-  match "poll" => "poll#show", :via => :get
+  get 'files/:id/download' => 'workplace/documents#download', as: :download
+
   get '/(*path)', :to => 'main#index'
   root :to => 'main#index'
 end
