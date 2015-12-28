@@ -1,12 +1,14 @@
 class Document < ActiveRecord::Base
 
-  attr_accessible :title, :date_on, :kind, :tags, :file
+  attr_accessible :title, :date_on, :kind, :tags, :file, :tag_list
+
+  has_many :documents
 
   acts_as_taggable
 
   extend Enumerize
 
-  enumerize :document_type, :in => [
+  enumerize :kind, :in => [
     :disposal,    # распоряжение
     :assignment,  # поручение
     :order,       # приказ

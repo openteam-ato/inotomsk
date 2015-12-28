@@ -1,5 +1,6 @@
 GEM
   remote: https://rubygems.org/
+  remote: https://rails-assets.org/
   specs:
     actionmailer (4.2.5)
       actionpack (= 4.2.5)
@@ -197,8 +198,13 @@ GEM
       rails-dom-testing (~> 1.0)
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
-    jquery-ui-rails (5.0.5)
-      railties (>= 3.2.16)
+    jquery-ui-rails (4.0.3)
+      jquery-rails
+      railties (>= 3.1.0)
+    jquery-ui-sass-rails (4.0.3.0)
+      jquery-rails
+      jquery-ui-rails (= 4.0.3)
+      railties (>= 3.1.0)
     json (1.8.3)
     kaminari (0.16.3)
       actionpack (>= 3.0.0)
@@ -274,6 +280,9 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 4.2.5)
       sprockets-rails
+    rails-assets-jquery (1.11.3)
+    rails-assets-jquery-tags-input (1.3.6)
+      rails-assets-jquery (~> 1.0)
     rails-deprecated_sanitizer (1.0.3)
       activesupport (>= 4.2.0.alpha)
     rails-dom-testing (1.0.7)
@@ -315,6 +324,9 @@ GEM
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
     sexp_processor (4.6.0)
+    show_for (0.5.0)
+      actionpack (>= 4.1, < 5.1)
+      activemodel (>= 4.1, < 5.1)
     sidekiq (4.0.1)
       concurrent-ruby (~> 1.0)
       connection_pool (~> 2.2, >= 2.2.0)
@@ -396,6 +408,7 @@ DEPENDENCIES
   inherited_resources
   jquery-rails
   jquery-ui-rails
+  jquery-ui-sass-rails
   kaminari
   normalize_attributes
   openteam-capistrano (~> 1.0.7)
@@ -408,9 +421,12 @@ DEPENDENCIES
   protected_attributes
   quiet_assets
   rails (~> 4.2.5)
+  rails-assets-jquery-tags-input!
+  responders
   rest-client
   russian
   sass-rails (~> 5.0)
+  show_for
   simple_form
   sitemap_generator
   stop_ie

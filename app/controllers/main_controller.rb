@@ -17,7 +17,9 @@ class MainController < ApplicationController
 
   private
     def prepare_locale
-      I18n.locale = request.fullpath.gsub(/\?.*$/, '').split('/').map(&:presence).compact.first || 'ru'
+      locale_from_request = request.fullpath.gsub(/\?.*$/, '').split('/').map(&:presence).compact.first.to_s
+      I18n.locale = :ru
+      I18n.locale = locale_from_request.presence if I18n.available_locales.include?(locale_from_request.to_sym)
     end
 
     def prepare_cms

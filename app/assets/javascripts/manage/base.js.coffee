@@ -17,6 +17,3 @@
     true
 
   toggle_term_period($('#event_term_type'))
-
-
-
