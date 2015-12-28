@@ -30,8 +30,8 @@ class Workplace::DocumentsController < Workplace::ApplicationController
   end
 
   def tags_list
-    tags_list = Document.all.map(&:tag_list).flatten.compact.uniq
+    tag_list = ActsAsTaggableOn::Tag.all.map(&:to_s).sort.select { |s| s.match(/#{Regexp.quote(params[:term])}/i) }
 
-    render text: tags_list.to_json and return
+    render text: tag_list.to_json and return
   end
 end
