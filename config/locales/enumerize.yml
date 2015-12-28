@@ -10,3 +10,9 @@ ru:
     language:
       ru: Рус
       en: Eng
+    kind:
+      disposal:    Распоряжение
+      assignment:  Поручение
+      order:       Приказ
+      report:      Отчет
+      letter:      Письмо

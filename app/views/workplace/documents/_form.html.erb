@@ -1,0 +1,20 @@
+<div class='container-fluid'>
+  <div class='container'>
+    <div class='row'>
+      <div class='col-xs-12'>
+        <h1><%= @document.new_record? ? 'Добавление документа' : 'Редактирование документа' %>
+      </div>
+      <div class='col-xs-12 form_wrapper'>
+        <%= simple_form_for @document, :url => [:workplace, @document] do |f| %>
+          <%= f.input :title %>
+          <%= f.input :date_on %>
+          <%= f.input :kind %>
+          <%= f.input :tag_list, input_html: { value: @document.tag_list.join(', '), class: 'js-tags' } %>
+          <%= f.input :file %>
+
+          <%= f.submit 'Добавить документ' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

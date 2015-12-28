@@ -17,7 +17,11 @@ Rails.application.routes.draw do
   end
 
   namespace :workplace do
-    root :to => 'welcome#index'
+    resources :documents do
+      get 'tags_list', on: :collection
+    end
+
+    root :to => 'documents#index'
   end
 
   get "ru/inotomsk/ob-ekty"          => "map_layers#index", :as => 'map_layers'

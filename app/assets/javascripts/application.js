@@ -11,9 +11,9 @@
  * GO AFTER THE REQUIRES BELOW.
  *
  * = require jquery
- * = bootstrap
- * = require jquery-ui
+ * = require jquery.ui.all
  * = require jquery_ujs
+ * = bootstrap
  * = require scroll_to
  * = require cookie
  * = require shuffle

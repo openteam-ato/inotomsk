@@ -1,0 +1,17 @@
+<div class='container-fluid'>
+  <div class='container'>
+    <div class='row'>
+      <div class='col-xs-12'>
+        <h1><%= @document.title %> от <%= I18n.l(@document.date_on) %></h1>
+      </div>
+      <div class='col-xs-12'>
+        <p class='pull-right'><%= link_to 'Изменить документ', edit_workplace_document_path(@document), :class => 'btn btn-primary' %></p>
+      </div>
+      <div class="col-xs-12">
+        <%= show_for @document do |d| %>
+          <%= d.attributes :kind, :tag_list, :file %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
