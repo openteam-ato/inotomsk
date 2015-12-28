@@ -22,9 +22,9 @@ module ApplicationHelper
 
     I18n.available_locales.each_with_index do |lang, index|
       if I18n.locale == lang
-        res += content_tag :li, link_to(I18n.t("locale.#{lang}"), "/#{lang}", :title => I18n.t("locale.#{lang}_title")), :class => 'active'
+        res += content_tag :li, I18n.t("locale.#{lang}"), :title => I18n.t("locale.#{lang}_title"), :class => 'active'
       else
-        res += content_tag :li, link_to(I18n.t("locale.#{lang}"), "/#{lang}", :title => I18n.t("locale.#{lang}_title"))
+        res += content_tag :li, link_to(I18n.t("locale.#{lang}"), "#{@page.related_pages.try(:[], lang ) || "/#{lang}"}", :title => I18n.t("locale.#{lang}_title"))
       end
     end
     content_tag :ul, res.html_safe, :class => ['languages', pull]
