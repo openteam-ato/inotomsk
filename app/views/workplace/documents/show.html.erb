@@ -9,7 +9,8 @@
       </div>
       <div class="col-xs-12">
         <%= show_for @document do |d| %>
-          <%= d.attributes :kind, :tag_list %>
+          <%= d.attribute :kind_text %>
+          <%= d.attribute :tag_list %>
           <%= d.attribute :file do %>
             <%= link_to d.object.file_file_name, d.object.file.url %>
           <% end %>

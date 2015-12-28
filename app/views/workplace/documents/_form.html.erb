@@ -9,7 +9,10 @@
           <%= f.input :title %>
           <%= f.input :date_on %>
           <%= f.input :kind %>
-          <%= f.input :tag_list, input_html: { value: @document.tag_list.join(', '), class: 'js-tags' } %>
+          <%= f.input :tag_list, input_html: { value: @document.tag_list.sort.join(', '), class: 'js-tags' } %>
+          <% unless f.object.file.blank? %>
+            <p><%= link_to f.object.file_file_name, f.object.file.url %></p>
+          <% end %>
           <%= f.input :file %>
 
           <%= f.submit 'Добавить документ' %>
