@@ -27,6 +27,16 @@ class Document < ActiveRecord::Base
   }
   validates_attachment_presence :file
   do_not_validate_attachment_file_type :file
+  before_post_process :rename_file
+  validates_uniqueness_of :file_fingerprint, message: 'Данный файл уже был загружен ранее'
+
+  private
+
+  def rename_file
+    filename = Russian.translit(File.basename(file_file_name, '.*').mb_chars.downcase).parameterize('-').gsub('_', '-')
+    extension = Russian.translit(File.extname(file_file_name).mb_chars.downcase).parameterize('-')
+    self.file.instance_write :file_name, "#{filename.capitalize}.#{extension}"
+  end
 
 end
 
