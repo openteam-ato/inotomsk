@@ -104,7 +104,7 @@
             width: 100%
 
       label
-        width: 200px
+        display: block
 
       div
         display: inline-block
@@ -144,3 +144,24 @@
 
 div.tagsinput input
   width: 150px
+
+fieldset
+  .fields
+    +clearfix
+
+    .form-group
+      float: left
+      width: 85%
+
+      .ui-autocomplete-input
+        width: 100%
+
+    .remove_nested_fields
+      width: 10%
+      float: left
+      margin-top: 30px
+      background: image_url('remove_icon.png') no-repeat center center
+      text-indent: -999em
+
+    .text-danger
+      clear: both

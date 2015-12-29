@@ -3,5 +3,6 @@ $ ->
   init_map() if $('.map_wrapper').length
   init_fileupload() if $('.form_wrapper').length
   init_tags() if $('.js-tags').length
+  init_documents_autocomplete()
 
   false

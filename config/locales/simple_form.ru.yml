@@ -38,6 +38,8 @@ ru:
         kind:       Тип документа
         tag_list:   Тэги
         file:       Документ
+      related_documents:
+        related_document_title: Название связанного документа
     placeholders:
       map_layer:
         title: Название слоя

@@ -18,7 +18,8 @@ Rails.application.routes.draw do
 
   namespace :workplace do
     resources :documents do
-      get 'tags_list', on: :collection
+      get 'tags_list',         on: :collection
+      get 'related_documents', on: :collection
     end
 
     root :to => 'documents#index'

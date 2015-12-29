@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151229045908) do
+ActiveRecord::Schema.define(version: 20151229053628) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,7 +27,6 @@ ActiveRecord::Schema.define(version: 20151229045908) do
     t.date     "date_on"
     t.text     "tags"
     t.string   "kind"
-    t.integer  "document_id"
     t.string   "file_file_name"
     t.string   "file_content_type"
     t.integer  "file_file_size"
@@ -100,6 +99,13 @@ ActiveRecord::Schema.define(version: 20151229045908) do
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
     t.text     "description"
+  end
+
+  create_table "related_documents", force: :cascade do |t|
+    t.integer  "document_id"
+    t.integer  "related_document_id"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
   end
 
   create_table "taggings", force: :cascade do |t|

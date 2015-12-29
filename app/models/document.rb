@@ -1,9 +1,12 @@
 class Document < ActiveRecord::Base
 
-  attr_accessible :title, :date_on, :number, :kind, :tags, :file, :tag_list
+  attr_accessible :title, :date_on, :number, :kind, :tags, :file, :tag_list,
+                  :related_documents_attributes
 
-  has_many :documents
-  accepts_nested_attributes_for :documents
+  has_many :related_documents, dependent: :destroy
+  accepts_nested_attributes_for :related_documents, allow_destroy: true
+
+  has_many :children, through: :related_documents, class_name: 'Document'
 
   validates_presence_of :title, :date_on, :kind, :file
 
@@ -33,6 +36,10 @@ class Document < ActiveRecord::Base
   before_post_process :rename_file
   validates_uniqueness_of :file_fingerprint, message: 'Данный файл уже был загружен ранее'
 
+  def related_documents_objects
+    related_documents.includes(:documents)
+  end
+
   private
 
   def rename_file
@@ -52,7 +59,6 @@ end
 #  date_on           :date
 #  tags              :text
 #  kind              :string
-#  document_id       :integer
 #  file_file_name    :string
 #  file_content_type :string
 #  file_file_size    :integer
