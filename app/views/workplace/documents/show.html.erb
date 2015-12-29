@@ -2,7 +2,10 @@
   <div class='container'>
     <div class='row'>
       <div class='col-xs-12'>
-        <h1><%= @document.title %> от <%= I18n.l(@document.date_on) %></h1>
+        <h1>
+          <%= @document.title %> от <%= I18n.l(@document.date_on) %>
+          <%= "№#{@document.number}" if @document.number? %>
+        </h1>
       </div>
       <div class='col-xs-12'>
         <p><%= link_to 'Изменить документ', edit_workplace_document_path(@document), :class => 'btn btn-primary' %></p>

@@ -1,10 +1,9 @@
 class Document < ActiveRecord::Base
 
-  attr_accessor :delete_file
-
-  attr_accessible :title, :date_on, :kind, :tags, :file, :tag_list, :delete_file
+  attr_accessible :title, :date_on, :number, :kind, :tags, :file, :tag_list
 
   has_many :documents
+  accepts_nested_attributes_for :documents
 
   validates_presence_of :title, :date_on, :kind, :file
 
@@ -17,8 +16,12 @@ class Document < ActiveRecord::Base
     :assignment,  # поручение
     :order,       # приказ
     :report,      # отчет
-    :letter       # письмо
+    :letter,      # письмо
+    :protocol,    # протокол
+    :agenda       # повестка
   ], :prefix => true
+
+  normalize :title, :number
 
   has_attached_file :file, {
     path: ':rails_root/files/:class/:id_partition/:filename',
@@ -58,4 +61,5 @@ end
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
 #  file_fingerprint  :string
+#  number            :string
 #

@@ -29,6 +29,12 @@ class Workplace::DocumentsController < Workplace::ApplicationController
     respond_with @document, location: -> { workplace_document_path @document }
   end
 
+  def destroy
+    Document.find(params[:id]).destroy
+
+    redirect_to workplace_documents_path
+  end
+
   def download
     @document = Document.find(params[:id])
 
