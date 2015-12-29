@@ -5,6 +5,7 @@
  * = require bootstrap
  * = require map
  * = require jquery-tags-input
+ * = require jquery_nested_form
  * = require ./base
  * = require ./fileupload
  * = require ./tags

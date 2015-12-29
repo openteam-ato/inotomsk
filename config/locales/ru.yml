@@ -120,6 +120,7 @@ ru:
       document:
         title:      Название
         date_on:    Дата
+        number:     Номер
         kind:       Тип документа
         kind_text:  Тип документа
         tag_list:   Тэги

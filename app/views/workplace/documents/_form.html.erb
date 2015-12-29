@@ -5,9 +5,10 @@
         <h1><%= @document.new_record? ? 'Добавление документа' : 'Редактирование документа' %>
       </div>
       <div class='col-xs-12 form_wrapper'>
-        <%= simple_form_for @document, :url => [:workplace, @document] do |f| %>
+        <%= simple_nested_form_for @document, :url => [:workplace, @document] do |f| %>
           <%= f.input :title %>
           <%= f.input :date_on %>
+          <%= f.input :number %>
           <%= f.input :kind %>
           <%= f.input :tag_list, input_html: { value: @document.tag_list.sort.join(', '), class: 'js-tags' } %>
           <% if f.object.file.present? %>
@@ -19,6 +20,11 @@
           <% end %>
           <%= f.submit @document.new_record? ? 'Добавить' : 'Изменить', class: 'btn btn-primary' %>
           <%= link_to 'Отмена', @document.new_record? ? workplace_documents_path : workplace_document_path(@document), class: 'btn btn-default' %>
+          <% unless @document.new_record? %>
+            <p class='pull-right'>
+              <%= link_to 'Удалить', workplace_document_path(@document), method: :delete, :data => { :confirm => 'Вы уверены?' }, class: 'btn btn-warning' %>
+            </p>
+          <% end %>
         <% end %>
       </div>
     </div>

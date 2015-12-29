@@ -24,4 +24,5 @@ end
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
 #  file_fingerprint  :string
+#  number            :string
 #

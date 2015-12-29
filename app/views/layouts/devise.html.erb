@@ -1,36 +1,32 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>INOTOMSK</title>
-  <%= stylesheet_link_tag    'manage/application', media: 'all' %>
-  <%= javascript_include_tag 'manage/application' %>
-  <%= javascript_include_tag('//api-maps.yandex.ru/2.1/?lang=ru_RU') %>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <%= csrf_meta_tags %>
-</head>
-<body>
-  <div class="manage_wrapper">
-    <!--navigation-->
-    <nav class="navbar navbar-default">
-      <div class="container-fluid">
-        <div class="container">
-          <div class="navbar-header">
-            <a class="navbar-brand brand" href="<%= current_back_link %>">
-              <%= image_tag 'symbol.png', size: '56x40' %>
-            </a>
-            <p class="navbar-text"><a href="<%= current_back_link %>" class="navbar-link text">ИНОТОМСК</a></p>
+  <head>
+    <title>INOTOMSK</title>
+    <%= stylesheet_link_tag    'manage/application', media: 'all' %>
+    <%= javascript_include_tag 'manage/application' %>
+    <%= javascript_include_tag('//api-maps.yandex.ru/2.1/?lang=ru_RU') %>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div class="manage_wrapper">
+      <!--navigation-->
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="container">
+            <div class="navbar-header">
+              <a class="navbar-brand brand" href="<%= current_back_link %>">
+                <%= image_tag 'symbol.png', size: '56x40' %>
+              </a>
+              <p class="navbar-text"><a href="<%= current_back_link %>" class="navbar-link text">ИНОТОМСК</a></p>
+            </div>
+            <p class="navbar-text navbar-right"><%= render :partial => "devise/shared/current_user_menu" %></p>
           </div>
-          <p class="navbar-text navbar-right"><%= render :partial => "devise/shared/current_user_menu" %></p>
         </div>
-      </div>
-    </nav>
-    <!--/navigation-->
+      </nav>
+      <!--/navigation-->
 
-      <div class="row">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-          <%= yield %>
-        </div>
-      </div>
+      <%= yield %>
     </div>
   </div>
 </body>

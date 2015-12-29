@@ -14,6 +14,7 @@
               <li>
                 <%= link_to workplace_document_path(document) do %>
                   <%= document.title %> от <%= I18n.l document.date_on %>
+                  <%= "№#{document.number}" if document.number? %>
                 <% end %>
               </li>
             <% end %>
