@@ -9,6 +9,7 @@
  * = require ./base
  * = require ./fileupload
  * = require ./tags
+ * = require ./documents_autocomplete
  *
  * = require ./init
  */

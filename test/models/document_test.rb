@@ -15,7 +15,6 @@ end
 #  date_on           :date
 #  tags              :text
 #  kind              :string
-#  document_id       :integer
 #  file_file_name    :string
 #  file_content_type :string
 #  file_file_size    :integer

@@ -17,6 +17,13 @@
           <%= d.attribute :file do %>
             <%= link_to d.object.file_file_name, d.object.file.url %>
           <% end %>
+          <%= d.association :related_documents do %>
+            <ul>
+              <% d.object.children.each do |child| %>
+                <li><%= link_to child.title, workplace_document_path(child) %></li>
+              <% end %>
+            </ul>
+          <% end %>
         <% end %>
       </div>
       <div class='col-xs-12'>

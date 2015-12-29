@@ -49,4 +49,11 @@ class Workplace::DocumentsController < Workplace::ApplicationController
 
     render text: tag_list.to_json and return
   end
+
+  def related_documents
+    docs = Document.where('title ilike ?', "%#{params[:term]}%").where.not(:id => params[:current])
+    json = docs.map { |doc| { id: doc.id, label: doc.title, value: doc.title } }
+
+    render json: json.to_json
+  end
 end

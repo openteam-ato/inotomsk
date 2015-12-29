@@ -118,10 +118,11 @@ ru:
         language: Язык
         placemark: Объект карты
       document:
-        title:      Название
-        date_on:    Дата
-        number:     Номер
-        kind:       Тип документа
-        kind_text:  Тип документа
-        tag_list:   Тэги
-        file:       Документ
+        title:                  Название
+        date_on:                Дата
+        number:                 Номер
+        kind:                   Тип документа
+        kind_text:              Тип документа
+        tag_list:               Тэги
+        file:                   Документ
+        related_documents:      Связанные документы
