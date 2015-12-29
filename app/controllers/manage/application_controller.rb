@@ -8,5 +8,4 @@ class Manage::ApplicationController < ApplicationController
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to root_url
   end
-
 end

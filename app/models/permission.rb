@@ -4,7 +4,13 @@ class Permission < ActiveRecord::Base
 
   extend Enumerize
   enumerize :role,
-    in: [:admin, :map_manager, :inviter, :workplace_user],
+    in: [
+      :admin,
+      :map_manager,
+      :inviter,
+      :workplace_user,
+      :documents_manager
+  ],
     predicates: true
 
   def self.available_roles
