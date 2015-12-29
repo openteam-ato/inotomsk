@@ -66,4 +66,8 @@ module Manage::ManageHelper
     return "primary" if params[:scope].blank? && filter == "created_by_invite"
     "default"
   end
+
+  def current_namespace
+   controller_path.split('/').first
+  end
 end

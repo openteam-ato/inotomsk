@@ -12,7 +12,10 @@ class Ability
       user == u
     end
 
-    can :manage, :all if user.admin?
     can :manage, [MapLayer, Placemark, Event] if user.map_manager?
+
+    can :manage, [Document, RelatedDocument] if user.documents_manager?
+
+    can :manage, :all if user.admin?
   end
 end

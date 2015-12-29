@@ -1,5 +1,4 @@
 class Workplace::DocumentsController < Workplace::ApplicationController
-
   def index
     @documents = Document.order('date_on desc')
   end
