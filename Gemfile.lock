@@ -226,6 +226,8 @@ GEM
     netrc (0.11.0)
     nokogiri (1.6.7)
       mini_portile2 (~> 2.0.0.rc2)
+    non-stupid-digest-assets (1.0.6)
+      sprockets (>= 2.0)
     normalize_attributes (0.2.0)
       activerecord
     openteam-capistrano (1.0.12)
@@ -412,6 +414,7 @@ DEPENDENCIES
   jquery-ui-sass-rails
   kaminari
   nested_form
+  non-stupid-digest-assets
   normalize_attributes
   openteam-capistrano (~> 1.0.7)
   openteam-commons
@@ -437,6 +440,3 @@ DEPENDENCIES
   unicorn
   whenever
   yt
-
-BUNDLED WITH
-   1.11.2
