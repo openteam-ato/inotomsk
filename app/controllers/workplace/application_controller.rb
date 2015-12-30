@@ -8,6 +8,6 @@ class Workplace::ApplicationController < ApplicationController
   respond_to :html
 
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to root_url
+    redirect_to root_path
   end
 end

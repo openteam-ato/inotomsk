@@ -6,6 +6,6 @@ class Manage::ApplicationController < ApplicationController
   layout 'manage'
 
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to root_url
+    redirect_to root_path
   end
 end
