@@ -4,6 +4,7 @@ ru:
     map_manager: 'Редактор карт'
     inviter: "Менеджер приглашений"
     workplace_user: "Участник рабочей группы"
+    documents_manager: "Менеджер рабочей группы"
   devise:
     confirmations:
       confirmed: "Ваш адрес электронной почты успешно подтвержден."
