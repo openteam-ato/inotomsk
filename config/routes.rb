@@ -61,6 +61,9 @@ Rails.application.routes.draw do
     nauka-i-obrazovanie/nauchno-obrazovatelnyy-park
     nauka-i-obrazovanie/uchastie-v-federalnyh-initsiativah
 
+    innovatsii-i-noviy-biznes/osobaya-ekonomicheskaya-zona
+    innovatsii-i-noviy-biznes/poyas-innovatsionnyh-kompaniy
+
     umnyy-i-udobnyy-gorod/tomskaya-aglomeratsiya
     umnyy-i-udobnyy-gorod/tomskie-naberezhnye
     umnyy-i-udobnyy-gorod/meditsinskiy-park
