@@ -22,7 +22,7 @@ class Placemark < ActiveRecord::Base
   end
 
   extend FriendlyId
-  friendly_id :title, use: :slugged
+  friendly_id :title, use: [:slugged, :finders]
 end
 
 # == Schema Information

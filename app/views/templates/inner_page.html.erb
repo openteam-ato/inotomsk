@@ -15,7 +15,7 @@
     </div>
 
     <% if @content_navigation || content_for?(:more_like_this) %>
-    <div class="content_side col-lg-10 col-md-9 col-sm-8 col-xs-12">
+      <div class="content_side col-lg-9 col-md-9 col-sm-8 col-xs-12">
     <% else %>
       <div class="content_side col-lg-12 col-md-12 col-sm-12 col-xs-12">
     <% end %>
@@ -44,7 +44,7 @@
 
             <% else %>
               <% if !@content_first.content.blank? && !%w(photo_album_list_part organization_list_part).include?(@content_first.template) && @content_first.try(:content).try(:rss_link) %>
-                <div class="header_wrapper col-lg-10 col-md-10 col-sm-10 col-xs-12">
+                <div class="header_wrapper col-lg-9 col-md-10 col-sm-10 col-xs-12">
               <% else %>
                 <div class="header_wrapper col-lg-12 col-md-12 col-sm-12 col-xs-12">
               <% end %>
@@ -69,12 +69,16 @@
           <%= render_partial_for_region(@content_second) %>
         <% end %>
 
+        <%= render_partial_for_region(@content_second) if @content_second %>
+        <%= render_partial_for_region(@content_third) if @content_third %>
+        <%= render_partial_for_region(@content_fourth) if @content_fourth %>
+
       <% end %>
 
     </div>
 
     <% if @content_navigation || content_for?(:more_like_this) %>
-      <div class='content_nav noindex col-lg-2 col-md-3 col-sm-4 hidden-xs'>
+      <div class='content_nav noindex col-lg-3 col-md-3 col-sm-4 hidden-xs'>
         <%= content_tag :div, render("regions/#{@content_navigation.type.underscore}", :object => @content_navigation.content), :class => 'navigation' if @content_navigation %>
         <%= content_tag :div, yield(:more_like_this), :class => 'more_like_this' if content_for?(:more_like_this) %>
       </div>

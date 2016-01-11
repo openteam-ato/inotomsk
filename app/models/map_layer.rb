@@ -16,7 +16,7 @@ class MapLayer < ActiveRecord::Base
   end
 
   extend FriendlyId
-  friendly_id :title, use: :slugged
+  friendly_id :title, use: [:slugged, :finders]
 
   scope :visible, -> { where(visible: true) }
 

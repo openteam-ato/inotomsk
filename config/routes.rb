@@ -69,7 +69,7 @@ Rails.application.routes.draw do
     umnyy-i-udobnyy-gorod/transportnaya-infrastruktura
 
    ].each do |item|
-     get 'ru/#{item}' => 'subdirections#show', :defaults => { :slug => item.split('/').last }, :as => item.split('/').last.underscore
+     get "ru/#{item}" => 'subdirections#show', :defaults => { :slug => item.split('/').last }, :as => item.split('/').last.underscore
   end
 
   get 'en/road-map' => 'road_map#index'
