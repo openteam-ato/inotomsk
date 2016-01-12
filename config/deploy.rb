@@ -1,5 +1,7 @@
 require 'openteam/capistrano/deploy'
 
+set :linked_dirs, fetch(:linked_dirs) + %w{ files }
+
 namespace :sitemap do
 
   desc 'Create symlink from shared sitemaps to public'
