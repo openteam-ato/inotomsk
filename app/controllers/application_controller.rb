@@ -6,6 +6,10 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery
 
+  rescue_from ActionView::MissingTemplate do |exception|
+    raise ActionController::RoutingError.new('Not Found')
+  end if Rails.env.production?
+
   layout :resolve_layout
 
   def resolve_layout
