@@ -1,29 +1,27 @@
-<div class="photo_albums">
-  <% object.items.each_slice(4) do |slice| %>
-    <ul>
-      <% slice.each do | album | %>
-        <li>
-          <% if album.images.any? %>
-            <div class="image">
-              <%= link_to album_thumbnail(album.images.first.thumbnail), album.link %>
-            </div>
-          <% end %>
-          <div class='description'>
-            <p class='title'>
-              <%= link_to strip_tags(album.title), album.link %>
-              <span class="count">(<%= album.images.size %>)</span>
-            </p>
-            <p class='date'>
-              <%= l Date.parse(album.since), :format => :custom %>
-              <span class='time'>
-                <%= l Time.parse(album.since), :format => :custom %>
-              </span>
-            </p>
+<div class='photo_albums'>
+  <ul>
+    <% object.items.each do | album | %>
+      <li>
+        <% if album.images.any? %>
+          <div class='image'>
+            <%= link_to album_thumbnail(album.images.first.thumbnail), album.link %>
           </div>
-        </li>
-      <% end %>
-    </ul>
-  <% end %>
+        <% end %>
+        <div class='description'>
+          <p class='title'>
+            <%= link_to strip_tags(album.title), album.link %>
+            <span class='count'>[<%= album.images.size %>]</span>
+          </p>
+          <p class='date'>
+            <%= l Date.parse(album.since), :format => :custom %>
+            <span class='time'>
+              <%= l Time.parse(album.since), :format => :custom %>
+            </span>
+          </p>
+        </div>
+      </li>
+    <% end %>
+  </ul>
 </div>
 
 <% if object.pagination %>

@@ -307,7 +307,32 @@ $content_nav_padding: 12px
         margin-bottom: 15px
         li
           float: left
-          width: 226px
+
+          @media (max-width: $screen-xs-max)
+
+            float: none
+
+          @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max)
+
+            width: 227px
+
+            &:nth-child(2n+1)
+              clear: left
+
+          @media (min-width: $screen-md-min) and (max-width: $screen-md-max)
+
+            width: 227px
+
+            &:nth-child(3n+1)
+              clear: left
+
+          @media (min-width: $screen-lg-min)
+
+            width: 208px
+
+            &:nth-child(4n+1)
+              clear: left
+
           .image
             background: transparent image_url("mediateka_photo_bg.png") no-repeat
             padding: 17px 7px 11px 21px

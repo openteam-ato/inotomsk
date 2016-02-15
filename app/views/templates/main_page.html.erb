@@ -139,10 +139,10 @@
               </div>
             </div>
           </div>
-        <div class='col-lg-6 col-md-6 col-sm-12 col-xs-12 media_wrapper'>
-          <% if locale.eql?(:ru) %>
+          <div class='col-lg-6 col-md-6 col-sm-12 col-xs-12 media_wrapper'>
             <div class='mediateka noindex row'>
-              <h2>Медиатека</h2>
+              <h2><%= I18n.t('media') %>Медиатека</h2>
+              <% if locale.eql?(:ru) %>
               <div class='video col-lg-6 col-md-6 col-sm-6 col-xs-12'>
                 <% unless @last_video.blank? %>
                   <% video = @last_video.content.items.first %>
@@ -159,6 +159,7 @@
                 <% end %>
                 <p class='more'><a href='/ru/press-tsentr/videobank'>Всё видео</a></p>
               </div>
+            <% end %>
               <div class='photo col-lg-6 col-md-6 col-sm-6 col-xs-12'>
                 <% if !@last_photo.blank? && @last_photo.response_status == 200 %>
                   <% photo = @last_photo.content.items.first %>
@@ -177,7 +178,6 @@
                 <% end %>
                 <p class='more'><a href='/ru/press-tsentr/fotobank'>Всё фото</a></p>
               </div>
-            <% end %>
           </div>
         </div>
       </div>
