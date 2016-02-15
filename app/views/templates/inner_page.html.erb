@@ -67,9 +67,10 @@
         <% if @content_second && @content_second.template == 'interview_list_part' %>
           <%= content_tag :h1, @content_second.part_title, :class => 'pull-left part_header' %>
           <%= render_partial_for_region(@content_second) %>
+        <% else %>
+          <%= render_partial_for_region(@content_second) if @content_second %>
         <% end %>
 
-        <%= render_partial_for_region(@content_second) if @content_second %>
         <%= render_partial_for_region(@content_third) if @content_third %>
         <%= render_partial_for_region(@content_fourth) if @content_fourth %>
 
