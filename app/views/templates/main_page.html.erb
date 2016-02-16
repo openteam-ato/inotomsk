@@ -176,7 +176,12 @@
                     </p>
                   <% end %>
                 <% end %>
-                <p class='more'><a href='/ru/press-tsentr/fotobank'>Всё фото</a></p>
+                <p class='more'>
+                <% if locale.eql?(:ru) %>
+                  <a href='/ru/press-tsentr/fotobank'>Всё фото</a></p>
+                <% else %>
+                  <a href='/en/news/photos'>All photos</a></p>
+                <% end %>
               </div>
           </div>
         </div>
