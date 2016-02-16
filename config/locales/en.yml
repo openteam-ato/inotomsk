@@ -36,6 +36,9 @@ en:
     quarter: "quarter"
     annually: "annually"
 
+  # Media Library
+  media: "Media Library"
+
   # road map
   road_map: "Road map"
   implemented: "Completed actions"

@@ -36,6 +36,9 @@ ru:
     quarter: "квартал"
     annually: "ежегодно"
 
+  #Медиатека
+  media: "Медиатека"
+
   #road map
   road_map: "Дорожная карта"
   implemented: "Реализованное мероприятие"
