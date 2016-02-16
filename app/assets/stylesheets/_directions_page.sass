@@ -191,12 +191,6 @@
         margin: 0 10px 10px 0
         min-height: 190px
 
-        &:nth-of-type(6n)
-          margin-right: 0
-
-        &:nth-of-type(6n+1)
-          clear: left
-
         .image
           text-align: center
 
@@ -207,6 +201,38 @@
 
         &:after
           clear: both
+
+      @media (min-width: $screen-lg-min)
+        .item
+          &:nth-of-type(5n)
+            margin-right: 0
+
+          &:nth-of-type(5n+1)
+            clear: left
+
+      @media (min-width: $screen-md-min) and (max-width: $screen-md-max)
+        .item
+          &:nth-of-type(4n)
+            margin-right: 0
+
+          &:nth-of-type(4n+1)
+            clear: left
+      @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max)
+        .item
+          &:nth-of-type(3n)
+            margin-right: 0
+
+          &:nth-of-type(3n+1)
+            clear: left
+
+      @media (max-width: $screen-xs-max)
+        .item
+          &:nth-of-type(3n)
+            margin-right: 0
+
+          &:nth-of-type(3n+1)
+            clear: left
+
 
     .fourth_part
       table
