@@ -23,7 +23,7 @@ class MainController < ApplicationController
     end
 
     def prepare_cms
-      render :file => "#{Rails.root}/public/404", :format => :html, :layout => false and return if request_status == 404
+      render :file => "#{Rails.root}/public/404", :format => :html, :layout => false, :status => :not_found and return if request_status == 404
 
       if request.xhr?
         render_partial_for_region(request_hashie)

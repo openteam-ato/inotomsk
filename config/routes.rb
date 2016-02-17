@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  # Redirect majestic seo bot to main page
+  get '/ru/press-tsentr/novosti/v-rossii/prosmotr_novosti/-/:id', to: redirect('/404'), id: /.+http:\/ria\.ru\/nano_news\/20120222\/572000474\.html/
+
   devise_for :users, :controllers => { :invitations => 'manage/invitations' }
 
   devise_scope :user do
@@ -81,4 +84,5 @@ Rails.application.routes.draw do
 
   get '/(*path)', :to => 'main#index'
   root :to => 'main#index'
+
 end
