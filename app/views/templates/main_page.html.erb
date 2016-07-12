@@ -112,28 +112,40 @@
                 <div class="col-lg-4 map_item col-md-4 col-sm-12 col-xs-12">
                   <div class="implemented">
                     <h1><%= I18n.t('implemented') %></h1>
-                    <h1><%= I18n.t('period') %></h1>
-                    <span> <%= human_term(@implemented)  %> </span>
-                    <%= @implemented.title.truncate(130) %>
-                    <p><%= link_to I18n.t('more_info'), "/#{locale}/#{I18n.t('road_map_slug')}?state=implemented" %></p>
+                    <% if @implemented.present? %>
+                      <h1><%= I18n.t('period') %></h1>
+                      <span> <%= human_term(@implemented)  %> </span>
+                      <%= @implemented.title.truncate(130) %>
+                      <p><%= link_to I18n.t('more_info'), "/#{locale}/#{I18n.t('road_map_slug')}?state=implemented" %></p>
+                    <% else %>
+                      <span>нет мероприятий</span>
+                    <% end %>
                   </div>
                 </div>
                 <div class="col-lg-4 map_item col-md-4 col-sm-12 col-xs-12">
                   <div class="now">
                     <h1><%= I18n.t('now') %></h1>
-                    <h1><%= I18n.t('period') %></h1>
-                    <span> <%= human_term(@now)  %> </span>
-                    <%= @now.title.truncate(130) %>
-                    <p><%= link_to I18n.t('more_info'), "/#{locale}/#{I18n.t('road_map_slug')}?state=now" %></p>
+                    <% if @now.present? %>
+                      <h1><%= I18n.t('period') %></h1>
+                      <span> <%= human_term(@now)  %> </span>
+                      <%= @now.title.truncate(130) %>
+                      <p><%= link_to I18n.t('more_info'), "/#{locale}/#{I18n.t('road_map_slug')}?state=now" %></p>
+                    <% else %>
+                      <span>нет мероприятий</span>
+                    <% end %>
                   </div>
                 </div>
                 <div class="col-lg-4 map_item col-md-4 col-sm-12 col-xs-12">
                   <div class="postponed">
                     <h1><%= I18n.t('postponed') %></h1>
-                    <h1><%= I18n.t('period') %></h1>
-                    <span> <%= human_term(@postponed)  %> </span>
-                    <%= @postponed.title.truncate(130) %>
-                    <p><%= link_to I18n.t('more_info'), "/#{locale}/#{I18n.t('road_map_slug')}?state=postponed" %></p>
+                    <% if @postponed.present? %>
+                      <h1><%= I18n.t('period') %></h1>
+                      <span><%= human_term(@postponed)  %></span>
+                      <%= @postponed.title.truncate(130) %>
+                      <p><%= link_to I18n.t('more_info'), "/#{locale}/#{I18n.t('road_map_slug')}?state=postponed" %></p>
+                    <% else %>
+                      <span>нет мероприятий</span>
+                    <% end %>
                   </div>
                 </div>
               </div>
