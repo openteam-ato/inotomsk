@@ -38,8 +38,9 @@ ru:
         date_on:           Дата
         kind:              Тип документа
         tag_list:          Тэги
-        participant_list: Участники
+        participant_list:  Участники
         file:              Документ
+        map_layers:        Направления
       related_documents:
         related_document_title: Название связанного документа
     placeholders:

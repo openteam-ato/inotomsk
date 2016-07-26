@@ -1,4 +1,4 @@
-require "application_responder"
+require 'application_responder'
 
 class ApplicationController < ActionController::Base
   self.responder = ApplicationResponder
@@ -6,8 +6,8 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery
 
-  rescue_from ActionView::MissingTemplate do |exception|
-    raise ActionController::RoutingError.new('Not Found')
+  rescue_from ActionView::MissingTemplate do |_exception|
+    raise ActionController::RoutingError, 'Not Found'
   end if Rails.env.production?
 
   layout :resolve_layout
@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def after_sign_in_path_for(resource)
+  def after_sign_in_path_for(_resource)
     if current_user.admin?
       manage_permissions_path
     else

@@ -5,6 +5,8 @@ class MapLayer < ActiveRecord::Base
 
   has_many :placemarks, dependent: :destroy
   has_many :events, dependent: :destroy
+  has_many :document_map_layers
+  has_many :documents, through: :document_map_layers
 
   has_attached_file :icon, storage: :elvfs, elvfs_url: Settings['storage.url']
   has_attached_file :hover_icon, storage: :elvfs, elvfs_url: Settings['storage.url']

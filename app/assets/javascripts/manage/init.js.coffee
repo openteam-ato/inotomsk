@@ -4,5 +4,6 @@ $ ->
   init_fileupload() if $('.form_wrapper').length
   init_tags() if $('.js-tags').length
   init_documents_autocomplete()
+  init_chosen()
 
   false

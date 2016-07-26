@@ -13,7 +13,7 @@ module Manage::ManageHelper
   end
 
   def permissions_role
-    Permission.available_roles.map{ |role| [I18n.t("role.#{role}"), role] }
+    Permission.available_roles.map { |role| [I18n.t("role.#{role}"), role] }
   end
 
   def opened_children_list?(map_layer)
@@ -25,7 +25,7 @@ module Manage::ManageHelper
   end
 
   def custom_map_layer_select_options(context)
-    options = "<option></option>"
+    options = '<option></option>'
     MapLayer.roots.each do |root|
       options << "<option class='root_option' value='#{root.id}' #{selected_option(context, root)} >#{root.title}</option>"
       root.children.each do |child|
@@ -41,33 +41,33 @@ module Manage::ManageHelper
     elsif event.term_type == 'period' && event.start_year != event.end_year
       "#{I18n.t('time_period.annually')} (#{event.start_year} - #{event.end_year})"
     else
-      "#{event.start_year}"
+      event.start_year.to_s
     end
   end
 
   def event_row_color(event)
     case event.state
-    when "implemented"
-      "success"
-    when "now"
-      "info"
-    when "postponed"
-      "warning"
+    when 'implemented'
+      'success'
+    when 'now'
+      'info'
+    when 'postponed'
+      'warning'
     end
   end
 
   def selected_filter(filter, param_name)
-    return 'active' if filter == "all" && !params[param_name]
+    return 'active' if filter == 'all' && !params[param_name]
     'active' if params[param_name] == filter
   end
 
   def invitations_active_scope(filter)
-    return "primary" if filter == params[:scope]
-    return "primary" if params[:scope].blank? && filter == "created_by_invite"
-    "default"
+    return 'primary' if filter == params[:scope]
+    return 'primary' if params[:scope].blank? && filter == 'created_by_invite'
+    'default'
   end
 
   def current_namespace
-   controller_path.split('/').first
+    controller_path.split('/').first
   end
 end

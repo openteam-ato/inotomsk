@@ -1,5 +1,5 @@
 class Manage::UsersController < Manage::ApplicationController
-  #before_filter :set_locale
+  # before_filter :set_locale
 
   layout 'devise'
 
@@ -8,24 +8,25 @@ class Manage::UsersController < Manage::ApplicationController
 
   def update
     user = params[:user]
-    user[:password].blank? && user[:password_confirmation].blank? ? [:password, :password_confirmation].each{|s| user.delete(s) } : nil
+    user[:password].blank? && user[:password_confirmation].blank? ? [:password, :password_confirmation].each { |s| user.delete(s) } : nil
 
-    unless current_user.valid_password?(user[:current_password])
-      #по ряду причин выкинул валидацию из модели - нужна в одном action, заставляет придумывать многоэтажные костыли в остальных
-      current_user.errors[:current_password] = "Неправильно указан текущий пароль"
-      render :edit
-    else
+    if current_user.valid_password?(user[:current_password])
       if current_user.update_attributes(params[:user])
-        flash[:success] = I18n.t("devise.registrations.updated")
+        flash[:success] = I18n.t('devise.registrations.updated')
         render :edit
       else
         render :edit
       end
+    else
+      # по ряду причин выкинул валидацию из модели - нужна в одном action, заставляет придумывать многоэтажные костыли в остальных
+      current_user.errors[:current_password] = 'Неправильно указан текущий пароль'
+      render :edit
     end
   end
 
   private
-    def set_locale
-      I18n.locale = :ru
-    end
+
+  def set_locale
+    I18n.locale = :ru
+  end
 end

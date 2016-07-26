@@ -22,6 +22,7 @@
  * = require preload_images
  * = require alert_message
  * = require charts
+ * = require chosen
  * = require caruselko
  * = require main_news_list
  * = require events_list

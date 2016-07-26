@@ -45,6 +45,7 @@ gem 'yt'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-jquery-tags-input'
+  gem 'rails-assets-chosen'
 end
 
 group :development do

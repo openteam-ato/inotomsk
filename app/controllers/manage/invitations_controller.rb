@@ -1,8 +1,7 @@
-class Manage::InvitationsController <  Devise::InvitationsController
+class Manage::InvitationsController < Devise::InvitationsController
   helper_method :available_scopes
-  load_and_authorize_resource :class => "User"
-  layout "manage", only: [:index, :new]
-
+  load_and_authorize_resource class: 'User'
+  layout 'manage', only: [:index, :new]
 
   def new
     super
@@ -10,7 +9,7 @@ class Manage::InvitationsController <  Devise::InvitationsController
 
   def create
     super
-    resource.permissions.create(role: "workplace_user")
+    resource.permissions.create(role: 'workplace_user')
   end
 
   def index
@@ -25,13 +24,12 @@ class Manage::InvitationsController <  Devise::InvitationsController
   end
 
   def available_scopes
-    %w(created_by_invite invitation_accepted  invitation_not_accepted)
+    %w(created_by_invite invitation_accepted invitation_not_accepted)
   end
 
   private
 
-    def after_invite_path_for(resource)
-      manage_invitations_path
-    end
-
+  def after_invite_path_for(_resource)
+    manage_invitations_path
+  end
 end

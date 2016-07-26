@@ -47,6 +47,14 @@
 
         <p><%= f.link_to_add 'Добавить связанный документ', :related_documents %></p>
 
+        <hr />
+
+        <%= f.association :map_layers,
+          as: :select,
+          input_html: { class: 'js-chosen' } %>
+
+        <hr />
+
         <%= f.submit @document.new_record? ? 'Добавить' : 'Сохранить', class: 'btn btn-primary' %>
 
         <%= link_to 'Отмена', @document.new_record? ? workplace_documents_path : workplace_document_path(@document), class: 'btn btn-default' %>

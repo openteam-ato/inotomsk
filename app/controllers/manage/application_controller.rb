@@ -5,7 +5,7 @@ class Manage::ApplicationController < ApplicationController
 
   layout 'manage'
 
-  rescue_from CanCan::AccessDenied do |exception|
+  rescue_from CanCan::AccessDenied do |_exception|
     redirect_to root_path
   end
 end

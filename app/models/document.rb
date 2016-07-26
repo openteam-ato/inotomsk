@@ -1,12 +1,15 @@
 class Document < ActiveRecord::Base
-  attr_accessible :title, :date_on, :number, :kind, :tags, :file, :tag_list,
-                  :related_documents_attributes, :annotation,
+  attr_accessible :title, :date_on, :number, :kind, :tags, :file, :tag_list, :annotation,
+                  :related_documents_attributes, :map_layers_attributes, :map_layer_ids,
                   :participants, :participant_list
 
-  has_many :related_documents, dependent: :destroy
-  accepts_nested_attributes_for :related_documents, allow_destroy: true
+  has_many :related_documents,   dependent: :destroy
+  has_many :document_map_layers, dependent: :destroy
+  has_many :children,   through: :related_documents, class_name: 'Document'
+  has_many :map_layers, through: :document_map_layers
 
-  has_many :children, through: :related_documents, class_name: 'Document'
+  accepts_nested_attributes_for :related_documents, allow_destroy: true
+  accepts_nested_attributes_for :map_layers,        allow_destroy: true
 
   validates_presence_of :title, :date_on, :kind, :file
 

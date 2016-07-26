@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160726032953) do
+ActiveRecord::Schema.define(version: 20160726043926) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,13 @@ ActiveRecord::Schema.define(version: 20160726032953) do
     t.float   "latitude"
     t.float   "longitude"
     t.integer "placemark_id"
+  end
+
+  create_table "document_map_layers", force: :cascade do |t|
+    t.integer  "document_id"
+    t.integer  "map_layer_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "documents", force: :cascade do |t|

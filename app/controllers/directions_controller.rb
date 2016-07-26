@@ -1,11 +1,20 @@
 class DirectionsController < MainController
   def show
-    @map_layer = MapLayer.find(params[:slug]) rescue nil
+    @map_layer = begin
+                   MapLayer.find(params[:slug])
+                 rescue
+                   nil
+                 end
 
-    @placemarks = placemarks rescue nil
+    @placemarks = begin
+                    placemarks
+                  rescue
+                    nil
+                  end
   end
 
   private
+
   def placemarks
     return (@map_layer.children.flat_map(&:placemarks) + @map_layer.placemarks) unless params[:map_layer]
 
