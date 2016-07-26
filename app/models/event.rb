@@ -14,23 +14,23 @@ class Event < ActiveRecord::Base
   scope :now,         -> { where(state: :now) }
   scope :postponed,   -> { where(state: :postponed) }
 
-  scope :ru, -> {where(language: :ru)}
-  scope :en, -> {where(language: :en)}
+  scope :ru, -> { where(language: :ru) }
+  scope :en, -> { where(language: :en) }
 
   extend Enumerize
   enumerize :state,
-    in: [:implemented, :now, :postponed],
-    predicates: true
+            in: [:implemented, :now, :postponed],
+            predicates: true
 
   enumerize :term_type,
-    in: [:quarter, :period]
+            in: [:quarter, :period]
 
   enumerize :language,
-    in: [:ru, :en]
+            in: [:ru, :en]
 
   def correct_years
     if term_type == 'period' && (start_year > end_year)
-      errors.add(:end_year, "Год начала не может быть больше года окончания")
+      errors.add(:end_year, 'Год начала не может быть больше года окончания')
     end
   end
 end

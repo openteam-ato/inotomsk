@@ -12,13 +12,13 @@ class Placemark < ActiveRecord::Base
   validates_presence_of :title, :map_layer_id
   validates_presence_of :address, message: 'Укажите местоположение объекта на карте или введите его адрес'
 
-  has_attached_file :logotype, :storage => :elvfs, :elvfs_url => Settings['storage.url']
+  has_attached_file :logotype, storage: :elvfs, elvfs_url: Settings['storage.url']
 
   delegate :icon_url, to: :map_layer
   delegate :title, to: :map_layer, prefix: true
 
   normalize :title do |value|
-    value.gsub("\"","\'")
+    value.tr('"', "\'")
   end
 
   extend FriendlyId

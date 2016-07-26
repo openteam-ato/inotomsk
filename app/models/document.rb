@@ -1,7 +1,7 @@
 class Document < ActiveRecord::Base
-
   attr_accessible :title, :date_on, :number, :kind, :tags, :file, :tag_list,
-                  :related_documents_attributes
+                  :related_documents_attributes, :annotation,
+                  :participants, :participant_list
 
   has_many :related_documents, dependent: :destroy
   accepts_nested_attributes_for :related_documents, allow_destroy: true
@@ -10,7 +10,7 @@ class Document < ActiveRecord::Base
 
   validates_presence_of :title, :date_on, :kind, :file
 
-  acts_as_taggable
+  acts_as_taggable_on :tags, :participants
 
   extend Enumerize
 
@@ -22,15 +22,13 @@ class Document < ActiveRecord::Base
     :letter,      # письмо
     :protocol,    # протокол
     :agenda       # повестка
-  ], :prefix => true
+  ], prefix: true
 
   normalize :title, :number
 
-  has_attached_file :file, {
-    path: ':rails_root/files/:class/:id_partition/:filename',
-    url: '/files/:id/download',
-    preserve_files: true,
-  }
+  has_attached_file :file, path: ':rails_root/files/:class/:id_partition/:filename',
+                           url: '/files/:id/download',
+                           preserve_files: true
   validates_attachment_presence :file
   do_not_validate_attachment_file_type :file
   before_post_process :rename_file
@@ -43,11 +41,10 @@ class Document < ActiveRecord::Base
   private
 
   def rename_file
-    filename = Russian.translit(File.basename(file_file_name, '.*').mb_chars.downcase).parameterize('-').gsub('_', '-')
+    filename = Russian.translit(File.basename(file_file_name, '.*').mb_chars.downcase).parameterize('-').tr('_', '-')
     extension = Russian.translit(File.extname(file_file_name).mb_chars.downcase).parameterize('-')
-    self.file.instance_write :file_name, "#{filename.capitalize}.#{extension}"
+    file.instance_write :file_name, "#{filename.capitalize}.#{extension}"
   end
-
 end
 
 # == Schema Information

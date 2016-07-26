@@ -1,8 +1,7 @@
 class User < ActiveRecord::Base
-
   devise :database_authenticatable, #:registerable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :invitable, :invite_for => 2.weeks
+         :invitable, invite_for: 2.weeks
 
   acts_as_tagger
 
@@ -11,7 +10,7 @@ class User < ActiveRecord::Base
   attr_accessible :description, :email, :first_name, :last_name, :location, :name, :nickname, :phone, :current_password
   attr_accessor :current_password
 
-  has_many :permissions, :dependent => :destroy
+  has_many :permissions, dependent: :destroy
 
   Permission.available_roles.each do |role|
     define_method "#{role}?" do
@@ -20,9 +19,8 @@ class User < ActiveRecord::Base
   end
 
   def full_name
-    name || [first_name, last_name, email].join(" ")
+    name || [first_name, last_name, email].join(' ')
   end
-
 end
 
 # == Schema Information

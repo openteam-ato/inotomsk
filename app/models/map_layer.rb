@@ -6,8 +6,8 @@ class MapLayer < ActiveRecord::Base
   has_many :placemarks, dependent: :destroy
   has_many :events, dependent: :destroy
 
-  has_attached_file :icon, :storage => :elvfs, :elvfs_url => Settings['storage.url']
-  has_attached_file :hover_icon, :storage => :elvfs, :elvfs_url => Settings['storage.url']
+  has_attached_file :icon, storage: :elvfs, elvfs_url: Settings['storage.url']
+  has_attached_file :hover_icon, storage: :elvfs, elvfs_url: Settings['storage.url']
 
   has_ancestry
 
@@ -21,13 +21,15 @@ class MapLayer < ActiveRecord::Base
   scope :visible, -> { where(visible: true) }
 
   def should_generate_new_friendly_id?
-    return true if !self.slug?
+    return true unless slug?
 
     false
   end
 
   def ru_events
-    children.events.where(:language => 'ru') rescue []
+    children.events.where(language: 'ru')
+  rescue
+    []
   end
 end
 

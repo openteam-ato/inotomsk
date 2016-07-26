@@ -4,16 +4,21 @@
       <div class='col-xs-12'>
         <h1><%= @document.new_record? ? 'Добавление документа' : 'Редактирование документа' %>
       </div>
+
       <div class='col-xs-12 form_wrapper'>
-        <%= simple_nested_form_for @document, :url => [:workplace, @document] do |f| %>
+        <%= simple_nested_form_for @document, url: [:workplace, @document] do |f| %>
           <%= f.input :title %>
+          <%= f.input :annotation %>
           <%= f.input :date_on %>
           <%= f.input :number %>
           <%= f.input :kind %>
           <%= f.input :tag_list, input_html: { value: @document.tag_list.sort.join(', '), class: 'js-tags' } %>
+          <%= f.input :participant_list, input_html: { value: @document.participant_list.sort.join(', '), class: 'js-participants' } %>
+
           <% if f.object.file.present? %>
             <p><%= link_to f.object.file_file_name, f.object.file.url %></p>
           <% end %>
+
           <%= f.input :file %>
           <% if @document.errors[:file_fingerprint].any? %>
             <p class='text-danger'><%= @document.errors[:file_fingerprint].join %></p>
@@ -21,29 +26,38 @@
 
           <fieldset>
             <legend>Связанные документы</legend>
-            <%= f.fields_for :related_documents do |df| %>
+            <%= f.simple_fields_for :related_documents do |df| %>
               <%= df.input :related_document_id, as: :hidden, input_html: { class: 'js-document-id' } %>
-              <%= df.input :related_document_title, input_html: { value: df.object.try(:child).try(:title), class: 'js-document-autocomplete', data: { current: params[:id] } } %>
+              <%= df.input :related_document_title,
+                input_html: {
+                value: df.object.try(:child).try(:title),
+                placeholder: 'Начните вводить название документа',
+                class: 'js-document-autocomplete',
+                data: { current: params[:id]
+              }
+              } %>
 
-              <%= df.link_to_remove 'удалить' %>
+            <%= df.link_to_remove 'удалить' %>
 
-              <% if df.object.errors[:related_document_id].any? %>
-                <p class='text-danger'><%= df.object.errors[:related_document_id].join %></p>
-              <% end %>
+            <% if df.object.errors[:related_document_id].any? %>
+              <p class='text-danger'><%= df.object.errors[:related_document_id].join %></p>
             <% end %>
-          </fieldset>
-
-          <p><%= f.link_to_add 'Добавить связанный документ', :related_documents %></p>
-
-          <%= f.submit @document.new_record? ? 'Добавить' : 'Изменить', class: 'btn btn-primary' %>
-          <%= link_to 'Отмена', @document.new_record? ? workplace_documents_path : workplace_document_path(@document), class: 'btn btn-default' %>
-          <% unless @document.new_record? %>
-            <p class='pull-right'>
-              <%= link_to 'Удалить', workplace_document_path(@document), method: :delete, :data => { :confirm => 'Вы уверены?' }, class: 'btn btn-warning' %>
-            </p>
           <% end %>
+        </fieldset>
+
+        <p><%= f.link_to_add 'Добавить связанный документ', :related_documents %></p>
+
+        <%= f.submit @document.new_record? ? 'Добавить' : 'Сохранить', class: 'btn btn-primary' %>
+
+        <%= link_to 'Отмена', @document.new_record? ? workplace_documents_path : workplace_document_path(@document), class: 'btn btn-default' %>
+
+        <% unless @document.new_record? %>
+          <p class='pull-right'>
+            <%= link_to 'Удалить', workplace_document_path(@document), method: :delete, :data => { :confirm => 'Вы уверены?' }, class: 'btn btn-warning' %>
+          </p>
         <% end %>
-      </div>
+      <% end %>
     </div>
   </div>
+</div>
 </div>

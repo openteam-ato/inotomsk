@@ -9,4 +9,13 @@
     'defaultText': 'добавить'
     'width':'100%'
 
+  $('.js-participants').tagsInput
+    'autocomplete_url': '/workplace/documents/participants_list'
+    'autocomplete':
+      'selectFirst': true,
+      'width': '100px',
+      'autoFill': true
+    'defaultText': 'добавить'
+    'width':'100%'
+
   return

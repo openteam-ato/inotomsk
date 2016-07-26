@@ -122,10 +122,12 @@ ru:
         placemark: Объект карты
       document:
         title:                  Название
+        annotation:             Аннотация
         date_on:                Дата
         number:                 Номер
         kind:                   Тип документа
         kind_text:              Тип документа
         tag_list:               Тэги
+        participant_list:       Участники
         file:                   Документ
         related_documents:      Связанные документы

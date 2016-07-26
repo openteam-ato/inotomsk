@@ -38,19 +38,25 @@ class Workplace::DocumentsController < Workplace::ApplicationController
     @document = Document.find(params[:id])
 
     send_file @document.file.path,
-      :filename => @document.file_file_name,
-      :type => @document.file_content_type,
-      :disposition => 'attachment'
+              filename: @document.file_file_name,
+              type: @document.file_content_type,
+              disposition: 'attachment'
   end
 
-  def tags_list
-    tag_list = ActsAsTaggableOn::Tag.all.map(&:to_s).sort.select { |s| s.match(/#{Regexp.quote(params[:term])}/i) }
+  %w(tags participants).each do |method_name|
+    define_method %(#{method_name}_list) do
+      tag_list = Document
+                 .tag_counts_on(method_name.to_sym)
+                 .map(&:name)
+                 .sort
+                 .select { |s| s.match(/#{Regexp.quote(params[:term])}/i) }
 
-    render text: tag_list.to_json and return
+      render(text: tag_list.to_json) && return
+    end
   end
 
   def related_documents
-    docs = Document.where('title ilike ?', "%#{params[:term]}%").where.not(:id => params[:current])
+    docs = Document.where('title ilike ?', "%#{params[:term]}%").where.not(id: params[:current])
     json = docs.map { |doc| { id: doc.id, label: doc.title, value: doc.title } }
 
     render json: json.to_json

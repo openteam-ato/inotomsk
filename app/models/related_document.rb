@@ -1,12 +1,10 @@
 class RelatedDocument < ActiveRecord::Base
-
   attr_accessor :related_document_title
   attr_accessible :document_id, :related_document_id, :related_document_title
 
   belongs_to :child, foreign_key: :related_document_id, class_name: 'Document'
 
   validates :related_document_id, uniqueness: { scope: :document_id }
-
 end
 
 # == Schema Information
