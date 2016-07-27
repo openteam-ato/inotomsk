@@ -3,26 +3,26 @@
     <div class='row'>
       <div class='col-xs-12'>
         <h1>Документы</h1>
-      </div>
-      <div class='col-xs-12'>
-        <p><%= link_to 'Добавить документ', new_workplace_document_path, :class => 'btn btn-primary' %></p>
-      </div>
-      <div class='col-xs-12'>
-        <% if @documents.any? %>
-          <ul>
-            <% @documents.each do |document| %>
-              <li>
-                <%= link_to workplace_document_path(document) do %>
-                  <%= document.title %> от <%= I18n.l document.date_on %>
-                  <%= "№#{document.number}" if document.number? %>
-                <% end %>
-              </li>
-            <% end %>
-          </ul>
-        <% else %>
-          <p class='text-warning'>Нет информации</p>
-        <% end %>
+
+        <p><%= link_to '+ Добавить документ', new_workplace_document_path, :class => 'btn btn-primary' %></p>
       </div>
     </div>
+
+    <%= render 'search_form' %>
+
+    <br />
+
+    <div class='row'>
+      <div class='col-xs-8'>
+        <% @documents.each do |document| %>
+          <%= render document %>
+        <% end %>
+      </div>
+
+      <div class='col-xs-4'>
+        ola!
+      </div>
+    </div>
+
   </div>
 </div>

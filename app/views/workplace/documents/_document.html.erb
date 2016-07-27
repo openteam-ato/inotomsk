@@ -1,0 +1,7 @@
+<div class='well'>
+  <%= link_to workplace_document_path(document) do %>
+    <%= document.title %> от <%= I18n.l document.date_on %>
+
+    <small><%= %(№#{document.number}) if document.number? %></small>
+  <% end %>
+</div>

@@ -11,6 +11,8 @@ class Document < ActiveRecord::Base
   has_many :parents, through: :documents, class_name: 'Document'
   has_many :map_layers, through: :document_map_layers
 
+  scope :ordered, -> { order(date_on: :desc) }
+
   accepts_nested_attributes_for :related_documents, allow_destroy: true
   accepts_nested_attributes_for :map_layers,        allow_destroy: true
 

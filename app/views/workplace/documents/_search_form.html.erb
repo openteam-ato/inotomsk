@@ -1,0 +1,15 @@
+<div class='row'>
+  <div class='col-xs-12'>
+    <%= simple_form_for :search, url: '', method: :get, wrapper: :horizontal_form do |f| %>
+      <%= f.input :q,
+        label: false,
+        input_html: {
+          placeholder: 'Поиск по документам',
+          value: params[:search].try(:[], :q)
+        }
+      %>
+
+    <%= f.submit 'Искать', class: 'btn btn-primary' %>
+  <% end %>
+</div>
+    </div>
