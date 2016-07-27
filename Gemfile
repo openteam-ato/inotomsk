@@ -50,11 +50,12 @@ end
 
 group :development do
   gem 'annotate'
-  gem 'brakeman', :require => false
-  gem 'capistrano-unicorn', '~> 0.1.7', :require => false
+  gem 'brakeman', require: false
+  gem 'capistrano-unicorn', '~> 0.1.7', require: false
   gem 'hirb'
   gem 'openteam-capistrano', '~> 1.0.7'
   gem 'quiet_assets'
+  gem 'rails-erd'
 end
 
 group :production do

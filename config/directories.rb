@@ -11,15 +11,19 @@ class Directories
     @project ||= root.split('/')[-1]
   end
 
-  def config(file=nil)
+  def config(file = nil)
     "#{root}/config/#{file}"
   end
 
   def log_dir
-    @log_dir ||= FileUtils.mkdir_p("/var/log/#{group}/#{project}").first rescue "#{root}/log"
+    @log_dir ||= begin
+                   FileUtils.mkdir_p("/var/log/#{group}/#{project}").first
+                 rescue
+                   "#{root}/log"
+                 end
   end
 
-  def log(file=nil)
+  def log(file = nil)
     "#{log_dir}/#{file}"
   end
 
@@ -35,5 +39,4 @@ class Directories
   def heroku?
     ENV['PORT']
   end
-
 end

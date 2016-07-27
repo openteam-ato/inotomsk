@@ -1,0 +1,44 @@
+<% if @document.parents.present? %>
+  <h4>Основания для этого документа</h4>
+
+  <% recursive_parents(@document).each do |hash| %>
+    <% if hash[:root].flatten.compact.present? %>
+      <% hash[:root].each do |root_documents| %>
+        <% root_documents.each do |root_document| %>
+          <ul>
+            <li>
+              <%= link_to root_document.title, [:workplace, root_document] %>
+              <ul>
+                <% hash[:children].each do |child| %>
+                  <li>
+                    <%= link_to child.title, [:workplace, child] %>
+                  </li>
+                <% end %>
+
+                <ul>
+                  <li>
+                    Этот документ
+                  </li>
+                </ul>
+              </ul>
+            </li>
+          </ul>
+        <% end %>
+      <% end %>
+    <% else %>
+      <ul>
+        <% hash[:children].each do |child| %>
+          <li>
+            <%= link_to child.title, [:workplace, child] %>
+          </li>
+        <% end %>
+
+        <ul>
+          <li>
+            Этот документ
+          </li>
+        </ul>
+      </ul>
+    <% end %>
+  <% end %>
+<% end %>

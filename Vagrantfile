@@ -12,18 +12,18 @@ Vagrant.configure(2) do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
-  config.vm.box = "ubuntu/trusty64"
+  config.vm.box = 'ubuntu/trusty64'
 
   config.vm.provider :virtualbox do |vb|
-    vb.customize ["modifyvm", :id, "--memory", "1024"]
+    vb.customize ['modifyvm', :id, '--memory', '1024']
 
-    vb.customize ["modifyvm", :id, "--cpus", 2]
+    vb.customize ['modifyvm', :id, '--cpus', 2]
 
-    vb.customize ["modifyvm", :id, "--ioapic", "on"]
+    vb.customize ['modifyvm', :id, '--ioapic', 'on']
   end
 
   config.vm.provision :ansible do |ansible|
-    ansible.playbook = "playbook.yml"
+    ansible.playbook = 'playbook.yml'
   end
 
   config.vm.network :forwarded_port, guest: 3000, host: 3000

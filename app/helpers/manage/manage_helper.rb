@@ -70,4 +70,11 @@ module Manage::ManageHelper
   def current_namespace
     controller_path.split('/').first
   end
+
+  def recursive_parents(document)
+    content = []
+    content << { root: document.parents.map(&:parents), children: document.parents }
+
+    content
+  end
 end

@@ -5,5 +5,4 @@ $ ->
   init_tags() if $('.js-tags').length
   init_documents_autocomplete()
   init_chosen()
-
-  false
+  init_tooltip()

@@ -12,5 +12,6 @@
  * = require ./documents_autocomplete
  * = require chosen
  * = require ./chosen
+ * = require ./tooltip
  * = require ./init
  */

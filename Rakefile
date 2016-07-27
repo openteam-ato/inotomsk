@@ -4,13 +4,12 @@
 
 require File.expand_path('../config/application', __FILE__)
 require 'rake/testtask'
-task :default => :test
+task default: :test
 
 Rake::TestTask.new(:test) do |t|
   t.libs << 'test'
   t.pattern = 'test/**/*_test.rb'
   t.verbose = true
 end
-
 
 Inotomsk::Application.load_tasks

@@ -4,8 +4,11 @@ class Document < ActiveRecord::Base
                   :participants, :participant_list
 
   has_many :related_documents,   dependent: :destroy
+  has_many :documents, dependent: :destroy, foreign_key: 'related_document_id', class_name: 'RelatedDocument'
   has_many :document_map_layers, dependent: :destroy
-  has_many :children,   through: :related_documents, class_name: 'Document'
+  has_many :children, through: :related_documents, class_name: 'Document'
+
+  has_many :parents, through: :documents, class_name: 'Document'
   has_many :map_layers, through: :document_map_layers
 
   accepts_nested_attributes_for :related_documents, allow_destroy: true

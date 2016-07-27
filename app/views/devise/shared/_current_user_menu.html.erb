@@ -1,13 +1,12 @@
 <% if current_user %>
-  <%= current_user.email %>
-  <%= link_to "Рабочее пространство", workplace_root_path, class: (current_namespace == 'workplace' ? 'btn btn-primary' : 'btn btn-default') %>
+  <%= link_to 'Рабочее пространство', workplace_root_path, class: (current_namespace == 'workplace' ? 'btn btn-primary' : 'btn btn-default') %>
 
-  <%= link_to "Управление картами и пользователями", manage_root_path, class: current_namespace == 'manage' ? 'btn btn-primary' : 'btn btn-default' %>
+  <%= link_to 'Управление картами и пользователями', manage_root_path, class: current_namespace == 'manage' ? 'btn btn-primary' : 'btn btn-default' %>
 
-    <%  if [User, MapLayer, Placemark, Event].map { |e| can?(:read, e)  }.include? true  %>
-      <%= link_to I18n.t("devise.buttons.edit_profile"), edit_manage_user_path %>
-    <% end %>
-  <%= link_to I18n.t("devise.buttons.sign_out"), destroy_user_session_path, :method => :delete %>
+  <%  if [User, MapLayer, Placemark, Event].map { |e| can?(:read, e)  }.include? true  %>
+    <%= link_to current_user.email, edit_manage_user_path, class: 'js-tooltip', title: 'Редактировать учетную запись' %>
+  <% end %>
+  <%= link_to I18n.t('devise.buttons.sign_out'), destroy_user_session_path, :method => :delete %>
 <% else %>
-  <%= link_to I18n.t("devise.buttons.log_in"), new_user_session_path %>
+  <%= link_to I18n.t('devise.buttons.log_in'), new_user_session_path %>
 <% end %>

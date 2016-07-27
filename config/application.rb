@@ -27,7 +27,7 @@ module Inotomsk
     config.i18n.available_locales = [:ru, :en]
 
     config.to_prepare do
-      Devise::Mailer.layout "email"
+      Devise::Mailer.layout 'email'
     end
 
     # Do not swallow errors in after_commit/after_rollback callbacks.

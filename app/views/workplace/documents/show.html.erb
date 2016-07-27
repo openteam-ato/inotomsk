@@ -2,42 +2,106 @@
   <div class='container'>
     <div class='row'>
       <div class='col-xs-12'>
-        <h1>
-          <%= @document.title %> от <%= I18n.l(@document.date_on) %>
-          <%= "№#{@document.number}" if @document.number? %>
-        </h1>
+        <%= render 'parents_tree' %>
       </div>
+    </div>
 
+    <div class='row'>
       <div class='col-xs-12'>
-        <p><%= link_to 'Изменить документ', edit_workplace_document_path(@document), :class => 'btn btn-primary' %></p>
+        <div class='page-header'>
+          <h1>
+            <%= @document.title %> от <%= I18n.l(@document.date_on) %>
+            <small>
+              <%= %(№#{@document.number}) if @document.number? %>
+            </small>
+
+            <%= link_to edit_workplace_document_path(@document) do %>
+              <span class='glyphicon glyphicon-pencil js-tooltip' title='Изменить'></span>
+            <% end %>
+          </h1>
+        </div>
       </div>
+    </div>
 
-      <div class='col-xs-12'>
-        <%= show_for @document do |d| %>
-          <%= d.attribute :annotation %>
-          <%= d.attribute :kind_text %>
-          <%= d.attribute :tag_list %>
-          <%= d.attribute :participant_list %>
-          <%= d.attribute :file do %>
-            <%= link_to d.object.file_file_name, d.object.file.url %>
-          <% end %>
+    <div class='row'>
+      <div class='col-xs-4'>
 
-          <%= d.association :map_layers %>
-
-          <%= d.association :related_documents do %>
-            <ul>
-              <% d.object.children.each do |child| %>
-                <li><%= link_to child.title, workplace_document_path(child) %></li>
-              <% end %>
-            </ul>
-          <% end %>
-
+        <h4>Участники</h4>
+        <% if @document.map_layers.present? %>
+          <ul>
+            <% @document.map_layers.each do |map_layer| %>
+              <li>
+                <%= link_to map_layer.title, '#' %>
+              </li>
+            <% end %>
+          </ul>
+        <% else %>
+          <p>Нет участников</p>
         <% end %>
       </div>
 
-      <div class='col-xs-12'>
-        <p><%= link_to 'Перейти к списку', workplace_documents_path, class: 'btn btn-default' %></p>
+      <div class='col-xs-4'>
+        <h4>Аннотация</h4>
+        <p>
+          <%= @document.annotation.presence || 'Нет аннотации' %>
+        </p>
+      </div>
+
+      <div class='col-xs-4'>
+        <h4>Тип документа</h4>
+        <p><%= @document.kind_text %></p>
       </div>
     </div>
+
+    <div class='row'>
+      <div class='col-xs-4'>
+        <h4>Тэги</h4>
+        <ul>
+          <% @document.tag_list.each do |tag| %>
+            <li>
+              <%= link_to tag, '#' %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+
+      <div class='col-xs-4'>
+        <h4>Документ</h4>
+        <p>
+          <%= link_to @document.file.url do %>
+            <%= @document.file_file_name %>
+
+            <span class='glyphicon glyphicon-floppy-disk'></span>
+          <% end %>
+        </p>
+      </div>
+
+      <div class='col-xs-4'>
+        <h4>Документы на основании этого</h4>
+        <p>
+          <% if @document.children.present? %>
+            <ul>
+              <% @document.children.each do |child| %>
+                <li>
+                  <%= link_to child.title, [:workplace, child] %>
+                </li>
+              <% end %>
+            </ul>
+          <% else %>
+            Нет документов
+          <% end %>
+        </p>
+
+      </div>
+
+      <div class='row'>
+        <div class='col-xs-12'>
+          <p>
+            <%= link_to 'Назад к списку', workplace_documents_path, class: 'btn btn-default' %>
+          </p>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>
