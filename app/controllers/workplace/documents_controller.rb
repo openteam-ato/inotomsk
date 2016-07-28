@@ -1,12 +1,13 @@
 module Workplace
   class DocumentsController < Workplace::ApplicationController
-    before_filter :find_document, except: [:index, :new, :create]
+    before_filter :find_document, except: [:index, :new, :create, :tags_list, :participants_list]
+    helper_method :search_params
 
     def index
-      @documents = if params[:utf8]
-                     Document.where('title ilike ?', %(%#{params[:search].try(:[], :q)}%))
+      @documents = if params[:search]
+                     DocumentsSearcher.new(params[:search].merge(page: params[:page], per_page: per_page)).search
                    else
-                     Document.ordered
+                     Document.preload(:map_layers, :tags).ordered.page(page).per(per_page)
                    end
     end
 
@@ -65,10 +66,22 @@ module Workplace
       render json: json.to_json
     end
 
+    def search_params
+      Hashie::Mash.new params[:search]
+    end
+
     private
 
     def find_document
       @document = Document.find(params[:id])
+    end
+
+    def page
+      params[:page] || 1
+    end
+
+    def per_page
+      35
     end
   end
 end

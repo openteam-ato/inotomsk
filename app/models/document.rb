@@ -14,7 +14,6 @@ class Document < ActiveRecord::Base
   scope :ordered, -> { order(date_on: :desc) }
 
   accepts_nested_attributes_for :related_documents, allow_destroy: true
-  accepts_nested_attributes_for :map_layers,        allow_destroy: true
 
   validates_presence_of :title, :date_on, :kind, :file
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160726043926) do
+ActiveRecord::Schema.define(version: 20160728083657) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,11 +76,12 @@ ActiveRecord::Schema.define(version: 20160726043926) do
     t.integer  "hover_icon_file_size"
     t.datetime "hover_icon_updated_at"
     t.text     "hover_icon_url"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
     t.string   "ancestry",                limit: 255
     t.integer  "position"
     t.boolean  "visible"
+    t.integer  "ancestry_depth",                      default: 0
   end
 
   add_index "map_layers", ["ancestry"], name: "index_map_layers_on_ancestry", using: :btree

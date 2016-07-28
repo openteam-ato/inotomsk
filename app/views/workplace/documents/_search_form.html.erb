@@ -1,15 +1,67 @@
 <div class='row'>
-  <div class='col-xs-12'>
-    <%= simple_form_for :search, url: '', method: :get, wrapper: :horizontal_form do |f| %>
-      <%= f.input :q,
-        label: false,
-        input_html: {
-          placeholder: 'Поиск по документам',
-          value: params[:search].try(:[], :q)
-        }
-      %>
-
-    <%= f.submit 'Искать', class: 'btn btn-primary' %>
-  <% end %>
-</div>
+  <div class='col-xs-12 form-wrapper'>
+    <div class='col-xs-12'>
+      <h3>Поиск</h3>
     </div>
+
+    <%= simple_form_for :search, url: '', method: :get, wrapper: :inline_form do |f| %>
+      <div class='col-xs-12'>
+        <%= f.input :q,
+          label: false,
+          input_html: {
+            placeholder: 'Поиск по названию документа',
+            value: params[:search].try(:[], :q)
+          }
+        %>
+      </div>
+
+      <% if @documents.flat_map(&:tag_list).uniq.sort.present? %>
+        <div class='col-xs-6'>
+          <p>Выбор по тэгам</p>
+          <%=
+            f.input :tags,
+              as: :select,
+              label: 'Тэги',
+              collection: @documents.flat_map(&:tag_list).uniq.sort,
+              selected: params[:search].try(:[], :tags),
+              input_html: { class: 'js-chosen', multiple: true }
+            %>
+        </div>
+      <% end %>
+
+      <% if @documents.flat_map(&:participant_list).uniq.sort %>
+        <div class='col-xs-6'>
+          <p>Выбор по участникам</p>
+          <%=
+            f.input :participants,
+              as: :select,
+              label: 'Участники',
+              collection: @documents.flat_map(&:participant_list).uniq.sort,
+              selected: params[:search].try(:[], :participants),
+              input_html: { class: 'js-chosen', multiple: true }
+            %>
+        </div>
+      <% end %>
+
+      <% if @documents.flat_map(&:map_layers).uniq.sort %>
+        <div class="col-xs-12">
+          <p>Выбор по направлениям</p>
+          <%=
+            f.input :map_layers,
+              as: :select,
+              label: 'Направления',
+              collection: @documents.flat_map(&:map_layers).uniq.sort,
+              label_method: :title,
+              selected: params[:search].try(:[], :map_layers),
+              input_html: { class: 'js-chosen', multiple: true }
+            %>
+        </div>
+      <% end %>
+
+      <div class='col-xs-12'>
+        <%= f.submit 'Искать', class: 'btn btn-primary' %>
+        <%= link_to 'Очистить', [:workplace, :documents] %>
+      </div>
+    <% end %>
+  </div>
+</div>

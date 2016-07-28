@@ -1,7 +1,41 @@
 <div class='well'>
   <%= link_to workplace_document_path(document) do %>
-    <%= document.title %> от <%= I18n.l document.date_on %>
+    <h2>
+      <%= document.title %> от <%= I18n.l document.date_on %>
+      <small><%= %(№#{document.number}) if document.number? %></small>
+    </h2>
 
-    <small><%= %(№#{document.number}) if document.number? %></small>
+  <% end %>
+
+  <% if document.tag_list.present? %>
+    <p>
+      <strong>Тэги</strong>
+      <%=
+        document.tag_list.map { |tag| content_tag(:span, link_to(tag, workplace_documents_path(search: { tags: [tag]  })), class: 'label label-primary') }
+          .join(' ').html_safe
+        %>
+    </p>
+  <% end %>
+
+  <% if document.participant_list.present? %>
+    <p>
+      <strong>Участники</strong>
+      <%=
+        document.participant_list.map { |participant| content_tag(:span, link_to(participant, workplace_documents_path(search: { participants: [participant]  })),
+                                                                  class: 'label label-primary') }
+          .join(' ').html_safe
+        %>
+    </p>
+  <% end %>
+
+  <% if document.map_layers.present? %>
+    <p>
+      <strong>Участники</strong>
+      <%=
+        document.map_layers.map { |map_layer| content_tag(:span, link_to(map_layer.title, workplace_documents_path(search: { map_layers: [map_layer.id]  })),
+                                                                  class: 'label label-primary') }
+          .join(' ').html_safe
+        %>
+    </p>
   <% end %>
 </div>

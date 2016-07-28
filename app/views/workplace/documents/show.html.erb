@@ -26,17 +26,17 @@
     <div class='row'>
       <div class='col-xs-4'>
 
-        <h4>Участники</h4>
+        <h4>Направления</h4>
         <% if @document.map_layers.present? %>
           <ul>
             <% @document.map_layers.each do |map_layer| %>
               <li>
-                <%= link_to map_layer.title, '#' %>
+                <%= link_to map_layer.title, workplace_documents_path(search: { map_layers: map_layer.id }) %>
               </li>
             <% end %>
           </ul>
         <% else %>
-          <p>Нет участников</p>
+          <p>Не добавлены направления</p>
         <% end %>
       </div>
 
@@ -59,7 +59,7 @@
         <ul>
           <% @document.tag_list.each do |tag| %>
             <li>
-              <%= link_to tag, '#' %>
+              <%= link_to tag, workplace_documents_path(search: { tags: [tag] }) %>
             </li>
           <% end %>
         </ul>
@@ -71,7 +71,7 @@
           <%= link_to @document.file.url do %>
             <%= @document.file_file_name %>
 
-            <span class='glyphicon glyphicon-floppy-disk'></span>
+            <span class='glyphicon glyphicon-floppy-disk js-tooltip' title='Скачать'></span>
           <% end %>
         </p>
       </div>
@@ -94,12 +94,26 @@
 
       </div>
 
-      <div class='row'>
-        <div class='col-xs-12'>
-          <p>
-            <%= link_to 'Назад к списку', workplace_documents_path, class: 'btn btn-default' %>
-          </p>
-        </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12">
+        <h4>Участники</h4>
+        <ul>
+          <% @document.participant_list.each do |participant| %>
+            <li>
+              <%= link_to participant, workplace_documents_path(search: { participants: [participant] }) %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+
+    <div class='row'>
+      <div class='col-xs-12'>
+        <p>
+          <%= link_to 'Назад к списку', workplace_documents_path, class: 'btn btn-default' %>
+        </p>
       </div>
     </div>
 

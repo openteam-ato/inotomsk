@@ -11,11 +11,13 @@ class MapLayer < ActiveRecord::Base
   has_attached_file :icon, storage: :elvfs, elvfs_url: Settings['storage.url']
   has_attached_file :hover_icon, storage: :elvfs, elvfs_url: Settings['storage.url']
 
-  has_ancestry
+  has_ancestry cache_depth: true
 
   normalize :ancestry do |value|
     value.blank? ? nil : value
   end
+
+  alias_attribute :to_s, :title
 
   extend FriendlyId
   friendly_id :title, use: [:slugged, :finders]

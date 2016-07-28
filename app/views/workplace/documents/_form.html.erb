@@ -15,6 +15,14 @@
           <%= f.input :tag_list, input_html: { value: @document.tag_list.sort.join(', '), class: 'js-tags' } %>
           <%= f.input :participant_list, input_html: { value: @document.participant_list.sort.join(', '), class: 'js-participants' } %>
 
+          <%= f.association :map_layers,
+            as: :grouped_select, group_method: :last,
+            label_method: :title, value_method: :id,
+            collection: MapLayer.order('title').from_depth(1).group_by(&:root),
+            input_html: { class: 'js-chosen', multiple: true } %>
+
+          <hr />
+
           <% if f.object.file.present? %>
             <p><%= link_to f.object.file_file_name, f.object.file.url %></p>
           <% end %>
@@ -28,14 +36,15 @@
             <legend>Связанные документы</legend>
             <%= f.simple_fields_for :related_documents do |df| %>
               <%= df.input :related_document_id, as: :hidden, input_html: { class: 'js-document-id' } %>
-              <%= df.input :related_document_title,
-                input_html: {
-                value: df.object.try(:child).try(:title),
-                placeholder: 'Начните вводить название документа',
-                class: 'js-document-autocomplete',
-                data: { current: params[:id]
-              }
-              } %>
+              <%=
+                df.input :related_document_title,
+                  input_html: {
+                  value: df.object.try(:child).try(:title),
+                  placeholder: 'Начните вводить название документа',
+                  class: 'js-document-autocomplete',
+                  data: { current: params[:id] }
+                }
+              %>
 
             <%= df.link_to_remove 'удалить' %>
 
@@ -46,12 +55,6 @@
         </fieldset>
 
         <p><%= f.link_to_add 'Добавить связанный документ', :related_documents %></p>
-
-        <hr />
-
-        <%= f.association :map_layers,
-          as: :select,
-          input_html: { class: 'js-chosen' } %>
 
         <hr />
 
