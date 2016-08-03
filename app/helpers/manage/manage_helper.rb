@@ -40,6 +40,8 @@ module Manage::ManageHelper
       "#{event.quarter} #{I18n.t('time_period.quarter')} #{event.end_year}"
     elsif event.term_type == 'period' && event.start_year != event.end_year
       "#{I18n.t('time_period.annually')} (#{event.start_year} - #{event.end_year})"
+    elsif event.term_type == 'period' && !event.start_year && !event.end_year
+      "#{I18n.t('time_period.annually')}"
     else
       event.start_year.to_s
     end
