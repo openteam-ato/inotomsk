@@ -29,7 +29,7 @@ class Event < ActiveRecord::Base
             in: [:ru, :en]
 
   def correct_years
-    if term_type == 'period' && (start_year > end_year)
+    if term_type == 'period' && start_year && end_year && (start_year > end_year)
       errors.add(:end_year, 'Год начала не может быть больше года окончания')
     end
   end
