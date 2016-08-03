@@ -41,7 +41,7 @@
         <% end %>
 
         <% if locale.eql?(:en) %>
-          <h1 class='pull-left section_header'><a href='/en/press-centre/news'><%= @news_list.part_title %></a></h1>
+          <h1 class='pull-left section_header'><a href='/en/news/news'><%= @news_list.part_title %></a></h1>
         <% end %>
 
         <ul class='nav nav-tabs pull-right news_navigation'>
@@ -51,7 +51,7 @@
             <li class='active'><a href='/ru/press-tsentr/novosti/v-tomske'>В Томске</a></li>
           <% end %>
           <% if locale.eql?(:en) %>
-            <li class='active'><a href='/en/press-centre/news'><%= @news_list.part_title %></a></li>
+            <li class='active'><a href='/en/news/news'><%= @news_list.part_title %></a></li>
           <% end %>
         </ul>
 
@@ -93,7 +93,7 @@
                 <p class='all_news'><a href='/ru/press-tsentr/novosti/v-tomske'>Все новости</a></p>
               <% end %>
               <% if locale.eql?(:en) %>
-                <p class='all_news'><a href='/en/press-centre/news'>All news</a></p>
+                <p class='all_news'><a href='/en/news/news'>All news</a></p>
               <% end %>
             </div>
           </div>
