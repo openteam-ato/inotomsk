@@ -2,7 +2,11 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    can [:edit, :update], User if user.nil?
+    can [:edit, :update], User do |targeted_user|
+      raise 111
+      raise targeted_user.inspect
+      user.nil? || targeted_user == user
+    end
 
     return unless user
 

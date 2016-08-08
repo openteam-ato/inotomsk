@@ -1,11 +1,13 @@
 <% if current_page.last? %>
   <%= content_tag :li, :class => 'next disabled' do %>
     <a href="#" aria-label="Next">
+      >
     </a>
   <% end %>
 <% else %>
   <%= content_tag :li, :class => 'next' do %>
     <%= link_to url, :rel => 'next', :remote => remote, :class => 'next', :title => I18n.t("views.pagination.next") do %>
+      >
     <% end %>
   <% end %>
 <% end %>

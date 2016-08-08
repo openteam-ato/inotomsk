@@ -17,7 +17,7 @@
 
             <%= link_to edit_workplace_document_path(@document) do %>
               <span class='glyphicon glyphicon-pencil js-tooltip' title='Изменить'></span>
-            <% end %>
+            <% end if can?(:edit, @document)%>
           </h1>
         </div>
       </div>

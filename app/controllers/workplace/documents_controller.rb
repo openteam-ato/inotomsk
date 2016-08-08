@@ -1,6 +1,6 @@
 module Workplace
   class DocumentsController < Workplace::ApplicationController
-    before_filter :find_document, except: [:index, :new, :create, :tags_list, :participants_list]
+    before_filter :find_document, except: [:index, :new, :create, :tags_list, :participants_list, :related_documents]
     helper_method :search_params
 
     def index

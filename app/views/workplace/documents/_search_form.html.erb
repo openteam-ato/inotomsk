@@ -44,7 +44,7 @@
       <% end %>
 
       <% if @documents.flat_map(&:map_layers).uniq.sort %>
-        <div class="col-xs-12">
+        <div class='col-xs-12'>
           <p>Выбор по направлениям</p>
           <%=
             f.input :map_layers,
@@ -61,6 +61,11 @@
       <div class='col-xs-12'>
         <%= f.submit 'Искать', class: 'btn btn-primary' %>
         <%= link_to 'Очистить', [:workplace, :documents] %>
+        <hr />
+      </div>
+
+      <div class='col-xs-12'>
+        Найдено документов: <%= @documents.total_count %>
       </div>
     <% end %>
   </div>
