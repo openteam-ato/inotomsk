@@ -7,7 +7,9 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
-  attr_accessible :description, :email, :first_name, :last_name, :location, :name, :nickname, :phone, :current_password
+  attr_accessible :description, :email,
+                  :first_name, :last_name, :middle_name,
+                  :location, :name, :nickname, :phone, :current_password
   attr_accessor :current_password
 
   has_many :permissions, dependent: :destroy
@@ -19,7 +21,7 @@ class User < ActiveRecord::Base
   end
 
   def full_name
-    name || [first_name, last_name, email].join(' ')
+    name || [first_name, middle_name, last_name, email].join(' ')
   end
 end
 
@@ -63,4 +65,5 @@ end
 #  invited_by_id          :integer
 #  invited_by_type        :string
 #  invitations_count      :integer          default(0)
+#  middle_name            :text
 #

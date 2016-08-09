@@ -94,6 +94,7 @@ ru:
       user:
         first_name: "Имя"
         last_name: "Фамилия"
+        middle_name: 'Отчество'
         email: 'E-mail'
         password: 'Пароль'
         password_confirmation: 'Подтвеждение пароля'

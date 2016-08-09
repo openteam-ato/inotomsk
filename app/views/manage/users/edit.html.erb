@@ -8,6 +8,7 @@
       <div class="form-inputs">
         <%= f.input :email, required: true, autofocus: true %>
         <%= f.input :first_name, :as => :string %>
+        <%= f.input :middle_name, as: :string %>
         <%= f.input :last_name, :as => :string %>
 
         <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>

@@ -72,4 +72,6 @@ end
 #  updated_at        :datetime         not null
 #  file_fingerprint  :string
 #  number            :string
+#  annotation        :text
+#  participants      :text
 #

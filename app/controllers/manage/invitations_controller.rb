@@ -9,7 +9,7 @@ class Manage::InvitationsController < Devise::InvitationsController
 
   def create
     super
-    resource.permissions.create(role: 'workplace_user')
+    # resource.permissions.create(role: 'workplace_user')
   end
 
   def index

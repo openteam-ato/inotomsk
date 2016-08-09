@@ -59,4 +59,5 @@ end
 #  ancestry                :string(255)
 #  position                :integer
 #  visible                 :boolean
+#  ancestry_depth          :integer          default(0)
 #
