@@ -22,14 +22,15 @@ class Document < ActiveRecord::Base
   extend Enumerize
 
   enumerize :kind, in: [
-    :disposal,          # распоряжение
-    :assignment,        # поручение
-    :order,             # приказ
-    :report,            # отчет
-    :letter,            # письмо
-    :protocol,          # протокол
-    :agenda,            # повестка
-    :approved_by_deputy # утвержден заместителем Губернатора Томской области
+    :disposal,           # распоряжение
+    :assignment,         # поручение
+    :order,              # приказ
+    :report,             # отчет
+    :letter,             # письмо
+    :protocol,           # протокол
+    :agenda,             # повестка
+    :approved_by_deputy, # утвержден заместителем Губернатора Томской области
+    :agreement,          # соглашение
   ], prefix: true
 
   normalize :title, :number
