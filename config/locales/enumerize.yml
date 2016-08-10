@@ -1,20 +1,21 @@
 ru:
   enumerize:
     state:
-      implemented: Реализованное мероприятие
-      now: Реализуется в данный момент
-      postponed: Реализация мероприятий отложена по времени
+      implemented: 'Реализованное мероприятие'
+      now:         'Реализуется в данный момент'
+      postponed:   'Реализация мероприятий отложена по времени'
     term_type:
-      quarter: Квартал
-      period: Ежегодно
+      quarter: 'Квартал'
+      period:  'Ежегодно'
     language:
-      ru: Рус
-      en: Eng
+      ru: 'Рус'
+      en: 'Eng'
     kind:
-      disposal:    Распоряжение
-      assignment:  Поручение
-      order:       Приказ
-      report:      Отчет
-      letter:      Письмо
-      protocol:    Протокол
-      agenda:      Повестка
+      disposal:           'Распоряжение'
+      assignment:         'Поручение'
+      order:              'Приказ'
+      report:             'Отчет'
+      letter:             'Письмо'
+      protocol:           'Протокол'
+      agenda:             'Повестка'
+      approved_by_deputy: 'Утвержден заместителем Губернатора Томской области'
