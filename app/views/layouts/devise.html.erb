@@ -25,8 +25,25 @@
         </div>
       </nav>
       <!--/navigation-->
+      <div class='container'>
+        <div class='row'>
+          <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+            <ul class='nav nav-tabs'>
+              <%= content_tag :li, link_to('Документы', workplace_documents_path), role: :presentation,
+                class: controller_name == 'documents' ? :active : ''  if can? :manage, Document %>
+              <%= content_tag :li, link_to('Пользователи и тэги', workplace_user_tags_path), role: :presentation,
+                class: controller_name == 'user_tags' ? :active : '' if can? :manage, UserTag %>
+            </ul>
+          </div>
+        </div>
+      </div>
 
-      <%= yield %>
+      <div class='container-fluid'>
+        <div class='container'>
+          <%= yield %>
+        </div>
+      </div>
+
     </div>
   </div>
 </body>

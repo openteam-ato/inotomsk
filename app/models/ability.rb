@@ -3,8 +3,6 @@ class Ability
 
   def initialize(user)
     can [:edit, :update], User do |targeted_user|
-      raise 111
-      raise targeted_user.inspect
       user.nil? || targeted_user == user
     end
 
@@ -15,6 +13,8 @@ class Ability
     can [:edit, :update], User do |u|
       user == u
     end
+
+    can :manage, UserTag if user.documents_manager?
 
     can :manage, [MapLayer, Placemark, Event] if user.map_manager?
 

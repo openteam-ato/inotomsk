@@ -13,6 +13,8 @@ class User < ActiveRecord::Base
   attr_accessor :current_password
 
   has_many :permissions, dependent: :destroy
+  has_many :user_tags, dependent: :destroy
+  has_many :user_map_layers, dependent: :destroy
 
   Permission.available_roles.each do |role|
     define_method "#{role}?" do

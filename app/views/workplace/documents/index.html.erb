@@ -1,39 +1,35 @@
-<div class='container-fluid'>
-  <div class='container'>
-    <div class='row'>
-      <div class='col-xs-12'>
-        <h1>Документы
-          <%=
-            link_to '+ Новый документ',
-              new_workplace_document_path,
-              :class => 'btn btn-success btn-sm js-tooltip',
-              title: 'Добавить новый документ' if can?(:new, Document)
-            %>
-        </h1>
-      </div>
-    </div>
-
-    <%= render 'search_form' %>
-
-    <br />
-
-    <div class='row'>
-      <div class='col-xs-12'>
-        <% if @documents.present? %>
-          <% @documents.each do |document| %>
-            <%= render document %>
-          <% end %>
-        <% else %>
-          <p class='text-warning'>Ничего не найдено по вашему запросу, попробуйте изменить параметры поиска</p>
-        <% end %>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-xs-12">
-        <%= paginate @documents %>
-      </div>
-    </div>
-
+<div class='row'>
+  <div class='col-xs-12'>
+    <h1>Документы
+      <%=
+        link_to '+ Новый документ',
+          new_workplace_document_path,
+          :class => 'btn btn-success btn-sm js-tooltip',
+          title: 'Добавить новый документ' if can?(:new, Document)
+        %>
+    </h1>
   </div>
 </div>
+
+<%= render 'search_form' %>
+
+<br />
+
+<div class='row'>
+  <div class='col-xs-12'>
+    <% if @documents.present? %>
+      <% @documents.each do |document| %>
+        <%= render document %>
+      <% end %>
+    <% else %>
+      <p class='text-warning'>Ничего не найдено по вашему запросу, попробуйте изменить параметры поиска</p>
+    <% end %>
+  </div>
+</div>
+
+<div class='row'>
+  <div class='col-xs-12'>
+    <%= paginate @documents %>
+  </div>
+</div>
+

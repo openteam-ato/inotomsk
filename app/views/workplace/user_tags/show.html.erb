@@ -1,0 +1,19 @@
+<div class='row'>
+  <div class='col-xs-12'>
+    <h1><%= @user.full_name %></h1>
+
+    <%= simple_form_for @user, url: workplace_user_tag_path, method: :put do |f| %>
+      <%= f.input :tags,
+        as: :select,
+        label: 'Тэги',
+        collection: Document.tag_counts_on(:tags).sort,
+        label_method: :name,
+        value_method: :name,
+        selected: @user.user_tags.pluck(:tag),
+        input_html: { class: 'js-chosen', multiple: true }
+      %>
+
+      <%= f.submit 'Сохранить', class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>

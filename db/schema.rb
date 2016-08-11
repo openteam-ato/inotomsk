@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160809054223) do
+ActiveRecord::Schema.define(version: 20160811083618) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -137,6 +137,20 @@ ActiveRecord::Schema.define(version: 20160809054223) do
   end
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
+
+  create_table "user_map_layers", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "map_layer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_tags", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "tag"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "uid",                    limit: 255

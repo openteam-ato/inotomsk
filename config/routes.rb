@@ -25,6 +25,8 @@ Rails.application.routes.draw do
       get 'related_documents', on: :collection
     end
 
+    resources :user_tags
+
     root to: 'documents#index'
   end
 
