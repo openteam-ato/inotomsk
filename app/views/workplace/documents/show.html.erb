@@ -83,7 +83,12 @@
             <ul>
               <% @document.children.each do |child| %>
                 <li>
-                  <%= link_to child.title, [:workplace, child] %>
+                  <%= link_to  [:workplace, child] do %>
+                    <%= child.title %> от <%= I18n.l(child.date_on) %>
+                    <small>
+                      <%= %(№#{child.number}) if child.number? %>
+                    </small>
+                  <% end %>
                 </li>
               <% end %>
             </ul>

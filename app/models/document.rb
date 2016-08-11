@@ -30,7 +30,7 @@ class Document < ActiveRecord::Base
     :protocol,           # протокол
     :agenda,             # повестка
     :approved_by_deputy, # утвержден заместителем Губернатора Томской области
-    :agreement,          # соглашение
+    :agreement # соглашение
   ], prefix: true
 
   normalize :title, :number
@@ -45,6 +45,15 @@ class Document < ActiveRecord::Base
 
   def related_documents_objects
     related_documents.includes(:documents)
+  end
+
+  def full_title
+    [
+      title,
+      'от',
+      I18n.l(date_on),
+      %(№#{number})
+    ].join(' ')
   end
 
   private

@@ -60,8 +60,10 @@ module Workplace
     end
 
     def related_documents
-      docs = Document.where('title ilike ?', "%#{params[:term]}%").where.not(id: params[:current])
-      json = docs.map { |doc| { id: doc.id, label: doc.title, value: doc.title } }
+      docs = Document
+             .where("title ilike ? or number ilike ? or to_char(date_on, 'DD.MM.YYYY') ilike ?", "%#{params[:term]}%", "%#{params[:term]}%", "%#{params[:term]}%")
+             .where.not(id: params[:current])
+      json = docs.map { |doc| { id: doc.id, label: doc.full_title, value: doc.title } }
 
       render json: json.to_json
     end

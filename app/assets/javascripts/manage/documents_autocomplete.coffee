@@ -7,6 +7,7 @@
 
       $('.js-document-autocomplete').autocomplete
         source: "/workplace/documents/related_documents?current=#{current}"
+        appendTo: $('.js-autocomplete-append')
         select: (event, ui) ->
           $('.js-document-id', event.target.closest('.fields')).val(ui.item.id)
           return
