@@ -19,6 +19,8 @@ class Document < ActiveRecord::Base
 
   acts_as_taggable_on :tags, :participants
 
+  after_create :notify_users
+
   extend Enumerize
 
   enumerize :kind, in: [
@@ -54,6 +56,15 @@ class Document < ActiveRecord::Base
       I18n.l(date_on),
       %(№#{number})
     ].join(' ')
+  end
+
+  def notify_users
+    users = UserTag.where(tag: tag_list).map(&:user)
+    users << UserMapLayer.where(map_layer: map_layers.pluck(:title)).map(&:user)
+
+    users.flatten.uniq.each do |user|
+      DocumentsMailer.send_notify(user, self).deliver_later
+    end
   end
 
   private
