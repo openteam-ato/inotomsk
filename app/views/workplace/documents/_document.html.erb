@@ -38,4 +38,26 @@
         %>
     </p>
   <% end %>
+
+  <% if document.events.present? %>
+    <p>
+      <strong>Мероприятия дорожной карты</strong>
+      <%=
+        document.events.map { |event| content_tag(:span, link_to(event.id, workplace_documents_path(search: { events: [event.id]  })),
+                                                                  class: 'label label-primary') }
+          .join(' ').html_safe
+        %>
+    </p>
+  <% end %>
+
+  <% if document.placemarks.present? %>
+    <p>
+      <strong>Объекты дорожной карты</strong>
+      <%=
+        document.placemarks.map { |placemark| content_tag(:span, link_to(%(#{placemark.title} № #{placemark.filled_number}), workplace_documents_path(search: { placemarks: [placemark.id]  })),
+                                                                  class: 'label label-primary') }
+          .join(' ').html_safe
+        %>
+    </p>
+  <% end %>
 </div>

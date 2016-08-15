@@ -13,6 +13,12 @@ class DocumentsSearcher
     documents = documents
                 .joins(:document_map_layers)
                 .where('document_map_layers.map_layer_id in (?)', search_params.map_layers) if search_params.try(:map_layers).try(:delete_if, &:blank?).present?
+    documents = documents
+                .joins(:document_map_placemarks)
+                .where('document_map_placemarks.placemark_id in (?)', search_params.placemarks) if search_params.try(:placemarks).try(:delete_if, &:blank?).present?
+    documents = documents
+                .joins(:document_events)
+                .where('document_events.event_id in (?)', search_params.events) if search_params.try(:events).try(:delete_if, &:blank?).present?
     documents = documents.ordered
 
     documents

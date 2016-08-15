@@ -21,6 +21,16 @@
             collection: MapLayer.order('title').from_depth(1).group_by(&:root),
             input_html: { class: 'js-chosen', multiple: true } %>
 
+          <%= f.association :events,
+            as: :select,
+            label_method: :title, value_method: :id,
+            input_html: { class: 'js-chosen', multiple: true } %>
+
+          <%= f.association :placemarks,
+            as: :select,
+            label_method: :title, value_method: :id,
+            input_html: { class: 'js-chosen', multiple: true } %>
+
           <hr />
 
           <% if f.object.file.present? %>

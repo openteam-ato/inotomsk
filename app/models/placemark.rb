@@ -1,9 +1,11 @@
 class Placemark < ActiveRecord::Base
-  attr_accessible :title, :logotype, :map_layer_id, :address, :description
+  attr_accessible :title, :logotype, :map_layer_id, :address, :description, :number
   attr_accessor :address
 
   has_many :events,    dependent: :destroy
   has_many :addresses, dependent: :destroy
+  has_many :document_map_placemarks, dependent: :destroy
+  has_many :documents, through: :document_map_placemarks
 
   belongs_to :map_layer
 
@@ -23,6 +25,14 @@ class Placemark < ActiveRecord::Base
 
   extend FriendlyId
   friendly_id :title, use: [:slugged, :finders]
+
+  def filled_number
+    number.presence || id
+  end
+
+  def full_title
+    %(#{title} № #{filled_number})
+  end
 end
 
 # == Schema Information

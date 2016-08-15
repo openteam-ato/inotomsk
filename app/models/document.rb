@@ -1,15 +1,19 @@
 class Document < ActiveRecord::Base
   attr_accessible :title, :date_on, :number, :kind, :tags, :file, :tag_list, :annotation,
-                  :related_documents_attributes, :map_layers_attributes, :map_layer_ids,
+                  :related_documents_attributes, :map_layer_ids, :event_ids, :placemark_ids,
                   :participants, :participant_list
 
   has_many :related_documents,   dependent: :destroy
   has_many :documents, dependent: :destroy, foreign_key: 'related_document_id', class_name: 'RelatedDocument'
   has_many :document_map_layers, dependent: :destroy
   has_many :children, through: :related_documents, class_name: 'Document'
+  has_many :document_map_placemarks, dependent: :destroy
+  has_many :document_events, dependent: :destroy
 
   has_many :parents, through: :documents, class_name: 'Document'
   has_many :map_layers, through: :document_map_layers
+  has_many :placemarks, through: :document_map_placemarks
+  has_many :events, through: :document_events
 
   scope :ordered, -> { order(date_on: :desc) }
 

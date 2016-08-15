@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160811083618) do
+ActiveRecord::Schema.define(version: 20160815073523) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,9 +22,23 @@ ActiveRecord::Schema.define(version: 20160811083618) do
     t.integer "placemark_id"
   end
 
+  create_table "document_events", force: :cascade do |t|
+    t.integer  "document_id"
+    t.integer  "event_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "document_map_layers", force: :cascade do |t|
     t.integer  "document_id"
     t.integer  "map_layer_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  create_table "document_map_placemarks", force: :cascade do |t|
+    t.integer  "document_id"
+    t.integer  "placemark_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
@@ -61,6 +75,7 @@ ActiveRecord::Schema.define(version: 20160811083618) do
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
     t.string   "language",      limit: 255
+    t.integer  "number"
   end
 
   create_table "map_layers", force: :cascade do |t|
@@ -109,6 +124,7 @@ ActiveRecord::Schema.define(version: 20160811083618) do
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
     t.text     "description"
+    t.integer  "number"
   end
 
   create_table "related_documents", force: :cascade do |t|

@@ -22,6 +22,7 @@
           <th>Наименование мероприятия</th>
           <th>Вид документа</th>
           <th>Срок</th>
+          <th>Номер</th>
           <th>Ответственный исполнитель</th>
           <th></th>
         </thead>
@@ -31,6 +32,7 @@
               <td><%= link_to event.title, edit_manage_event_path(event) %></td>
               <td><%= event.document_type %></td>
               <td><%= human_term(event) %></td>
+              <td><%= event.number.presence || 'не указан' %></td>
               <td><%= event.performer %></td>
               <td><%= link_to "Удалить", manage_event_path(event), method: :delete, confirm: "Уверены?" %></td>
             </tr>

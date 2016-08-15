@@ -23,6 +23,7 @@ ru:
         map_layer: Слой
         logotype: Логотип
         address: Адрес
+        number: Номер
       event:
         title: Наименование мероприятия
         document_type: Вид документа
@@ -32,6 +33,7 @@ ru:
         map_layer: Категория
         language: Язык
         placemark: Объект карты
+        number: Номер
       document:
         title:             Название
         annotation:        Аннотация
@@ -41,6 +43,8 @@ ru:
         participant_list:  Участники
         file:              Документ
         map_layers:        Направления
+        events:            События дорожной карты
+        placemarks:        Объекты дорожной карты
       related_documents:
         related_document_title: Название связанного документа
     placeholders:

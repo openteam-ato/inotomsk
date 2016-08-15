@@ -58,6 +58,38 @@
         </div>
       <% end %>
 
+      <% if @documents.flat_map(&:events).uniq.sort %>
+        <div class='col-xs-12'>
+          <p>Выбор по мероприятиям дорожной карты</p>
+          <%=
+            f.input :events,
+              as: :select,
+              label: 'Номера мероприятий дорожной карты',
+              collection: @documents.flat_map(&:events).uniq.sort,
+              label_method: :filled_number,
+              value_method: :id,
+              selected: params[:search].try(:[], :events),
+              input_html: { class: 'js-chosen', multiple: true  }
+            %>
+        </div>
+      <% end %>
+
+      <% if @documents.flat_map(&:placemarks).uniq.sort %>
+        <div class='col-xs-12'>
+          <p>Выбор по объектам</p>
+          <%=
+            f.input :placemarks,
+              as: :select,
+              label: 'Объекты',
+              collection: @documents.flat_map(&:placemarks).uniq.sort,
+              label_method: :full_title,
+              value_method: :id,
+              selected: params[:search].try(:[], :placemarks),
+              input_html: { class: 'js-chosen', multiple: true  }
+            %>
+        </div>
+      <% end %>
+
       <div class='col-xs-12'>
         <%= f.submit 'Искать', class: 'btn btn-primary' %>
         <%= link_to 'Очистить', [:workplace, :documents] %>
