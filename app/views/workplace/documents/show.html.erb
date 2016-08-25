@@ -102,12 +102,34 @@
     </div>
 
     <div class="row">
-      <div class="col-xs-12">
+      <div class="col-xs-4">
         <h4>Участники</h4>
         <ul>
           <% @document.participant_list.each do |participant| %>
             <li>
               <%= link_to participant, workplace_documents_path(search: { participants: [participant] }) %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+
+      <div class="col-xs-4">
+        <h4>События дорожной карты</h4>
+        <ul>
+          <% @document.events.each do |event| %>
+            <li>
+              <%= link_to event.title, workplace_documents_path(search: { events: [event] }) %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+
+      <div class="col-xs-4">
+        <h4>Объекты дорожной карты</h4>
+        <ul>
+          <% @document.placemarks.each do |placemark| %>
+            <li>
+              <%= link_to placemark.full_title, workplace_documents_path(search: { placemarks: [placemark.id] }) %>
             </li>
           <% end %>
         </ul>
