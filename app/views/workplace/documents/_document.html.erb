@@ -43,7 +43,7 @@
     <p>
       <strong>Мероприятия дорожной карты</strong>
       <%=
-        document.events.map { |event| content_tag(:span, link_to(event.id, workplace_documents_path(search: { events: [event.id]  })),
+        document.events.map { |event| content_tag(:span, link_to(event.number, workplace_documents_path(search: { events: [event.id]  })),
                                                                   class: 'label label-primary') }
           .join(' ').html_safe
         %>
