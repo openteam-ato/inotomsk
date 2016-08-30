@@ -44,8 +44,6 @@
 
           <fieldset>
             <legend>Связанные документы</legend>
-            <div class="row">
-              <div class='col-xs-10 js-autocomplete-append'>
                 <%= f.simple_fields_for :related_documents do |df| %>
                   <%= df.input :related_document_id, as: :hidden, input_html: { class: 'js-document-id' } %>
                   <%=
@@ -59,8 +57,6 @@
                   %>
 
                 <%= df.link_to_remove 'удалить' %>
-              </div>
-            </div>
 
             <% if df.object.errors[:related_document_id].any? %>
               <p class='text-danger'><%= df.object.errors[:related_document_id].join %></p>

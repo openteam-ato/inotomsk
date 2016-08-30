@@ -43,8 +43,8 @@ ru:
         participant_list:  Участники
         file:              Документ
         map_layers:        Направления
-        events:            События дорожной карты
-        placemarks:        Объекты дорожной карты
+        events:            Мероприятия "Дорожной карты"
+        placemarks:        Объекты
       related_documents:
         related_document_title: Название связанного документа
     placeholders:

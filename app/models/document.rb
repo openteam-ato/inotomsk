@@ -28,7 +28,6 @@ class Document < ActiveRecord::Base
   extend Enumerize
 
   enumerize :kind, in: [
-    :disposal,           # распоряжение
     :assignment,         # поручение
     :order,              # приказ
     :report,             # отчет
@@ -36,6 +35,9 @@ class Document < ActiveRecord::Base
     :protocol,           # протокол
     :agenda,             # повестка
     :approved_by_deputy, # утвержден заместителем Губернатора Томской области
+    :disposal_by_government, # Распоряжение Правительства Российской Федерации
+    :decree_by_government,   # Постановление Правительства Российской Федерации
+    :disposal_by_deputy,     # Распоряжение Губернатора Томской области
     :agreement # соглашение
   ], prefix: true
 
