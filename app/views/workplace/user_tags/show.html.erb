@@ -16,7 +16,7 @@
     <%= f.input :user_map_layers,
       as: :grouped_select, group_method: :last,
       label_method: :title, value_method: :title,
-      label: 'Направления',
+      label: 'Кластер / Парк',
       collection: MapLayer.order('title').from_depth(1).group_by(&:root),
       selected: @user.user_map_layers.pluck(:map_layer),
       input_html: { class: 'js-chosen', multiple: true } %>

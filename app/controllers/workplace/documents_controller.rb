@@ -86,7 +86,7 @@ module Workplace
     end
 
     def per_page
-      35
+      50
     end
   end
 end

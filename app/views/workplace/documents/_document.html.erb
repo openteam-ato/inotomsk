@@ -30,7 +30,7 @@
 
   <% if document.map_layers.present? %>
     <p>
-      <strong>Направления</strong>
+      <strong>Кластер / Парк</strong>
       <%=
         document.map_layers.map { |map_layer| content_tag(:span, link_to(map_layer.title, workplace_documents_path(search: { map_layers: [map_layer.id]  })),
                                                                   class: 'label label-primary') }
