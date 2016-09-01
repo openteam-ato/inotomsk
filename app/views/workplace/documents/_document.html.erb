@@ -52,7 +52,7 @@
 
   <% if document.placemarks.present? %>
     <p>
-      <strong>Объекты дорожной карты</strong>
+      <strong>Объекты</strong>
       <%=
         document.placemarks.map { |placemark| content_tag(:span, link_to(%(#{placemark.title} № #{placemark.filled_number}), workplace_documents_path(search: { placemarks: [placemark.id]  })),
                                                                   class: 'label label-primary') }
