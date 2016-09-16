@@ -18,7 +18,7 @@ class Ability
 
     can :manage, [MapLayer, Placemark, Event] if user.map_manager?
 
-    can :read, [Document, RelatedDocument] if user.workplace_user?
+    can [:read, :download], [Document, RelatedDocument] if user.workplace_user?
 
     can :manage, [Document, RelatedDocument] if user.documents_manager?
 
