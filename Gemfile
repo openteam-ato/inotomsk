@@ -23,7 +23,7 @@ gem 'kaminari'
 gem 'nested_form'
 gem 'non-stupid-digest-assets'
 gem 'normalize_attributes'
-gem 'openteam-commons'
+gem 'openteam-commons', '~> 0.3.3'
 gem 'paperclip'
 gem 'paperclip-elvfs'
 gem 'pg'
@@ -51,9 +51,8 @@ end
 group :development do
   gem 'annotate'
   gem 'brakeman', require: false
-  gem 'capistrano-unicorn', '~> 0.1.7', require: false
   gem 'hirb'
-  gem 'openteam-capistrano', '~> 1.0.7'
+  gem 'openteam-capistrano', '~> 1.0.16'
   gem 'quiet_assets'
   gem 'rails-erd'
 end

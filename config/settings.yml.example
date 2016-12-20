@@ -3,12 +3,16 @@ app:
   secret:
   host:
 
+errors:
+  key: KEY
+  url: http://errbit
+
+slack:
+  channel: channel
+  webhook: http://webhook
+
 devise:
   secret:
-
-errors:
-  key:
-  url:
 
 cms:
   url:
