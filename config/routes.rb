@@ -59,6 +59,7 @@ Rails.application.routes.draw do
     peredovoe-proizvodstvo/klaster_yadernyh_tekhnologiy
     peredovoe-proizvodstvo/industrialnyy-park
     peredovoe-proizvodstvo/klaster-farmatsevtiki-medtehniki-i-it
+    peredovoe-proizvodstvo/klaster-smart-technologiestomsk
     peredovoe-proizvodstvo/lesopromyshlennyy-klaster
     peredovoe-proizvodstvo/klaster-vozobnovlyaemyh-prirodnyh-resursov
     peredovoe-proizvodstvo/klaster-trudnoizvlekaemyh-prirod-resursov
