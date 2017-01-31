@@ -17,5 +17,6 @@ $ ->
   init_road_map_nav() if $('.map_layer_nav').length
 
   init_colorbox()
+  init_up_smart_tomsk()
 
   false

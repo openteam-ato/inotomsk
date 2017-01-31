@@ -32,6 +32,7 @@
  * = require barley_break
  * = require barley_break_filter
  * = require bootstrap
+ * = require up_smart_tomsk
  * = require init
  * = require map
  * = require road_map
