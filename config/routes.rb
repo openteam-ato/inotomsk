@@ -67,6 +67,8 @@ Rails.application.routes.draw do
     nauka-i-obrazovanie/nauchno-obrazovatelnyy-park
     nauka-i-obrazovanie/uchastie-v-federalnyh-initsiativah
     nauka-i-obrazovanie/tomskiy-natsionalnyy-issledovatelskiy-meditsinskiy-tsentr
+    nauka-i-obrazovanie/detskiy-tehnopark-kvantorium
+    nauka-i-obrazovanie/alyans-translyatsionnoy-meditsiny
 
     innovatsii-i-noviy-biznes/osobaya-ekonomicheskaya-zona
     innovatsii-i-noviy-biznes/poyas-innovatsionnyh-kompaniy
