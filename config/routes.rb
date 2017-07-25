@@ -66,6 +66,7 @@ Rails.application.routes.draw do
 
     nauka-i-obrazovanie/nauchno-obrazovatelnyy-park
     nauka-i-obrazovanie/uchastie-v-federalnyh-initsiativah
+    nauka-i-obrazovanie/tomskiy-natsionalnyy-issledovatelskiy-meditsinskiy-tsentr
 
     innovatsii-i-noviy-biznes/osobaya-ekonomicheskaya-zona
     innovatsii-i-noviy-biznes/poyas-innovatsionnyh-kompaniy
