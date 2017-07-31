@@ -3,3 +3,4 @@
     no_results_text: 'Ничего не найдено'
     placeholder_text_multiple: 'Можно выбрать несколько'
     placeholder_text_single: 'Выбор'
+    search_contains: true

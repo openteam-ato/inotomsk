@@ -172,7 +172,7 @@ GEM
       openteam-commons
       rails
       rest-client
-    eventmachine (1.0.8)
+    eventmachine (1.2.5)
     execjs (2.7.0)
     fastercsv (1.5.5)
     ffi (1.9.10)
@@ -462,4 +462,4 @@ DEPENDENCIES
   yt
 
 BUNDLED WITH
-   1.14.3
+   1.14.6
