@@ -1,0 +1,44 @@
+<% raise ActionController::RoutingError.new('Not Found') if object.blank? %>
+
+<div class="entry_show">
+  <p class='date'>
+    <%= l DateTime.parse(object.since), :format => '%d %B %Y' %>
+    <span class='time'>
+      <%= l DateTime.parse(object.since), :format => '%H:%M' %>
+    </span>
+  </p>
+  <% if object.images.any? %>
+    <p class='margin-bottom-20 width-50'>
+      <%= image_tag object.images.first.thumbnail.url.sub(/\d+-\d+/, "420-315!m"), :class => 'img-responsive', :size => "420x315" %>
+    </p>
+  <% end %>
+  <div class='content text-large'>
+    <%= raw object.body %>
+    <%= render :partial => 'commons/source_link', :locals => { :object => object } %>
+  </div>
+
+  <%= render 'commons/social_links' %>
+</div>
+
+<% content_for :more_like_this do %>
+  <ul class='entries'>
+    <% object.more_like_this.each do | entry | %>
+      <li>
+        <% if entry.images.any? %>
+          <div class='image'>
+            <%= link_to image_tag_for(entry.images.first.thumbnail, :class => 'img-responsive'), entry.link %>
+          </div>
+        <% end %>
+        <div class="title">
+          <%= link_to entry.title, entry.link %>
+        </div>
+        <div class='date'>
+          <%= l DateTime.parse(entry.since), :format => '%d %B %Y' %>
+          <span class='time'>
+            <%= l DateTime.parse(entry.since), :format => '%H:%M' %>
+          </span>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+<% end unless object.more_like_this.blank? %>

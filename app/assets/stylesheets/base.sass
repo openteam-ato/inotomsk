@@ -51,6 +51,20 @@ h1.section_header
 .clear-left
   clear: left
 
+// Paddings And Margins generator
+$direction-list: top right bottom left
+
+@for $i from 0 through 60
+  @each $direction in $direction-list
+    .margin-#{$direction}-#{$i}
+      margin-#{$direction}: unquote("#{$i}px")
+
+    .padding-#{$direction}-#{$i}
+      padding-#{$direction}: unquote("#{$i}px")
+
+.width-50
+  width: 50%
+
 .nav
   +clearfix
 
