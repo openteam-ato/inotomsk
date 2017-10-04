@@ -105,6 +105,32 @@
   <div class="row">
     <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
       <div class='row'>
+        <% if I18n.locale == :ru %>
+          <div class="col-lg-6 road_map col-md-6 col-sm-12 col-xs-12">
+            <div class='presentations margin-top-38'>
+              <h1 class='road_map_header section_header'>
+                <%= link_to 'Презентационные материалы', '/ru/press-tsentr/prezentatsionnye-materialy' %>
+              </h1>
+              <% if @last_presentation.try(:content).try(:items).present? %>
+                <ul>
+                  <% @last_presentation.content.items.each do |item| %>
+                    <li class='width-50 padding-left-10 padding-bottom-10 float-left'>
+                      <%= link_to item.link do %>
+                        <%= image_tag item.images.first.thumbnail.url.sub(/\d+-\d+/, "220-165!m"), :class => 'img-responsive margin-bottom-10' %>
+                      <% end %>
+                      <p class='text-center margin-left-10 margin-right-10'>
+                        <%= link_to item.title, item.link %>
+                      </p>
+                    </li>
+                  <% end %>
+                </ul>
+              <% else %>
+                <p>Нет информации</p>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+        <% if I18n.locale == :en %>
           <div class="col-lg-6 road_map col-md-6 col-sm-12 col-xs-12">
             <%= content_tag(:h1, link_to(I18n.t('road_map'), "/#{locale}/#{I18n.t('road_map_slug')}"), :class => ['road_map_header', 'section_header']) %>
             <div class="road_map_wrapper">
@@ -151,6 +177,7 @@
               </div>
             </div>
           </div>
+        <% end %>
           <div class='col-lg-6 col-md-6 col-sm-12 col-xs-12 media_wrapper'>
             <div class='mediateka noindex row'>
               <h2><%= I18n.t('media') %></h2>
