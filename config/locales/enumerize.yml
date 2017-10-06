@@ -15,6 +15,7 @@ ru:
       assignment:         'Поручение'
       order:              'Приказ'
       report:             'Отчет'
+      rept:               'Доклад'
       letter:             'Письмо'
       protocol:           'Протокол'
       agenda:             'Повестка'

@@ -28,17 +28,17 @@ class Document < ActiveRecord::Base
   extend Enumerize
 
   enumerize :kind, in: [
-    :assignment,         # поручение
-    :order,              # приказ
-    :report,             # отчет
-    :letter,             # письмо
-    :protocol,           # протокол
-    :agenda,             # повестка
-    :approved_by_deputy, # утвержден заместителем Губернатора Томской области
-    :disposal_by_government, # Распоряжение Правительства Российской Федерации
-    :decree_by_government,   # Постановление Правительства Российской Федерации
-    :disposal_by_deputy,     # Распоряжение Губернатора Томской области
-    :agreement # соглашение
+    :rept,                   # доклад
+    :report,                 # отчет
+    :letter,                 # письмо
+    :agenda,                 # повестка
+    :assignment,             # поручение
+    :decree_by_government,   # постановление Правительства Российской Федерации
+    :order,                  # приказ
+    :protocol,               # протокол
+    :disposal_by_deputy,     # распоряжение Губернатора Томской области
+    :disposal_by_government, # распоряжение Правительства Российской Федерации
+    :approved_by_deputy,     # утвержден заместителем Губернатора Томской области
   ], prefix: true
 
   normalize :title, :number
