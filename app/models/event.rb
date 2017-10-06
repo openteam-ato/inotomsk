@@ -7,6 +7,8 @@ class Event < ActiveRecord::Base
   validate :correct_years
   validates_presence_of :title, :document_type, :performer, :state, :language
 
+  normalize_attribute :title
+
   belongs_to :map_layer
   belongs_to :placemark
 
