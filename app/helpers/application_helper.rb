@@ -147,7 +147,7 @@ module ApplicationHelper
   end
 
   def road_map_navigation
-    clear_params = params.reject { |key, _value| %w(state action controller slug).include?(key) }
+    clear_params = params.reject { |key, _value| %w(state action controller slug page).include?(key) }
     {
       'all' => {
         'title' => I18n.t('all_nav'),
