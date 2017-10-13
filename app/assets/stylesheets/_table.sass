@@ -1,0 +1,68 @@
+table
+  @media (max-width: $screen-xs-max)
+    &.small-responsive
+      thead
+        th, td
+          display: block
+          text-align: left
+          border: 0
+
+        tr
+          th, td
+            padding-top: 0
+            padding-bottom: 0
+
+            &:last-child
+              padding-bottom: 10px
+
+      tbody
+        th, td
+          display: block
+          text-align: left
+          border: 0
+          border-left: none
+
+        &:first-child
+          p
+            display: inline-block
+            margin-right: 5px
+
+            img
+              display: block
+              max-width: 100%
+
+        tr
+          td
+            padding-top: 0
+            padding-bottom: 0
+
+        .column
+          border-bottom: 1px solid #d3d3d3
+          padding: 6px 0px 6px 0px
+
+          &.right
+            border-left: none
+            padding: 5px 0px 5px 10px
+
+          &.left
+            height: 100%
+            vertical-align: top
+            width: auto
+            padding-left: 10px
+
+            br
+              +inline-block
+              content: ''
+              width: 5px
+              height: 18px
+
+              &:before
+                display: block
+                content: ', '
+
+            &:first-child
+              padding-top: 10px
+
+            &:last-child
+              padding-bottom: 10px
+

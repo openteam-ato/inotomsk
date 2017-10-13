@@ -4,6 +4,7 @@ $ ->
   ]
 
   init_charts() if $(".chart").length
+  init_collapse() if $('.collapsed-items-wrapper').length || $('.js-client-collapser').length || $('.js-simple-collapser').length
   init_presentation() if $('.about_project .presentation').length
   init_caruselko() if $('.targets').length
   init_events_list() if $(".calendar").length

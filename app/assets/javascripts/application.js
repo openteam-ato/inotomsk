@@ -16,6 +16,7 @@
  * = bootstrap
  * = require scroll_to
  * = require cookie
+ * = require collapse
  * = require shuffle
  * = require hyphenator
  * = require tipsy

@@ -176,6 +176,8 @@ GEM
     execjs (2.7.0)
     fastercsv (1.5.5)
     ffi (1.9.10)
+    font-awesome-rails (4.7.0.2)
+      railties (>= 3.2, < 5.2)
     friendly_id (5.1.0)
       activerecord (>= 4.0.0)
     geoip (1.6.1)
@@ -425,6 +427,7 @@ DEPENDENCIES
   devise_invitable
   enumerize
   esp-commons
+  font-awesome-rails
   friendly_id
   geoip
   hashie

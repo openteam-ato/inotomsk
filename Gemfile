@@ -13,6 +13,7 @@ gem 'devise_invitable'
 gem 'enumerize'
 gem 'esp-commons'
 gem 'friendly_id'
+gem "font-awesome-rails"
 gem 'geoip'
 gem 'hashie'
 gem 'inherited_resources'

@@ -1,0 +1,56 @@
+@import 'font-awesome'
+
+.simple-collapser
+  background-color: #fff
+  margin: 10px 0
+
+  h5
+    padding: 15px 25px
+    position: relative
+
+    .collapser-circle
+      content: ''
+      position: absolute
+      width: 25px
+      height: 25px
+      background-image: url('collapser-arrow.png')
+      +transition(.8s all)
+      left: -13px
+      top: 0
+      cursor: pointer
+
+      &:before
+        content: ''
+        font-weight: bold
+        width
+        position: absolute
+
+      &:after
+        content: ''
+        position: absolute
+
+  .collapser-content
+    .well
+      +border-radius(0)
+      +box-shadow(none)
+      border: 0
+      background-color: #fff
+      padding-top: 0
+      padding-bottom: 10px
+
+    ul
+      list-style: none !important
+      margin-left: 7px
+      margin-bottom: 0
+
+      li
+        margin-bottom: 10px !important
+
+        &:before
+          content: '-'
+          padding-right: 10px
+
+  &.collapser-opened
+    h5
+      .collapser-circle
+        +transform(rotate(180deg))
