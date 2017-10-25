@@ -1,0 +1,105 @@
+$custom_timeline_color: #c00865
+
+.content_wrapper .content
+  .custom-timeline
+    .custom-timeline-list
+      margin-top: 20px
+      position: relative
+      border-left: 8px solid $custom_timeline_color
+      margin-left: 50%
+      padding-bottom: 30px
+
+      > li
+        position: relative
+        background: none
+        text-indent: 0
+        padding-left: 35px
+        font-size: 12px
+
+        &:before
+          content: ''
+          position: absolute
+          background-color: $custom_timeline_color
+          width: 25px
+          height: 5px
+          left: 0
+
+        &.custom-timeline-list-element__left
+          width: 100%
+          margin-left: calc(-100% - 15px)
+          padding-left: 0
+          padding-right: 30px
+          text-align: right
+
+          &:before
+            right: -7px
+            left: auto
+
+        &.custom-timeline-list-element__empty
+          &:before
+            display: none
+
+      &__date
+        position: absolute
+        background-color: $custom_timeline_color
+        width: 60px
+        height: 60px
+        +border-radius(50%)
+        left: -34px
+        top: 0
+        +display-flex
+        +justify-content(center)
+        +align-items(center)
+        color: #fff
+        font-size: 14px
+
+.hover-element
+  background-color: #fff
+  display: inline-block
+  padding: 5px 10px
+  margin-bottom: 10px
+
+  .hover-element-description
+    position: absolute
+    z-index: 100
+    background-color: #fff
+    padding: 10px
+    top: 145px
+    border: 1px solid #ccc
+    +border-radius(5px)
+    display: none
+    left: 35px
+    +box-shadow(0px 2px 4px 0px rgba(0,0,0,0.5))
+
+    &:before
+      content: ''
+      border: 17px solid #ccc
+      position: absolute
+      bottom: 100%
+      left: 80px
+      border-top-color: transparent
+      border-left-color: transparent
+      border-right-color: transparent
+
+    &:after
+      bottom: 100%
+      left: 97px
+      border: solid transparent
+      content: " "
+      height: 0
+      width: 0
+      position: absolute
+      pointer-events: none
+      border-color: transparent
+      border-bottom-color: #fff
+      border-width: 15px
+      margin-left: -15px
+
+  &:hover
+    +box-shadow(inset 0px 4px 10px -5px rgba(0,0,0,0.5))
+
+    .hover-element-description
+      display: block
+
+
+
